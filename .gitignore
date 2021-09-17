@@ -23,5 +23,8 @@
 hs_err_pid*
 
 .idea
+.statistics
 *.iml
 .DS_Store
+
+out
