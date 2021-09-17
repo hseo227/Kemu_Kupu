@@ -1,0 +1,4 @@
+[17/07/2021]
+Decided to use Nick's A2 code and expand on it.
+- Add topic list
+- Adjustable audio settings
