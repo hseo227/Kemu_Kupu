@@ -34,6 +34,7 @@ public class SpellingQuiz extends Service<Void> {
 
 
     // this method will only run once and will run at the start of the program
+    // set up all the statistics files
     public static void initialise() {
         // setting up the files names
         FILE_NAME.add("mastered_file");
@@ -41,7 +42,6 @@ public class SpellingQuiz extends Service<Void> {
         FILE_NAME.add("failed_file");
 
         // setting up the files locations
-        FILES.put("wordList_file", "./words/popular");
         FILES.put(FILE_NAME.get(0), "./.statistics/mastered");
         FILES.put(FILE_NAME.get(1), "./.statistics/faulted");
         FILES.put(FILE_NAME.get(2), "./.statistics/failed");
@@ -74,6 +74,9 @@ public class SpellingQuiz extends Service<Void> {
         // if new spelling quiz, get the words from "popular"
         // else (review mistakes) get the words from "failed list"
         if (currentMode == Mode.newSpellingQuiz) {
+
+            // change here later
+
             wordsList = getWordsInFile(FILES.get("wordList_file"), false);  // false = no duplicate
         } else {
             wordsList = getWordsInFile(FILES.get("failed_file"), false);  // false = no duplicate
