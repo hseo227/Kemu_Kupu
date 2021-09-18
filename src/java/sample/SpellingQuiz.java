@@ -31,6 +31,7 @@ public class SpellingQuiz extends Service<Void> {
     private static Mode currentMode;
     private QuizState currentQuizState;
     private Result currentResult;
+    private static String selectedTopic;
 
 
     // this method will only run once and will run at the start of the program
@@ -325,5 +326,10 @@ public class SpellingQuiz extends Service<Void> {
     // this function get all the files' locations
     public static HashMap<String, String> getFILES() {
         return FILES;
+    }
+
+    // selectedTopic's setter
+    public static void setTopic(String topic) {
+        selectedTopic = topic;
     }
 }
