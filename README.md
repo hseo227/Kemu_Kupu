@@ -1,4 +1,4 @@
-# project
+# SOFTENG 206 Assignment 3
 
 Use this repo for both Assignment 3 and also your final Project (as you will be in the same team). 
 
