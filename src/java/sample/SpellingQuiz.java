@@ -22,6 +22,9 @@ enum Result {
 }
 
 public class SpellingQuiz extends Service<Void> {
+    private final int MAXNUMOFQUESTION = 5;
+
+
     private int numQuestions, currentIndex;
     private String currentWord, mainLabelText, promptLabelText, userInput;
     private ArrayList<String> words = new ArrayList<String>();  // words that will be tested on
@@ -75,15 +78,14 @@ public class SpellingQuiz extends Service<Void> {
         // if new spelling quiz, get the words from "popular"
         // else (review mistakes) get the words from "failed list"
         if (currentMode == Mode.newSpellingQuiz) {
-
-            // change here later
-
-            wordsList = getWordsInFile(FILES.get("wordList_file"), false);  // false = no duplicate
+            String wordListLocation = "words/" + selectedTopic;
+            wordsList = getWordsInFile(wordListLocation, false);  // false = no duplicate
         } else {
             wordsList = getWordsInFile(FILES.get("failed_file"), false);  // false = no duplicate
         }
 
-        numQuestions = Math.min(wordsList.size(), 3);  // number of questions in the quiz can only be 1, 2 or 3
+        // number of questions in the quiz can only be less than max number of questions
+        numQuestions = Math.min(wordsList.size(), MAXNUMOFQUESTION);
         currentIndex = 0;
         currentWord = "";
         mainLabelText = "";
