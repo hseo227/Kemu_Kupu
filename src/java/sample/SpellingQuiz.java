@@ -277,6 +277,11 @@ public class SpellingQuiz extends Service<Void> {
         }
     }
 
+    // this method will speak the word again, only the word
+    public void speakAgain() {
+        speak(currentWord);
+    }
+
     // Mode's getter, setter and equals to
     public static void setMode(Mode newMode) {
         currentMode = newMode;

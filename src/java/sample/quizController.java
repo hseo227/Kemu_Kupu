@@ -3,7 +3,6 @@ package sample;
 import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -142,6 +141,11 @@ public class quizController implements Initializable {
     @FXML
     private void backToMainMenu(ActionEvent event) throws IOException {
         SceneController.goToMainMenu();
+    }
+
+    @FXML
+    private void speakAgain() {
+        quiz.speakAgain();
     }
 
 }
