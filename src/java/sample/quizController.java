@@ -8,6 +8,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
@@ -26,6 +27,8 @@ public class quizController implements Initializable {
     private TextField inputField;
     @FXML
     private Button startButton, backButton;
+    @FXML
+    private ImageView playbackImg;
 
 
     @Override
@@ -55,6 +58,7 @@ public class quizController implements Initializable {
 
         // otherwise, continue the game
         inputField.setVisible(true);
+        playbackImg.setVisible(true);
         startButton.setVisible(false);
         newQuestion();
     }
