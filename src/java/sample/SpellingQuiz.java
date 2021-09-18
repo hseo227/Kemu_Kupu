@@ -22,6 +22,9 @@ enum Result {
 }
 
 public class SpellingQuiz extends Service<Void> {
+    private final int MAXNUMOFQUESTION = 5;
+
+
     private int numQuestions, currentIndex;
     private String currentWord, mainLabelText, promptLabelText, userInput;
     private ArrayList<String> words = new ArrayList<String>();  // words that will be tested on
@@ -31,9 +34,11 @@ public class SpellingQuiz extends Service<Void> {
     private static Mode currentMode;
     private QuizState currentQuizState;
     private Result currentResult;
+    private static String selectedTopic;
 
 
     // this method will only run once and will run at the start of the program
+    // set up all the statistics files
     public static void initialise() {
         // setting up the files names
         FILE_NAME.add("mastered_file");
@@ -41,7 +46,6 @@ public class SpellingQuiz extends Service<Void> {
         FILE_NAME.add("failed_file");
 
         // setting up the files locations
-        FILES.put("wordList_file", "./words/popular");
         FILES.put(FILE_NAME.get(0), "./.statistics/mastered");
         FILES.put(FILE_NAME.get(1), "./.statistics/faulted");
         FILES.put(FILE_NAME.get(2), "./.statistics/failed");
@@ -74,12 +78,14 @@ public class SpellingQuiz extends Service<Void> {
         // if new spelling quiz, get the words from "popular"
         // else (review mistakes) get the words from "failed list"
         if (currentMode == Mode.newSpellingQuiz) {
-            wordsList = getWordsInFile(FILES.get("wordList_file"), false);  // false = no duplicate
+            String wordListLocation = "words/" + selectedTopic;
+            wordsList = getWordsInFile(wordListLocation, false);  // false = no duplicate
         } else {
             wordsList = getWordsInFile(FILES.get("failed_file"), false);  // false = no duplicate
         }
 
-        numQuestions = Math.min(wordsList.size(), 3);  // number of questions in the quiz can only be 1, 2 or 3
+        // number of questions in the quiz can only be less than max number of questions
+        numQuestions = Math.min(wordsList.size(), MAXNUMOFQUESTION);
         currentIndex = 0;
         currentWord = "";
         mainLabelText = "";
@@ -322,5 +328,10 @@ public class SpellingQuiz extends Service<Void> {
     // this function get all the files' locations
     public static HashMap<String, String> getFILES() {
         return FILES;
+    }
+
+    // selectedTopic's setter
+    public static void setTopic(String topic) {
+        selectedTopic = topic;
     }
 }
