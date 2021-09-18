@@ -28,7 +28,7 @@ public class mainMenuController {
     @FXML
     private void loadNew(ActionEvent event) throws IOException {
         SpellingQuiz.setMode(Mode.newSpellingQuiz);
-        SceneController.goToQuiz();
+        SceneController.goToTopicList();
     }
 
     // load Review Mistakes
