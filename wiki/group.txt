@@ -8,3 +8,6 @@ Decided to use Nick's A2 code and expand on it.
 Finished topic list - Nick
 
 - Make a button for the playback
+
+[19/09/2021]
+Finished playback button - Nick
