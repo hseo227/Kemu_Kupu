@@ -3,12 +3,13 @@ package sample;
 import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
@@ -27,6 +28,8 @@ public class quizController implements Initializable {
     private TextField inputField;
     @FXML
     private Button startButton, backButton;
+    @FXML
+    private ImageView playbackImg;
 
 
     @Override
@@ -56,21 +59,20 @@ public class quizController implements Initializable {
 
         // otherwise, continue the game
         inputField.setVisible(true);
+        playbackImg.setVisible(true);
         startButton.setVisible(false);
+
+        // The text when the mouse hover on the playback image
+        Tooltip tooltip = new Tooltip("Click to playback");
+        Tooltip.install(playbackImg, tooltip);
+
         newQuestion();
     }
 
     @FXML
     private void onEnter(ActionEvent event) {
-        // if the game is finished, ask the user to leave
-        if (quiz.quizStateEqualsTo(QuizState.finished)) {
-            Alert a = new Alert(Alert.AlertType.INFORMATION);
-            a.setTitle("Finished the quizzes");
-            a.setHeaderText("You finished the quizzes! Go back to main menu!");
-            a.showAndWait();
-
-        // or if the quiz is ready for next question, then generate the next question
-        } else if (quiz.quizStateEqualsTo(QuizState.ready)) {
+        // if the quiz is ready for next question, then generate the next question
+        if (quiz.quizStateEqualsTo(QuizState.ready)) {
             rootPane.setStyle("-fx-background-color: #FFFFFF;");  // change to white background
             inputField.clear();
 
@@ -92,8 +94,11 @@ public class quizController implements Initializable {
             promptLabel.textProperty().unbind();
 
             // if the game is finished, a button will appear, which lead the user back to the main menu
+            // also disable the input field and playback button
             if (quiz.quizStateEqualsTo(QuizState.finished)) {
                 backButton.setVisible(true);
+                inputField.setVisible(false);
+                playbackImg.setVisible(false);
             }
 
             quiz.reset();
@@ -142,6 +147,11 @@ public class quizController implements Initializable {
     @FXML
     private void backToMainMenu(ActionEvent event) throws IOException {
         SceneController.goToMainMenu();
+    }
+
+    @FXML
+    private void speakAgain() {
+        quiz.speakAgain();
     }
 
 }

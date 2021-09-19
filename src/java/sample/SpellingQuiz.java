@@ -130,7 +130,7 @@ public class SpellingQuiz extends Service<Void> {
         if (currentIndex == numQuestions) {  // the quiz is finished
             setQuizState(QuizState.finished);
             mainLabelText = "Finished";
-            promptLabelText = "";
+            promptLabelText = "You finished the quizzes! Go back to main menu!";
             return;
         }
 
@@ -275,6 +275,11 @@ public class SpellingQuiz extends Service<Void> {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    // this method will speak the word again, only the word
+    public void speakAgain() {
+        speak(currentWord);
     }
 
     // Mode's getter, setter and equals to
