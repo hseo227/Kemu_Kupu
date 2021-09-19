@@ -38,7 +38,7 @@ public class statisticsController implements Initializable {
         ArrayList<Integer[]> rates = new ArrayList<>();
 
         for (String line : list) {
-            String[] splited = line.split("\\s+");  // split into the word and the result
+            String[] splited = line.split("_");  // split into the word and the result
 
             // if the array does not have the word yet, set up a new row for that word
             if (!words.contains(splited[0])) {

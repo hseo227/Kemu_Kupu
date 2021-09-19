@@ -211,8 +211,9 @@ public class SpellingQuiz extends Service<Void> {
             writeFile.close();
 
             // now write the word and result into the history file, which will be used for show statistics
+            // separate the word and the result by '_'
             PrintWriter writeHistoryFile = new PrintWriter(new FileWriter(FILES.get("wordHistory_file"), true));
-            writeHistoryFile.println(currentWord + " " + getResult().ordinal());
+            writeHistoryFile.println(currentWord + "_" + getResult().ordinal());
             writeHistoryFile.close();
 
         } catch (IOException e) {
