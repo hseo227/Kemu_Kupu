@@ -27,7 +27,7 @@ public class quizController implements Initializable {
     @FXML
     private TextField inputField;
     @FXML
-    private Button startButton, backButton, homeButton, playAgainButton;
+    private Button startBtn, finishBackBtn, homeBtn, playAgainBtn;
     @FXML
     private ImageView playbackImg;
 
@@ -44,9 +44,7 @@ public class quizController implements Initializable {
     @FXML
     private void startQuiz(ActionEvent event) throws IOException {
         // start a new game, either new spelling quiz or review mistakes
-        backButton.setVisible(false);
-        playAgainButton.setVisible(false);
-    	quiz = new SpellingQuiz();
+        quiz = new SpellingQuiz();
 
         // if no failed words, display a message and then back main menu
         if (quiz.quizStateEqualsTo(QuizState.noFailed)) {
@@ -60,9 +58,12 @@ public class quizController implements Initializable {
         }
 
         // otherwise, continue the game
+        finishBackBtn.setVisible(false);
+        playAgainBtn.setVisible(false);
+        homeBtn.setVisible(true);
         inputField.setVisible(true);
         playbackImg.setVisible(true);
-        startButton.setVisible(false);
+        startBtn.setVisible(false);
 
         // The text when the mouse hover on the playback image
         Tooltip tooltip = new Tooltip("Click to playback");
@@ -95,12 +96,12 @@ public class quizController implements Initializable {
             mainLabel.textProperty().unbind();
             promptLabel.textProperty().unbind();
 
-            // if the game is finished, a button will appear, which lead the user back to the main menu
-            // also disable the input field and playback button
+            // if the game is finished, some buttons will appear
+            // while other utilities are disappear
             if (quiz.quizStateEqualsTo(QuizState.finished)) {
-                backButton.setVisible(true);
-                playAgainButton.setVisible(true);
-                homeButton.setVisible(false);
+                finishBackBtn.setVisible(true);
+                playAgainBtn.setVisible(true);
+                homeBtn.setVisible(false);
                 inputField.setVisible(false);
                 playbackImg.setVisible(false);
             }

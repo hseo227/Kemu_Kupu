@@ -84,11 +84,7 @@ public class topicListController implements Initializable {
     }
     
     @FXML
-    private void backToMain(ActionEvent event) throws IOException {
-        try {
-            SceneController.goToMainMenu();
-        } catch (Exception e) {
-        	e.printStackTrace();
-        }
+    private void backToMainMenu(ActionEvent event) throws IOException {
+        SceneController.goToMainMenu();
     }
 }

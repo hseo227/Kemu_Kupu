@@ -14,6 +14,7 @@ public class Main extends Application {
         SpellingQuiz.initialise();
 
         Parent root = FXMLLoader.load(getClass().getResource("mainMenu.fxml"));
+        // set title and icon
         primaryStage.setTitle("Kēmu Kupu");
         primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("window-icon.png")));
         primaryStage.setScene(new Scene(root));
