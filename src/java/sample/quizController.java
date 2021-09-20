@@ -27,7 +27,7 @@ public class quizController implements Initializable {
     @FXML
     private TextField inputField;
     @FXML
-    private Button startButton, backButton, homeButton;
+    private Button startButton, backButton, homeButton, playAgainButton;
     @FXML
     private ImageView playbackImg;
 
@@ -44,7 +44,9 @@ public class quizController implements Initializable {
     @FXML
     private void startQuiz(ActionEvent event) throws IOException {
         // start a new game, either new spelling quiz or review mistakes
-        quiz = new SpellingQuiz();
+        backButton.setVisible(false);
+        playAgainButton.setVisible(false);
+    	quiz = new SpellingQuiz();
 
         // if no failed words, display a message and then back main menu
         if (quiz.quizStateEqualsTo(QuizState.noFailed)) {
@@ -97,6 +99,7 @@ public class quizController implements Initializable {
             // also disable the input field and playback button
             if (quiz.quizStateEqualsTo(QuizState.finished)) {
                 backButton.setVisible(true);
+                playAgainButton.setVisible(true);
                 homeButton.setVisible(false);
                 inputField.setVisible(false);
                 playbackImg.setVisible(false);

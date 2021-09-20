@@ -129,8 +129,8 @@ public class SpellingQuiz extends Service<Void> {
     private void newQuestion() {
         if (currentIndex == numQuestions) {  // the quiz is finished
             setQuizState(QuizState.finished);
-            mainLabelText = "Finished";
-            promptLabelText = "You finished the quizzes! Go back to main menu!";
+            mainLabelText = "DISPLAY SCORE";
+            promptLabelText = "";
             return;
         }
 
