@@ -44,5 +44,10 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
+              <Button fx:id="homeButton" layoutX="826.0" layoutY="47.0" mnemonicParsing="false" onAction="#backToMain" prefHeight="25.0" prefWidth="75.0" text="Back">
+            <font>
+                <Font size="15.0" />
+            </font>
+        </Button>
    </children>
 </AnchorPane>

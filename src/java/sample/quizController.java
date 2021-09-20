@@ -27,7 +27,7 @@ public class quizController implements Initializable {
     @FXML
     private TextField inputField;
     @FXML
-    private Button startButton, backButton;
+    private Button startButton, backButton, homeButton;
     @FXML
     private ImageView playbackImg;
 
@@ -97,6 +97,7 @@ public class quizController implements Initializable {
             // also disable the input field and playback button
             if (quiz.quizStateEqualsTo(QuizState.finished)) {
                 backButton.setVisible(true);
+                homeButton.setVisible(false);
                 inputField.setVisible(false);
                 playbackImg.setVisible(false);
             }
@@ -152,6 +153,15 @@ public class quizController implements Initializable {
     @FXML
     private void speakAgain() {
         quiz.speakAgain();
+    }
+    
+    @FXML
+    private void backToMain(ActionEvent event) throws IOException {
+        try {
+            SceneController.goToMainMenu();
+        } catch (Exception e) {
+        e.printStackTrace();
+        }
     }
 
 }

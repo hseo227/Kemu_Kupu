@@ -22,7 +22,7 @@ public class topicListController implements Initializable {
     @FXML
     private Label mainLabel;
     @FXML
-    private Button selectBtn;
+    private Button selectBtn, backBtn;
     @FXML
     private TableView<Topic> table;
     @FXML
@@ -81,5 +81,14 @@ public class topicListController implements Initializable {
 
         // after the topic is selected, time to do the quiz
         SceneController.goToQuiz();
+    }
+    
+    @FXML
+    private void backToMain(ActionEvent event) throws IOException {
+        try {
+            SceneController.goToMainMenu();
+        } catch (Exception e) {
+        	e.printStackTrace();
+        }
     }
 }
