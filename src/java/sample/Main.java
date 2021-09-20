@@ -13,7 +13,7 @@ public class Main extends Application {
         SpellingQuiz.initialise();
 
         Parent root = FXMLLoader.load(getClass().getResource("mainMenu.fxml"));
-        primaryStage.setTitle("Spelling Wiz!");
+        primaryStage.setTitle("Kēmu Kupu");
         primaryStage.setScene(new Scene(root));
         SceneController.initialise(primaryStage.getScene());  // this is for the future use of changing scene
         primaryStage.show();
