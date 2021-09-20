@@ -97,6 +97,7 @@ public class quizController implements Initializable {
             // also disable the input field and playback button
             if (quiz.quizStateEqualsTo(QuizState.finished)) {
                 backButton.setVisible(true);
+                homeButton.setVisible(false);
                 inputField.setVisible(false);
                 playbackImg.setVisible(false);
             }
