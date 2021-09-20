@@ -171,7 +171,7 @@ public class SpellingQuiz extends Service<Void> {
 
             // setting up the labels' text and speak out the message
             mainLabelText = "Incorrect, try once more:";
-            promptLabelText = "Wrong spelling: " + getUserInput().trim();
+        	promptLabelText = "Hint: second letter is '" + Character.toString(currentWord.charAt(1)) + "'";
             speak("Incorrect, try once more. " + currentWord + " " + currentWord);
 
         } else {  // 2nd attempt, and it is the second times got it incorrect --> failed
@@ -181,7 +181,7 @@ public class SpellingQuiz extends Service<Void> {
 
             // setting up the labels' text and speak out the message
             mainLabelText = "Incorrect";
-            promptLabelText = "Press 'Enter' again to continue";
+            promptLabelText = "Press 'Enter' to attempt next word";
             speak("Incorrect");
         }
     }
