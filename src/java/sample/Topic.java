@@ -1,3 +1,9 @@
+/**
+ * Topic class for the table topic list
+ *
+ * Do not change this class
+ */
+
 package sample;
 
 public class Topic {

@@ -1,3 +1,9 @@
+/**
+ * Statistics class for the table statistics
+ *
+ * Do not change this class
+ */
+
 package sample;
 
 public class Statistics {
