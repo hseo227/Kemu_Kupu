@@ -31,23 +31,24 @@
             <Font name="System Bold Italic" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="backButton" layoutX="350.0" layoutY="380.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="70.0" prefWidth="260.0" text="Back to Main Menu" visible="false">
+	 <Button fx:id="backButton" layoutX="350.0" layoutY="380.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="70.0" prefWidth="260.0" text="Back to Main Menu" visible="false">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Button>
       <ImageView fx:id="playbackImg" fitHeight="60.0" fitWidth="66.0" layoutX="772.0" layoutY="170.0" onMouseClicked="#speakAgain" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
-            <Image url="@playback-button.png" />
+         	<Image url="@playback-button.png" />
          </image>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-              <Button fx:id="homeButton" layoutX="826.0" layoutY="47.0" mnemonicParsing="false" onAction="#backToMain" prefHeight="25.0" prefWidth="75.0" text="Back">
-            <font>
-                <Font size="15.0" />
-            </font>
-        </Button>
+      <Button fx:id="homeButton" layoutX="826.0" layoutY="47.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="25.0" prefWidth="75.0" text="Back">
+         <font>
+            <Font size="15" />
+         </font>
+      </Button>
+      
    </children>
 </AnchorPane>

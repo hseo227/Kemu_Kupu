@@ -154,14 +154,5 @@ public class quizController implements Initializable {
     private void speakAgain() {
         quiz.speakAgain();
     }
-    
-    @FXML
-    private void backToMain(ActionEvent event) throws IOException {
-        try {
-            SceneController.goToMainMenu();
-        } catch (Exception e) {
-        e.printStackTrace();
-        }
-    }
 
 }
