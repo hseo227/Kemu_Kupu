@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -14,6 +15,7 @@ public class Main extends Application {
 
         Parent root = FXMLLoader.load(getClass().getResource("mainMenu.fxml"));
         primaryStage.setTitle("Kēmu Kupu");
+        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("window-icon.png")));
         primaryStage.setScene(new Scene(root));
         SceneController.initialise(primaryStage.getScene());  // this is for the future use of changing scene
         primaryStage.show();
