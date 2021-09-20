@@ -27,7 +27,7 @@ public class quizController implements Initializable {
     @FXML
     private TextField inputField;
     @FXML
-    private Button startButton, backButton, homeButton, playAgainButton, skipButton;
+    private Button startButton, backButton, homeButton, playAgainButton;
     @FXML
     private ImageView playbackImg;
 

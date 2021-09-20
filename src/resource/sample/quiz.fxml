@@ -54,10 +54,5 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="skipButton" layoutX="550" layoutY="380.0" mnemonicParsing="false" onAction="#skipQuestion" prefHeight="25.0" prefWidth="100.0" text="Skip" visible="false">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Button>
    </children>
 </AnchorPane>
