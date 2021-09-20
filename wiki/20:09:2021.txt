@@ -1,0 +1,10 @@
+[20/09/2021]
+
+Group Meeting 2
+
+Clarified some functionalities.
+
+Hayoon and Minsun will work on:
+- back button
+- user score
+- hint

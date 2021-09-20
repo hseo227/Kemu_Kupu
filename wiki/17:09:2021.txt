@@ -1,0 +1,8 @@
+[17/09/2021]
+
+Group Meeting 1
+
+Decided to use Nick's A2 code and expand on it.
+
+- Add topic list
+- Adjustable audio settings
