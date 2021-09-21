@@ -21,12 +21,12 @@ public class mainMenuController {
     @FXML
     private Label mainMenuLabel;
     @FXML
-    private Button newSQ, quit;
+    private Button gamesModule, quit;
 
 
     // load New Spelling Quiz
     @FXML
-    private void loadNew(ActionEvent event) throws IOException {
+    private void loadGamesModule(ActionEvent event) throws IOException {
         SceneController.goToTopicList();
     }
 
