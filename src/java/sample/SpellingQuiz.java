@@ -28,6 +28,7 @@ public class SpellingQuiz extends Service<Void> {
     private QuizState currentQuizState;
     private Result currentResult;
     private static String selectedTopic;
+    private final Words words;
 
 
     // Constructor
