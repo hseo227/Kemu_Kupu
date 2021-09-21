@@ -18,13 +18,11 @@ enum Result {
 }
 
 public class SpellingQuiz extends Service<Void> {
-    private final int MAXNUMOFQUESTION = 5;
+    private final int NUMOFQUESTION = 5;
 
 
-    private int numQuestions, currentIndex;
+    private int currentIndex;
     private String currentWord, mainLabelText, promptLabelText, userInput;
-    private ArrayList<String> words = new ArrayList<String>();  // words that will be tested on
-    private ArrayList<String> wordsList;  // all the words from the file
     private QuizState currentQuizState;
     private Result currentResult;
     private static String selectedTopic;
@@ -33,12 +31,8 @@ public class SpellingQuiz extends Service<Void> {
 
     // Constructor
     public SpellingQuiz() {
-        // get all the words in the files
-        String wordListLocation = "words/" + selectedTopic;
-        wordsList = getWordsInFile(wordListLocation);
+        words = new Words(selectedTopic, NUMOFQUESTION);
 
-        // number of questions in the quiz can only be less than max number of questions
-        numQuestions = Math.min(wordsList.size(), MAXNUMOFQUESTION);
         currentIndex = 0;
         currentWord = "";
         mainLabelText = "";
@@ -75,7 +69,7 @@ public class SpellingQuiz extends Service<Void> {
 
     // this function generate a new word and then ask the user
     private void newQuestion() {
-        if (currentIndex == numQuestions) {  // the quiz is finished
+        if (currentIndex == NUMOFQUESTION) {  // the quiz is finished
             setQuizState(QuizState.finished);
             mainLabelText = "DISPLAY SCORE";
             promptLabelText = "";
@@ -85,19 +79,11 @@ public class SpellingQuiz extends Service<Void> {
         setQuizState(QuizState.running);  // now set the state to running
         setResult(Result.mastered);  // set original result to Mastered
         currentIndex++;
-        Random rand = new Random();
-        String randWord;
 
-        // get a random word from the word list, that has all the words from the file
-        do {
-            randWord = wordsList.get(rand.nextInt(wordsList.size()));
-        } while (words.contains(randWord));  // loop until get a different word
-
-        currentWord = randWord;
-        words.add(randWord);
+        currentWord = words.nextWord();
 
         // set the labels' messages and also speak out the message
-        mainLabelText = "Spell word " + currentIndex + " of " + numQuestions + ":";
+        mainLabelText = "Spell word " + currentIndex + " of " + NUMOFQUESTION + ":";
         promptLabelText = "";
         speak("Please spell " + currentWord);
     }
@@ -105,7 +91,7 @@ public class SpellingQuiz extends Service<Void> {
     // this function check the spelling (input) and then set up a range of stuff
     private void checkSpelling() {
         // if statement for each result after checking the spelling (input)
-        if (equalStrings(getUserInput(), currentWord)) {  // mastered and failed, 1st attempt and 2nd attempt respectively
+        if ( words.checkUserSpelling(getUserInput()) ) {  // mastered and failed, 1st attempt and 2nd attempt respectively
             setQuizState(QuizState.ready);  // set the state to ready for the next question
 
             // setting up the labels' text and speak out the message
@@ -130,32 +116,6 @@ public class SpellingQuiz extends Service<Void> {
             promptLabelText = "Press 'Enter' to attempt next word";
             speak("Incorrect");
         }
-    }
-
-    // this function get all the words in the file, allow adding duplicate or not duplicate word
-    public static ArrayList<String> getWordsInFile(String fileName) {
-        ArrayList<String> list = new ArrayList<String>();
-
-        try {
-            BufferedReader readFile = new BufferedReader(new FileReader(fileName));
-            String line;
-
-            // go through all the lines in the file and add into the list
-            while ((line = readFile.readLine()) != null) {
-                list.add(line);
-            }
-            readFile.close();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return list;
-    }
-
-    // this function compares both string with ignore cases and spaces outside the words
-    private boolean equalStrings(String a, String b) {
-        return a.trim().equalsIgnoreCase(b.trim());
     }
 
     // this function will speak out the message using bash script
