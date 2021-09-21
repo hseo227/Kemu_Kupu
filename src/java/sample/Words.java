@@ -9,7 +9,7 @@ import java.util.Random;
 public class Words {
     private int currentIndex;
     private String currentWord;  // the word that is currently testing
-    private final ArrayList<String> wordsList;  // words that will be tested on
+    private final String[] wordsList;  // words that will be tested on
 
 
     public Words(String selectedTopic, int numOfQuestions) {
@@ -22,7 +22,7 @@ public class Words {
     }
 
     // this function get specific number of random words in the file
-    private ArrayList<String> getRandomWordsInFile(String fileName, int numOfWords) {
+    private String[] getRandomWordsInFile(String fileName, int numOfWords) {
         ArrayList<String> allWordsInFile = new ArrayList<String>();  // all the words in the file
         ArrayList<String> wordsList = new ArrayList<String>();  // specific number of random words from the file
 
@@ -55,17 +55,17 @@ public class Words {
             wordsList.add(randWord);
         }
 
-        return wordsList;
+        return wordsList.toArray(new String[0]);
     }
 
     // setting up for the next word to be tested on, and then return that word
     public String nextWord() {
-        currentWord = wordsList.get(currentIndex++);
+        currentWord = wordsList[currentIndex++];
         return currentWord;
     }
 
     // this function compares both string with ignore cases and spaces outside the words
     public boolean checkUserSpelling(String userSpelling) {
-        return userSpelling.trim().equalsIgnoreCase(currentWord.trim());
+        return currentWord.trim().equalsIgnoreCase(userSpelling.trim());
     }
 }
