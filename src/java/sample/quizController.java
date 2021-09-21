@@ -33,20 +33,9 @@ public class quizController {
 
 
     @FXML
-    private void startQuiz(ActionEvent event) throws IOException {
+    private void startQuiz(ActionEvent event) {
         // start a new game, either new spelling quiz or review mistakes
         quiz = new SpellingQuiz();
-
-        // if no failed words, display a message and then back main menu
-        if (quiz.quizStateEqualsTo(QuizState.noFailed)) {
-            Alert a = new Alert(Alert.AlertType.INFORMATION);
-            a.setTitle("Too smart!");
-            a.setHeaderText("You have 0 failed word!");
-            a.showAndWait();
-
-            SceneController.goToMainMenu();
-            return;
-        }
 
         // otherwise, continue the game
         finishBackBtn.setVisible(false);

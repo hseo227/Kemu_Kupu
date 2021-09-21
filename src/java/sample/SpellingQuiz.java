@@ -10,7 +10,7 @@ import java.util.Random;
 
 
 enum QuizState {
-    ready, running, finished, noFailed
+    ready, running, finished
 }
 
 enum Result {
@@ -45,11 +45,6 @@ public class SpellingQuiz extends Service<Void> {
         setUserInput("");
         setQuizState(QuizState.ready);
         setResult(Result.mastered);
-
-        // if there is no failed words, change the state
-        if (numQuestions == 0) {
-            setQuizState(QuizState.noFailed);
-        }
     }
 
     // this method is invoked by the Server thread
