@@ -3,11 +3,6 @@ package sample;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 
-import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Random;
-
 
 enum QuizState {
     ready, running, finished
@@ -31,6 +26,7 @@ public class SpellingQuiz extends Service<Void> {
 
     // Constructor
     public SpellingQuiz() {
+        // setting up the words
         words = new Words(selectedTopic, NUMOFQUESTION);
 
         currentIndex = 0;
@@ -80,7 +76,7 @@ public class SpellingQuiz extends Service<Void> {
         setResult(Result.mastered);  // set original result to Mastered
         currentIndex++;
 
-        currentWord = words.nextWord();
+        currentWord = words.nextWord();  // set up the word and get the word that is testing on
 
         // set the labels' messages and also speak out the message
         mainLabelText = "Spell word " + currentIndex + " of " + NUMOFQUESTION + ":";
