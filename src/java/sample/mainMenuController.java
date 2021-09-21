@@ -27,7 +27,6 @@ public class mainMenuController {
     // load New Spelling Quiz
     @FXML
     private void loadNew(ActionEvent event) throws IOException {
-        SpellingQuiz.setMode(Mode.newSpellingQuiz);
         SceneController.goToTopicList();
     }
 

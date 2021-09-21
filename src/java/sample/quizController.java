@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class quizController implements Initializable {
+public class quizController {
 
     private SpellingQuiz quiz;
 
@@ -31,15 +31,6 @@ public class quizController implements Initializable {
     @FXML
     private ImageView playbackImg;
 
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        if (SpellingQuiz.modeEqualsTo(Mode.newSpellingQuiz)) {
-            mainLabel.setText("New Spelling Quiz");
-        } else {
-            mainLabel.setText("Review Mistakes");
-        }
-    }
 
     @FXML
     private void startQuiz(ActionEvent event) throws IOException {

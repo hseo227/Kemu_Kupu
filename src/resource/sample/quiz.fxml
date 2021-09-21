@@ -11,7 +11,7 @@
 
 <AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="sample.quizController">
    <children>
-      <Label fx:id="mainLabel" alignment="CENTER" layoutX="130.0" layoutY="170.0" prefHeight="60.0" prefWidth="700.0">
+      <Label fx:id="mainLabel" alignment="CENTER" layoutX="130.0" layoutY="170.0" prefHeight="60.0" prefWidth="700.0" text="Games Module">
          <font>
             <Font size="36.0" />
          </font>

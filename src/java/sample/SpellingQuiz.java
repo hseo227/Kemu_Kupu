@@ -9,10 +9,6 @@ import java.util.HashMap;
 import java.util.Random;
 
 
-enum Mode {
-    newSpellingQuiz, reviewMistakes
-}
-
 enum QuizState {
     ready, running, finished, noFailed
 }
@@ -29,60 +25,16 @@ public class SpellingQuiz extends Service<Void> {
     private String currentWord, mainLabelText, promptLabelText, userInput;
     private ArrayList<String> words = new ArrayList<String>();  // words that will be tested on
     private ArrayList<String> wordsList;  // all the words from the file
-    private static final HashMap<String, String> FILES = new HashMap<String, String>();  // stores the files locations
-    private static final ArrayList<String> FILE_NAME = new ArrayList<String>();  // stores the files names, the main 3
-    private static Mode currentMode;
     private QuizState currentQuizState;
     private Result currentResult;
     private static String selectedTopic;
 
 
-    // this method will only run once and will run at the start of the program
-    // set up all the statistics files
-    public static void initialise() {
-        // setting up the files names
-        FILE_NAME.add("mastered_file");
-        FILE_NAME.add("faulted_file");
-        FILE_NAME.add("failed_file");
-
-        // setting up the files locations
-        FILES.put(FILE_NAME.get(0), "./.statistics/mastered");
-        FILES.put(FILE_NAME.get(1), "./.statistics/faulted");
-        FILES.put(FILE_NAME.get(2), "./.statistics/failed");
-        FILES.put("wordHistory_file", "./.statistics/word_history");
-
-        // create the files and directory if they don't exist yet
-        String tempFileName = FILES.get("wordHistory_file");
-        String dirName = tempFileName.substring(0, tempFileName.lastIndexOf("/"));
-
-        // create the directory first
-        File file = new File(dirName);
-        file.mkdirs();
-
-        // and then create the file(s) that are missing
-        for (String fileName : FILES.values()) {
-            if (!fileName.equals(FILES.get("wordList_file"))) {  // other than word list file
-                try {
-                    file = new File(fileName);
-                    file.createNewFile();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
-
     // Constructor
     public SpellingQuiz() {
         // get all the words in the files
-        // if new spelling quiz, get the words from "popular"
-        // else (review mistakes) get the words from "failed list"
-        if (currentMode == Mode.newSpellingQuiz) {
-            String wordListLocation = "words/" + selectedTopic;
-            wordsList = getWordsInFile(wordListLocation, false);  // false = no duplicate
-        } else {
-            wordsList = getWordsInFile(FILES.get("failed_file"), false);  // false = no duplicate
-        }
+        String wordListLocation = "words/" + selectedTopic;
+        wordsList = getWordsInFile(wordListLocation);
 
         // number of questions in the quiz can only be less than max number of questions
         numQuestions = Math.min(wordsList.size(), MAXNUMOFQUESTION);
@@ -159,7 +111,6 @@ public class SpellingQuiz extends Service<Void> {
         // if statement for each result after checking the spelling (input)
         if (equalStrings(getUserInput(), currentWord)) {  // mastered and failed, 1st attempt and 2nd attempt respectively
             setQuizState(QuizState.ready);  // set the state to ready for the next question
-            modifyFile();
 
             // setting up the labels' text and speak out the message
             mainLabelText = "Correct";
@@ -177,7 +128,6 @@ public class SpellingQuiz extends Service<Void> {
         } else {  // 2nd attempt, and it is the second times got it incorrect --> failed
             setResult(Result.failed);
             setQuizState(QuizState.ready);  // set the state to ready for the next question
-            modifyFile();
 
             // setting up the labels' text and speak out the message
             mainLabelText = "Incorrect";
@@ -186,56 +136,17 @@ public class SpellingQuiz extends Service<Void> {
         }
     }
 
-    // this function modify the content of the file (add, remove or move)
-    private void modifyFile() {
-        try {
-            // open up the specific file respectively (mastered, faulted, failed)       true = append
-            PrintWriter writeFile = new PrintWriter(new FileWriter(FILES.get(FILE_NAME.get(getResult().ordinal())), true));
-
-            if (modeEqualsTo(Mode.newSpellingQuiz)) {  // add the word into the specific file list
-                writeFile.println(currentWord);
-
-            } else if (modeEqualsTo(Mode.reviewMistakes)) {
-                if (resultEqualsTo(Result.mastered) || resultEqualsTo(Result.faulted)) {  // Mastered and Faulted
-
-                    // remove the word from the list and from the file
-                    wordsList.remove(currentWord);
-                    removeWordFromFile(currentWord, FILES.get("failed_file"));
-
-                    if (resultEqualsTo(Result.faulted)) {  // only faulted
-                        writeFile.println(currentWord);
-                    }
-                }
-            }
-
-            writeFile.close();
-
-            // now write the word and result into the history file, which will be used for show statistics
-            // separate the word and the result by '_'
-            PrintWriter writeHistoryFile = new PrintWriter(new FileWriter(FILES.get("wordHistory_file"), true));
-            writeHistoryFile.println(currentWord + "_" + getResult().ordinal());
-            writeHistoryFile.close();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     // this function get all the words in the file, allow adding duplicate or not duplicate word
-    public static ArrayList<String> getWordsInFile(String fileName, boolean duplicate) {
+    public static ArrayList<String> getWordsInFile(String fileName) {
         ArrayList<String> list = new ArrayList<String>();
 
         try {
             BufferedReader readFile = new BufferedReader(new FileReader(fileName));
             String line;
 
-            // go through all the lines in the file
+            // go through all the lines in the file and add into the list
             while ((line = readFile.readLine()) != null) {
-                if (duplicate) {  // add duplicate
-                    list.add(line);
-                } else if (!list.contains(line)) {  // ignore duplicate (that is the word is already in the list)
-                    list.add(line);
-                }
+                list.add(line);
             }
             readFile.close();
 
@@ -244,22 +155,6 @@ public class SpellingQuiz extends Service<Void> {
         }
 
         return list;
-    }
-
-    // this function remove the specific word from the file
-    private void removeWordFromFile(String word, String fileName) throws IOException {
-        // get all the words in the file, allow duplicate
-        ArrayList<String> list = getWordsInFile(fileName, true);
-
-        // overwrite the file without the specific word
-        PrintWriter writeFile = new PrintWriter(new FileWriter(fileName));
-
-        for (String i : list) {
-            if (!i.equals(word)) {
-                writeFile.println(i);
-            }
-        }
-        writeFile.close();
     }
 
     // this function compares both string with ignore cases and spaces outside the words
@@ -281,19 +176,6 @@ public class SpellingQuiz extends Service<Void> {
     // this method will speak the word again, only the word
     public void speakAgain() {
         speak(currentWord);
-    }
-
-    // Mode's getter, setter and equals to
-    public static void setMode(Mode newMode) {
-        currentMode = newMode;
-    }
-
-    private static Mode getMode() {
-        return currentMode;
-    }
-
-    public static boolean modeEqualsTo(Mode mode) {
-        return getMode() == mode;
     }
 
     // QuizState's getter, setter and equals to
@@ -329,11 +211,6 @@ public class SpellingQuiz extends Service<Void> {
 
     private String getUserInput() {
         return userInput;
-    }
-
-    // this function get all the files' locations
-    public static HashMap<String, String> getFILES() {
-        return FILES;
     }
 
     // selectedTopic's setter
