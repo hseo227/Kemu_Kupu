@@ -12,22 +12,7 @@
             <Font name="System Bold Italic" size="36.0" />
          </font>
       </Label>
-      <Button fx:id="newSQ" layoutX="355.0" layoutY="210.0" mnemonicParsing="false" onAction="#loadNew" prefHeight="50.0" prefWidth="250.0" text="New Spelling Quiz">
-         <font>
-            <Font name="System Bold" size="20.0" />
-         </font>
-      </Button>
-      <Button fx:id="reviewM" layoutX="355.0" layoutY="270.0" mnemonicParsing="false" onAction="#loadReview" prefHeight="50.0" prefWidth="250.0" text="Review Mistakes">
-         <font>
-            <Font name="System Bold" size="20.0" />
-         </font>
-      </Button>
-      <Button fx:id="viewS" layoutX="355.0" layoutY="330.0" mnemonicParsing="false" onAction="#viewStats" prefHeight="50.0" prefWidth="250.0" text="View Statistics">
-         <font>
-            <Font name="System Bold" size="20.0" />
-         </font>
-      </Button>
-      <Button fx:id="clearS" layoutX="355.0" layoutY="390.0" mnemonicParsing="false" onAction="#clearStats" prefHeight="50.0" prefWidth="250.0" text="Clear Statistics">
+      <Button fx:id="gamesModule" layoutX="355.0" layoutY="210.0" mnemonicParsing="false" onAction="#loadGamesModule" prefHeight="50.0" prefWidth="250.0" text="Games Module">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>

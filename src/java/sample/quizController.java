@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class quizController implements Initializable {
+public class quizController {
 
     private SpellingQuiz quiz;
 
@@ -32,30 +32,10 @@ public class quizController implements Initializable {
     private ImageView playbackImg;
 
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        if (SpellingQuiz.modeEqualsTo(Mode.newSpellingQuiz)) {
-            mainLabel.setText("New Spelling Quiz");
-        } else {
-            mainLabel.setText("Review Mistakes");
-        }
-    }
-
     @FXML
-    private void startQuiz(ActionEvent event) throws IOException {
+    private void startQuiz(ActionEvent event) {
         // start a new game, either new spelling quiz or review mistakes
         quiz = new SpellingQuiz();
-
-        // if no failed words, display a message and then back main menu
-        if (quiz.quizStateEqualsTo(QuizState.noFailed)) {
-            Alert a = new Alert(Alert.AlertType.INFORMATION);
-            a.setTitle("Too smart!");
-            a.setHeaderText("You have 0 failed word!");
-            a.showAndWait();
-
-            SceneController.goToMainMenu();
-            return;
-        }
 
         // otherwise, continue the game
         finishBackBtn.setVisible(false);
