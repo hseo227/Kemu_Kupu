@@ -13,7 +13,7 @@ enum Result {
 }
 
 public class SpellingQuiz extends Service<Void> {
-    private final int NUMOFQUESTION = 5;
+    private final int NUMOFQUESTIONS = 5;
 
 
     private int currentIndex;
@@ -27,7 +27,7 @@ public class SpellingQuiz extends Service<Void> {
     // Constructor
     public SpellingQuiz() {
         // setting up the words
-        words = new Words(selectedTopic, NUMOFQUESTION);
+        words = new Words(selectedTopic, NUMOFQUESTIONS);
 
         currentIndex = 0;
         currentWord = "";
@@ -65,7 +65,7 @@ public class SpellingQuiz extends Service<Void> {
 
     // this function generate a new word and then ask the user
     private void newQuestion() {
-        if (currentIndex == NUMOFQUESTION) {  // the quiz is finished
+        if (currentIndex == NUMOFQUESTIONS) {  // the quiz is finished
             setQuizState(QuizState.finished);
             mainLabelText = "DISPLAY SCORE";
             promptLabelText = "";
@@ -79,7 +79,7 @@ public class SpellingQuiz extends Service<Void> {
         currentWord = words.nextWord();  // set up the word and get the word that is testing on
 
         // set the labels' messages and also speak out the message
-        mainLabelText = "Spell word " + currentIndex + " of " + NUMOFQUESTION + ":";
+        mainLabelText = "Spell word " + currentIndex + " of " + NUMOFQUESTIONS + ":";
         promptLabelText = "";
         speak("Please spell " + currentWord);
     }
