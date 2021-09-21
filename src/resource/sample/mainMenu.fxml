@@ -17,21 +17,6 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Button>
-      <Button fx:id="reviewM" layoutX="355.0" layoutY="270.0" mnemonicParsing="false" onAction="#loadReview" prefHeight="50.0" prefWidth="250.0" text="Review Mistakes">
-         <font>
-            <Font name="System Bold" size="20.0" />
-         </font>
-      </Button>
-      <Button fx:id="viewS" layoutX="355.0" layoutY="330.0" mnemonicParsing="false" onAction="#viewStats" prefHeight="50.0" prefWidth="250.0" text="View Statistics">
-         <font>
-            <Font name="System Bold" size="20.0" />
-         </font>
-      </Button>
-      <Button fx:id="clearS" layoutX="355.0" layoutY="390.0" mnemonicParsing="false" onAction="#clearStats" prefHeight="50.0" prefWidth="250.0" text="Clear Statistics">
-         <font>
-            <Font name="System Bold" size="20.0" />
-         </font>
-      </Button>
       <Button fx:id="quit" layoutX="355.0" layoutY="450.0" mnemonicParsing="false" onAction="#quit" prefHeight="50.0" prefWidth="250.0" text="Quit">
          <font>
             <Font name="System Bold" size="20.0" />
