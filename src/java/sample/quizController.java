@@ -76,6 +76,7 @@ public class quizController implements Initializable {
         homeBtn.setVisible(true);
         inputField.setVisible(true);
         playbackImg.setVisible(true);
+        togSpdSlider.setVisible(true);
         startBtn.setVisible(false);
 
         // The text when the mouse hover on the playback image
@@ -119,6 +120,7 @@ public class quizController implements Initializable {
                 homeBtn.setVisible(false);
                 inputField.setVisible(false);
                 playbackImg.setVisible(false);
+                togSpdSlider.setVisible(false);
             }
 
             quiz.reset();
