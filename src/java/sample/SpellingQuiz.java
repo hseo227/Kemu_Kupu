@@ -151,6 +151,7 @@ public class SpellingQuiz extends Service<Void> {
             String command = "festival -b " + FESTIVALCMDFILE;
             ProcessBuilder pb = new ProcessBuilder("bash", "-c", command);
             pb.start();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
