@@ -102,6 +102,8 @@ public class quizController implements Initializable {
 
     // this method set up the Server thread for quiz.newQuestion and then run it
     private void newQuestion() {
+        quiz.setSpeechSpeed((int) speechSpeed.getValue());
+
         mainLabel.textProperty().bind(quiz.titleProperty());
         promptLabel.textProperty().bind(quiz.messageProperty());
 
@@ -127,7 +129,9 @@ public class quizController implements Initializable {
 
     // this method set up the Server thread for quiz.checkSpelling and then run it
     private void checkSpelling() {
+        quiz.setSpeechSpeed((int) speechSpeed.getValue());
         quiz.setUserInput(inputField.getText());
+
         mainLabel.textProperty().bind(quiz.titleProperty());
         promptLabel.textProperty().bind(quiz.messageProperty());
 
@@ -169,6 +173,7 @@ public class quizController implements Initializable {
 
     @FXML
     private void speakAgain() {
+        quiz.setSpeechSpeed((int) speechSpeed.getValue());
         quiz.speakAgain();
     }
 

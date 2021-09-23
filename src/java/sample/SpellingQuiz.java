@@ -3,6 +3,11 @@ package sample;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 
 enum QuizState {
     ready, running, finished
@@ -24,6 +29,14 @@ public class SpellingQuiz extends Service<Void> {
     private static String selectedTopic;
     private final Words words;
 
+
+    // this method will only run once and will run at the start of the program
+    // create a file that will be used to run the festival
+    public static void initialise() throws IOException {
+        // create the directory first
+        File file = new File(FESTIVALCMDFILE);
+        file.createNewFile();
+    }
 
     // Constructor
     public SpellingQuiz() {
@@ -175,5 +188,10 @@ public class SpellingQuiz extends Service<Void> {
     // selectedTopic's setter
     public static void setTopic(String topic) {
         selectedTopic = topic;
+    }
+
+    // speechSpeed's setter
+    public void setSpeechSpeed(int speed) {
+        speechSpeed = speed;
     }
 }
