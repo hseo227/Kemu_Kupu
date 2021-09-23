@@ -11,6 +11,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        SpellingQuiz.initialise();
+
         Parent root = FXMLLoader.load(getClass().getResource("mainMenu.fxml"));
         // set title and icon
         primaryStage.setTitle("Kēmu Kupu");

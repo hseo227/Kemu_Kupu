@@ -4,19 +4,21 @@ import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.StringConverter;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class quizController {
+public class quizController implements Initializable {
 
     private SpellingQuiz quiz;
 
@@ -30,7 +32,38 @@ public class quizController {
     private Button startBtn, finishBackBtn, homeBtn, playAgainBtn;
     @FXML
     private ImageView playbackImg;
+    @FXML
+    private Slider speechSpeed;
+    @FXML
+    private ToggleButton togSpdSlider;
 
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        // hide the slider
+        speechSpeed.setVisible(togSpdSlider.isSelected());
+
+        // format the vertical slider
+        speechSpeed.setLabelFormatter(new StringConverter<Double>() {
+            @Override
+            public String toString(Double n) {
+                if (n == speechSpeed.getMin()) {  // slowest speed
+                    return "Slow";
+                } else if (n == (speechSpeed.getMin() + speechSpeed.getMax()) / 2) {  // normal speed, in the middle
+                    return "Default";
+                } else if (n == speechSpeed.getMax()) {  // fastest speed
+                    return "fast";
+                }
+
+                return null;
+            }
+
+            @Override
+            public Double fromString(String s) {
+                return null;
+            }
+        });
+    }
 
     @FXML
     private void startQuiz(ActionEvent event) {
@@ -69,6 +102,8 @@ public class quizController {
 
     // this method set up the Server thread for quiz.newQuestion and then run it
     private void newQuestion() {
+        quiz.setSpeechSpeed((int) speechSpeed.getValue());
+
         mainLabel.textProperty().bind(quiz.titleProperty());
         promptLabel.textProperty().bind(quiz.messageProperty());
 
@@ -94,7 +129,9 @@ public class quizController {
 
     // this method set up the Server thread for quiz.checkSpelling and then run it
     private void checkSpelling() {
+        quiz.setSpeechSpeed((int) speechSpeed.getValue());
         quiz.setUserInput(inputField.getText());
+
         mainLabel.textProperty().bind(quiz.titleProperty());
         promptLabel.textProperty().bind(quiz.messageProperty());
 
@@ -136,7 +173,13 @@ public class quizController {
 
     @FXML
     private void speakAgain() {
-        quiz.speakAgain();
+        quiz.setSpeechSpeed((int) speechSpeed.getValue());
+        quiz.speakWordAgain();
+    }
+
+    @FXML
+    private void showHideSpeedSlider() {
+        speechSpeed.setVisible(togSpdSlider.isSelected());
     }
 
 }
