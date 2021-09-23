@@ -14,9 +14,10 @@ enum Result {
 
 public class SpellingQuiz extends Service<Void> {
     private final int NUMOFQUESTIONS = 5;
+    private final static String FESTIVALCMDFILE = ".scm";
 
 
-    private int currentIndex;
+    private int currentIndex, speechSpeed;
     private String currentWord, mainLabelText, promptLabelText, userInput;
     private QuizState currentQuizState;
     private Result currentResult;
@@ -114,10 +115,16 @@ public class SpellingQuiz extends Service<Void> {
         }
     }
 
-    // this function will speak out the message using bash script
+    // this function will speak out the message using bash and festival scm
     private void speak(String message) {
         try {
-            String command = "echo " + message + " | festival --tts";
+            PrintWriter writeFile = new PrintWriter(new FileWriter(FESTIVALCMDFILE));
+            writeFile.println("(voice_akl_mi_pk06_cg)");
+            writeFile.println("(Parameter.set 'Audio_Command \"aplay -q -c 1 -t raw -f s16 -r $(($SR*" + speechSpeed + "/100)) $FILE\")");
+            writeFile.println("(SayText \"" + message + "\")");
+            writeFile.close();
+
+            String command = "festival -b " + FESTIVALCMDFILE;
             ProcessBuilder pb = new ProcessBuilder("bash", "-c", command);
             pb.start();
         } catch (Exception e) {
