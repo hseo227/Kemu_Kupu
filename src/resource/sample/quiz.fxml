@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -55,6 +56,11 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Slider fx:id="speechSpeed" blockIncrement="5.0" layoutX="777.0" layoutY="263.0" majorTickUnit="60.0" max="160.0" min="40.0" minorTickCount="11" nodeOrientation="RIGHT_TO_LEFT" orientation="VERTICAL" prefHeight="200.0" prefWidth="50.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="100.0" />
+      <Slider fx:id="speechSpeed" blockIncrement="5.0" layoutX="826.0" layoutY="140.0" majorTickUnit="60.0" max="160.0" min="40.0" minorTickCount="11" nodeOrientation="RIGHT_TO_LEFT" orientation="VERTICAL" prefHeight="200.0" prefWidth="75.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="100.0" />
+      <ToggleButton fx:id="togSpdSlider" layoutX="731.0" layoutY="85.0" mnemonicParsing="false" onAction="#showHideSpeedSlider" prefHeight="40.0" prefWidth="170.0" text="Adjust speech speed">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </ToggleButton>
    </children>
 </AnchorPane>
