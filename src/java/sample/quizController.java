@@ -12,6 +12,7 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.util.StringConverter;
 
 import java.io.IOException;
@@ -29,13 +30,15 @@ public class quizController implements Initializable {
     @FXML
     private TextField inputField;
     @FXML
-    private Button startBtn, finishBackBtn, homeBtn, playAgainBtn;
+    private Button startBtn, finishBackBtn, homeBtn, playAgainBtn, macronsA, macronsE, macronsI, macronsO, macronsU;
     @FXML
     private ImageView playbackImg;
     @FXML
     private Slider speechSpeed;
     @FXML
     private ToggleButton togSpdSlider;
+    @FXML
+    private HBox macronsBtnsHBox;
 
 
     @Override
@@ -77,6 +80,7 @@ public class quizController implements Initializable {
         inputField.setVisible(true);
         playbackImg.setVisible(true);
         togSpdSlider.setVisible(true);
+        macronsBtnsHBox.setVisible(true);
         startBtn.setVisible(false);
 
         // The text when the mouse hover on the playback image
@@ -121,6 +125,7 @@ public class quizController implements Initializable {
                 inputField.setVisible(false);
                 playbackImg.setVisible(false);
                 togSpdSlider.setVisible(false);
+                macronsBtnsHBox.setVisible(false);
             }
 
             quiz.reset();
@@ -182,6 +187,12 @@ public class quizController implements Initializable {
     @FXML
     private void showHideSpeedSlider() {
         speechSpeed.setVisible(togSpdSlider.isSelected());
+    }
+
+    @FXML
+    private void addMacronsCharacter(ActionEvent event) {
+        String macronsCharacter = ((Button)event.getSource()).getText();
+        inputField.appendText(macronsCharacter);
     }
 
 }

@@ -9,6 +9,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="sample.quizController">
@@ -16,6 +17,11 @@
       <Label fx:id="mainLabel" alignment="CENTER" layoutX="130.0" layoutY="170.0" prefHeight="60.0" prefWidth="700.0" text="Games Module">
          <font>
             <Font size="36.0" />
+         </font>
+      </Label>
+      <Label fx:id="promptLabel" alignment="CENTER" layoutX="180.0" layoutY="230.0" prefHeight="30.0" prefWidth="600.0">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
          </font>
       </Label>
       <Button fx:id="startBtn" layoutX="350.0" layoutY="380.0" mnemonicParsing="false" onAction="#startQuiz" prefHeight="70.0" prefWidth="260.0" text="Start">
@@ -28,11 +34,35 @@
             <Font size="20.0" />
          </font>
       </TextField>
-      <Label fx:id="promptLabel" alignment="CENTER" layoutX="180.0" layoutY="340.0" prefHeight="30.0" prefWidth="600.0">
-         <font>
-            <Font name="System Bold Italic" size="18.0" />
-         </font>
-      </Label>
+      <HBox fx:id="macronsBtnsHBox" alignment="CENTER" layoutX="368.0" layoutY="352.0" prefHeight="0.0" prefWidth="0.0" spacing="10.0" visible="false">
+         <children>
+            <Button fx:id="macronsA" mnemonicParsing="false" onAction="#addMacronsCharacter" text="ā">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="macronsE" mnemonicParsing="false" onAction="#addMacronsCharacter" text="ē">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="macronsI" mnemonicParsing="false" onAction="#addMacronsCharacter" text="ī">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="macronsO" mnemonicParsing="false" onAction="#addMacronsCharacter" text="ō">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="macronsU" mnemonicParsing="false" onAction="#addMacronsCharacter" text="ū">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
       <Button fx:id="finishBackBtn" layoutX="500.0" layoutY="380.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="70.0" prefWidth="260.0" text="Back to Main Menu" visible="false">
          <font>
             <Font name="System Bold" size="20.0" />
@@ -56,11 +86,11 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Slider fx:id="speechSpeed" blockIncrement="5.0" layoutX="826.0" layoutY="140.0" majorTickUnit="60.0" max="160.0" min="40.0" minorTickCount="11" nodeOrientation="RIGHT_TO_LEFT" orientation="VERTICAL" prefHeight="200.0" prefWidth="75.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="100.0" />
       <ToggleButton fx:id="togSpdSlider" layoutX="731.0" layoutY="85.0" mnemonicParsing="false" onAction="#showHideSpeedSlider" prefHeight="40.0" prefWidth="170.0" text="Adjust speech speed">
          <font>
             <Font size="15.0" />
          </font>
       </ToggleButton>
+      <Slider fx:id="speechSpeed" blockIncrement="5.0" layoutX="826.0" layoutY="140.0" majorTickUnit="60.0" max="160.0" min="40.0" minorTickCount="11" nodeOrientation="RIGHT_TO_LEFT" orientation="VERTICAL" prefHeight="200.0" prefWidth="75.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="100.0" />
    </children>
 </AnchorPane>
