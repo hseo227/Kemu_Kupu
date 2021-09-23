@@ -94,7 +94,7 @@ public class SpellingQuiz extends Service<Void> {
         // set the labels' messages and also speak out the message
         mainLabelText = "Spell word " + currentIndex + " of " + NUMOFQUESTIONS + ":";
         promptLabelText = "";
-        speak("Please spell " + currentWord);
+        speak("Please spell", currentWord);
     }
 
     // this function check the spelling (input) and then set up a range of stuff
@@ -106,7 +106,7 @@ public class SpellingQuiz extends Service<Void> {
             // setting up the labels' text and speak out the message
             mainLabelText = "Correct";
             promptLabelText = "Press 'Enter' again to continue";
-            speak("Correct");
+            speak("Correct", "");
 
         } else if (resultEqualsTo(Result.mastered)) {  // still 1st attempt, but incorrect
             setResult(Result.faulted);
@@ -114,7 +114,7 @@ public class SpellingQuiz extends Service<Void> {
             // setting up the labels' text and speak out the message
             mainLabelText = "Incorrect, try once more:";
             promptLabelText = "Hint: second letter is '" + currentWord.charAt(1) + "'";
-            speak("Incorrect, try once more. " + currentWord);
+            speak("Incorrect, try once more.", currentWord);
 
         } else {  // 2nd attempt, and it is the second times got it incorrect --> failed
             setResult(Result.failed);
@@ -123,20 +123,28 @@ public class SpellingQuiz extends Service<Void> {
             // setting up the labels' text and speak out the message
             mainLabelText = "Incorrect";
             promptLabelText = "Press 'Enter' to attempt next word";
-            speak("Incorrect");
+            speak("Incorrect", "");
         }
     }
 
     // this function will speak out the message using bash and festival scm
-    private void speak(String message) {
+    private void speak(String englishMessage, String maoriMessage) {
         try {
             // write the festival command into .scm file
             PrintWriter writeFile = new PrintWriter(new FileWriter(FESTIVALCMDFILE));
 
-            // change to maori voice, adjust the speed and speak the message
-            writeFile.println("(voice_akl_mi_pk06_cg)");
+            // adjust the speed first
             writeFile.println("(Parameter.set 'Audio_Command \"aplay -q -c 1 -t raw -f s16 -r $(($SR*" + speechSpeed + "/100)) $FILE\")");
-            writeFile.println("(SayText \"" + message + "\")");
+
+            // speak english / maori message if there is any
+            if (!englishMessage.equals("")) {
+                writeFile.println("(SayText \"" + englishMessage + "\")");
+            }
+            if (!maoriMessage.equals("")) {
+                writeFile.println("(voice_akl_mi_pk06_cg)");  // change to maori voice
+                writeFile.println("(SayText \"" + maoriMessage + "\")");
+            }
+
             writeFile.close();
 
             // run festival schema file
@@ -150,7 +158,7 @@ public class SpellingQuiz extends Service<Void> {
 
     // this method will speak the word again, only the word
     public void speakWordAgain() {
-        speak(currentWord);
+        speak("", currentWord);
     }
 
     // QuizState's getter, setter and equals to
