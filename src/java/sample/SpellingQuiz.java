@@ -124,14 +124,15 @@ public class SpellingQuiz extends Service<Void> {
             mainLabelText = "Incorrect";
             promptLabelText = "Press 'Enter' to attempt next word";
             speak("Incorrect", "");
+
         } else {  // skipped word --> failed
             setResult(Result.skipped);
             setQuizState(QuizState.ready);  // set the state to ready for the next question
 
             // setting up the labels' text and speak out the message
-            mainLabelText = "Incorrect (Word Skipped)";
+            mainLabelText = "Word Skipped";
             promptLabelText = "Press 'Enter' to attempt next word";
-            speak("Incorrect, word skipped", "");
+            speak("Word skipped", "");
         }
     }
 
