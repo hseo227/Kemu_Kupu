@@ -30,7 +30,7 @@ public class quizController implements Initializable {
     @FXML
     private TextField inputField;
     @FXML
-    private Button startBtn, finishBackBtn, homeBtn, playAgainBtn, macronsA, macronsE, macronsI, macronsO, macronsU;
+    private Button startBtn, finishBackBtn, homeBtn, playAgainBtn, macronsA, macronsE, macronsI, macronsO, macronsU, skipBtn;
     @FXML
     private ImageView playbackImg;
     @FXML
@@ -77,6 +77,7 @@ public class quizController implements Initializable {
         finishBackBtn.setVisible(false);
         playAgainBtn.setVisible(false);
         homeBtn.setVisible(true);
+        skipBtn.setVisible(true);
         inputField.setVisible(true);
         playbackImg.setVisible(true);
         togSpdSlider.setVisible(true);
@@ -93,11 +94,11 @@ public class quizController implements Initializable {
     @FXML
     private void onEnter(ActionEvent event) {
         // if the quiz is ready for next question, then generate the next question
-        if (quiz.quizStateEqualsTo(QuizState.ready)) {
+        
+    	if (quiz.quizStateEqualsTo(QuizState.ready)) {
             mainLabel.setStyle("-fx-text-fill: #000;");  // change back to white text
             promptLabel.setStyle("-fx-text-fill: #000;");  // change back to white text
             inputField.clear();
-
             newQuestion();
 
         // otherwise, check the spelling
@@ -108,21 +109,27 @@ public class quizController implements Initializable {
 
     // this method set up the Server thread for quiz.newQuestion and then run it
     private void newQuestion() {
+    	
+    	if (quiz.quizStateEqualsTo(QuizState.ready)) {
+            skipBtn.setDisable(false);
+    	}
+    	
         quiz.setSpeechSpeed((int) speechSpeed.getValue());
 
         mainLabel.textProperty().bind(quiz.titleProperty());
         promptLabel.textProperty().bind(quiz.messageProperty());
-
+        
         quiz.setOnSucceeded(e -> {
             mainLabel.textProperty().unbind();
             promptLabel.textProperty().unbind();
-
+            
             // if the game is finished, some buttons will appear
             // while other utilities are disappear
             if (quiz.quizStateEqualsTo(QuizState.finished)) {
                 finishBackBtn.setVisible(true);
                 playAgainBtn.setVisible(true);
                 homeBtn.setVisible(false);
+                skipBtn.setVisible(false);
                 inputField.setVisible(false);
                 playbackImg.setVisible(false);
                 togSpdSlider.setVisible(false);
@@ -137,6 +144,7 @@ public class quizController implements Initializable {
 
     // this method set up the Server thread for quiz.checkSpelling and then run it
     private void checkSpelling() {
+
         quiz.setSpeechSpeed((int) speechSpeed.getValue());
         quiz.setUserInput(inputField.getText());
 
@@ -145,6 +153,7 @@ public class quizController implements Initializable {
 
         ChangeListener<String> stateListener = (obs, oldValue, newValue) -> {
             // the quiz is done, so either Mastered, Faulted or Failed
+        	
             if (quiz.quizStateEqualsTo(QuizState.ready)) {
                 // correct spelling (Mastered and Faulted)
                 if (quiz.resultEqualsTo(Result.mastered) || quiz.resultEqualsTo(Result.faulted)) {
@@ -197,6 +206,15 @@ public class quizController implements Initializable {
     private void addMacronsCharacter(ActionEvent event) {
         String macronsCharacter = ((Button)event.getSource()).getText();
         inputField.appendText(macronsCharacter);
+    }
+    
+    @FXML
+    private void skipWord(ActionEvent event) {
+    	quiz.setResult(Result.skipped);
+    	mainLabel.setStyle("-fx-text-fill: #FF2715;");  // change to red text
+        promptLabel.setStyle("-fx-text-fill: #FF2715;");  // change to red text
+        skipBtn.setDisable(true);
+        newQuestion();
     }
 
 }

@@ -92,5 +92,10 @@
          </font>
       </ToggleButton>
       <Slider fx:id="speechSpeed" blockIncrement="5.0" layoutX="826.0" layoutY="140.0" majorTickUnit="60.0" max="160.0" min="40.0" minorTickCount="11" nodeOrientation="RIGHT_TO_LEFT" orientation="VERTICAL" prefHeight="200.0" prefWidth="75.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="100.0" />
+      <Button fx:id="skipBtn" layoutX="445.0" layoutY="415.0" mnemonicParsing="false" onAction="#skipWord" prefHeight="25.0" prefWidth="75.0" text="Skip" visible="false">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
