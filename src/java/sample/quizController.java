@@ -94,7 +94,8 @@ public class quizController implements Initializable {
     private void onEnter(ActionEvent event) {
         // if the quiz is ready for next question, then generate the next question
         if (quiz.quizStateEqualsTo(QuizState.ready)) {
-            rootPane.setStyle("-fx-background-color: #FFFFFF;");  // change to white background
+            mainLabel.setStyle("-fx-text-fill: #000;");  // change back to white text
+            promptLabel.setStyle("-fx-text-fill: #000;");  // change back to white text
             inputField.clear();
 
             newQuestion();
@@ -147,16 +148,19 @@ public class quizController implements Initializable {
             if (quiz.quizStateEqualsTo(QuizState.ready)) {
                 // correct spelling (Mastered and Faulted)
                 if (quiz.resultEqualsTo(Result.mastered) || quiz.resultEqualsTo(Result.faulted)) {
-                    rootPane.setStyle("-fx-background-color: #1AFF1A;");  // change to green background
+                    mainLabel.setStyle("-fx-text-fill: #00A804;");  // change to green text
+                    promptLabel.setStyle("-fx-text-fill: #00A804;");  // change to green text
 
                 // incorrect spelling (Failed)
                 } else {
-                    rootPane.setStyle("-fx-background-color: #FF2715;");  // change to red background
+                    mainLabel.setStyle("-fx-text-fill: #FF2715;");  // change to red text
+                    promptLabel.setStyle("-fx-text-fill: #FF2715;");  // change to red text
                 }
 
             // incorrect spelling (1st attempt)
             } else {
-                rootPane.setStyle("-fx-background-color: #FF2715;");  // change to red background
+                mainLabel.setStyle("-fx-text-fill: #FF2715;");  // change to red text
+                promptLabel.setStyle("-fx-text-fill: #FF2715;");  // change to red text
                 inputField.clear();
             }
         };
