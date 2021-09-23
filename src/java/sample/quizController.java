@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.animation.PauseTransition;
 import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,6 +14,7 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.util.Duration;
 import javafx.util.StringConverter;
 
 import java.io.IOException;
@@ -22,6 +24,9 @@ import java.util.ResourceBundle;
 public class quizController implements Initializable {
 
     private SpellingQuiz quiz;
+  
+    PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
+
 
     @FXML
     private AnchorPane rootPane;
@@ -96,29 +101,37 @@ public class quizController implements Initializable {
     private void onEnter(ActionEvent event) {
         // if the quiz is ready for next question, then generate the next question
         
-    	if (quiz.quizStateEqualsTo(QuizState.ready)) {
-        	mainLabel.setStyle("-fx-text-fill: #000;");  // change back to white text
-            promptLabel.setStyle("-fx-text-fill: #000;");  // change back to white text
-            inputField.clear();
-            newQuestion();
-
-        // otherwise, check the spelling
-        } else {
+//    	if (quiz.quizStateEqualsTo(QuizState.ready)) {
+//        	mainLabel.setStyle("-fx-text-fill: #000;");  // change back to white text
+//            promptLabel.setStyle("-fx-text-fill: #000;");  // change back to white text
+//            inputField.clear();
+//            newQuestion();
+//
+//        // otherwise, check the spelling
+//        } else {
             checkSpelling();
             
             if (quiz.resultEqualsTo(Result.faulted)) {
                 skipBtn.setDisable(true);
                 checkBtn.setDisable(true);
+                macronsBtnsHBox.setDisable(true);
+                inputField.setDisable(true);
             }
-        }
+//        }
     }
 
     // this method set up the Server thread for quiz.newQuestion and then run it
     private void newQuestion() {
     	
     	if (quiz.quizStateEqualsTo(QuizState.ready)) {
+    		mainLabel.setStyle("-fx-text-fill: #000;");  // change back to white text
+            promptLabel.setStyle("-fx-text-fill: #000;");  // change back to white text
+            inputField.clear();
             skipBtn.setDisable(false);
             checkBtn.setDisable(false);
+            macronsBtnsHBox.setDisable(false);
+            inputField.setDisable(false);
+
     	}
     	
         quiz.setSpeechSpeed((int) speechSpeed.getValue());
@@ -142,7 +155,8 @@ public class quizController implements Initializable {
                 skipBtn.setVisible(false);
                 inputField.setVisible(true);
                 checkBtn.setVisible(true);
-
+                inputField.setVisible(false);
+                checkBtn.setVisible(false);
             }
 
             quiz.reset();
@@ -168,11 +182,17 @@ public class quizController implements Initializable {
                 if (quiz.resultEqualsTo(Result.mastered) || quiz.resultEqualsTo(Result.faulted)) {
                     mainLabel.setStyle("-fx-text-fill: #00A804;");  // change to green text
                     promptLabel.setStyle("-fx-text-fill: #00A804;");  // change to green text
-
+                    
+                    pause.setOnFinished(e -> newQuestion());
+                    pause.play();
+                    
                 // incorrect spelling (Failed)
                 } else {
                     mainLabel.setStyle("-fx-text-fill: #FF2715;");  // change to red text
                     promptLabel.setStyle("-fx-text-fill: #FF2715;");  // change to red text
+                    
+                    pause.setOnFinished(e -> newQuestion());
+                    pause.play();
                 }
 
             // incorrect spelling (1st attempt)
@@ -219,12 +239,14 @@ public class quizController implements Initializable {
     
     @FXML
     private void skipWord(ActionEvent event) {
-    	quiz.setResult(Result.skipped);
     	mainLabel.setStyle("-fx-text-fill: #FF2715;");  // change to red text
         promptLabel.setStyle("-fx-text-fill: #FF2715;");  // change to red text
         skipBtn.setDisable(true);
         checkBtn.setDisable(true);
-        newQuestion();
+        macronsBtnsHBox.setDisable(true);
+        inputField.setDisable(true);
+    	quiz.setResult(Result.skipped);
+        checkSpelling();
     }
 
 }
