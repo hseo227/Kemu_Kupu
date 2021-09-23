@@ -14,7 +14,7 @@ enum QuizState {
 }
 
 enum Result {
-    mastered, faulted, failed
+    mastered, faulted, failed, skipped
 }
 
 public class SpellingQuiz extends Service<Void> {
@@ -116,7 +116,7 @@ public class SpellingQuiz extends Service<Void> {
             promptLabelText = "Hint: second letter is '" + currentWord.charAt(1) + "'";
             speak("Incorrect, try once more.", currentWord);
 
-        } else {  // 2nd attempt, and it is the second times got it incorrect --> failed
+        } else if (resultEqualsTo(Result.faulted)){  // 2nd attempt, and it is the second times got it incorrect --> failed
             setResult(Result.failed);
             setQuizState(QuizState.ready);  // set the state to ready for the next question
 
@@ -124,6 +124,14 @@ public class SpellingQuiz extends Service<Void> {
             mainLabelText = "Incorrect";
             promptLabelText = "Press 'Enter' to attempt next word";
             speak("Incorrect", "");
+        } else {  // skipped word --> failed
+            setResult(Result.skipped);
+            setQuizState(QuizState.ready);  // set the state to ready for the next question
+
+            // setting up the labels' text and speak out the message
+            mainLabelText = "Incorrect (Word Skipped)";
+            promptLabelText = "Press 'Enter' to attempt next word";
+            speak("Incorrect, word skipped", "");
         }
     }
 
@@ -156,7 +164,7 @@ public class SpellingQuiz extends Service<Void> {
             e.printStackTrace();
         }
     }
-
+    
     // this method will speak the word again, only the word
     public void speakWordAgain() {
         speak("", currentWord);
@@ -176,7 +184,7 @@ public class SpellingQuiz extends Service<Void> {
     }
 
     // Result's getter, setter and equals to
-    private void setResult(Result newResult) {
+    public void setResult(Result newResult) {
         currentResult = newResult;
     }
 
@@ -206,4 +214,5 @@ public class SpellingQuiz extends Service<Void> {
     public void setSpeechSpeed(int speed) {
         speechSpeed = speed;
     }
+    
 }
