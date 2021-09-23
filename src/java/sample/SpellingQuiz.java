@@ -33,7 +33,6 @@ public class SpellingQuiz extends Service<Void> {
     // this method will only run once and will run at the start of the program
     // create a file that will be used to run the festival
     public static void initialise() throws IOException {
-        // create the directory first
         File file = new File(FESTIVALCMDFILE);
         file.createNewFile();
     }
@@ -115,7 +114,7 @@ public class SpellingQuiz extends Service<Void> {
             // setting up the labels' text and speak out the message
             mainLabelText = "Incorrect, try once more:";
             promptLabelText = "Hint: second letter is '" + currentWord.charAt(1) + "'";
-            speak("Incorrect, try once more. " + currentWord + " " + currentWord);
+            speak("Incorrect, try once more. " + currentWord);
 
         } else {  // 2nd attempt, and it is the second times got it incorrect --> failed
             setResult(Result.failed);
@@ -131,12 +130,16 @@ public class SpellingQuiz extends Service<Void> {
     // this function will speak out the message using bash and festival scm
     private void speak(String message) {
         try {
+            // write the festival command into .scm file
             PrintWriter writeFile = new PrintWriter(new FileWriter(FESTIVALCMDFILE));
+
+            // change to maori voice, adjust the speed and speak the message
             writeFile.println("(voice_akl_mi_pk06_cg)");
             writeFile.println("(Parameter.set 'Audio_Command \"aplay -q -c 1 -t raw -f s16 -r $(($SR*" + speechSpeed + "/100)) $FILE\")");
             writeFile.println("(SayText \"" + message + "\")");
             writeFile.close();
 
+            // run festival schema file
             String command = "festival -b " + FESTIVALCMDFILE;
             ProcessBuilder pb = new ProcessBuilder("bash", "-c", command);
             pb.start();
@@ -146,7 +149,7 @@ public class SpellingQuiz extends Service<Void> {
     }
 
     // this method will speak the word again, only the word
-    public void speakAgain() {
+    public void speakWordAgain() {
         speak(currentWord);
     }
 

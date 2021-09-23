@@ -174,7 +174,7 @@ public class quizController implements Initializable {
     @FXML
     private void speakAgain() {
         quiz.setSpeechSpeed((int) speechSpeed.getValue());
-        quiz.speakAgain();
+        quiz.speakWordAgain();
     }
 
     @FXML
