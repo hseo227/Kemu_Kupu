@@ -30,7 +30,7 @@ public class quizController implements Initializable {
     @FXML
     private TextField inputField;
     @FXML
-    private Button startBtn, finishBackBtn, homeBtn, playAgainBtn, macronsA, macronsE, macronsI, macronsO, macronsU, skipBtn;
+    private Button startBtn, finishBackBtn, homeBtn, playAgainBtn, macronsA, macronsE, macronsI, macronsO, macronsU, skipBtn, checkBtn;
     @FXML
     private ImageView playbackImg;
     @FXML
@@ -78,11 +78,12 @@ public class quizController implements Initializable {
         playAgainBtn.setVisible(false);
         homeBtn.setVisible(true);
         skipBtn.setVisible(true);
-        inputField.setVisible(true);
         playbackImg.setVisible(true);
         togSpdSlider.setVisible(true);
         macronsBtnsHBox.setVisible(true);
         startBtn.setVisible(false);
+        inputField.setVisible(true);
+        checkBtn.setVisible(true);
 
         // The text when the mouse hover on the playback image
         Tooltip tooltip = new Tooltip("Click to playback");
@@ -96,7 +97,7 @@ public class quizController implements Initializable {
         // if the quiz is ready for next question, then generate the next question
         
     	if (quiz.quizStateEqualsTo(QuizState.ready)) {
-            mainLabel.setStyle("-fx-text-fill: #000;");  // change back to white text
+        	mainLabel.setStyle("-fx-text-fill: #000;");  // change back to white text
             promptLabel.setStyle("-fx-text-fill: #000;");  // change back to white text
             inputField.clear();
             newQuestion();
@@ -104,6 +105,11 @@ public class quizController implements Initializable {
         // otherwise, check the spelling
         } else {
             checkSpelling();
+            
+            if (quiz.resultEqualsTo(Result.faulted)) {
+                skipBtn.setDisable(true);
+                checkBtn.setDisable(true);
+            }
         }
     }
 
@@ -112,6 +118,7 @@ public class quizController implements Initializable {
     	
     	if (quiz.quizStateEqualsTo(QuizState.ready)) {
             skipBtn.setDisable(false);
+            checkBtn.setDisable(false);
     	}
     	
         quiz.setSpeechSpeed((int) speechSpeed.getValue());
@@ -129,11 +136,13 @@ public class quizController implements Initializable {
                 finishBackBtn.setVisible(true);
                 playAgainBtn.setVisible(true);
                 homeBtn.setVisible(false);
-                skipBtn.setVisible(false);
-                inputField.setVisible(false);
                 playbackImg.setVisible(false);
                 togSpdSlider.setVisible(false);
                 macronsBtnsHBox.setVisible(false);
+                skipBtn.setVisible(false);
+                inputField.setVisible(true);
+                checkBtn.setVisible(true);
+
             }
 
             quiz.reset();
@@ -214,6 +223,7 @@ public class quizController implements Initializable {
     	mainLabel.setStyle("-fx-text-fill: #FF2715;");  // change to red text
         promptLabel.setStyle("-fx-text-fill: #FF2715;");  // change to red text
         skipBtn.setDisable(true);
+        checkBtn.setDisable(true);
         newQuestion();
     }
 
