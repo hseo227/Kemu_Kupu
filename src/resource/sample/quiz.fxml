@@ -9,6 +9,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="sample.quizController">
@@ -28,7 +29,7 @@
             <Font size="20.0" />
          </font>
       </TextField>
-      <Label fx:id="promptLabel" alignment="CENTER" layoutX="180.0" layoutY="340.0" prefHeight="30.0" prefWidth="600.0">
+      <Label fx:id="promptLabel" alignment="CENTER" layoutX="180.0" layoutY="230.0" prefHeight="30.0" prefWidth="600.0">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
@@ -62,5 +63,34 @@
             <Font size="15.0" />
          </font>
       </ToggleButton>
+      <HBox fx:id="macronsBtnsHBox" alignment="CENTER" layoutX="368.0" layoutY="352.0" prefHeight="0.0" prefWidth="0.0" spacing="10.0" visible="false">
+         <children>
+            <Button fx:id="macronsA" mnemonicParsing="false" onAction="#addMacronsCharacter" text="ā">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="macronsE" mnemonicParsing="false" onAction="#addMacronsCharacter" text="ē">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="macronsI" mnemonicParsing="false" onAction="#addMacronsCharacter" text="ī">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="macronsO" mnemonicParsing="false" onAction="#addMacronsCharacter" text="ō">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="macronsU" mnemonicParsing="false" onAction="#addMacronsCharacter" text="ū">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>
