@@ -8,7 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -21,7 +21,7 @@ public class topicListController implements Initializable {
     private ArrayList<Topic> topicList = new ArrayList<>();
 
     @FXML
-    private BorderPane rootPane;
+    private GridPane rootPane;
     @FXML
     private Label mainLabel;
     @FXML
