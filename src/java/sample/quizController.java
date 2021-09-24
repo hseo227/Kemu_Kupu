@@ -91,14 +91,8 @@ public class quizController implements Initializable {
 
         // otherwise, continue the game
         startBtn.setVisible(false);
-        userScore.setVisible(true);
-        backBtn.setVisible(true);
-        playbackImg.setVisible(true);
-        togSpdSlider.setVisible(true);
-        macronsBtnsHBox.setVisible(true);
-        skipBtn.setVisible(true);
-        inputField.setVisible(true);
-        checkBtn.setVisible(true);
+        inputVBox1.setVisible(true);
+        inputVBox2.setVisible(true);
 
         // The text when the mouse hover on the playback image
         Tooltip tooltip = new Tooltip("Click to playback");
