@@ -83,8 +83,7 @@ public class SpellingQuiz extends Service<Void> {
     private void newQuestion() {
         if (currentIndex == NUMOFQUESTIONS) {  // the quiz is finished
             setQuizState(QuizState.finished);
-            mainLabelText = "DISPLAY SCORE";
-            promptLabelText = "";
+            mainLabelText = Integer.toString(Score.score) + " / 100";
             return;
         }
 

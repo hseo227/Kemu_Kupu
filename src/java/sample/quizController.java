@@ -139,6 +139,7 @@ public class quizController implements Initializable {
                 skipBtn.setVisible(false);
                 inputField.setVisible(false);
                 checkBtn.setVisible(false);
+                userScore.setText("Your SCORE is : "); // Change text for userScore label
                 Score.reset();
             }
 
