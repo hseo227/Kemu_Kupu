@@ -1,0 +1,8 @@
+Nick:
+Work on festival speech speed and finished
+Added buttons for macrons characters
+
+Hayoon and Minsun:
+Added skip (IDK) button
+Added check/submit button
+Added a feature that after the question is done, it will automatically speak out the next question without pressing any key.

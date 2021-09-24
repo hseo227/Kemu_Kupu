@@ -8,3 +8,8 @@ Hayoon and Minsun will work on:
 - back button
 - user score
 - hint
+
+Hayoon and Minsun:
+Added back button
+Added hint
+Added play again button
