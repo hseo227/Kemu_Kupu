@@ -28,6 +28,7 @@ public class SpellingQuiz extends Service<Void> {
     private Result currentResult;
     private static String selectedTopic;
     private final Words words;
+    private encouragingMessage correctMessage, incorrectMessage;
 
 
     // this method will only run once and will run at the start of the program
@@ -41,6 +42,8 @@ public class SpellingQuiz extends Service<Void> {
     public SpellingQuiz() {
         // setting up the words
         words = new Words(selectedTopic, NUMOFQUESTIONS);
+        correctMessage = new encouragingMessage("Correct");
+        incorrectMessage = new encouragingMessage("Incorrect");
 
         currentIndex = 0;
         currentWord = "";
@@ -100,7 +103,7 @@ public class SpellingQuiz extends Service<Void> {
     // this function check the spelling (input) and then set up a range of stuff
     private void checkSpelling() {
         // first check if the word is skipped
-        if ( resultEqualsTo(Result.skipped) ) {
+        if (resultEqualsTo(Result.skipped) ) {
             setQuizState(QuizState.ready);  // set the state to ready for the next question
 
             // setting up the labels' text and speak out the message
@@ -113,7 +116,7 @@ public class SpellingQuiz extends Service<Void> {
             setQuizState(QuizState.ready);  // set the state to ready for the next question
 
             // setting up the labels' text and speak out the message
-            mainLabelText = "Correct";
+            mainLabelText = correctMessage.getRand();
             promptLabelText = "";
             speak("Correct", "");
 
@@ -121,7 +124,7 @@ public class SpellingQuiz extends Service<Void> {
             setResult(Result.faulted);
 
             // setting up the labels' text and speak out the message
-            mainLabelText = "Incorrect, try once more:";
+            mainLabelText = incorrectMessage.getRand();
             promptLabelText = "Hint: second letter is '" + currentWord.charAt(1) + "'";
             speak("Incorrect, try once more.", currentWord);
 
