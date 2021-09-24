@@ -1,36 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="sample.rewardScreenController">
+
+<VBox fx:id="rootPane" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" spacing="25.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="sample.rewardScreenController">
    <children>
-      <Label fx:id="userScoreLabel" alignment="CENTER" layoutX="130.0" layoutY="200.0" prefHeight="60.0" prefWidth="700.0">
-         <font>
-            <Font name="Heiti TC Medium" size="30.0" />
-         </font>
-      </Label>
-      <Label fx:id="messageLabel" alignment="CENTER" layoutX="180.0" layoutY="270.0" prefHeight="30.0" prefWidth="600.0" text="Tēnā Rawa Atu Koe">
-         <font>
-            <Font name="Heiti TC Medium" size="20.0" />
-         </font>
-      </Label>
-      <Label fx:id="promptLabel" alignment="CENTER" layoutX="130.0" layoutY="150.0" prefHeight="60.0" prefWidth="700.0" text="YOUR SCORE IS">
+      <Label fx:id="promptLabel" alignment="CENTER" text="YOUR SCORE IS">
          <font>
             <Font name="Heiti TC Medium" size="15.0" />
          </font>
       </Label>
-      <Button fx:id="playAgainBtn" layoutX="270.0" layoutY="330.0" mnemonicParsing="false" onAction="#newQuiz" prefHeight="50.0" prefWidth="200.0" text="Play Again">
+      <Label fx:id="userScoreLabel" alignment="CENTER">
+         <font>
+            <Font name="Heiti TC Medium" size="30.0" />
+         </font>
+      </Label>
+      <Label fx:id="messageLabel" alignment="CENTER" text="Tēnā Rawa Atu Koe">
          <font>
             <Font name="Heiti TC Medium" size="20.0" />
          </font>
-      </Button>
-      <Button fx:id="mainMenuBtn" layoutX="490.0" layoutY="330.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="50.0" prefWidth="200.0" text="Main Menu">
-         <font>
-            <Font name="Heiti TC Medium" size="20.0" />
-         </font>
-      </Button>
+      </Label>
+      <HBox alignment="CENTER" spacing="20.0">
+         <children>
+            <Button fx:id="playAgainBtn" mnemonicParsing="false" onAction="#newQuiz" prefHeight="50.0" prefWidth="200.0" text="Play Again">
+               <font>
+                  <Font name="Heiti TC Medium" size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="mainMenuBtn" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="50.0" prefWidth="200.0" text="Main Menu">
+               <font>
+                  <Font name="Heiti TC Medium" size="20.0" />
+               </font>
+            </Button>
+         </children>
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+      </HBox>
    </children>
-</AnchorPane>
+   <padding>
+      <Insets top="10.0" />
+   </padding>
+</VBox>
