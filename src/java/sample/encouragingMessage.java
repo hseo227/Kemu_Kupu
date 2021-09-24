@@ -11,7 +11,8 @@ public class encouragingMessage {
 
     public encouragingMessage(String result) {
         // get specific number of random words in the file
-        String fileName = result + " Messages";
+        String fileName = "messages/" + result;
+//        String fileName = result + " Messages";
 
         // First, get all the words in the file
         try {
