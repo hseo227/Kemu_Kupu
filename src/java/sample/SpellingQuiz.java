@@ -114,7 +114,7 @@ public class SpellingQuiz extends Service<Void> {
 
             // setting up the labels' text and speak out the message
             mainLabelText = "Correct";
-            promptLabelText = "Press 'Enter' again to continue";
+            promptLabelText = "";
             speak("Correct", "");
 
         } else if (resultEqualsTo(Result.mastered)) {  // still 1st attempt, but incorrect
@@ -125,13 +125,13 @@ public class SpellingQuiz extends Service<Void> {
             promptLabelText = "Hint: second letter is '" + currentWord.charAt(1) + "'";
             speak("Incorrect, try once more.", currentWord);
 
-        } else if (resultEqualsTo(Result.faulted)){  // 2nd attempt, and it is the second times got it incorrect --> failed
+        } else {  // 2nd attempt, and it is the second times got it incorrect --> failed
             setResult(Result.failed);
             setQuizState(QuizState.ready);  // set the state to ready for the next question
 
             // setting up the labels' text and speak out the message
             mainLabelText = "Incorrect";
-            promptLabelText = "Press 'Enter' to attempt next word";
+            promptLabelText = "";
             speak("Incorrect", "");
         }
     }
@@ -165,7 +165,7 @@ public class SpellingQuiz extends Service<Void> {
             e.printStackTrace();
         }
     }
-    
+
     // this method will speak the word again, only the word
     public void speakWordAgain() {
         speak("", currentWord);
@@ -215,5 +215,5 @@ public class SpellingQuiz extends Service<Void> {
     public void setSpeechSpeed(int speed) {
         speechSpeed = speed;
     }
-    
+
 }
