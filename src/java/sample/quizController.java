@@ -37,7 +37,7 @@ public class quizController implements Initializable {
     @FXML
     private TextField inputField;
     @FXML
-    private Button startBtn, finishBackBtn, backBtn, playAgainBtn, macronsA, macronsE, macronsI, macronsO, macronsU, skipBtn, checkBtn;
+    private Button startBtn, backBtn, macronsA, macronsE, macronsI, macronsO, macronsU, skipBtn, checkBtn;
     @FXML
     private ImageView playbackImg;
     @FXML
@@ -91,8 +91,6 @@ public class quizController implements Initializable {
         // otherwise, continue the game
         userScore.setVisible(true);
         startBtn.setVisible(false);
-        finishBackBtn.setVisible(false);
-        playAgainBtn.setVisible(false);
         backBtn.setVisible(true);
         playbackImg.setVisible(true);
         togSpdSlider.setVisible(true);
@@ -228,14 +226,12 @@ public class quizController implements Initializable {
     	quiz.setResult(Result.skipped);
         checkSpelling();
     }
-    
-    @FXML
+
     private void rewardScreen() {
     	try {
         	SceneController.goToRewardScreen();
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
     }
 
