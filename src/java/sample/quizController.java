@@ -50,6 +50,10 @@ public class quizController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+    	
+    	// reset the score
+    	Score.reset();
+    	
         // hide the slider
         speechSpeed.setVisible(togSpdSlider.isSelected());
 

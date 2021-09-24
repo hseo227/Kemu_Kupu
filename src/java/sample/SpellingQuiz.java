@@ -97,6 +97,7 @@ public class SpellingQuiz extends Service<Void> {
         mainLabelText = "Spell word " + currentIndex + " of " + NUMOFQUESTIONS + ":";
         promptLabelText = "";
         speak("Please spell", currentWord);
+        
     }
 
     // this function check the spelling (input) and then set up a range of stuff
