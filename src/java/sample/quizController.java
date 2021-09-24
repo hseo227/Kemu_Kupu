@@ -25,7 +25,7 @@ public class quizController implements Initializable {
 
     private SpellingQuiz quiz;
   
-    PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
+    private final PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
 
 
     @FXML
@@ -79,14 +79,14 @@ public class quizController implements Initializable {
         quiz = new SpellingQuiz();
 
         // otherwise, continue the game
+        startBtn.setVisible(false);
         finishBackBtn.setVisible(false);
         playAgainBtn.setVisible(false);
         homeBtn.setVisible(true);
-        skipBtn.setVisible(true);
         playbackImg.setVisible(true);
         togSpdSlider.setVisible(true);
         macronsBtnsHBox.setVisible(true);
-        startBtn.setVisible(false);
+        skipBtn.setVisible(true);
         inputField.setVisible(true);
         checkBtn.setVisible(true);
 
@@ -99,50 +99,26 @@ public class quizController implements Initializable {
 
     @FXML
     private void onEnter(ActionEvent event) {
-        // if the quiz is ready for next question, then generate the next question
-        
-//    	if (quiz.quizStateEqualsTo(QuizState.ready)) {
-//        	mainLabel.setStyle("-fx-text-fill: #000;");  // change back to white text
-//            promptLabel.setStyle("-fx-text-fill: #000;");  // change back to white text
-//            inputField.clear();
-//            newQuestion();
-//
-//        // otherwise, check the spelling
-//        } else {
-            checkSpelling();
-            
-            if (quiz.resultEqualsTo(Result.faulted)) {
-                skipBtn.setDisable(true);
-                checkBtn.setDisable(true);
-                macronsBtnsHBox.setDisable(true);
-                inputField.setDisable(true);
-            }
-//        }
+        // when the user press enter key or press the 'check' button, check spelling
+        checkSpelling();
     }
 
     // this method set up the Server thread for quiz.newQuestion and then run it
     private void newQuestion() {
-    	
-    	if (quiz.quizStateEqualsTo(QuizState.ready)) {
-    		mainLabel.setStyle("-fx-text-fill: #000;");  // change back to white text
-            promptLabel.setStyle("-fx-text-fill: #000;");  // change back to white text
-            inputField.clear();
-            skipBtn.setDisable(false);
-            checkBtn.setDisable(false);
-            macronsBtnsHBox.setDisable(false);
-            inputField.setDisable(false);
 
-    	}
+        mainLabel.setStyle("-fx-text-fill: #000;");  // change back to black text
+        promptLabel.setStyle("-fx-text-fill: #000;");  // change back to black text
+        inputField.clear();
     	
         quiz.setSpeechSpeed((int) speechSpeed.getValue());
 
         mainLabel.textProperty().bind(quiz.titleProperty());
         promptLabel.textProperty().bind(quiz.messageProperty());
-        
+
         quiz.setOnSucceeded(e -> {
             mainLabel.textProperty().unbind();
             promptLabel.textProperty().unbind();
-            
+
             // if the game is finished, some buttons will appear
             // while other utilities are disappear
             if (quiz.quizStateEqualsTo(QuizState.finished)) {
@@ -153,8 +129,6 @@ public class quizController implements Initializable {
                 togSpdSlider.setVisible(false);
                 macronsBtnsHBox.setVisible(false);
                 skipBtn.setVisible(false);
-                inputField.setVisible(true);
-                checkBtn.setVisible(true);
                 inputField.setVisible(false);
                 checkBtn.setVisible(false);
             }
@@ -176,24 +150,20 @@ public class quizController implements Initializable {
 
         ChangeListener<String> stateListener = (obs, oldValue, newValue) -> {
             // the quiz is done, so either Mastered, Faulted or Failed
-        	
             if (quiz.quizStateEqualsTo(QuizState.ready)) {
+
                 // correct spelling (Mastered and Faulted)
                 if (quiz.resultEqualsTo(Result.mastered) || quiz.resultEqualsTo(Result.faulted)) {
                     mainLabel.setStyle("-fx-text-fill: #00A804;");  // change to green text
                     promptLabel.setStyle("-fx-text-fill: #00A804;");  // change to green text
-                    
-                    pause.setOnFinished(e -> newQuestion());
-                    pause.play();
-                    
-                // incorrect spelling (Failed)
+
+                // incorrect spelling (Failed) OR the word is skipped
                 } else {
                     mainLabel.setStyle("-fx-text-fill: #FF2715;");  // change to red text
                     promptLabel.setStyle("-fx-text-fill: #FF2715;");  // change to red text
-                    
-                    pause.setOnFinished(e -> newQuestion());
-                    pause.play();
                 }
+
+                pauseBetweenEachQ();
 
             // incorrect spelling (1st attempt)
             } else {
@@ -239,14 +209,28 @@ public class quizController implements Initializable {
     
     @FXML
     private void skipWord(ActionEvent event) {
-    	mainLabel.setStyle("-fx-text-fill: #FF2715;");  // change to red text
-        promptLabel.setStyle("-fx-text-fill: #FF2715;");  // change to red text
+    	quiz.setResult(Result.skipped);
+        checkSpelling();
+    }
+
+    // this method is to pause before each new question, also while pausing it disables the quiz related utilities
+    private void pauseBetweenEachQ() {
         skipBtn.setDisable(true);
         checkBtn.setDisable(true);
         macronsBtnsHBox.setDisable(true);
         inputField.setDisable(true);
-    	quiz.setResult(Result.skipped);
-        checkSpelling();
+        playbackImg.setDisable(true);
+
+        pause.setOnFinished(e -> {
+            skipBtn.setDisable(false);
+            checkBtn.setDisable(false);
+            macronsBtnsHBox.setDisable(false);
+            inputField.setDisable(false);
+            playbackImg.setDisable(false);
+
+            newQuestion();
+        });
+        pause.play();
     }
 
 }

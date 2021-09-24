@@ -99,8 +99,17 @@ public class SpellingQuiz extends Service<Void> {
 
     // this function check the spelling (input) and then set up a range of stuff
     private void checkSpelling() {
+        // first check if the word is skipped
+        if ( resultEqualsTo(Result.skipped) ) {
+            setQuizState(QuizState.ready);  // set the state to ready for the next question
+
+            // setting up the labels' text and speak out the message
+            mainLabelText = "Word Skipped";
+            promptLabelText = "";
+            speak("Word skipped", "");
+
         // if statement for each result after checking the spelling (input)
-        if ( words.checkUserSpelling(getUserInput()) ) {  // mastered and failed, 1st attempt and 2nd attempt respectively
+        } else if ( words.checkUserSpelling(getUserInput()) ) {  // mastered and failed, 1st attempt and 2nd attempt respectively
             setQuizState(QuizState.ready);  // set the state to ready for the next question
 
             // setting up the labels' text and speak out the message
@@ -124,15 +133,6 @@ public class SpellingQuiz extends Service<Void> {
             mainLabelText = "Incorrect";
             promptLabelText = "Press 'Enter' to attempt next word";
             speak("Incorrect", "");
-
-        } else {  // skipped word --> failed
-            setResult(Result.skipped);
-            setQuizState(QuizState.ready);  // set the state to ready for the next question
-
-            // setting up the labels' text and speak out the message
-            mainLabelText = "Word Skipped";
-            promptLabelText = "Press 'Enter' to attempt next word";
-            speak("Word skipped", "");
         }
     }
 
