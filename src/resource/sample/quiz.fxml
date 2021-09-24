@@ -109,7 +109,7 @@
             <Insets bottom="50.0" />
          </GridPane.margin>
       </VBox>
-      <VBox fx:id="inputVBox2" spacing="40.0" visible="false" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <VBox fx:id="inputVBox2" spacing="40.0" visible="false" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="1">
          <children>
             <ImageView fx:id="playbackImg" fitHeight="60.0" fitWidth="66.0" onMouseClicked="#speakAgain" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -126,7 +126,7 @@
             </Button>
          </children>
          <GridPane.margin>
-            <Insets top="90.0" />
+            <Insets bottom="110.0" />
          </GridPane.margin>
       </VBox>
       <Button fx:id="startBtn" mnemonicParsing="false" onAction="#startQuiz" prefHeight="50.0" prefWidth="250.0" text="Start Quiz" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
