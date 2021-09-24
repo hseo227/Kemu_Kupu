@@ -12,8 +12,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import javafx.util.StringConverter;
 
@@ -29,7 +30,7 @@ public class quizController implements Initializable {
 
 
     @FXML
-    private AnchorPane rootPane;
+    private GridPane rootPane;
     @FXML
     private Label mainLabel, promptLabel, userScore;
     @FXML
@@ -44,6 +45,8 @@ public class quizController implements Initializable {
     private ToggleButton togSpdSlider;
     @FXML
     private HBox macronsBtnsHBox;
+    @FXML
+    private VBox inputVBox1, inputVBox2;
 
 
     @Override
@@ -88,14 +91,8 @@ public class quizController implements Initializable {
 
         // otherwise, continue the game
         startBtn.setVisible(false);
-        userScore.setVisible(true);
-        backBtn.setVisible(true);
-        playbackImg.setVisible(true);
-        togSpdSlider.setVisible(true);
-        macronsBtnsHBox.setVisible(true);
-        skipBtn.setVisible(true);
-        inputField.setVisible(true);
-        checkBtn.setVisible(true);
+        inputVBox1.setVisible(true);
+        inputVBox2.setVisible(true);
 
         // The text when the mouse hover on the playback image
         Tooltip tooltip = new Tooltip("Click to playback");

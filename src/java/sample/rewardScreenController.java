@@ -6,7 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
@@ -15,7 +15,7 @@ import java.util.ResourceBundle;
 public class rewardScreenController implements Initializable {
 
     @FXML
-    private AnchorPane rootPane;
+    private VBox rootPane;
     @FXML
     private Label userScoreLabel, messageLabel, promptLabel;
     @FXML
