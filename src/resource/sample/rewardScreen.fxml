@@ -7,12 +7,12 @@
 
 <AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.rewardScreenController">
    <children>
-      <Label fx:id="userScoreLabel" alignment="CENTER" layoutX="130.0" layoutY="200.0" prefHeight="60.0" prefWidth="700.0" text="SCORE OUT OF 100">
+      <Label fx:id="userScoreLabel" alignment="CENTER" layoutX="130.0" layoutY="200.0" prefHeight="60.0" prefWidth="700.0">
          <font>
             <Font name="Heiti TC Medium" size="30.0" />
          </font>
-      </Label>
-      <Label fx:id="messageLabel" alignment="CENTER" layoutX="180.0" layoutY="275.0" prefHeight="30.0" prefWidth="600.0" text="MAORI MESSAGE">
+      </Label> 
+      <Label fx:id="messageLabel" alignment="CENTER" layoutX="180.0" layoutY="275.0" prefHeight="30.0" prefWidth="600.0" text="Tēnā Rawa Atu Koe">
          <font>
             <Font name="Heiti TC Medium" size="15.0" />
          </font>
@@ -22,12 +22,12 @@
             <Font name="Heiti TC Medium" size="15.0" />
          </font>
       </Label>
-      <Button fx:id="playAgainBtn" layoutX="270.0" layoutY="330.0" mnemonicParsing="false" onAction="#loadGamesModule" prefHeight="50.0" prefWidth="200.0" text="Play Again">
+      <Button fx:id="playAgainBtn" layoutX="270.0" layoutY="330.0" mnemonicParsing="false" onAction="#newQuiz" prefHeight="50.0" prefWidth="200.0" text="Play Again">
          <font>
             <Font name="Heiti TC Medium" size="20.0" />
          </font>
       </Button>
-      <Button fx:id="mainMenuBtn" layoutX="490.0" layoutY="330.0" mnemonicParsing="false" onAction="#quit" prefHeight="50.0" prefWidth="200.0" text="Main Menu">
+      <Button fx:id="mainMenuBtn" layoutX="490.0" layoutY="330.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="50.0" prefWidth="200.0" text="Main Menu">
          <font>
             <Font name="Heiti TC Medium" size="20.0" />
          </font>

@@ -134,17 +134,7 @@ public class quizController implements Initializable {
             // if the game is finished, some buttons will appear
             // while other utilities are disappear
             if (quiz.quizStateEqualsTo(QuizState.finished)) {
-                finishBackBtn.setVisible(true);
-                playAgainBtn.setVisible(true);
-                backBtn.setVisible(false);
-                playbackImg.setVisible(false);
-                togSpdSlider.setVisible(false);
-                macronsBtnsHBox.setVisible(false);
-                skipBtn.setVisible(false);
-                inputField.setVisible(false);
-                checkBtn.setVisible(false);
-                userScore.setText("Your SCORE is : "); // Change text for userScore label
-                Score.reset();
+            	rewardScreen();
             }
 
             quiz.reset();
@@ -237,6 +227,16 @@ public class quizController implements Initializable {
     private void skipWord(ActionEvent event) {
     	quiz.setResult(Result.skipped);
         checkSpelling();
+    }
+    
+    @FXML
+    private void rewardScreen() {
+    	try {
+        	SceneController.goToRewardScreen();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
     }
 
     // this method is to pause before each new question, also while pausing it disables the quiz related utilities
