@@ -3,21 +3,16 @@ package sample;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
 import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.HashMap;
 
 public class mainMenuController {
 
     @FXML
-    private AnchorPane rootPane;
+    private VBox rootPane;
     @FXML
     private Label mainMenuLabel;
     @FXML

@@ -2,7 +2,7 @@ package sample;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 
@@ -36,7 +36,7 @@ public class SceneController {
     }
 
     private static void changeScene(String fxml) throws IOException {
-        AnchorPane pane = FXMLLoader.load(SceneController.class.getResource(fxml));
+        Pane pane = FXMLLoader.load(SceneController.class.getResource(fxml));
         scene.setRoot(pane);
     }
 }
