@@ -73,11 +73,6 @@
             </Button>
          </children>
       </HBox>
-      <Button fx:id="finishBackBtn" layoutX="500.0" layoutY="380.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="70.0" prefWidth="260.0" text="Back to Main Menu" visible="false">
-         <font>
-            <Font name="Heiti TC Medium" size="15.0" />
-         </font>
-      </Button>
       <ImageView fx:id="playbackImg" fitHeight="60.0" fitWidth="66.0" layoutX="670.0" layoutY="170.0" onMouseClicked="#speakAgain" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@playback-button.png" />
@@ -91,11 +86,6 @@
               <Font name="Heiti TC Medium" size="15.0" />
             </font>
         </Button>
-      <Button fx:id="playAgainBtn" layoutX="200.0" layoutY="380.0" mnemonicParsing="false" onAction="#startQuiz" prefHeight="70.0" prefWidth="260.0" text="Play Again" visible="false">
-         <font>
-            <Font name="Heiti TC Medium" size="15.0" />
-         </font>
-      </Button>
       <ToggleButton fx:id="togSpdSlider" layoutX="50.0" layoutY="50.0" mnemonicParsing="false" onAction="#showHideSpeedSlider" prefHeight="35.0" prefWidth="180.0" text="Adjust Speech Speed">
          <font>
                 <Font name="Heiti TC Medium" size="15.0" />
