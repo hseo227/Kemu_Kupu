@@ -65,7 +65,7 @@ public class topicListController implements Initializable {
         // setting up the table and the column
         topicListColumn.setCellValueFactory(new PropertyValueFactory<Topic, String>("name"));
         table.getItems().setAll(topicList);
-        table.setStyle("-fx-font-size:15.0px;");
+        table.setStyle("-fx-font-size: 15.0px;");
     }
 
     @FXML

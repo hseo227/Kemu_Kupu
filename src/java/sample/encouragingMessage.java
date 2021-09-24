@@ -7,12 +7,11 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class encouragingMessage {
-    ArrayList<String> messageList = new ArrayList<String>();  // all the words in the file
+    ArrayList<String> messageList = new ArrayList<String>();  // all the messages in the file
 
     public encouragingMessage(String result) {
-        // get specific number of random words in the file
+        // get all the messages in the file
         String fileName = "messages/" + result;
-//        String fileName = result + " Messages";
 
         // First, get all the words in the file
         try {
@@ -30,9 +29,8 @@ public class encouragingMessage {
         }
     }
     
-    public String getRand() {
-
-        // Finally, get random words
+    public String getEncourageMsg() {
+        // get random message
         Random rand = new Random();
         return messageList.get(rand.nextInt(messageList.size()));
     }

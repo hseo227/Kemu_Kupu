@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.quizController">
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="sample.quizController">
    <children>
       <Label fx:id="mainLabel" alignment="CENTER" layoutX="130.0" layoutY="170.0" prefHeight="60.0" prefWidth="700.0" text="New Spelling Quiz!">
          <font>
@@ -73,11 +73,6 @@
             </Button>
          </children>
       </HBox>
-      <Button fx:id="finishBackBtn" layoutX="500.0" layoutY="380.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="70.0" prefWidth="260.0" text="Back to Main Menu" visible="false">
-         <font>
-            <Font name="Heiti TC Medium" size="15.0" />
-         </font>
-      </Button>
       <ImageView fx:id="playbackImg" fitHeight="60.0" fitWidth="66.0" layoutX="670.0" layoutY="170.0" onMouseClicked="#speakAgain" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@playback-button.png" />
@@ -91,17 +86,12 @@
               <Font name="Heiti TC Medium" size="15.0" />
             </font>
         </Button>
-      <Button fx:id="playAgainBtn" layoutX="200.0" layoutY="380.0" mnemonicParsing="false" onAction="#startQuiz" prefHeight="70.0" prefWidth="260.0" text="Play Again" visible="false">
-         <font>
-            <Font name="Heiti TC Medium" size="15.0" />
-         </font>
-      </Button>
       <ToggleButton fx:id="togSpdSlider" layoutX="50.0" layoutY="50.0" mnemonicParsing="false" onAction="#showHideSpeedSlider" prefHeight="35.0" prefWidth="180.0" text="Adjust Speech Speed">
          <font>
                 <Font name="Heiti TC Medium" size="15.0" />
          </font>
       </ToggleButton>
-      <Slider fx:id="speechSpeed" blockIncrement="5.0" layoutX="30.0" layoutY="115.0" majorTickUnit="60.0" max="160.0" min="40.0" minorTickCount="11" nodeOrientation="RIGHT_TO_LEFT" orientation="VERTICAL" prefHeight="200.0" prefWidth="75.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="100.0" />
+      <Slider fx:id="speechSpeed" blockIncrement="5.0" layoutX="50.0" layoutY="115.0" majorTickUnit="60.0" max="160.0" min="40.0" minorTickCount="11" orientation="VERTICAL" prefHeight="200.0" prefWidth="75.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="100.0" />
       <Button fx:id="skipBtn" layoutX="450.0" layoutY="400.0" mnemonicParsing="false" onAction="#skipWord" prefHeight="35.0" prefWidth="75.0" text="Skip" visible="false">
          <font>
             <Font name="Heiti TC Medium" size="15.0" />

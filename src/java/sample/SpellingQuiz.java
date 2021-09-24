@@ -28,7 +28,7 @@ public class SpellingQuiz extends Service<Void> {
     private Result currentResult;
     private static String selectedTopic;
     private final Words words;
-    private encouragingMessage correctMessage, incorrectMessage;
+    private encouragingMessage correctMessage, incorrectMessage, tryAgainMessage;
 
 
     // this method will only run once and will run at the start of the program
@@ -42,9 +42,10 @@ public class SpellingQuiz extends Service<Void> {
     public SpellingQuiz() {
         // setting up the words
         words = new Words(selectedTopic, NUMOFQUESTIONS);
+
         correctMessage = new encouragingMessage("Correct");
         incorrectMessage = new encouragingMessage("Incorrect");
-
+        tryAgainMessage = new encouragingMessage("TryAgain");
         currentIndex = 0;
         currentWord = "";
         mainLabelText = "";
@@ -83,7 +84,6 @@ public class SpellingQuiz extends Service<Void> {
     private void newQuestion() {
         if (currentIndex == NUMOFQUESTIONS) {  // the quiz is finished
             setQuizState(QuizState.finished);
-            mainLabelText = Integer.toString(Score.score) + " / 100";
             return;
         }
 
@@ -103,11 +103,11 @@ public class SpellingQuiz extends Service<Void> {
     // this function check the spelling (input) and then set up a range of stuff
     private void checkSpelling() {
         // first check if the word is skipped
-        if (resultEqualsTo(Result.skipped) ) {
+        if (resultEqualsTo(Result.skipped)) {
             setQuizState(QuizState.ready);  // set the state to ready for the next question
 
             // setting up the labels' text and speak out the message
-            mainLabelText = "Word Skipped";
+            mainLabelText = incorrectMessage.getEncourageMsg();
             promptLabelText = "";
             speak("Word skipped", "");
 
@@ -116,7 +116,7 @@ public class SpellingQuiz extends Service<Void> {
             setQuizState(QuizState.ready);  // set the state to ready for the next question
 
             // setting up the labels' text and speak out the message
-            mainLabelText = correctMessage.getRand();
+            mainLabelText = correctMessage.getEncourageMsg();
             promptLabelText = "";
             speak("Correct", "");
 
@@ -124,7 +124,7 @@ public class SpellingQuiz extends Service<Void> {
             setResult(Result.faulted);
 
             // setting up the labels' text and speak out the message
-            mainLabelText = incorrectMessage.getRand();
+            mainLabelText = tryAgainMessage.getEncourageMsg();
             promptLabelText = "Hint: second letter is '" + currentWord.charAt(1) + "'";
             speak("Incorrect, try once more.", currentWord);
 
@@ -133,7 +133,7 @@ public class SpellingQuiz extends Service<Void> {
             setQuizState(QuizState.ready);  // set the state to ready for the next question
 
             // setting up the labels' text and speak out the message
-            mainLabelText = "Incorrect";
+            mainLabelText = incorrectMessage.getEncourageMsg();
             promptLabelText = "";
             speak("Incorrect", "");
         }
