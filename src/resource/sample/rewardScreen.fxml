@@ -5,13 +5,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.rewardScreenController">
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="sample.rewardScreenController">
    <children>
       <Label fx:id="userScoreLabel" alignment="CENTER" layoutX="130.0" layoutY="200.0" prefHeight="60.0" prefWidth="700.0">
          <font>
             <Font name="Heiti TC Medium" size="30.0" />
          </font>
-      </Label> 
+      </Label>
       <Label fx:id="messageLabel" alignment="CENTER" layoutX="180.0" layoutY="270.0" prefHeight="30.0" prefWidth="600.0" text="Tēnā Rawa Atu Koe">
          <font>
             <Font name="Heiti TC Medium" size="20.0" />
@@ -31,6 +31,6 @@
          <font>
             <Font name="Heiti TC Medium" size="20.0" />
          </font>
-      </Button>   
+      </Button>
    </children>
 </AnchorPane>
