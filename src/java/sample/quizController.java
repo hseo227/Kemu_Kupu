@@ -37,7 +37,7 @@ public class quizController implements Initializable {
     @FXML
     private TextField inputField;
     @FXML
-    private Button startBtn, finishBackBtn, homeBtn, playAgainBtn, macronsA, macronsE, macronsI, macronsO, macronsU, skipBtn, checkBtn;
+    private Button startBtn, finishBackBtn, backBtn, playAgainBtn, macronsA, macronsE, macronsI, macronsO, macronsU, skipBtn, checkBtn;
     @FXML
     private ImageView playbackImg;
     @FXML
@@ -93,7 +93,7 @@ public class quizController implements Initializable {
         startBtn.setVisible(false);
         finishBackBtn.setVisible(false);
         playAgainBtn.setVisible(false);
-        homeBtn.setVisible(true);
+        backBtn.setVisible(true);
         playbackImg.setVisible(true);
         togSpdSlider.setVisible(true);
         macronsBtnsHBox.setVisible(true);
@@ -136,7 +136,7 @@ public class quizController implements Initializable {
             if (quiz.quizStateEqualsTo(QuizState.finished)) {
                 finishBackBtn.setVisible(true);
                 playAgainBtn.setVisible(true);
-                homeBtn.setVisible(false);
+                backBtn.setVisible(false);
                 playbackImg.setVisible(false);
                 togSpdSlider.setVisible(false);
                 macronsBtnsHBox.setVisible(false);
