@@ -26,12 +26,14 @@ public class quizController implements Initializable {
     private SpellingQuiz quiz;
   
     private final PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
+    
+    private boolean firstAttempt = true;
 
 
     @FXML
     private AnchorPane rootPane;
     @FXML
-    private Label mainLabel, promptLabel;
+    private Label mainLabel, promptLabel, userScore;
     @FXML
     private TextField inputField;
     @FXML
@@ -75,6 +77,11 @@ public class quizController implements Initializable {
 
     @FXML
     private void startQuiz(ActionEvent event) {
+    	
+    	// Display score
+    	userScore.setText("SCORE : " + Score.score);
+        userScore.setVisible(true);
+    	
         // start a new game, either new spelling quiz or review mistakes
         quiz = new SpellingQuiz();
 
@@ -101,6 +108,7 @@ public class quizController implements Initializable {
     private void onEnter(ActionEvent event) {
         // when the user press enter key or press the 'check' button, check spelling
         checkSpelling();
+        
     }
 
     // this method set up the Server thread for quiz.newQuestion and then run it
@@ -131,6 +139,7 @@ public class quizController implements Initializable {
                 skipBtn.setVisible(false);
                 inputField.setVisible(false);
                 checkBtn.setVisible(false);
+                Score.reset();
             }
 
             quiz.reset();
@@ -156,6 +165,15 @@ public class quizController implements Initializable {
                 if (quiz.resultEqualsTo(Result.mastered) || quiz.resultEqualsTo(Result.faulted)) {
                     mainLabel.setStyle("-fx-text-fill: #00A804;");  // change to green text
                     promptLabel.setStyle("-fx-text-fill: #00A804;");  // change to green text
+                    
+                    if (firstAttempt) {
+                    	// Increase the score
+                        Score.increase20();
+                    } else {
+                    	// Increase the score
+                        Score.increase10();
+                        firstAttempt = true;
+                    }
 
                 // incorrect spelling (Failed) OR the word is skipped
                 } else {
@@ -170,6 +188,7 @@ public class quizController implements Initializable {
                 mainLabel.setStyle("-fx-text-fill: #FF2715;");  // change to red text
                 promptLabel.setStyle("-fx-text-fill: #FF2715;");  // change to red text
                 inputField.clear();
+                firstAttempt = false;
             }
         };
 
@@ -180,6 +199,8 @@ public class quizController implements Initializable {
             promptLabel.textProperty().unbind();
 
             quiz.reset();
+            // set userScore label to the current score
+            userScore.setText("SCORE : " + Score.score);
         });
 
         quiz.start();

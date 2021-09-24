@@ -24,6 +24,11 @@
             <Font name="System Bold Italic" size="18.0" />
          </font>
       </Label>
+      <Label fx:id="userScore" alignment="CENTER" layoutX="130.0" layoutY="120.0" prefHeight="60.0" prefWidth="700.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
       <Button fx:id="startBtn" layoutX="350.0" layoutY="380.0" mnemonicParsing="false" onAction="#startQuiz" prefHeight="70.0" prefWidth="260.0" text="Start">
          <font>
             <Font name="System Bold" size="24.0" />
