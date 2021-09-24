@@ -81,15 +81,15 @@ public class quizController implements Initializable {
 
     @FXML
     private void startQuiz(ActionEvent event) {
-    	
-    	// Display score
-    	userScore.setText("SCORE : " + Score.score);
-        userScore.setVisible(true);
-    	
+
         // start a new game, either new spelling quiz or review mistakes
         quiz = new SpellingQuiz();
+    	
+    	// Display score
+    	userScore.setText("SCORE : " + Score.getScore());
 
         // otherwise, continue the game
+        userScore.setVisible(true);
         startBtn.setVisible(false);
         finishBackBtn.setVisible(false);
         playAgainBtn.setVisible(false);
@@ -195,7 +195,7 @@ public class quizController implements Initializable {
 
             quiz.reset();
             // set userScore label to the current score
-            userScore.setText("SCORE : " + Score.score);
+            userScore.setText("SCORE : " + Score.getScore());
         });
 
         quiz.start();

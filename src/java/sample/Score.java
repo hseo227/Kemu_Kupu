@@ -2,7 +2,7 @@ package sample;
 
 public class Score {
 
-	public static int score;
+	private static int score;
 
 	// reset score after each round
 	public static void reset() {
@@ -17,6 +17,11 @@ public class Score {
 	// for increasing the score when correct on second try
 	public static void increase10() {
 		score += 10;
+	}
+
+	// score getter
+	public static int getScore() {
+		return score;
 	}
 
 }
