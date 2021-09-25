@@ -143,7 +143,27 @@ public class quizController implements Initializable {
         mainLabel.textProperty().bind(quiz.titleProperty());
         promptLabel.textProperty().bind(quiz.messageProperty());
 
-        ChangeListener<String> stateListener = (obs, oldValue, newValue) -> {
+
+        // maybe used later
+//        ChangeListener<String> stateListener = (obs, oldValue, newValue) -> {
+//
+//        };
+//        quiz.titleProperty().addListener(stateListener);
+
+
+        quiz.setOnSucceeded(e -> {
+//            quiz.titleProperty().removeListener(stateListener);
+
+            mainLabel.textProperty().unbind();
+            promptLabel.textProperty().unbind();
+
+            quiz.reset();
+
+            // set up the display
+
+            // set userScore label to the current score
+            userScore.setText("SCORE : " + Score.getScore());
+
             // the quiz is done, so either Mastered, Faulted or Failed
             if (quiz.quizStateEqualsTo(QuizState.ready)) {
 
@@ -154,11 +174,9 @@ public class quizController implements Initializable {
 
                     // increase the score
                     if (quiz.resultEqualsTo(Result.mastered)) {
-                    	// Increase the higher score for 1st attempt
-                        Score.increase20();
+                        Score.increase20();  // Increase the higher score for 1st attempt
                     } else {
-                    	// Increase the lower score for 2nd attempt
-                        Score.increase10();
+                        Score.increase10();  // Increase the lower score for 2nd attempt
                     }
 
                 // incorrect spelling (Failed) OR the word is skipped
@@ -167,28 +185,13 @@ public class quizController implements Initializable {
                     promptLabel.setStyle("-fx-text-fill: #FF2715;");  // change to red text
                 }
 
-            // incorrect spelling (1st attempt)
+                pauseBetweenEachQ();
+
+                // incorrect spelling (1st attempt)
             } else {
                 mainLabel.setStyle("-fx-text-fill: #FF2715;");  // change to red text
                 promptLabel.setStyle("-fx-text-fill: #FF2715;");  // change to red text
                 inputField.clear();
-            }
-        };
-
-        quiz.titleProperty().addListener(stateListener);
-        quiz.setOnSucceeded(e -> {
-            quiz.titleProperty().removeListener(stateListener);
-            mainLabel.textProperty().unbind();
-            promptLabel.textProperty().unbind();
-
-            quiz.reset();
-
-            // set userScore label to the current score
-            userScore.setText("SCORE : " + Score.getScore());
-
-            // only pause after each question is done
-            if (quiz.quizStateEqualsTo(QuizState.ready)) {
-                pauseBetweenEachQ();
             }
         });
 
