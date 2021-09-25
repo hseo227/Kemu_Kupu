@@ -44,7 +44,7 @@
             <Insets left="50.0" />
          </GridPane.margin>
       </Slider>
-      <Button fx:id="backBtn" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #EBEBEBEBEBEB;" text="Main Menu" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
+      <Button fx:id="backBtn" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #EBEBEB;" text="Main Menu" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
          <font>
             <Font name="Heiti TC Medium" size="15.0" />
          </font>
@@ -78,34 +78,34 @@
                   </TextField>
                   <HBox fx:id="macronsBtnsHBox" alignment="TOP_CENTER" fillHeight="false" spacing="10.0">
                      <children>
-                        <Button fx:id="macronsA" mnemonicParsing="false" onAction="#addMacronsCharacter" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #EBEBEBEBEBEB;" text="ā">
+                        <Button fx:id="macronsA" mnemonicParsing="false" onAction="#addMacronsCharacter" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #EBEBEB;" text="ā">
                            <font>
                               <Font name="Heiti TC Medium" size="15.0" />
                            </font>
                         </Button>
-                        <Button fx:id="macronsE" layoutX="92.0" layoutY="47.0" mnemonicParsing="false" onAction="#addMacronsCharacter" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #EBEBEBEBEBEB;" text="ē">
+                        <Button fx:id="macronsE" layoutX="92.0" layoutY="47.0" mnemonicParsing="false" onAction="#addMacronsCharacter" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #EBEBEB;" text="ē">
                            <font>
                               <Font name="Heiti TC Medium" size="15.0" />
                            </font>
                         </Button>
-                        <Button fx:id="macronsI" layoutX="77.0" layoutY="47.0" mnemonicParsing="false" onAction="#addMacronsCharacter" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #EBEBEBEBEBEB;" text="ī">
+                        <Button fx:id="macronsI" layoutX="77.0" layoutY="47.0" mnemonicParsing="false" onAction="#addMacronsCharacter" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #EBEBEB;" text="ī">
                            <font>
                               <Font name="Heiti TC Medium" size="15.0" />
                            </font>
                         </Button>
-                        <Button fx:id="macronsO" layoutX="106.0" layoutY="47.0" mnemonicParsing="false" onAction="#addMacronsCharacter" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #EBEBEBEBEBEB;" text="ō">
+                        <Button fx:id="macronsO" layoutX="106.0" layoutY="47.0" mnemonicParsing="false" onAction="#addMacronsCharacter" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #EBEBEB;" text="ō">
                            <font>
                               <Font name="Heiti TC Medium" size="15.0" />
                            </font>
                         </Button>
-                        <Button fx:id="macronsU" layoutX="135.0" layoutY="47.0" mnemonicParsing="false" onAction="#addMacronsCharacter" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #EBEBEBEBEBEB;" text="ū">
+                        <Button fx:id="macronsU" layoutX="135.0" layoutY="47.0" mnemonicParsing="false" onAction="#addMacronsCharacter" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #EBEBEB;" text="ū">
                            <font>
                               <Font name="Heiti TC Medium" size="15.0" />
                            </font>
                         </Button>
                      </children>
                   </HBox>
-                  <Button fx:id="skipBtn" mnemonicParsing="false" onAction="#skipWord" prefHeight="35.0" prefWidth="75.0" style="-fx-background-color: #EBEBEBEBEBEB;&quot;style=&quot;-fx-background-color: #EBEBEBEBEBEB;&quot;style=&quot;-fx-background-color: #EBEBEBEBEBEB;&quot;style=&quot;-fx-background-color: #EBEBEBEBEBEB#EBEBEBEBEBEB;&quot;style=&quot;-fx-background-color: #EBEBEBEBEBEB;&quot;style=&quot;-fx-background-color: #EBEBEBEBEBEB;&quot;style=&quot;-fx-background-color: #EBEBEBEBEBEB;" text="Skip">
+                  <Button fx:id="skipBtn" mnemonicParsing="false" onAction="#skipWord" prefHeight="35.0" prefWidth="75.0" style="-fx-background-color: #EBEBEB;" text="Skip">
                      <font>
                         <Font name="Heiti TC Medium" size="15.0" />
                      </font>
@@ -127,7 +127,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <Button fx:id="checkBtn" mnemonicParsing="false" onAction="#onEnter" prefHeight="35.0" prefWidth="75.0" style="-fx-background-color: #EBEBEBEBEBEB;" text="check">
+            <Button fx:id="checkBtn" mnemonicParsing="false" onAction="#onEnter" prefHeight="35.0" prefWidth="75.0" style="-fx-background-color: #EBEBEB;" text="check">
                <font>
                   <Font name="Heiti TC Medium" size="15.0" />
                </font>
@@ -137,7 +137,7 @@
             <Insets top="22.5" />
          </GridPane.margin>
       </VBox>
-      <Button fx:id="startBtn" mnemonicParsing="false" onAction="#startQuiz" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #EBEBEBEBEBEB;" text="Start Quiz" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+      <Button fx:id="startBtn" mnemonicParsing="false" onAction="#startQuiz" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #EBEBEB;" text="Start Quiz" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <font>
             <Font name="Heiti TC Medium" size="20.0" />
          </font>

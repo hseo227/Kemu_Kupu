@@ -26,12 +26,12 @@
       </Label>
       <HBox alignment="TOP_CENTER" prefHeight="175.0" spacing="20.0">
          <children>
-            <Button fx:id="gamesModule" mnemonicParsing="false" onAction="#loadGamesModule" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #EBEBEBEBEBEB;" text="Games Module">
+            <Button fx:id="gamesModule" mnemonicParsing="false" onAction="#loadGamesModule" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #EBEBEB;" text="Games Module">
                <font>
                   <Font name="Heiti TC Light" size="20.0" />
                </font>
             </Button>
-            <Button fx:id="quit" mnemonicParsing="false" onAction="#quit" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #EBEBEBEBEBEB;" text="Quit">
+            <Button fx:id="quit" mnemonicParsing="false" onAction="#quit" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #EBEBEB;" text="Quit">
                <font>
                   <Font name="Heiti TC Light" size="20.0" />
                </font>
