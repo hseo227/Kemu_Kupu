@@ -114,7 +114,7 @@ public class quizController implements Initializable {
         promptLabel.setStyle("-fx-text-fill: #FFF;");  // change back to white text
         inputField.clear();
     	
-        quiz.setSpeechSpeed((int) speechSpeed.getValue());
+        quiz.setSpeechSpeed((int) speechSpeed.getValue());  // set up speech speed
 
         mainLabel.textProperty().bind(quiz.titleProperty());
         promptLabel.textProperty().bind(quiz.messageProperty());
@@ -137,8 +137,8 @@ public class quizController implements Initializable {
     // this method set up the Server thread for quiz.checkSpelling and then run it
     private void checkSpelling() {
 
-        quiz.setSpeechSpeed((int) speechSpeed.getValue());
-        quiz.setUserInput(inputField.getText());
+        quiz.setSpeechSpeed((int) speechSpeed.getValue());  // set up speech speed
+        quiz.setUserInput(inputField.getText());  // get user input/spelling
 
         mainLabel.textProperty().bind(quiz.titleProperty());
         promptLabel.textProperty().bind(quiz.messageProperty());
@@ -199,6 +199,7 @@ public class quizController implements Initializable {
 
     @FXML
     private void speakAgain() {
+        // set up speech speed and then speak
         quiz.setSpeechSpeed((int) speechSpeed.getValue());
         quiz.speakWordAgain();
     }
