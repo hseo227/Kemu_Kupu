@@ -1,0 +1,8 @@
+Nick:
+Change to the more user-friendly pane (items inside the pane change position if the window is resized)
+
+Hayoon and Minsun:
+Add score system
+Add encouraging message
+Add reward screen
+Improve the looks for all the displays (all .fxml)
