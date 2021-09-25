@@ -1,0 +1,5 @@
+Minsun:
+Added koru design and changed other colours accordingly.
+
+Hayoon:
+Updated the README.
