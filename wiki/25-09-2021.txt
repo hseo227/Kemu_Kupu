@@ -1,3 +1,8 @@
+Group Meeting 1
+Checkout everyone's work and progress.
+All required functionalities are implemented.
+Now make it look nicer.
+
 Minsun:
 Added koru design and changed other colours accordingly.
 
