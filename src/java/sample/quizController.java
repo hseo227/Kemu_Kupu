@@ -167,8 +167,6 @@ public class quizController implements Initializable {
                     promptLabel.setStyle("-fx-text-fill: #FF2715;");  // change to red text
                 }
 
-                pauseBetweenEachQ();
-
             // incorrect spelling (1st attempt)
             } else {
                 mainLabel.setStyle("-fx-text-fill: #FF2715;");  // change to red text
@@ -187,6 +185,11 @@ public class quizController implements Initializable {
 
             // set userScore label to the current score
             userScore.setText("SCORE : " + Score.getScore());
+
+            // only pause after each question is done
+            if (quiz.quizStateEqualsTo(QuizState.ready)) {
+                pauseBetweenEachQ();
+            }
         });
 
         quiz.start();
