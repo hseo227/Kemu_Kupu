@@ -156,10 +156,9 @@ public class quizController implements Initializable {
 
             mainLabel.textProperty().unbind();
             promptLabel.textProperty().unbind();
-
             quiz.reset();
 
-            // set up the display
+            // update the display
 
             // set userScore label to the current score
             userScore.setText("SCORE : " + Score.getScore());
@@ -187,7 +186,7 @@ public class quizController implements Initializable {
 
                 pauseBetweenEachQ();
 
-                // incorrect spelling (1st attempt)
+            // incorrect spelling (1st attempt)
             } else {
                 mainLabel.setStyle("-fx-text-fill: #FF2715;");  // change to red text
                 promptLabel.setStyle("-fx-text-fill: #FF2715;");  // change to red text
