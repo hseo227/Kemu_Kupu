@@ -43,7 +43,7 @@
                 <Font name="Heiti TC Medium" size="15.0" />
             </font>
         </Button>
-        <TableView fx:id="table" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="2">
+        <TableView fx:id="table" style="-fx-font-size: 15.0px;" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="2">
             <columns>
                 <TableColumn fx:id="topicListColumn" editable="false" prefWidth="-1.0" sortable="false" text="Topic List" />
             </columns>
