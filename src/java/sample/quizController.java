@@ -122,6 +122,8 @@ public class quizController implements Initializable {
         quiz.setOnSucceeded(e -> {
             mainLabel.textProperty().unbind();
             promptLabel.textProperty().unbind();
+            mainLabel.setStyle("-fx-text-fill: #FFFFFF;"); 
+            promptLabel.setStyle("-fx-text-fill: #FFFFFF;");
 
             // if the game is finished, go to reward screen
             if (quiz.quizStateEqualsTo(QuizState.finished)) {

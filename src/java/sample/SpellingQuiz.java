@@ -94,7 +94,7 @@ public class SpellingQuiz extends Service<Void> {
         currentWord = words.nextWord();  // set up the word and get the word that is testing on
 
         // set the labels' messages and also speak out the message
-        mainLabelText = "Spell word " + currentIndex + " of " + NUMOFQUESTIONS + ":";
+        mainLabelText = "Spell Word " + currentIndex + " of " + NUMOFQUESTIONS + ":";
         promptLabelText = "";
         speak("Please spell", currentWord);
         
