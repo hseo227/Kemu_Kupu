@@ -25,8 +25,8 @@ import java.util.ResourceBundle;
 public class quizController implements Initializable {
 
     private SpellingQuiz quiz;
-  
-    private final PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
+
+    private final PauseTransition pause = new PauseTransition(Duration.seconds(2));
 
 
     @FXML
