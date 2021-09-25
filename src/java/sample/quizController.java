@@ -110,8 +110,8 @@ public class quizController implements Initializable {
     // this method set up the Server thread for quiz.newQuestion and then run it
     private void newQuestion() {
 
-        mainLabel.setStyle("-fx-text-fill: #000;");  // change back to black text
-        promptLabel.setStyle("-fx-text-fill: #000;");  // change back to black text
+        mainLabel.setStyle("-fx-text-fill: #FFF;");  // change back to white text
+        promptLabel.setStyle("-fx-text-fill: #FFF;");  // change back to white text
         inputField.clear();
     	
         quiz.setSpeechSpeed((int) speechSpeed.getValue());
@@ -122,8 +122,6 @@ public class quizController implements Initializable {
         quiz.setOnSucceeded(e -> {
             mainLabel.textProperty().unbind();
             promptLabel.textProperty().unbind();
-            mainLabel.setStyle("-fx-text-fill: #FFFFFF;"); 
-            promptLabel.setStyle("-fx-text-fill: #FFFFFF;");
 
             // if the game is finished, go to reward screen
             if (quiz.quizStateEqualsTo(QuizState.finished)) {

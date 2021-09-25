@@ -5,14 +5,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.GridPane;
 
 import java.io.IOException;
 
 public class mainMenuController {
 
     @FXML
-    private VBox rootPane;
+    private GridPane rootPane;
     @FXML
     private Label mainMenuLabel;
     @FXML
