@@ -44,7 +44,7 @@
             <Font name="Heiti TC Medium" size="15.0" />
          </font>
       </Button>
-      <VBox alignment="CENTER" fillWidth="false" spacing="20.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+      <VBox alignment="CENTER" fillWidth="false" spacing="20.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="1">
          <children>
             <Label fx:id="userScore">
                <font>
