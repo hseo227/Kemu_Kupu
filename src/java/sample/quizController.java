@@ -25,8 +25,8 @@ import java.util.ResourceBundle;
 public class quizController implements Initializable {
 
     private SpellingQuiz quiz;
-  
-    private final PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
+
+    private final PauseTransition pause = new PauseTransition(Duration.seconds(2));
 
 
     @FXML
@@ -114,7 +114,7 @@ public class quizController implements Initializable {
         promptLabel.setStyle("-fx-text-fill: #FFF;");  // change back to white text
         inputField.clear();
     	
-        quiz.setSpeechSpeed((int) speechSpeed.getValue());
+        quiz.setSpeechSpeed((int) speechSpeed.getValue());  // set up speech speed
 
         mainLabel.textProperty().bind(quiz.titleProperty());
         promptLabel.textProperty().bind(quiz.messageProperty());
@@ -137,13 +137,32 @@ public class quizController implements Initializable {
     // this method set up the Server thread for quiz.checkSpelling and then run it
     private void checkSpelling() {
 
-        quiz.setSpeechSpeed((int) speechSpeed.getValue());
-        quiz.setUserInput(inputField.getText());
+        quiz.setSpeechSpeed((int) speechSpeed.getValue());  // set up speech speed
+        quiz.setUserInput(inputField.getText());  // get user input/spelling
 
         mainLabel.textProperty().bind(quiz.titleProperty());
         promptLabel.textProperty().bind(quiz.messageProperty());
 
-        ChangeListener<String> stateListener = (obs, oldValue, newValue) -> {
+
+        // maybe used later
+//        ChangeListener<String> stateListener = (obs, oldValue, newValue) -> {
+//
+//        };
+//        quiz.titleProperty().addListener(stateListener);
+
+
+        quiz.setOnSucceeded(e -> {
+//            quiz.titleProperty().removeListener(stateListener);
+
+            mainLabel.textProperty().unbind();
+            promptLabel.textProperty().unbind();
+            quiz.reset();
+
+            // update the display
+
+            // set userScore label to the current score
+            userScore.setText("SCORE : " + Score.getScore());
+
             // the quiz is done, so either Mastered, Faulted or Failed
             if (quiz.quizStateEqualsTo(QuizState.ready)) {
 
@@ -154,11 +173,9 @@ public class quizController implements Initializable {
 
                     // increase the score
                     if (quiz.resultEqualsTo(Result.mastered)) {
-                    	// Increase the higher score for 1st attempt
-                        Score.increase20();
+                        Score.increase20();  // Increase the higher score for 1st attempt
                     } else {
-                    	// Increase the lower score for 2nd attempt
-                        Score.increase10();
+                        Score.increase10();  // Increase the lower score for 2nd attempt
                     }
 
                 // incorrect spelling (Failed) OR the word is skipped
@@ -175,18 +192,6 @@ public class quizController implements Initializable {
                 promptLabel.setStyle("-fx-text-fill: #FF2715;");  // change to red text
                 inputField.clear();
             }
-        };
-
-        quiz.titleProperty().addListener(stateListener);
-        quiz.setOnSucceeded(e -> {
-            quiz.titleProperty().removeListener(stateListener);
-            mainLabel.textProperty().unbind();
-            promptLabel.textProperty().unbind();
-
-            quiz.reset();
-
-            // set userScore label to the current score
-            userScore.setText("SCORE : " + Score.getScore());
         });
 
         quiz.start();
@@ -199,6 +204,7 @@ public class quizController implements Initializable {
 
     @FXML
     private void speakAgain() {
+        // set up speech speed and then speak
         quiz.setSpeechSpeed((int) speechSpeed.getValue());
         quiz.speakWordAgain();
     }
