@@ -160,9 +160,6 @@ public class quizController implements Initializable {
 
             // update the display
 
-            // set userScore label to the current score
-            userScore.setText("SCORE : " + Score.getScore());
-
             // the quiz is done, so either Mastered, Faulted or Failed
             if (quiz.quizStateEqualsTo(QuizState.ready)) {
 
@@ -177,6 +174,9 @@ public class quizController implements Initializable {
                     } else {
                         Score.increase10();  // Increase the lower score for 2nd attempt
                     }
+
+                    // set userScore label to the current score
+                    userScore.setText("SCORE : " + Score.getScore());
 
                 // incorrect spelling (Failed) OR the word is skipped
                 } else {
