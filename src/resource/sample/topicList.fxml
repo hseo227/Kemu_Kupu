@@ -67,5 +67,10 @@
                 <Rectangle2D />
             </viewport>
         </ImageView>
+      <Label text="Note: the default topic will be the first one in the list" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="3">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
     </children>
 </GridPane>
