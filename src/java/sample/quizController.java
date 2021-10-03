@@ -67,7 +67,7 @@ public class quizController implements Initializable {
                 } else if (n == (speechSpeed.getMin() + speechSpeed.getMax()) / 2) {  // normal speed, in the middle
                     return "Default";
                 } else if (n == speechSpeed.getMax()) {  // fastest speed
-                    return "fast";
+                    return "Fast";
                 }
 
                 return null;
