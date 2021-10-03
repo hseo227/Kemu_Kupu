@@ -19,6 +19,7 @@ public class Main extends Application {
         primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("window-icon.png")));
         primaryStage.setScene(new Scene(root));
         SceneController.initialise(primaryStage.getScene());  // this is for the future use of changing scene
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 
