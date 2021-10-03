@@ -12,7 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
@@ -30,7 +30,7 @@ public class quizController implements Initializable {
 
 
     @FXML
-    private GridPane rootPane;
+    private AnchorPane rootPane;
     @FXML
     private Label mainLabel, promptLabel, userScore;
     @FXML

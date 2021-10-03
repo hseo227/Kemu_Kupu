@@ -9,39 +9,25 @@
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:id="rootPane" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #000000" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="sample.quizController">
-   <columnConstraints>
-      <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" minWidth="10.0" percentWidth="7.0" />
-      <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" minWidth="10.0" percentWidth="30.0" />
-      <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" minWidth="10.0" />
-      <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" minWidth="10.0" percentWidth="23.0" />
-      <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" minWidth="10.0" percentWidth="7.0" />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints fillHeight="false" minHeight="10.0" percentHeight="17.0" vgrow="SOMETIMES" />
-      <RowConstraints fillHeight="false" minHeight="10.0" percentHeight="12.0" vgrow="SOMETIMES" />
-      <RowConstraints fillHeight="false" minHeight="10.0" vgrow="SOMETIMES" />
-      <RowConstraints fillHeight="false" minHeight="10.0" percentHeight="20.0" vgrow="SOMETIMES" />
-   </rowConstraints>
+
+<AnchorPane fx:id="rootPane" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #000;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="sample.quizController">
    <children>
-      <ImageView fx:id="koruImg1" fitHeight="500.0" fitWidth="960.0" preserveRatio="true" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+      <ImageView fx:id="koruImg1" fitHeight="500.0" fitWidth="960.0" preserveRatio="true">
          <image>
             <Image url="@koru1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="koruImg2" fitHeight="500.0" fitWidth="960.0" preserveRatio="true" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
+      <ImageView fx:id="koruImg2" fitHeight="500.0" fitWidth="960.0" layoutY="670.0" preserveRatio="true">
          <image>
             <Image url="@koru2.png" />
          </image>
       </ImageView>
-      <VBox spacing="30.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.rowSpan="2147483647" GridPane.valignment="TOP">
+      <VBox layoutX="100.0" layoutY="120.0" spacing="30.0">
          <children>
             <ToggleButton fx:id="togSpdSlider" mnemonicParsing="false" onAction="#showHideSpeedSlider" prefHeight="35.0" prefWidth="180.0" text="Adjust Speech Speed">
                <font>
@@ -51,15 +37,16 @@
             <Slider fx:id="speechSpeed" blockIncrement="5.0" majorTickUnit="60.0" max="160.0" min="40.0" minorTickCount="11" orientation="VERTICAL" prefHeight="200.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" style="-fx-background-color: #EBEBEB; -fx-font-size: 18.0px;" value="100.0">
                <padding>
                   <Insets left="10.0" />
-               </padding></Slider>
+               </padding>
+            </Slider>
          </children>
       </VBox>
-      <Button fx:id="backBtn" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #EBEBEB;" text="Main Menu" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <Button fx:id="backBtn" layoutX="1070.0" layoutY="120.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #EBEBEB;" text="Main Menu">
          <font>
             <Font name="Heiti TC Medium" size="15.0" />
          </font>
       </Button>
-      <VBox alignment="CENTER" fillWidth="false" spacing="20.0" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowSpan="2147483647" GridPane.valignment="CENTER">
+      <VBox alignment="CENTER" fillWidth="false" layoutX="475.0" layoutY="216.0" spacing="20.0">
          <children>
             <Label fx:id="userScore" textFill="WHITE">
                <font>
@@ -121,7 +108,7 @@
             </VBox>
          </children>
       </VBox>
-      <VBox fx:id="inputVBox2" spacing="40.0" visible="false" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="TOP">
+      <VBox fx:id="inputVBox2" layoutX="830.0" layoutY="250.0" spacing="40.0" visible="false">
          <children>
             <ImageView fx:id="playbackImg" fitHeight="60.0" fitWidth="66.0" onMouseClicked="#speakAgain" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -138,10 +125,10 @@
             </Button>
          </children>
       </VBox>
-      <Button fx:id="startBtn" mnemonicParsing="false" onAction="#startQuiz" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #EBEBEB;" text="Start Quiz" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+      <Button fx:id="startBtn" layoutX="515.0" layoutY="360.0" mnemonicParsing="false" onAction="#startQuiz" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #EBEBEB;" text="Start Quiz">
          <font>
             <Font name="Heiti TC Medium" size="20.0" />
          </font>
       </Button>
    </children>
-</GridPane>
+</AnchorPane>
