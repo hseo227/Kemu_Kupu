@@ -7,43 +7,28 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:id="rootPane" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #000000" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="sample.topicListController">
-    <columnConstraints>
-        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="5.0" prefWidth="100.0" />
-        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="30.0" />
-        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="30.0" prefWidth="100.0" />
-        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="5.0" prefWidth="100.0" />
-    </columnConstraints>
-    <rowConstraints>
-        <RowConstraints percentHeight="15.0" vgrow="SOMETIMES" />
-        <RowConstraints percentHeight="10.0" vgrow="SOMETIMES" />
-        <RowConstraints vgrow="SOMETIMES" />
-        <RowConstraints percentHeight="10.0" vgrow="SOMETIMES" />
-        <RowConstraints percentHeight="15.0" vgrow="SOMETIMES" />
-    </rowConstraints>
-    <children>
-        <Label fx:id="mainLabel" text="Select the topic for your spelling quiz:" textFill="WHITE" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+
+<AnchorPane fx:id="rootPane" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #000;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.topicListController">
+   <children>
+        <Label fx:id="mainLabel" layoutX="100.0" layoutY="120.0" text="Select the topic for your spelling quiz:" textFill="WHITE">
             <font>
                 <Font name="Heiti TC Medium" size="25.0" />
             </font>
         </Label>
-        <Button fx:id="backBtn" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="35.0" prefWidth="110.0" text="Main Menu" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+        <Button fx:id="backBtn" layoutX="1070.0" layoutY="117.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="35.0" prefWidth="110.0" text="Main Menu">
             <font>
                 <Font name="Heiti TC Medium" size="15.0" />
             </font>
         </Button>
-        <Button fx:id="selectBtn" mnemonicParsing="false" onAction="#selectTopic" prefHeight="35.0" prefWidth="80.0" text="Select" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
+        <Button fx:id="selectBtn" layoutX="600.0" layoutY="570.0" mnemonicParsing="false" onAction="#selectTopic" prefHeight="35.0" prefWidth="80.0" text="Select">
             <font>
                 <Font name="Heiti TC Medium" size="15.0" />
             </font>
         </Button>
-        <TableView fx:id="table" style="-fx-font-size: 15.0px;" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="2">
+        <TableView fx:id="table" layoutX="100.0" layoutY="180.0" prefHeight="350.0" prefWidth="1080.0" style="-fx-font-size: 15.0px;">
             <columns>
                 <TableColumn fx:id="topicListColumn" editable="false" prefWidth="-1.0" sortable="false" text="Topic List" />
             </columns>
@@ -51,7 +36,7 @@
                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
             </columnResizePolicy>
         </TableView>
-        <ImageView fx:id="koruImg1" fitHeight="500.0" fitWidth="960.0" preserveRatio="true" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+        <ImageView fx:id="koruImg1" fitHeight="500.0" fitWidth="960.0" preserveRatio="true">
             <image>
                 <Image url="@koru1.png" />
             </image>
@@ -59,7 +44,7 @@
                 <Rectangle2D />
             </viewport>
         </ImageView>
-        <ImageView fx:id="koruImg2" fitHeight="500.0" fitWidth="960.0" preserveRatio="true" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="BOTTOM">
+        <ImageView fx:id="koruImg2" fitHeight="500.0" fitWidth="960.0" layoutY="670.0" preserveRatio="true">
             <image>
                 <Image url="@koru2.png" />
             </image>
@@ -67,10 +52,10 @@
                 <Rectangle2D />
             </viewport>
         </ImageView>
-      <Label text="Note: the default topic will be the first one in the list" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="3">
+      <Label layoutX="723.0" layoutY="577.0" text="Note: the default topic will be the first one on the list" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-    </children>
-</GridPane>
+   </children>
+</AnchorPane>
