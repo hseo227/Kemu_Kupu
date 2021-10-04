@@ -36,9 +36,7 @@ public class quizController implements Initializable {
     @FXML
     private TextField inputField;
     @FXML
-    private Button startBtn, backBtn, macronsA, macronsE, macronsI, macronsO, macronsU, skipBtn, checkBtn;
-    @FXML
-    private ImageView playbackImg;
+    private Button startBtn, backBtn, macronsA, macronsE, macronsI, macronsO, macronsU, skipBtn, checkBtn, playbackBtn;
     @FXML
     private Slider speechSpeed;
     @FXML
@@ -51,10 +49,6 @@ public class quizController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        // The text when the mouse hover on the playback image
-        Tooltip tooltip = new Tooltip("Click to playback");
-        Tooltip.install(playbackImg, tooltip);
     	
     	// reset the score
     	Score.reset();
@@ -237,18 +231,12 @@ public class quizController implements Initializable {
 
     // this method is to pause before each new question, also while pausing it disables the quiz related utilities
     private void pauseBetweenEachQ() {
-        skipBtn.setDisable(true);
-        checkBtn.setDisable(true);
-        macronsBtnsHBox.setDisable(true);
-        inputField.setDisable(true);
-        playbackImg.setDisable(true);
+        inputVBox1.setDisable(true);
+        inputVBox2.setDisable(true);
 
         pause.setOnFinished(e -> {
-            skipBtn.setDisable(false);
-            checkBtn.setDisable(false);
-            macronsBtnsHBox.setDisable(false);
-            inputField.setDisable(false);
-            playbackImg.setDisable(false);
+            inputVBox1.setDisable(false);
+            inputVBox2.setDisable(false);
 
             newQuestion();
         });

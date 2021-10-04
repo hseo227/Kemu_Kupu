@@ -14,24 +14,15 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class mainMenuController implements Initializable {
+public class mainMenuController {
 
     @FXML
     private AnchorPane rootPane;
     @FXML
     private Label mainMenuLabel;
     @FXML
-    private Button practiseModule, gamesModule;
-    @FXML
-    private ImageView quitImg;
+    private Button practiseModule, gamesModule, quitBtn;
 
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        // The text when the mouse hover on the quit image
-        Tooltip tooltip = new Tooltip("Click to quit the game");
-        Tooltip.install(quitImg, tooltip);
-    }
 
     // load New Spelling Quiz
     @FXML

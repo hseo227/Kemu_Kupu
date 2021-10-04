@@ -4,6 +4,7 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -52,13 +53,24 @@
             </HBox>
          </children>
       </VBox>
-      <ImageView fx:id="quitImg" fitHeight="80.0" fitWidth="100.0" layoutX="1101.0" layoutY="550.0" onMouseClicked="#quit" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@quitImg.png" />
-         </image>
+      <Button fx:id="quitBtn" layoutX="1101.0" layoutY="550.0" mnemonicParsing="false" onAction="#quit" style="-fx-background-color: transparent;">
+         <graphic>
+            <ImageView fitHeight="80.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@quitImg.png" />
+               </image>
+            </ImageView>
+         </graphic>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
-      </ImageView>
+         <tooltip>
+            <Tooltip text="Click to quit the game">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Tooltip>
+         </tooltip>
+      </Button>
    </children>
 </AnchorPane>

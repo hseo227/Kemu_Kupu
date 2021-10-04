@@ -7,13 +7,13 @@
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane fx:id="rootPane" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #000;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="sample.quizController">
    <children>
@@ -110,14 +110,25 @@
       </VBox>
       <VBox fx:id="inputVBox2" layoutX="830.0" layoutY="250.0" spacing="40.0" visible="false">
          <children>
-            <ImageView fx:id="playbackImg" fitHeight="60.0" fitWidth="66.0" onMouseClicked="#speakAgain" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@playbackImg.png" />
-               </image>
+            <Button fx:id="playbackBtn" mnemonicParsing="false" onAction="#speakAgain" style="-fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fitHeight="60.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@playbackImg.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
-            </ImageView>
+               <tooltip>
+                  <Tooltip text="Click to playback">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Tooltip>
+               </tooltip>
+            </Button>
             <Button fx:id="checkBtn" mnemonicParsing="false" onAction="#onEnter" prefHeight="35.0" prefWidth="75.0" style="-fx-background-color: #EBEBEB;" text="Check">
                <font>
                   <Font name="Heiti TC Medium" size="15.0" />
