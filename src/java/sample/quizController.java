@@ -107,6 +107,11 @@ public class quizController implements Initializable {
         mainLabel.setStyle("-fx-text-fill: #FFF;");  // change back to white text
         promptLabel.setStyle("-fx-text-fill: #FFF;");  // change back to white text
         inputField.clear();
+
+        // disable playback button for 2 second, avoid the user spam it
+        playbackBtn.setDisable(true);
+        pause.setOnFinished(e -> playbackBtn.setDisable(false));
+        pause.play();
     	
         quiz.setSpeechSpeed((int) speechSpeed.getValue());  // set up speech speed
 
@@ -198,6 +203,11 @@ public class quizController implements Initializable {
 
     @FXML
     private void speakAgain() {
+        // disable playback button for 2 second, avoid the user spam it
+        playbackBtn.setDisable(true);
+        pause.setOnFinished(e -> playbackBtn.setDisable(false));
+        pause.play();
+
         // set up speech speed and then speak
         quiz.setSpeechSpeed((int) speechSpeed.getValue());
         quiz.speakWordAgain();
