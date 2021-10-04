@@ -32,7 +32,7 @@ public class quizController implements Initializable {
     @FXML
     private AnchorPane rootPane;
     @FXML
-    private Label mainLabel, promptLabel, userScore;
+    private Label mainLabel, promptLabel, userScore, macronsHelper;
     @FXML
     private TextField inputField;
     @FXML

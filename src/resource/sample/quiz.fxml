@@ -108,7 +108,7 @@
             </VBox>
          </children>
       </VBox>
-      <VBox fx:id="inputVBox2" layoutX="830.0" layoutY="250.0" spacing="40.0" visible="false">
+      <VBox fx:id="inputVBox2" layoutX="830.0" layoutY="250.0" spacing="30.0" visible="false">
          <children>
             <Button fx:id="playbackBtn" mnemonicParsing="false" onAction="#speakAgain" style="-fx-background-color: transparent;">
                <graphic>
@@ -134,6 +134,25 @@
                   <Font name="Heiti TC Medium" size="15.0" />
                </font>
             </Button>
+            <Label fx:id="macronsHelper">
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@helpImg.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <tooltip>
+                  <Tooltip text="Shortcut: type a vowel followed by '-' (eg: 'a-' → 'ā')">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Tooltip>
+               </tooltip>
+            </Label>
          </children>
       </VBox>
       <Button fx:id="startBtn" layoutX="515.0" layoutY="360.0" mnemonicParsing="false" onAction="#startQuiz" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #EBEBEB;" text="Start Quiz">
