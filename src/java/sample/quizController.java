@@ -219,6 +219,42 @@ public class quizController implements Initializable {
     }
 
     @FXML
+    private void checkMacronShortCut() {
+        String word = inputField.getText();
+        String change = "";
+
+        // check each dash in the word
+        for (int indexOfDash = word.indexOf("-"); indexOfDash >= 0; indexOfDash = word.indexOf("-", indexOfDash + 1)){
+            // if '-' is at first index, ignore it
+            if (indexOfDash != 0) {
+                // check if the character before '-' is a vowel
+                switch (word.charAt(indexOfDash - 1)) {
+                    case 'a':
+                        change = "ā";
+                        break;
+                    case 'e':
+                        change = "ē";
+                        break;
+                    case 'i':
+                        change = "ī";
+                        break;
+                    case 'o':
+                        change = "ō";
+                        break;
+                    case 'u':
+                        change = "ū";
+                        break;
+                    default:
+                        continue;
+                }
+
+                // replace the vowel and '-' with the macron character
+                inputField.replaceText(indexOfDash - 1, indexOfDash + 1, change);
+            }
+        }
+    }
+
+    @FXML
     private void addMacronsCharacter(ActionEvent event) {
         String macronsCharacter = ((Button)event.getSource()).getText();
         inputField.appendText(macronsCharacter);

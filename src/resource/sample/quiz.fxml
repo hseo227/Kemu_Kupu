@@ -65,7 +65,7 @@
             </Label>
             <VBox fx:id="inputVBox1" alignment="CENTER" fillWidth="false" spacing="20.0" visible="false">
                <children>
-                  <TextField fx:id="inputField" onAction="#onEnter" prefHeight="50.0" prefWidth="330.0" promptText="Type Your Answer Here">
+                  <TextField fx:id="inputField" onAction="#onEnter" onKeyTyped="#checkMacronShortCut" prefHeight="50.0" prefWidth="330.0" promptText="Type Your Answer Here">
                      <font>
                         <Font name="Heiti TC Medium" size="15.0" />
                      </font>
@@ -77,22 +77,22 @@
                               <Font name="Heiti TC Medium" size="15.0" />
                            </font>
                         </Button>
-                        <Button fx:id="macronsE" layoutX="92.0" layoutY="47.0" mnemonicParsing="false" onAction="#addMacronsCharacter" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #EBEBEB;" text="ē">
+                        <Button fx:id="macronsE" mnemonicParsing="false" onAction="#addMacronsCharacter" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #EBEBEB;" text="ē">
                            <font>
                               <Font name="Heiti TC Medium" size="15.0" />
                            </font>
                         </Button>
-                        <Button fx:id="macronsI" layoutX="77.0" layoutY="47.0" mnemonicParsing="false" onAction="#addMacronsCharacter" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #EBEBEB;" text="ī">
+                        <Button fx:id="macronsI" mnemonicParsing="false" onAction="#addMacronsCharacter" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #EBEBEB;" text="ī">
                            <font>
                               <Font name="Heiti TC Medium" size="15.0" />
                            </font>
                         </Button>
-                        <Button fx:id="macronsO" layoutX="106.0" layoutY="47.0" mnemonicParsing="false" onAction="#addMacronsCharacter" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #EBEBEB;" text="ō">
+                        <Button fx:id="macronsO" mnemonicParsing="false" onAction="#addMacronsCharacter" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #EBEBEB;" text="ō">
                            <font>
                               <Font name="Heiti TC Medium" size="15.0" />
                            </font>
                         </Button>
-                        <Button fx:id="macronsU" layoutX="135.0" layoutY="47.0" mnemonicParsing="false" onAction="#addMacronsCharacter" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #EBEBEB;" text="ū">
+                        <Button fx:id="macronsU" mnemonicParsing="false" onAction="#addMacronsCharacter" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #EBEBEB;" text="ū">
                            <font>
                               <Font name="Heiti TC Medium" size="15.0" />
                            </font>
