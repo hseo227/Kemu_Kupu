@@ -3,20 +3,25 @@ package sample;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.GridPane;
+import javafx.scene.control.Tooltip;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class mainMenuController {
 
     @FXML
-    private GridPane rootPane;
+    private AnchorPane rootPane;
     @FXML
     private Label mainMenuLabel;
     @FXML
-    private Button gamesModule, quit;
+    private Button practiseModule, gamesModule, quitBtn;
 
 
     // load New Spelling Quiz
@@ -27,7 +32,7 @@ public class mainMenuController {
 
     // Quit the game
     @FXML
-    private void quit(ActionEvent event) {
+    private void quit() {
         Platform.exit();
     }
 

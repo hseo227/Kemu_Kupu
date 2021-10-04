@@ -12,7 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
@@ -30,15 +30,13 @@ public class quizController implements Initializable {
 
 
     @FXML
-    private GridPane rootPane;
+    private AnchorPane rootPane;
     @FXML
     private Label mainLabel, promptLabel, userScore;
     @FXML
     private TextField inputField;
     @FXML
-    private Button startBtn, backBtn, macronsA, macronsE, macronsI, macronsO, macronsU, skipBtn, checkBtn;
-    @FXML
-    private ImageView playbackImg;
+    private Button startBtn, backBtn, macronsA, macronsE, macronsI, macronsO, macronsU, skipBtn, checkBtn, playbackBtn;
     @FXML
     private Slider speechSpeed;
     @FXML
@@ -67,7 +65,7 @@ public class quizController implements Initializable {
                 } else if (n == (speechSpeed.getMin() + speechSpeed.getMax()) / 2) {  // normal speed, in the middle
                     return "Default";
                 } else if (n == speechSpeed.getMax()) {  // fastest speed
-                    return "fast";
+                    return "Fast";
                 }
 
                 return null;
@@ -93,10 +91,6 @@ public class quizController implements Initializable {
         startBtn.setVisible(false);
         inputVBox1.setVisible(true);
         inputVBox2.setVisible(true);
-
-        // The text when the mouse hover on the playback image
-        Tooltip tooltip = new Tooltip("Click to playback");
-        Tooltip.install(playbackImg, tooltip);
 
         newQuestion();
     }
@@ -237,18 +231,12 @@ public class quizController implements Initializable {
 
     // this method is to pause before each new question, also while pausing it disables the quiz related utilities
     private void pauseBetweenEachQ() {
-        skipBtn.setDisable(true);
-        checkBtn.setDisable(true);
-        macronsBtnsHBox.setDisable(true);
-        inputField.setDisable(true);
-        playbackImg.setDisable(true);
+        inputVBox1.setDisable(true);
+        inputVBox2.setDisable(true);
 
         pause.setOnFinished(e -> {
-            skipBtn.setDisable(false);
-            checkBtn.setDisable(false);
-            macronsBtnsHBox.setDisable(false);
-            inputField.setDisable(false);
-            playbackImg.setDisable(false);
+            inputVBox1.setDisable(false);
+            inputVBox2.setDisable(false);
 
             newQuestion();
         });
