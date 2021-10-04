@@ -112,7 +112,7 @@
          <children>
             <ImageView fx:id="playbackImg" fitHeight="60.0" fitWidth="66.0" onMouseClicked="#speakAgain" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@playback.png" />
+                  <Image url="@playbackImg.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />

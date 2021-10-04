@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -10,12 +11,19 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane fx:id="rootPane" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #000;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="sample.mainMenuController">
    <children>
       <ImageView fx:id="koruImg1" fitHeight="500.0" fitWidth="960.0" preserveRatio="true">
          <image>
             <Image url="@koru1.png" />
+         </image>
+         <viewport>
+            <Rectangle2D />
+         </viewport>
+      </ImageView>
+      <ImageView fx:id="koruImg2" fitHeight="500.0" fitWidth="960.0" layoutY="670.0" preserveRatio="true">
+         <image>
+            <Image url="@koru2.png" />
          </image>
          <viewport>
             <Rectangle2D />
@@ -30,12 +38,12 @@
             </Label>
             <HBox alignment="CENTER" spacing="20.0">
                <children>
-                  <Button fx:id="gamesModule" mnemonicParsing="false" onAction="#loadGamesModule" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #EBEBEB;" text="Games Module">
+                  <Button fx:id="practiseModule" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #EBEBEB;" text="Practise Module">
                      <font>
                         <Font name="Heiti TC Light" size="20.0" />
                      </font>
                   </Button>
-                  <Button fx:id="quit" mnemonicParsing="false" onAction="#quit" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #EBEBEB;" text="Quit">
+                  <Button fx:id="gamesModule" mnemonicParsing="false" onAction="#loadGamesModule" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #EBEBEB;" text="Games Module">
                      <font>
                         <Font name="Heiti TC Light" size="20.0" />
                      </font>
@@ -44,13 +52,13 @@
             </HBox>
          </children>
       </VBox>
-      <ImageView fx:id="koruImg2" fitHeight="500.0" fitWidth="960.0" layoutY="670.0" preserveRatio="true">
+      <ImageView fx:id="quitImg" fitHeight="80.0" fitWidth="100.0" layoutX="1101.0" layoutY="550.0" onMouseClicked="#quit" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@koru2.png" />
+            <Image url="@quitImg.png" />
          </image>
-         <viewport>
-            <Rectangle2D />
-         </viewport>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
    </children>
 </AnchorPane>
