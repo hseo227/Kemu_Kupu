@@ -70,7 +70,7 @@
                         <Font name="Heiti TC Medium" size="15.0" />
                      </font>
                   </TextField>
-                  <HBox fx:id="macronsBtnsHBox" alignment="TOP_CENTER" fillHeight="false" spacing="10.0">
+                  <HBox fx:id="macronsBtnsHBox" alignment="TOP_CENTER" fillHeight="false" spacing="38.0">
                      <children>
                         <Button fx:id="macronsA" mnemonicParsing="false" onAction="#addMacronsCharacter" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #EBEBEB;" text="ā">
                            <font>
