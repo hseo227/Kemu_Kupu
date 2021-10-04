@@ -51,6 +51,10 @@ public class quizController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        // The text when the mouse hover on the playback image
+        Tooltip tooltip = new Tooltip("Click to playback");
+        Tooltip.install(playbackImg, tooltip);
     	
     	// reset the score
     	Score.reset();
@@ -93,10 +97,6 @@ public class quizController implements Initializable {
         startBtn.setVisible(false);
         inputVBox1.setVisible(true);
         inputVBox2.setVisible(true);
-
-        // The text when the mouse hover on the playback image
-        Tooltip tooltip = new Tooltip("Click to playback");
-        Tooltip.install(playbackImg, tooltip);
 
         newQuestion();
     }
