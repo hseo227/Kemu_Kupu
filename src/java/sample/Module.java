@@ -17,7 +17,7 @@ enum Result {
     mastered, faulted, failed, skipped
 }
 
-public class SpellingQuiz extends Service<Void> {
+public class Module extends Service<Void> {
     private final int NUMOFQUESTIONS = 5;
     private final static String FESTIVALCMDFILE = ".scm";
 
@@ -39,7 +39,7 @@ public class SpellingQuiz extends Service<Void> {
     }
 
     // Constructor
-    public SpellingQuiz() {
+    public Module() {
         // setting up the words
         words = new Words(selectedTopic, NUMOFQUESTIONS);
 

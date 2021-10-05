@@ -1,7 +1,6 @@
 package sample;
 
 import javafx.animation.PauseTransition;
-import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -10,8 +9,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
-import javafx.scene.control.Tooltip;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -24,7 +21,7 @@ import java.util.ResourceBundle;
 
 public class quizController implements Initializable {
 
-    private SpellingQuiz quiz;
+    private Module quiz;
 
     private final PauseTransition pause = new PauseTransition(Duration.seconds(2));
 
@@ -82,7 +79,7 @@ public class quizController implements Initializable {
     private void startQuiz(ActionEvent event) {
 
         // start a new game, either new spelling quiz or review mistakes
-        quiz = new SpellingQuiz();
+        quiz = new Module();
     	
     	// Display score
     	userScore.setText("SCORE : " + Score.getScore());
