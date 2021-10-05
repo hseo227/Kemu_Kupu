@@ -36,8 +36,8 @@ public class ModulePractise extends Module {
             setQuizState(QuizState.ready);  // set the state to ready for the next question
 
             // setting up the labels' text and speak out the message
-            mainLabelText = incorrectMessage.getEncourageMsg();
-            promptLabelText = "";
+            mainLabelText = "Correct answer: " + currentWord;
+            promptLabelText = "Press 'Enter' or click 'Check' button again to continue";
             speak("Word skipped", "");
 
         // if statement for each result after checking the spelling (input)
@@ -54,7 +54,7 @@ public class ModulePractise extends Module {
 
             // setting up the labels' text and speak out the message
             mainLabelText = tryAgainMessage.getEncourageMsg();
-            promptLabelText = "Hint: second letter is '" + currentWord.charAt(1) + "'";
+            promptLabelText = "Hint: " + words.getHintPractiseModule();
             speak("Incorrect, try once more.", currentWord);
 
         } else {  // 2nd attempt, and it is the second times got it incorrect --> failed
@@ -62,8 +62,8 @@ public class ModulePractise extends Module {
             setQuizState(QuizState.ready);  // set the state to ready for the next question
 
             // setting up the labels' text and speak out the message
-            mainLabelText = incorrectMessage.getEncourageMsg();
-            promptLabelText = "";
+            mainLabelText = "Correct answer: " + currentWord;
+            promptLabelText = "Press 'Enter' or click 'Check' button again to continue";
             speak("Incorrect", "");
         }
     }

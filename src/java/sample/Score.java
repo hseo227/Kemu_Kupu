@@ -26,7 +26,7 @@ public class Score {
 
 	// totalScore getter
 	public static int getTotalScore() {
-		return score;
+		return totalScore;
 	}
 
 	// change totalScore base on the number of questions

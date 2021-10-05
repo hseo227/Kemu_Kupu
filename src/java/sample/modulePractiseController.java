@@ -95,14 +95,20 @@ public class modulePractiseController implements Initializable {
         startVBox.setVisible(false);
         inputVBox1.setVisible(true);
         inputVBox2.setVisible(true);
+        playbackBtn.setVisible(true);
 
         newQuestion();
     }
 
     @FXML
     private void onEnter(ActionEvent event) {
-        // when the user press enter key or press the 'check' button, check spelling
-        checkSpelling();
+        // when the user press enter key or press the 'check' button...
+        if (quiz.quizStateEqualsTo(QuizState.ready)) {
+            skipBtn.setDisable(false);
+            newQuestion();
+        } else {
+            checkSpelling();
+        }
     }
 
     // this method set up the Server thread for quiz.newQuestion and then run it
@@ -154,12 +160,13 @@ public class modulePractiseController implements Initializable {
                 // set userScore label to the current score
                 userScore.setText("SCORE : " + Score.getScore());
 
+                pauseBetweenEachQ();
+
             // incorrect spelling (Failed) OR the word is skipped
             } else {
                 colour = "#FF2715";  // change text colour to red
+                skipBtn.setDisable(true);  // cannot press 'skip' when showing the answer
             }
-
-            pauseBetweenEachQ();
 
         // incorrect spelling (1st attempt)
         } else {

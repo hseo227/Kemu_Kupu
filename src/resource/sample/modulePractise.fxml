@@ -47,14 +47,14 @@
             <Font name="Heiti TC Medium" size="15.0" />
          </font>
       </Button>
-      <VBox alignment="CENTER" fillWidth="false" layoutX="440.0" layoutY="216.0" spacing="20.0">
+      <VBox alignment="CENTER" fillWidth="false" layoutX="240.0" layoutY="216.0" spacing="20.0">
          <children>
             <Label fx:id="userScore" textFill="WHITE">
                <font>
                   <Font name="Heiti TC Medium" size="15.0" />
                </font>
             </Label>
-            <Label fx:id="mainLabel" alignment="CENTER" prefWidth="400.0" text="New Spelling Quiz!" textFill="WHITE">
+            <Label fx:id="mainLabel" alignment="CENTER" prefWidth="800.0" text="New Spelling Quiz!" textFill="WHITE">
                <font>
                   <Font name="Heiti TC Medium" size="30.0" />
                </font>
@@ -114,27 +114,27 @@
             </VBox>
          </children>
       </VBox>
-      <VBox fx:id="inputVBox2" layoutX="830.0" layoutY="250.0" spacing="30.0" visible="false">
+      <Button fx:id="playbackBtn" layoutX="370.0" layoutY="335.0" mnemonicParsing="false" onAction="#speakAgain" style="-fx-background-color: transparent;" visible="false">
+         <graphic>
+            <ImageView fitHeight="60.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@playbackImg.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <tooltip>
+            <Tooltip text="Click to playback">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Tooltip>
+         </tooltip>
+      </Button>
+      <VBox fx:id="inputVBox2" layoutX="850.0" layoutY="350.0" spacing="30.0" visible="false">
          <children>
-            <Button fx:id="playbackBtn" mnemonicParsing="false" onAction="#speakAgain" style="-fx-background-color: transparent;">
-               <graphic>
-                  <ImageView fitHeight="60.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@playbackImg.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <tooltip>
-                  <Tooltip text="Click to playback">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Tooltip>
-               </tooltip>
-            </Button>
             <Button fx:id="checkBtn" mnemonicParsing="false" onAction="#onEnter" prefHeight="35.0" prefWidth="75.0" style="-fx-background-color: #EBEBEB;" text="Check">
                <font>
                   <Font name="Heiti TC Medium" size="15.0" />
@@ -170,7 +170,7 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <ChoiceBox fx:id="numOfQCheckBox" prefHeight="40.0" prefWidth="70.0" />
+                  <ChoiceBox fx:id="numOfQCheckBox" prefHeight="40.0" prefWidth="70.0" style="-fx-font-size: 20;" />
                </children>
             </HBox>
             <Button mnemonicParsing="false" onAction="#startQuiz" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #EBEBEB;" text="Start Quiz">
