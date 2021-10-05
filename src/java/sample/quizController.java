@@ -29,7 +29,7 @@ public class quizController implements Initializable {
     @FXML
     private AnchorPane rootPane;
     @FXML
-    private Label mainLabel, promptLabel, userScore, macronsHelper;
+    private Label mainLabel, promptLabel, userScore, macronsHelper, numOfLettersLabel;
     @FXML
     private TextField inputField;
     @FXML
@@ -116,6 +116,7 @@ public class quizController implements Initializable {
         // if the quiz is not finished, continue the game (return true), otherwise false
         if (quiz.newQuestion()) {
             updateLabels("#FFF");  // update the labels with colour white
+            numOfLettersLabel.setText("Number of letters of the word is " + quiz.getNumOfLettersOfWord());
 
         } else {
             // if the game is finished, go to reward screen

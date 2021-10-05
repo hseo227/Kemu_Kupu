@@ -168,4 +168,9 @@ public abstract class Module {
         return promptLabelText;
     }
 
+    // get number of letters of the current word
+    public int getNumOfLettersOfWord() {
+        return words.getNumOfLettersOfWord();
+    }
+
 }

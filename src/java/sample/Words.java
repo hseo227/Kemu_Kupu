@@ -68,4 +68,16 @@ public class Words {
     public boolean checkUserSpelling(String userSpelling) {
         return currentWord.trim().equalsIgnoreCase(userSpelling.trim());
     }
+
+    // this function return the number of letters of the current word
+    public int getNumOfLettersOfWord() {
+        int count = 0;
+
+        for (char i : currentWord.toCharArray()) {
+            if (Character.isLetter(i)) {
+                count++;
+            }
+        }
+        return count;
+    }
 }
