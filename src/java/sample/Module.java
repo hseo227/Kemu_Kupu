@@ -7,7 +7,7 @@ import java.io.PrintWriter;
 
 
 enum ModuleType {
-    practise, game
+    practise, games
 }
 
 enum QuizState {
@@ -26,6 +26,7 @@ public abstract class Module {
     protected String currentWord, mainLabelText, promptLabelText, userInput;
     protected QuizState currentQuizState;
     protected Result currentResult;
+    protected static ModuleType moduleType;
     protected static String selectedTopic;
     protected final Words words;
     protected encouragingMessage correctMessage, incorrectMessage, tryAgainMessage;
@@ -101,7 +102,7 @@ public abstract class Module {
         currentQuizState = newQuizState;
     }
 
-    protected QuizState getQuizState() {
+    private QuizState getQuizState() {
         return currentQuizState;
     }
 
@@ -114,12 +115,25 @@ public abstract class Module {
         currentResult = newResult;
     }
 
-    protected Result getResult() {
+    private Result getResult() {
         return currentResult;
     }
 
     public boolean resultEqualsTo(Result result) {
         return getResult() == result;
+    }
+
+    // moduleType's getter, setter and equals to
+    public static void setModuleType(ModuleType newModuleType) {
+        moduleType = newModuleType;
+    }
+
+    private static ModuleType getModuleType() {
+        return moduleType;
+    }
+
+    public static boolean moduleTypeEqualsTo(ModuleType newModuleType) {
+        return getModuleType() == newModuleType;
     }
 
     // userInput's getter and setter

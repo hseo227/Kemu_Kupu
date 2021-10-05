@@ -32,7 +32,7 @@
             </Label>
             <HBox alignment="CENTER" spacing="20.0">
                <children>
-                  <Button fx:id="practiseModule" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #EBEBEB;" text="Practise Module">
+                  <Button fx:id="practiseModule" mnemonicParsing="false" onAction="#loadPractiseModule" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #EBEBEB;" text="Practise Module">
                      <font>
                         <Font name="Heiti TC Light" size="20.0" />
                      </font>

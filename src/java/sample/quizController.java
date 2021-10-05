@@ -78,8 +78,12 @@ public class quizController implements Initializable {
     @FXML
     private void startQuiz(ActionEvent event) {
 
-        // start a new game, either new spelling quiz or review mistakes
-        quiz = new GameModule();
+        // start a new game, either practise or games module
+        if (Module.moduleTypeEqualsTo(ModuleType.practise)) {
+            quiz = new PractiseModule();
+        } else {
+            quiz = new GamesModule();
+        }
     	
     	// Display score
     	userScore.setText("SCORE : " + Score.getScore());
