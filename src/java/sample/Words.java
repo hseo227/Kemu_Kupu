@@ -75,7 +75,7 @@ public class Words {
         selectedTopic = topic;
     }
 
-    // this function return the number of letters of the current word
+    // this function return the number of letters of the current word, excluding space and comma
     public int getNumOfLettersOfWord() {
         int count = 0;
 
@@ -111,8 +111,8 @@ public class Words {
     // hint for the current word, only for practise module
     public String getHintPractiseModule() {
 
-        // number of letters hints depends on the size of the current word
-        int numOfLettersHints = (int) Math.ceil((double) currentWord.length() / 4);
+        // number of letters hints depends on the size of the current word, excluding space and comma
+        int numOfLettersHints = (int) Math.ceil((double) getNumOfLettersOfWord() / 4);
 
         ArrayList<Integer> indexesOfHints = new ArrayList<>();
         StringBuilder hint = new StringBuilder();
@@ -124,14 +124,14 @@ public class Words {
             // loop until get a different index
             do {
                 randIndex = rand.nextInt(currentWord.length());
-            } while (indexesOfHints.contains(randIndex));
+            } while (indexesOfHints.contains(randIndex) || !Character.isLetter(currentWord.charAt(randIndex)));
 
             indexesOfHints.add(randIndex);
         }
 
         // now build the hint
         for (int i = 0; i < currentWord.length(); i++) {
-            if (indexesOfHints.contains(i)) {
+            if (indexesOfHints.contains(i) || !Character.isLetter(currentWord.charAt(i))) {
                 hint.append(currentWord.charAt(i));  // this is the letter hint
             } else {
                 hint.append("_ ");  // blank, let the user to guess it
