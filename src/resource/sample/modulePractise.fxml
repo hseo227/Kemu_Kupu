@@ -114,7 +114,7 @@
             </VBox>
          </children>
       </VBox>
-      <Button fx:id="playbackBtn" layoutX="370.0" layoutY="335.0" mnemonicParsing="false" onAction="#speakAgain" style="-fx-background-color: transparent;">
+      <Button fx:id="playbackBtn" layoutX="370.0" layoutY="335.0" mnemonicParsing="false" onAction="#speakAgain" style="-fx-background-color: transparent;" visible="false">
          <graphic>
             <ImageView fitHeight="60.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -133,7 +133,7 @@
             </Tooltip>
          </tooltip>
       </Button>
-      <VBox fx:id="inputVBox2" layoutX="850.0" layoutY="345.0" spacing="30.0" visible="false">
+      <VBox fx:id="inputVBox2" layoutX="850.0" layoutY="350.0" spacing="30.0" visible="false">
          <children>
             <Button fx:id="checkBtn" mnemonicParsing="false" onAction="#onEnter" prefHeight="35.0" prefWidth="75.0" style="-fx-background-color: #EBEBEB;" text="Check">
                <font>

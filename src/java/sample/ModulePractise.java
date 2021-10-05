@@ -36,8 +36,8 @@ public class ModulePractise extends Module {
             setQuizState(QuizState.ready);  // set the state to ready for the next question
 
             // setting up the labels' text and speak out the message
-            mainLabelText = incorrectMessage.getEncourageMsg();
-            promptLabelText = "";
+            mainLabelText = "Correct answer: " + currentWord;
+            promptLabelText = "Press 'Enter' or click 'Check' button again to continue";
             speak("Word skipped", "");
 
         // if statement for each result after checking the spelling (input)
@@ -62,8 +62,8 @@ public class ModulePractise extends Module {
             setQuizState(QuizState.ready);  // set the state to ready for the next question
 
             // setting up the labels' text and speak out the message
-            mainLabelText = incorrectMessage.getEncourageMsg();
-            promptLabelText = "";
+            mainLabelText = "Correct answer: " + currentWord;
+            promptLabelText = "Press 'Enter' or click 'Check' button again to continue";
             speak("Incorrect", "");
         }
     }
