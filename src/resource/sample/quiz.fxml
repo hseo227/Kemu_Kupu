@@ -46,14 +46,14 @@
             <Font name="Heiti TC Medium" size="15.0" />
          </font>
       </Button>
-      <VBox alignment="CENTER" fillWidth="false" layoutX="475.0" layoutY="216.0" spacing="20.0">
+      <VBox alignment="CENTER" fillWidth="false" layoutX="440.0" layoutY="216.0" spacing="20.0">
          <children>
             <Label fx:id="userScore" textFill="WHITE">
                <font>
                   <Font name="Heiti TC Medium" size="15.0" />
                </font>
             </Label>
-            <Label fx:id="mainLabel" text="New Spelling Quiz!" textFill="WHITE">
+            <Label fx:id="mainLabel" alignment="CENTER" prefWidth="400.0" text="New Spelling Quiz!" textFill="WHITE">
                <font>
                   <Font name="Heiti TC Medium" size="30.0" />
                </font>
