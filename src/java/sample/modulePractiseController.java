@@ -17,7 +17,7 @@ import java.util.ResourceBundle;
 
 public class modulePractiseController implements Initializable {
 
-    private Module quiz;
+    private ModulePractise quiz;
 
     private final PauseTransition pause = new PauseTransition(Duration.seconds(2));
 
@@ -29,23 +29,34 @@ public class modulePractiseController implements Initializable {
     @FXML
     private TextField inputField;
     @FXML
-    private Button startBtn, backBtn, macronsA, macronsE, macronsI, macronsO, macronsU, skipBtn, checkBtn, playbackBtn;
+    private Button backBtn, macronsA, macronsE, macronsI, macronsO, macronsU, skipBtn, checkBtn, playbackBtn;
     @FXML
     private Slider speechSpeed;
     @FXML
     private ToggleButton togSpdSlider;
     @FXML
+    private ChoiceBox<Integer> numOfQCheckBox;
+    @FXML
     private HBox macronsBtnsHBox;
     @FXML
-    private VBox inputVBox1, inputVBox2;
+    private VBox inputVBox1, inputVBox2, startVBox;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-    	
-    	// reset the score
+
+        // add check box from 1 to number of words in the words list, maximum is 10
+        for (int i = 1; i <= Math.min(Words.getNumOfWordsInWordsList(), 10); i++) {
+            numOfQCheckBox.getItems().add(i);
+        }
+        // set default number to 3
+        numOfQCheckBox.setValue(3);
+
+        // reset the score
     	Score.reset();
-    	
+
+
+        // Set up for speed slider
         // hide the slider
         speechSpeed.setVisible(togSpdSlider.isSelected());
 
@@ -74,14 +85,14 @@ public class modulePractiseController implements Initializable {
     @FXML
     private void startQuiz(ActionEvent event) {
 
-        // start a new game
-        quiz = new ModulePractise();
-    	
+        // start a new game with specific number of questions
+        quiz = new ModulePractise(numOfQCheckBox.getValue());
+
     	// Display score
     	userScore.setText("SCORE : " + Score.getScore());
 
         // otherwise, continue the game
-        startBtn.setVisible(false);
+        startVBox.setVisible(false);
         inputVBox1.setVisible(true);
         inputVBox2.setVisible(true);
 
