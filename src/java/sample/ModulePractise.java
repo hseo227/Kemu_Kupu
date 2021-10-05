@@ -54,7 +54,7 @@ public class ModulePractise extends Module {
 
             // setting up the labels' text and speak out the message
             mainLabelText = tryAgainMessage.getEncourageMsg();
-            promptLabelText = "Hint: second letter is '" + currentWord.charAt(1) + "'";
+            promptLabelText = "Hint: " + words.getHintPractiseModule();
             speak("Incorrect, try once more.", currentWord);
 
         } else {  // 2nd attempt, and it is the second times got it incorrect --> failed

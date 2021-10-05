@@ -134,7 +134,7 @@ public class Words {
             if (indexesOfHints.contains(i)) {
                 hint.append(currentWord.charAt(i));  // this is the letter hint
             } else {
-                hint.append("_");  // blank, let the user to guess it
+                hint.append("_ ");  // blank, let the user to guess it
             }
         }
 
