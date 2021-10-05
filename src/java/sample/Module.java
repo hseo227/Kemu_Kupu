@@ -54,6 +54,9 @@ public abstract class Module {
         setUserInput("");
         setQuizState(QuizState.ready);
         setResult(Result.mastered);
+
+        // update the the total score
+        Score.changeTotalScore(numOfQuestions);
     }
 
     // this function generate a new word and then ask the user

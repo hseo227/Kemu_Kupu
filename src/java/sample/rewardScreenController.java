@@ -22,7 +22,7 @@ public class rewardScreenController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        userScoreLabel.setText(Score.getScore() + " OUT OF 100");
+        userScoreLabel.setText(Score.getScore() + " OUT OF " + Score.getTotalScore());
     }
     
     @FXML
