@@ -83,7 +83,11 @@ public class topicListController implements Initializable {
         }
 
         // after the topic is selected, time to do the quiz
-        SceneController.goToQuiz();
+        if (Module.moduleTypeEqualsTo(ModuleType.practise)) {
+            SceneController.goToPractiseModule();
+        } else {
+            SceneController.goToGamesModule();
+        }
     }
     
     @FXML

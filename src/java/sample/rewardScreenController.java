@@ -27,7 +27,11 @@ public class rewardScreenController implements Initializable {
     
     @FXML
     private void newQuiz(ActionEvent event) throws IOException {
-    	SceneController.goToQuiz();
+        if (Module.moduleTypeEqualsTo(ModuleType.practise)) {
+            SceneController.goToPractiseModule();
+        } else {
+            SceneController.goToGamesModule();
+        }
     }
 
     @FXML

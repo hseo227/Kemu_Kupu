@@ -11,7 +11,8 @@ public class SceneController {
 
     private static final String mainMenuFXML = "mainMenu.fxml";
     private static final String topicListFXML = "topicList.fxml";
-    private static final String quizFXML = "module.fxml";
+    private static final String practiseFXML = "modulePractise.fxml";
+    private static final String gamesFXML = "moduleGames.fxml";
     private static final String rewardScreenFXML = "rewardScreen.fxml";
 
 
@@ -27,8 +28,12 @@ public class SceneController {
         changeScene(topicListFXML);
     }
 
-    public static void goToQuiz() throws IOException {
-        changeScene(quizFXML);
+    public static void goToPractiseModule() throws IOException {
+        changeScene(practiseFXML);
+    }
+
+    public static void goToGamesModule() throws IOException {
+        changeScene(gamesFXML);
     }
     
     public static void goToRewardScreen() throws IOException {
