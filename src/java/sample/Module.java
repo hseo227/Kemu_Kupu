@@ -1,8 +1,5 @@
 package sample;
 
-import javafx.concurrent.Service;
-import javafx.concurrent.Task;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -21,18 +18,17 @@ enum Result {
     mastered, faulted, failed, skipped
 }
 
-public abstract class Module extends Service<Void> {
-    private final int NUMOFQUESTIONS = 5;
+public abstract class Module {
     private final static String FESTIVALCMDFILE = ".scm";
 
 
-    private int currentIndex, speechSpeed;
-    private String currentWord, mainLabelText, promptLabelText, userInput;
-    private QuizState currentQuizState;
-    private Result currentResult;
-    private static String selectedTopic;
-    private final Words words;
-    private encouragingMessage correctMessage, incorrectMessage, tryAgainMessage;
+    protected int currentIndex, speechSpeed;
+    protected String currentWord, mainLabelText, promptLabelText, userInput;
+    protected QuizState currentQuizState;
+    protected Result currentResult;
+    protected static String selectedTopic;
+    protected final Words words;
+    protected encouragingMessage correctMessage, incorrectMessage, tryAgainMessage;
 
 
     // this method will only run once and will run at the start of the program
@@ -43,9 +39,9 @@ public abstract class Module extends Service<Void> {
     }
 
     // Constructor
-    public Module() {
+    public Module(int numOfQuestions) {
         // setting up the words
-        words = new Words(selectedTopic, NUMOFQUESTIONS);
+        words = new Words(selectedTopic, numOfQuestions);
 
         correctMessage = new encouragingMessage("Correct");
         incorrectMessage = new encouragingMessage("Incorrect");
@@ -59,31 +55,6 @@ public abstract class Module extends Service<Void> {
         setResult(Result.mastered);
     }
 
-    // this method is invoked by the Server thread
-    // this method will then call either newQuestion() or checkSpelling() depends on the QuizState
-    @Override
-    protected Task<Void> createTask() {
-        return new Task<Void>() {
-            @Override
-            protected Void call() throws Exception {
-                // if the quiz state is ready for the next question, then generate next question
-                if (quizStateEqualsTo(QuizState.ready)) {
-                    newQuestion();
-
-                // otherwise, check the spelling
-                } else {
-                    checkSpelling();
-                }
-
-                // Title = main label;  Message = prompt label
-                // update the text in mainLabel and promptLabel
-                updateTitle(mainLabelText);
-                updateMessage(promptLabelText);
-                return null;
-            }
-        };
-    }
-
     // this function generate a new word and then ask the user
     protected abstract void newQuestion();
 
@@ -91,7 +62,7 @@ public abstract class Module extends Service<Void> {
     protected abstract void checkSpelling();
 
     // this function will speak out the message using bash and festival scm
-    private void speak(String englishMessage, String maoriMessage) {
+    protected void speak(String englishMessage, String maoriMessage) {
         try {
             // write the festival command into .scm file
             PrintWriter writeFile = new PrintWriter(new FileWriter(FESTIVALCMDFILE));
@@ -126,11 +97,11 @@ public abstract class Module extends Service<Void> {
     }
 
     // QuizState's getter, setter and equals to
-    private void setQuizState(QuizState newQuizState) {
+    protected void setQuizState(QuizState newQuizState) {
         currentQuizState = newQuizState;
     }
 
-    private QuizState getQuizState() {
+    protected QuizState getQuizState() {
         return currentQuizState;
     }
 
@@ -143,7 +114,7 @@ public abstract class Module extends Service<Void> {
         currentResult = newResult;
     }
 
-    private Result getResult() {
+    protected Result getResult() {
         return currentResult;
     }
 
@@ -156,7 +127,7 @@ public abstract class Module extends Service<Void> {
         userInput = newUserInput;
     }
 
-    private String getUserInput() {
+    protected String getUserInput() {
         return userInput;
     }
 
@@ -168,6 +139,16 @@ public abstract class Module extends Service<Void> {
     // speechSpeed's setter
     public void setSpeechSpeed(int speed) {
         speechSpeed = speed;
+    }
+
+    // mainLabelText's getter
+    public String getMainLabelText() {
+        return mainLabelText;
+    }
+
+    // promptLabelText's getter
+    public String getPromptLabelText() {
+        return promptLabelText;
     }
 
 }
