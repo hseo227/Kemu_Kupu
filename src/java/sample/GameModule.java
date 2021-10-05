@@ -9,15 +9,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 
-enum QuizState {
-    ready, running, finished
-}
-
-enum Result {
-    mastered, faulted, failed, skipped
-}
-
-public class GameModule extends Service<Void> {
+public class GameModule extends Module {
     private final int NUMOFQUESTIONS = 5;
     private final static String FESTIVALCMDFILE = ".scm";
 
@@ -81,7 +73,7 @@ public class GameModule extends Service<Void> {
     }
 
     // this function generate a new word and then ask the user
-    private void newQuestion() {
+    protected void newQuestion() {
         if (currentIndex == NUMOFQUESTIONS) {  // the quiz is finished
             setQuizState(QuizState.finished);
             return;
@@ -101,7 +93,7 @@ public class GameModule extends Service<Void> {
     }
 
     // this function check the spelling (input) and then set up a range of stuff
-    private void checkSpelling() {
+    protected void checkSpelling() {
         // first check if the word is skipped
         if (resultEqualsTo(Result.skipped)) {
             setQuizState(QuizState.ready);  // set the state to ready for the next question

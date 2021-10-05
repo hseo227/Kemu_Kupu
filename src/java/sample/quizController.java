@@ -79,7 +79,7 @@ public class quizController implements Initializable {
     private void startQuiz(ActionEvent event) {
 
         // start a new game, either new spelling quiz or review mistakes
-        quiz = new Module();
+        quiz = new GameModule();
     	
     	// Display score
     	userScore.setText("SCORE : " + Score.getScore());
