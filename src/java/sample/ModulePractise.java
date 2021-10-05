@@ -1,10 +1,9 @@
 package sample;
 
-
-public class PractiseModule extends Module {
+public class ModulePractise extends Module {
     private static final int NUMOFQUESTIONS = 2;
 
-    public PractiseModule() {
+    public ModulePractise() {
         super(NUMOFQUESTIONS);
     }
 

@@ -11,7 +11,7 @@ public class SceneController {
 
     private static final String mainMenuFXML = "mainMenu.fxml";
     private static final String topicListFXML = "topicList.fxml";
-    private static final String quizFXML = "quiz.fxml";
+    private static final String quizFXML = "module.fxml";
     private static final String rewardScreenFXML = "rewardScreen.fxml";
 
 

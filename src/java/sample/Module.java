@@ -54,6 +54,9 @@ public abstract class Module {
         setUserInput("");
         setQuizState(QuizState.ready);
         setResult(Result.mastered);
+
+        // update the the total score
+        Score.changeTotalScore(numOfQuestions);
     }
 
     // this function generate a new word and then ask the user
@@ -163,6 +166,11 @@ public abstract class Module {
     // promptLabelText's getter
     public String getPromptLabelText() {
         return promptLabelText;
+    }
+
+    // get number of letters of the current word
+    public int getNumOfLettersOfWord() {
+        return words.getNumOfLettersOfWord();
     }
 
 }
