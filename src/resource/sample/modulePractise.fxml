@@ -170,7 +170,7 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <ChoiceBox fx:id="numOfQ" prefHeight="40.0" prefWidth="70.0" />
+                  <ChoiceBox fx:id="numOfQCheckBox" prefHeight="40.0" prefWidth="70.0" />
                </children>
             </HBox>
             <Button mnemonicParsing="false" onAction="#startQuiz" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #EBEBEB;" text="Start Quiz">

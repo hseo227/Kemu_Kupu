@@ -21,7 +21,7 @@ import java.util.ResourceBundle;
 
 public class moduleGamesController implements Initializable {
 
-    private Module quiz;
+    private ModuleGames quiz;
 
     private final PauseTransition pause = new PauseTransition(Duration.seconds(2));
 

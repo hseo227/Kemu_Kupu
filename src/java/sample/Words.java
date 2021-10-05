@@ -10,9 +10,10 @@ public class Words {
     private int currentIndex;
     private String currentWord;  // the word that is currently testing
     private final String[] wordsList;  // words that will be tested on
+    private static String selectedTopic;
 
 
-    public Words(String selectedTopic, int numOfQuestions) {
+    public Words(int numOfQuestions) {
         currentIndex = 0;
         currentWord = "";
         
@@ -78,6 +79,32 @@ public class Words {
                 count++;
             }
         }
+        return count;
+    }
+
+    // selectedTopic's setter
+    public static void setTopic(String topic) {
+        selectedTopic = topic;
+    }
+
+    // this function return the the number of words (lines) in the files
+    public static int getNumOfWordsInWordsList() {
+        String fileName = "words/" + selectedTopic;
+        int count = 0;
+
+        try {
+            BufferedReader readFile = new BufferedReader(new FileReader(fileName));
+
+            // count the lines
+            while ((readFile.readLine()) != null) {
+                count++;
+            }
+            readFile.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         return count;
     }
 }

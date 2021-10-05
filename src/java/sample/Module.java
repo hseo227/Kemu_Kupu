@@ -27,7 +27,6 @@ public abstract class Module {
     protected QuizState currentQuizState;
     protected Result currentResult;
     protected static ModuleType moduleType;
-    protected static String selectedTopic;
     protected final Words words;
     protected encouragingMessage correctMessage, incorrectMessage, tryAgainMessage;
 
@@ -42,7 +41,7 @@ public abstract class Module {
     // Constructor
     public Module(int numOfQuestions) {
         // setting up the words
-        words = new Words(selectedTopic, numOfQuestions);
+        words = new Words(numOfQuestions);
 
         correctMessage = new encouragingMessage("Correct");
         incorrectMessage = new encouragingMessage("Incorrect");
@@ -146,11 +145,6 @@ public abstract class Module {
 
     protected String getUserInput() {
         return userInput;
-    }
-
-    // selectedTopic's setter
-    public static void setTopic(String topic) {
-        selectedTopic = topic;
     }
 
     // speechSpeed's setter

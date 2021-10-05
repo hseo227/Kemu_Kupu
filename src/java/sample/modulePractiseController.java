@@ -17,7 +17,7 @@ import java.util.ResourceBundle;
 
 public class modulePractiseController implements Initializable {
 
-    private Module quiz;
+    private ModulePractise quiz;
 
     private final PauseTransition pause = new PauseTransition(Duration.seconds(2));
 
@@ -35,7 +35,7 @@ public class modulePractiseController implements Initializable {
     @FXML
     private ToggleButton togSpdSlider;
     @FXML
-    private ChoiceBox<Integer> numOfQ;
+    private ChoiceBox<Integer> numOfQCheckBox;
     @FXML
     private HBox macronsBtnsHBox;
     @FXML
@@ -45,9 +45,16 @@ public class modulePractiseController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        // add check box from 1 to number of words in the words list, maximum is 10
+        for (int i = 1; i <= Math.min(Words.getNumOfWordsInWordsList(), 10); i++) {
+            numOfQCheckBox.getItems().add(i);
+        }
+
         // reset the score
     	Score.reset();
 
+
+        // Set up for speed slider
         // hide the slider
         speechSpeed.setVisible(togSpdSlider.isSelected());
 
