@@ -9,10 +9,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 
-enum ModuleType {
-    practise, game
-}
-
 enum QuizState {
     ready, running, finished
 }
@@ -21,7 +17,7 @@ enum Result {
     mastered, faulted, failed, skipped
 }
 
-public class Module extends Service<Void> {
+public class PractiseModule extends Service<Void> {
     private final int NUMOFQUESTIONS = 5;
     private final static String FESTIVALCMDFILE = ".scm";
 
