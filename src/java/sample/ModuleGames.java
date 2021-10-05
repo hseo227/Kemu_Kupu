@@ -1,9 +1,9 @@
 package sample;
 
-public class GamesModule extends Module {
+public class ModuleGames extends Module {
     private static final int NUMOFQUESTIONS = 5;
 
-    public GamesModule() {
+    public ModuleGames() {
         super(NUMOFQUESTIONS);
     }
 

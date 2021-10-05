@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class quizController implements Initializable {
+public class moduleController implements Initializable {
 
     private Module quiz;
 
@@ -80,9 +80,9 @@ public class quizController implements Initializable {
 
         // start a new game, either practise or games module
         if (Module.moduleTypeEqualsTo(ModuleType.practise)) {
-            quiz = new PractiseModule();
+            quiz = new ModulePractise();
         } else {
-            quiz = new GamesModule();
+            quiz = new ModuleGames();
         }
     	
     	// Display score
