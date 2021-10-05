@@ -9,10 +9,10 @@ public class PractiseModule extends Module {
     }
 
     // this function generate a new word and then ask the user
-    protected void newQuestion() {
+    // return true, if the quiz is not finished | return false, if the quiz is finished
+    protected boolean newQuestion() {
         if (currentIndex == NUMOFQUESTIONS) {  // the quiz is finished
-            setQuizState(QuizState.finished);
-            return;
+            return false;
         }
 
         setQuizState(QuizState.running);  // now set the state to running
@@ -26,6 +26,7 @@ public class PractiseModule extends Module {
         promptLabelText = "";
         speak("Please spell", currentWord);
 
+        return true;
     }
 
     // this function check the spelling (input) and then set up a range of stuff

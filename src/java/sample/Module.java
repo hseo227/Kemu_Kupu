@@ -11,7 +11,7 @@ enum ModuleType {
 }
 
 enum QuizState {
-    ready, running, finished
+    ready, running
 }
 
 enum Result {
@@ -56,7 +56,7 @@ public abstract class Module {
     }
 
     // this function generate a new word and then ask the user
-    protected abstract void newQuestion();
+    protected abstract boolean newQuestion();
 
     // this function check the spelling (input) and then set up a range of stuff
     protected abstract void checkSpelling();
