@@ -49,6 +49,8 @@ public class modulePractiseController implements Initializable {
         for (int i = 1; i <= Math.min(Words.getNumOfWordsInWordsList(), 10); i++) {
             numOfQCheckBox.getItems().add(i);
         }
+        // set default number to 3
+        numOfQCheckBox.setValue(3);
 
         // reset the score
     	Score.reset();
@@ -83,8 +85,8 @@ public class modulePractiseController implements Initializable {
     @FXML
     private void startQuiz(ActionEvent event) {
 
-        // start a new game
-        quiz = new ModulePractise();
+        // start a new game with specific number of questions
+        quiz = new ModulePractise(numOfQCheckBox.getValue());
 
     	// Display score
     	userScore.setText("SCORE : " + Score.getScore());

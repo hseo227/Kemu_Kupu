@@ -1,10 +1,11 @@
 package sample;
 
 public class ModulePractise extends Module {
-    private static final int NUMOFQUESTIONS = 2;
+    private final int NUMOFQUESTIONS;
 
-    public ModulePractise() {
-        super(NUMOFQUESTIONS);
+    public ModulePractise(int numOfQuestions) {
+        super(numOfQuestions);
+        NUMOFQUESTIONS = numOfQuestions;
     }
 
     // this function generate a new word and then ask the user
