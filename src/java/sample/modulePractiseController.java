@@ -260,10 +260,12 @@ public class modulePractiseController implements Initializable {
     private void pauseBetweenEachQ() {
         inputVBox1.setDisable(true);
         inputVBox2.setDisable(true);
+        playbackBtn.setDisable(true);
 
         pause.setOnFinished(e -> {
             inputVBox1.setDisable(false);
             inputVBox2.setDisable(false);
+            playbackBtn.setDisable(false);
 
             newQuestion();
         });
