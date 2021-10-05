@@ -70,6 +70,11 @@ public class Words {
         return currentWord.trim().equalsIgnoreCase(userSpelling.trim());
     }
 
+    // selectedTopic's setter
+    public static void setTopic(String topic) {
+        selectedTopic = topic;
+    }
+
     // this function return the number of letters of the current word
     public int getNumOfLettersOfWord() {
         int count = 0;
@@ -80,11 +85,6 @@ public class Words {
             }
         }
         return count;
-    }
-
-    // selectedTopic's setter
-    public static void setTopic(String topic) {
-        selectedTopic = topic;
     }
 
     // this function return the the number of words (lines) in the files
@@ -106,5 +106,38 @@ public class Words {
         }
 
         return count;
+    }
+
+    // hint for the current word, only for practise module
+    public String getHintPractiseModule() {
+
+        // number of letters hints depends on the size of the current word
+        int numOfLettersHints = (int) Math.ceil((double) currentWord.length() / 4);
+
+        ArrayList<Integer> indexesOfHints = new ArrayList<>();
+        StringBuilder hint = new StringBuilder();
+        Random rand = new Random();
+        int randIndex;
+
+        // get the random index of letter in the word (index of the hint)
+        for (int i = 0; i < numOfLettersHints; i++) {
+            // loop until get a different index
+            do {
+                randIndex = rand.nextInt(currentWord.length());
+            } while (indexesOfHints.contains(randIndex));
+
+            indexesOfHints.add(randIndex);
+        }
+
+        // now build the hint
+        for (int i = 0; i < currentWord.length(); i++) {
+            if (indexesOfHints.contains(i)) {
+                hint.append(currentWord.charAt(i));  // this is the letter hint
+            } else {
+                hint.append("_");  // blank, let the user to guess it
+            }
+        }
+
+        return hint.toString();
     }
 }
