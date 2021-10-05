@@ -29,23 +29,25 @@ public class modulePractiseController implements Initializable {
     @FXML
     private TextField inputField;
     @FXML
-    private Button startBtn, backBtn, macronsA, macronsE, macronsI, macronsO, macronsU, skipBtn, checkBtn, playbackBtn;
+    private Button backBtn, macronsA, macronsE, macronsI, macronsO, macronsU, skipBtn, checkBtn, playbackBtn;
     @FXML
     private Slider speechSpeed;
     @FXML
     private ToggleButton togSpdSlider;
     @FXML
+    private ChoiceBox<Integer> numOfQ;
+    @FXML
     private HBox macronsBtnsHBox;
     @FXML
-    private VBox inputVBox1, inputVBox2;
+    private VBox inputVBox1, inputVBox2, startVBox;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-    	
-    	// reset the score
+
+        // reset the score
     	Score.reset();
-    	
+
         // hide the slider
         speechSpeed.setVisible(togSpdSlider.isSelected());
 
@@ -76,12 +78,12 @@ public class modulePractiseController implements Initializable {
 
         // start a new game
         quiz = new ModulePractise();
-    	
+
     	// Display score
     	userScore.setText("SCORE : " + Score.getScore());
 
         // otherwise, continue the game
-        startBtn.setVisible(false);
+        startVBox.setVisible(false);
         inputVBox1.setVisible(true);
         inputVBox2.setVisible(true);
 
