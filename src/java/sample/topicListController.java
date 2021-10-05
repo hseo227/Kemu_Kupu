@@ -75,11 +75,11 @@ public class topicListController implements Initializable {
         try {
             // if the user selected a topic, then it will continue, otherwise it will throw an exception
             Topic selectedTopic = table.getSelectionModel().getSelectedItem();
-            SpellingQuiz.setTopic(selectedTopic.getName());
+            Module.setTopic(selectedTopic.getName());
 
         } catch (Exception e) {
             // if no topic is selected, then the default topic (1st topic) is selected
-            SpellingQuiz.setTopic(topicList.get(0).getName());
+            Module.setTopic(topicList.get(0).getName());
         }
 
         // after the topic is selected, time to do the quiz

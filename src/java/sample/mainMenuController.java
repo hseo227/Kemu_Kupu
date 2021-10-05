@@ -3,16 +3,11 @@ package sample;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.Tooltip;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public class mainMenuController {
 
@@ -24,9 +19,17 @@ public class mainMenuController {
     private Button practiseModule, gamesModule, quitBtn;
 
 
-    // load New Spelling Quiz
+    // load Practise Module
+    @FXML
+    private void loadPractiseModule(ActionEvent event) throws IOException {
+        Module.setModuleType(ModuleType.practise);
+        SceneController.goToTopicList();
+    }
+
+    // load Games Module
     @FXML
     private void loadGamesModule(ActionEvent event) throws IOException {
+        Module.setModuleType(ModuleType.games);
         SceneController.goToTopicList();
     }
 

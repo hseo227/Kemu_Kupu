@@ -1,7 +1,6 @@
 package sample;
 
 import javafx.animation.PauseTransition;
-import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -10,8 +9,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
-import javafx.scene.control.Tooltip;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -24,7 +21,7 @@ import java.util.ResourceBundle;
 
 public class quizController implements Initializable {
 
-    private SpellingQuiz quiz;
+    private Module quiz;
 
     private final PauseTransition pause = new PauseTransition(Duration.seconds(2));
 
@@ -81,8 +78,12 @@ public class quizController implements Initializable {
     @FXML
     private void startQuiz(ActionEvent event) {
 
-        // start a new game, either new spelling quiz or review mistakes
-        quiz = new SpellingQuiz();
+        // start a new game, either practise or games module
+        if (Module.moduleTypeEqualsTo(ModuleType.practise)) {
+            quiz = new PractiseModule();
+        } else {
+            quiz = new GamesModule();
+        }
     	
     	// Display score
     	userScore.setText("SCORE : " + Score.getScore());
@@ -104,96 +105,65 @@ public class quizController implements Initializable {
     // this method set up the Server thread for quiz.newQuestion and then run it
     private void newQuestion() {
 
-        mainLabel.setStyle("-fx-text-fill: #FFF;");  // change back to white text
-        promptLabel.setStyle("-fx-text-fill: #FFF;");  // change back to white text
-        inputField.clear();
-
         // disable playback button for 2 second, avoid the user spam it
         playbackBtn.setDisable(true);
         pause.setOnFinished(e -> playbackBtn.setDisable(false));
         pause.play();
-    	
+
+        inputField.clear();
         quiz.setSpeechSpeed((int) speechSpeed.getValue());  // set up speech speed
 
-        mainLabel.textProperty().bind(quiz.titleProperty());
-        promptLabel.textProperty().bind(quiz.messageProperty());
+        // if the quiz is not finished, continue the game (return true), otherwise false
+        if (quiz.newQuestion()) {
+            updateLabels("#FFF");  // update the labels with colour white
 
-        quiz.setOnSucceeded(e -> {
-            mainLabel.textProperty().unbind();
-            promptLabel.textProperty().unbind();
-
+        } else {
             // if the game is finished, go to reward screen
-            if (quiz.quizStateEqualsTo(QuizState.finished)) {
-            	rewardScreen();
-            }
-
-            quiz.reset();
-        });
-
-        quiz.start();
+            rewardScreen();
+        }
     }
 
     // this method set up the Server thread for quiz.checkSpelling and then run it
     private void checkSpelling() {
+        String colour = "#FFF";  // set default text colour to white
 
         quiz.setSpeechSpeed((int) speechSpeed.getValue());  // set up speech speed
         quiz.setUserInput(inputField.getText());  // get user input/spelling
+        quiz.checkSpelling();
 
-        mainLabel.textProperty().bind(quiz.titleProperty());
-        promptLabel.textProperty().bind(quiz.messageProperty());
+        // update the display
 
+        // the quiz is done, so either Mastered, Faulted or Failed
+        if (quiz.quizStateEqualsTo(QuizState.ready)) {
 
-        // maybe used later
-//        ChangeListener<String> stateListener = (obs, oldValue, newValue) -> {
-//
-//        };
-//        quiz.titleProperty().addListener(stateListener);
+            // correct spelling (Mastered and Faulted)
+            if (quiz.resultEqualsTo(Result.mastered) || quiz.resultEqualsTo(Result.faulted)) {
+                colour = "#00A804";  // change text colour to green
 
-
-        quiz.setOnSucceeded(e -> {
-//            quiz.titleProperty().removeListener(stateListener);
-
-            mainLabel.textProperty().unbind();
-            promptLabel.textProperty().unbind();
-            quiz.reset();
-
-            // update the display
-
-            // the quiz is done, so either Mastered, Faulted or Failed
-            if (quiz.quizStateEqualsTo(QuizState.ready)) {
-
-                // correct spelling (Mastered and Faulted)
-                if (quiz.resultEqualsTo(Result.mastered) || quiz.resultEqualsTo(Result.faulted)) {
-                    mainLabel.setStyle("-fx-text-fill: #00A804;");  // change to green text
-                    promptLabel.setStyle("-fx-text-fill: #00A804;");  // change to green text
-
-                    // increase the score
-                    if (quiz.resultEqualsTo(Result.mastered)) {
-                        Score.increase20();  // Increase the higher score for 1st attempt
-                    } else {
-                        Score.increase10();  // Increase the lower score for 2nd attempt
-                    }
-
-                    // set userScore label to the current score
-                    userScore.setText("SCORE : " + Score.getScore());
-
-                // incorrect spelling (Failed) OR the word is skipped
+                // increase the score
+                if (quiz.resultEqualsTo(Result.mastered)) {
+                    Score.increase20();  // Increase the higher score for 1st attempt
                 } else {
-                    mainLabel.setStyle("-fx-text-fill: #FF2715;");  // change to red text
-                    promptLabel.setStyle("-fx-text-fill: #FF2715;");  // change to red text
+                    Score.increase10();  // Increase the lower score for 2nd attempt
                 }
 
-                pauseBetweenEachQ();
+                // set userScore label to the current score
+                userScore.setText("SCORE : " + Score.getScore());
 
-            // incorrect spelling (1st attempt)
+            // incorrect spelling (Failed) OR the word is skipped
             } else {
-                mainLabel.setStyle("-fx-text-fill: #FF2715;");  // change to red text
-                promptLabel.setStyle("-fx-text-fill: #FF2715;");  // change to red text
-                inputField.clear();
+                colour = "#FF2715";  // change text colour to red
             }
-        });
 
-        quiz.start();
+            pauseBetweenEachQ();
+
+        // incorrect spelling (1st attempt)
+        } else {
+            colour = "#FF2715";  // change text colour to red
+            inputField.clear();
+        }
+
+        updateLabels(colour);  // update the labels with corresponding colour
     }
 
     @FXML
@@ -287,6 +257,15 @@ public class quizController implements Initializable {
             newQuestion();
         });
         pause.play();
+    }
+
+    // this method is to update the labels with specific colour
+    private void updateLabels(String colour) {
+        mainLabel.setStyle("-fx-text-fill: " + colour + ";");  // change to green text
+        promptLabel.setStyle("-fx-text-fill: " + colour + ";");  // change to green text
+
+        mainLabel.setText(quiz.getMainLabelText());
+        promptLabel.setText(quiz.getPromptLabelText());
     }
 
 }
