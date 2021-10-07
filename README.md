@@ -25,3 +25,4 @@ You may also hear the word as many times as you want by clicking the replay butt
 - playbackImg - http://cdn.onlinewebfonts.com/svg/img_333598.png
 - quitImg1 - https://static.thenounproject.com/png/28599-200.png
 - quitImg2 - https://www.flaticon.com/free-icon/logout_660350
+- quitImg3 - https://www.flaticon.com/premium-icon/power-button_3699754
