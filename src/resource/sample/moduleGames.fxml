@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #000;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="sample.moduleGamesController">
+<AnchorPane fx:id="rootPane" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #000;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.moduleGamesController">
    <children>
       <ImageView fitHeight="500.0" fitWidth="1280.0" preserveRatio="true">
          <image>
@@ -27,9 +27,9 @@
             <Image url="@koru2.png" />
          </image>
       </ImageView>
-      <VBox layoutX="100.0" layoutY="120.0" spacing="30.0">
+      <VBox layoutX="100.0" layoutY="100.0" spacing="20.0">
          <children>
-            <ToggleButton fx:id="togSpdSlider" mnemonicParsing="false" onAction="#showHideSpeedSlider" prefHeight="35.0" prefWidth="180.0" text="Adjust Speech Speed">
+            <ToggleButton fx:id="togSpdSlider" mnemonicParsing="false" onAction="#showHideSpeedSlider" prefHeight="40.0" prefWidth="180.0" text="Adjust Speech Speed">
                <font>
                   <Font name="Heiti TC Medium" size="15.0" />
                </font>
@@ -41,29 +41,29 @@
             </Slider>
          </children>
       </VBox>
-      <Button fx:id="backBtn" layoutX="1070.0" layoutY="120.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #EBEBEB;" text="Main Menu">
+      <Button fx:id="backBtn" layoutX="1065.0" layoutY="100.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="40.0" prefWidth="115.0" style="-fx-background-color: #EBEBEB;" text="Main Menu">
          <font>
             <Font name="Heiti TC Medium" size="15.0" />
          </font>
       </Button>
-      <VBox alignment="CENTER" fillWidth="false" layoutX="440.0" layoutY="216.0" spacing="20.0">
+      <VBox alignment="CENTER" fillWidth="false" layoutX="265.0" layoutY="150.0" spacing="30.0">
          <children>
             <Label fx:id="userScore" textFill="WHITE">
                <font>
-                  <Font name="Heiti TC Medium" size="15.0" />
+                  <Font name="Heiti TC Medium" size="50.0" />
                </font>
             </Label>
-            <Label fx:id="mainLabel" alignment="CENTER" prefWidth="400.0" text="New Spelling Quiz!" textFill="WHITE">
+            <Label fx:id="mainLabel" alignment="CENTER" prefWidth="750.0" text="New Spelling Quiz!" textFill="WHITE">
                <font>
-                  <Font name="Heiti TC Medium" size="30.0" />
+                  <Font name="Heiti TC Medium" size="35.0" />
                </font>
             </Label>
             <Label fx:id="promptLabel" textFill="WHITE">
                <font>
-                  <Font name="Heiti TC Medium" size="15.0" />
+                  <Font name="Heiti TC Medium" size="25.0" />
                </font>
             </Label>
-            <VBox fx:id="inputVBox1" alignment="CENTER" fillWidth="false" spacing="20.0" visible="false">
+            <VBox fx:id="inputVBox1" alignment="CENTER" fillWidth="false" spacing="35.0" visible="false">
                <children>
                   <TextField fx:id="inputField" onAction="#onEnter" onKeyTyped="#checkMacronShortCut" prefHeight="50.0" prefWidth="330.0" promptText="Type Your Answer Here">
                      <font>
@@ -72,32 +72,32 @@
                   </TextField>
                   <Label fx:id="numOfLettersLabel" textFill="WHITE">
                      <font>
-                        <Font name="Heiti TC Medium" size="15.0" />
+                        <Font name="Heiti TC Medium" size="20.0" />
                      </font>
                   </Label>
-                  <HBox fx:id="macronsBtnsHBox" alignment="TOP_CENTER" fillHeight="false" spacing="38.0">
+                  <HBox fx:id="macronsBtnsHBox" alignment="TOP_CENTER" fillHeight="false" spacing="32.0">
                      <children>
-                        <Button fx:id="macronsA" mnemonicParsing="false" onAction="#addMacronsCharacter" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #EBEBEB;" text="ā">
+                        <Button fx:id="macronsA" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#addMacronsCharacter" prefHeight="35.0" prefWidth="40.0" style="-fx-background-color: #EBEBEB;" text="ā">
                            <font>
                               <Font name="Heiti TC Medium" size="15.0" />
                            </font>
                         </Button>
-                        <Button fx:id="macronsE" mnemonicParsing="false" onAction="#addMacronsCharacter" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #EBEBEB;" text="ē">
+                        <Button fx:id="macronsE" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#addMacronsCharacter" prefHeight="35.0" prefWidth="40.0" style="-fx-background-color: #EBEBEB;" text="ē">
                            <font>
                               <Font name="Heiti TC Medium" size="15.0" />
                            </font>
                         </Button>
-                        <Button fx:id="macronsI" mnemonicParsing="false" onAction="#addMacronsCharacter" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #EBEBEB;" text="ī">
+                        <Button fx:id="macronsI" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#addMacronsCharacter" prefHeight="35.0" prefWidth="40.0" style="-fx-background-color: #EBEBEB;" text="ī">
                            <font>
                               <Font name="Heiti TC Medium" size="15.0" />
                            </font>
                         </Button>
-                        <Button fx:id="macronsO" mnemonicParsing="false" onAction="#addMacronsCharacter" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #EBEBEB;" text="ō">
+                        <Button fx:id="macronsO" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#addMacronsCharacter" prefHeight="35.0" prefWidth="40.0" style="-fx-background-color: #EBEBEB;" text="ō">
                            <font>
                               <Font name="Heiti TC Medium" size="15.0" />
                            </font>
                         </Button>
-                        <Button fx:id="macronsU" mnemonicParsing="false" onAction="#addMacronsCharacter" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #EBEBEB;" text="ū">
+                        <Button fx:id="macronsU" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#addMacronsCharacter" prefHeight="35.0" prefWidth="40.0" style="-fx-background-color: #EBEBEB;" text="ū">
                            <font>
                               <Font name="Heiti TC Medium" size="15.0" />
                            </font>
@@ -113,28 +113,14 @@
             </VBox>
          </children>
       </VBox>
-      <VBox fx:id="inputVBox2" layoutX="830.0" layoutY="250.0" spacing="30.0" visible="false">
+      <Button fx:id="startBtn" layoutX="552.5" layoutY="350.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#startQuiz" prefHeight="50.0" prefWidth="175.0" style="-fx-background-color: #EBEBEB;" text="Start Quiz">
+         <font>
+            <Font name="Heiti TC Medium" size="25.0" />
+         </font>
+      </Button>
+      <VBox fx:id="inputVBox2" layoutX="875.0" layoutY="360.0" spacing="30.0" visible="false">
          <children>
-            <Button fx:id="playbackBtn" mnemonicParsing="false" onAction="#speakAgain" style="-fx-background-color: transparent;">
-               <graphic>
-                  <ImageView fitHeight="60.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@playbackImg.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <tooltip>
-                  <Tooltip text="Click to playback">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Tooltip>
-               </tooltip>
-            </Button>
-            <Button fx:id="checkBtn" mnemonicParsing="false" onAction="#onEnter" prefHeight="35.0" prefWidth="75.0" style="-fx-background-color: #EBEBEB;" text="Check">
+            <Button fx:id="checkBtn" mnemonicParsing="false" onAction="#onEnter" prefHeight="40.0" prefWidth="75.0" style="-fx-background-color: #EBEBEB;" text="Check">
                <font>
                   <Font name="Heiti TC Medium" size="15.0" />
                </font>
@@ -160,10 +146,24 @@
             </Label>
          </children>
       </VBox>
-      <Button fx:id="startBtn" layoutX="515.0" layoutY="360.0" mnemonicParsing="false" onAction="#startQuiz" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #EBEBEB;" text="Start Quiz">
-         <font>
-            <Font name="Heiti TC Medium" size="20.0" />
-         </font>
+      <Button fx:id="playbackBtn" layoutX="375.0" layoutY="340.0" mnemonicParsing="false" onAction="#speakAgain" style="-fx-background-color: transparent;" visible="false">
+         <graphic>
+            <ImageView fitHeight="60.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@playbackImg.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <tooltip>
+            <Tooltip text="Click to playback">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Tooltip>
+         </tooltip>
       </Button>
    </children>
 </AnchorPane>

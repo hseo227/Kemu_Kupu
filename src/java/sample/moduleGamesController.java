@@ -88,6 +88,7 @@ public class moduleGamesController implements Initializable {
         startBtn.setVisible(false);
         inputVBox1.setVisible(true);
         inputVBox2.setVisible(true);
+        playbackBtn.setVisible(true);
 
         newQuestion();
     }
