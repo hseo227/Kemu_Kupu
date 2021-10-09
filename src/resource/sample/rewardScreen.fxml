@@ -23,19 +23,24 @@
             <Image url="@koru2.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="500.0" fitWidth="1280.0" layoutY="400.0" preserveRatio="true">
+      <ImageView fitHeight="500.0" fitWidth="5000.0" layoutY="300.0" layoutX="-150.0" preserveRatio="true">
          <image>
             <Image url="@fireworks.gif" />
          </image>
       </ImageView>
-      <VBox alignment="CENTER" layoutX="428.0" layoutY="220.0" spacing="30.0">
+      <ImageView fitHeight="500.0" fitWidth="5000.0" layoutY="300.0" layoutX="900.0" preserveRatio="true">
+         <image>
+            <Image url="@fireworks.gif" />
+         </image>
+      </ImageView>
+      <VBox alignment="CENTER" layoutX="480.0" layoutY="220.0" spacing="30.0">
          <children>
             <Label fx:id="promptLabel" alignment="CENTER" text="YOUR SCORE IS" textFill="WHITE">
                <font>
-                  <Font name="Heiti TC Medium" size="15.0" />
+                  <Font name="Heiti TC Medium" size="35.0" />
                </font>
             </Label>
-            <Label fx:id="userScoreLabel" alignment="CENTER" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="userScoreLabel" alignment="CENTER" textFill="YELLOW">
                <font>
                   <Font name="Heiti TC Medium" size="40.0" />
                </font>
@@ -47,12 +52,13 @@
             </Label>
             <HBox alignment="CENTER" spacing="25.0">
                <children>
-                  <Button fx:id="playAgainBtn" mnemonicParsing="false" onAction="#newQuiz" prefHeight="50.0" prefWidth="200.0" text="Play Again">
+                  <Button fx:id="playAgainBtn" mnemonicParsing="false" onAction="#newQuiz" prefHeight="50.0" prefWidth="150.0" class="fa-solid fa-bars">
                      <font>
-                        <Font name="Heiti TC Medium" size="20.0" />
+                        <!-- <Font name="Heiti TC Medium" size="20.0" /> -->
+                        <!-- <i class="fa-solid fa-bars"></i> -->
                      </font>
                   </Button>
-                  <Button fx:id="mainMenuBtn" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="50.0" prefWidth="200.0" text="Main Menu">
+                  <Button fx:id="mainMenuBtn" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="50.0" prefWidth="150.0" text="Main Menu">
                      <font>
                         <Font name="Heiti TC Medium" size="20.0" />
                      </font>
