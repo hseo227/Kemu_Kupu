@@ -23,6 +23,11 @@
             <Image url="@koru2.png" />
          </image>
       </ImageView>
+      <ImageView fitHeight="500.0" fitWidth="1280.0" layoutY="400.0" preserveRatio="true">
+         <image>
+            <Image url="@fireworks.gif" />
+         </image>
+      </ImageView>
       <VBox alignment="CENTER" layoutX="428.0" layoutY="220.0" spacing="30.0">
          <children>
             <Label fx:id="promptLabel" alignment="CENTER" text="YOUR SCORE IS" textFill="WHITE">
