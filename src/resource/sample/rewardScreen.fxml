@@ -52,10 +52,9 @@
             </Label>
             <HBox alignment="CENTER" spacing="25.0">
                <children>
-                  <Button fx:id="playAgainBtn" mnemonicParsing="false" onAction="#newQuiz" prefHeight="50.0" prefWidth="150.0" class="fa-solid fa-bars">
+                  <Button fx:id="playAgainBtn" mnemonicParsing="false" onAction="#newQuiz" prefHeight="50.0" prefWidth="150.0" text="Play Again">
                      <font>
-                        <!-- <Font name="Heiti TC Medium" size="20.0" /> -->
-                        <!-- <i class="fa-solid fa-bars"></i> -->
+                        <Font name="Heiti TC Medium" size="20.0" />
                      </font>
                   </Button>
                   <Button fx:id="mainMenuBtn" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="50.0" prefWidth="150.0" text="Main Menu">
@@ -63,6 +62,25 @@
                         <Font name="Heiti TC Medium" size="20.0" />
                      </font>
                   </Button>
+<!--                   <Button fx:id="mainMenuBtn" mnemonicParsing="false" onAction="#backToMainMenu" style="-fx-background-color: transparent;">
+			         <graphic>
+			            <ImageView fitHeight="60.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
+			               <image>
+			                  <Image url="@home.png" />
+			               </image>
+			            </ImageView>
+			         </graphic>
+			         <cursor>
+			            <Cursor fx:constant="HAND" />
+			         </cursor>
+			         <tooltip>
+			            <Tooltip text="Click to go to Main Menu">
+			               <font>
+			                  <Font size="20.0" />
+			               </font>
+			            </Tooltip>
+			         </tooltip>
+			      </Button> -->
                </children>
                <VBox.margin>
                   <Insets top="10.0" />
