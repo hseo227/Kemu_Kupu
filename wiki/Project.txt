@@ -1,0 +1,14 @@
+05/10/2021
+Group meeting
+
+- Chose Target user: young adult
+- Discuss what should be in practice module
+	- Decided everything keeps the same as game module except:
+		- User can choose number of words to practice
+		- When failed (incorrect twice), don't pause 2s, wait for the user to input
+
+
+09/10/2021
+Group meeting
+
+- Discuss the general look for young adult
