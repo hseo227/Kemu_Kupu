@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class moduleGamesController implements Initializable {
+public class controllerModuleGames implements Initializable {
 
     private ModuleGames quiz;
 

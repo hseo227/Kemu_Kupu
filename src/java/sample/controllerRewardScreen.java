@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class rewardScreenController implements Initializable {
+public class controllerRewardScreen implements Initializable {
 
     @FXML
     private AnchorPane rootPane;

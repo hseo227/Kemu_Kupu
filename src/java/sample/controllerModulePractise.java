@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class modulePractiseController implements Initializable {
+public class controllerModulePractise implements Initializable {
 
     private ModulePractise quiz;
 
