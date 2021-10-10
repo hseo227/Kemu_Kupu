@@ -16,7 +16,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("mainMenu.fxml"));
         // set title and icon
         primaryStage.setTitle("Kēmu Kupu");
-        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("window-icon.png")));
+        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("images/window-icon.png")));
         primaryStage.setScene(new Scene(root));
         SceneController.initialise(primaryStage.getScene());  // this is for the future use of changing scene
         primaryStage.setResizable(false);
