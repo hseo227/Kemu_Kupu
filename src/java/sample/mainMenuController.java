@@ -14,7 +14,7 @@ public class mainMenuController {
     @FXML
     private AnchorPane rootPane;
     @FXML
-    private Label mainMenuLabel;
+    private Label mainMenuLabel, mainMenuLabel1;
     @FXML
     private Button practiseModule, gamesModule, quitBtn;
 
