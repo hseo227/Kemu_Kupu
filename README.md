@@ -21,8 +21,6 @@ You may also hear the word as many times as you want by clicking the replay butt
 
 ## Images References
 - koru1&2 - https://i.pinimg.com/originals/ba/f5/60/baf56008c41a8d691e1d08a4ed8a7103.jpg
-- helpImg - https://static.thenounproject.com/png/61692-200.png
-- playbackImg - http://cdn.onlinewebfonts.com/svg/img_333598.png
-- quitImg1 - https://static.thenounproject.com/png/28599-200.png
-- quitImg2 - https://www.flaticon.com/free-icon/logout_660350
-- quitImg3 - https://www.flaticon.com/premium-icon/power-button_3699754
+- playback - http://cdn.onlinewebfonts.com/svg/img_333598.png
+- quit - https://www.flaticon.com/premium-icon/power-button_3699754
+- firework - https://www.prntr.com/images/fireworks-clipart-7.gif
