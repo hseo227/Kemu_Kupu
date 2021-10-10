@@ -16,7 +16,7 @@
                 <Font name="Heiti TC Medium" size="35.0" />
             </font>
         </Label>
-      <Label layoutX="100.0" layoutY="150.0" text="Note: first topic in the list is the default" textFill="WHITE">
+      <Label layoutX="100.0" layoutY="150.0" text="Note: first topic in the list is the default" textFill="#ff2917">
          <font>
             <Font name="Heiti TC Medium" size="25.0" />
          </font>
