@@ -20,12 +20,12 @@
    <children>
       <ImageView fitHeight="500.0" fitWidth="1280.0" preserveRatio="true">
          <image>
-            <Image url="@koru1.png" />
+            <Image url="@images/koru1.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="500.0" fitWidth="1280.0" layoutY="673.0" preserveRatio="true">
          <image>
-            <Image url="@koru2.png" />
+            <Image url="@images/koru2.png" />
          </image>
       </ImageView>
       <VBox layoutX="100.0" layoutY="100.0" spacing="20.0">
@@ -79,7 +79,7 @@
                            <graphic>
                               <ImageView fitHeight="42.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@playbackImg.png" />
+                                    <Image url="@images/playbackImg.png" />
                                  </image>
                               </ImageView>
                            </graphic>

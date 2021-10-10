@@ -15,12 +15,12 @@
    <children>
       <ImageView fitHeight="500.0" fitWidth="1280.0" preserveRatio="true">
          <image>
-            <Image url="@koru1.png" />
+            <Image url="@images/koru1.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="500.0" fitWidth="1280.0" layoutY="673.0" preserveRatio="true">
          <image>
-            <Image url="@koru2.png" />
+            <Image url="@images/koru2.png" />
          </image>
       </ImageView>
       <VBox alignment="CENTER" layoutX="307.0" layoutY="200.0" spacing="30.0">
@@ -55,7 +55,7 @@
          <graphic>
             <ImageView fitHeight="80.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@quit.png" />
+                  <Image url="@images/quit.png" />
                </image>
             </ImageView>
          </graphic>
