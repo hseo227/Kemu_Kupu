@@ -31,7 +31,7 @@
                 <Font name="Heiti TC Medium" size="25.0" />
             </font>
         </Button>
-        <TableView fx:id="table" layoutX="100.0" layoutY="200.0" prefHeight="350.0" prefWidth="1080.0" style="-fx-font-size: 15.0px;">
+        <TableView fx:id="table" layoutX="100.0" layoutY="200.0" prefHeight="350.0" prefWidth="1080.0" style="-fx-font-size: 20.0px;">
             <columns>
                 <TableColumn fx:id="topicListColumn" editable="false" prefWidth="-1.0" sortable="false" text="Topic List" />
             </columns>
