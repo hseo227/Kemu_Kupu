@@ -1,4 +1,4 @@
-# Kēmu Kupu - SOFTENG 206 Assignment 3
+# Kēmu Kupu - SOFTENG 206 Project
 
 ## Welcome to *Kēmu Kupu*!
 This game will help you learn and practice the spelling of Māori words.
