@@ -17,7 +17,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class topicListController implements Initializable {
+public class controllerTopicList implements Initializable {
     private ArrayList<Topic> topicList = new ArrayList<>();
 
     @FXML

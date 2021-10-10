@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class moduleGamesController implements Initializable {
+public class controllerModuleGames implements Initializable {
 
     private ModuleGames quiz;
 
@@ -29,7 +29,7 @@ public class moduleGamesController implements Initializable {
     @FXML
     private AnchorPane rootPane;
     @FXML
-    private Label mainLabel, promptLabel, userScore, macronsHelper, numOfLettersLabel;
+    private Label mainLabel, promptLabel, userScore, numOfLettersLabel;
     @FXML
     private TextField inputField;
     @FXML
@@ -41,15 +41,16 @@ public class moduleGamesController implements Initializable {
     @FXML
     private HBox macronsBtnsHBox;
     @FXML
-    private VBox inputVBox1, inputVBox2;
+    private VBox inputVBox;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-    	
-    	// reset the score
-    	Score.reset();
-    	
+
+        // reset the score
+        Score.reset();
+
+        // Set up for speed slider
         // hide the slider
         speechSpeed.setVisible(togSpdSlider.isSelected());
 
@@ -80,15 +81,13 @@ public class moduleGamesController implements Initializable {
 
         // start a new game
         quiz = new ModuleGames();
-    	
-    	// Display score
-    	userScore.setText("SCORE : " + Score.getScore());
+
+        // Display score
+        userScore.setText("SCORE : " + Score.getScore());
 
         // otherwise, continue the game
         startBtn.setVisible(false);
-        inputVBox1.setVisible(true);
-        inputVBox2.setVisible(true);
-        playbackBtn.setVisible(true);
+        inputVBox.setVisible(true);
 
         newQuestion();
     }
@@ -227,30 +226,28 @@ public class moduleGamesController implements Initializable {
         String macronsCharacter = ((Button)event.getSource()).getText();
         inputField.appendText(macronsCharacter);
     }
-    
+
     @FXML
     private void skipWord(ActionEvent event) {
-    	quiz.setResult(Result.skipped);
+        quiz.setResult(Result.skipped);
         checkSpelling();
     }
 
     // this method is called when the quiz is finished
     private void rewardScreen() {
-    	try {
-        	SceneController.goToRewardScreen();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+        try {
+            SceneController.goToRewardScreen();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     // this method is to pause before each new question, also while pausing it disables the quiz related utilities
     private void pauseBetweenEachQ() {
-        inputVBox1.setDisable(true);
-        inputVBox2.setDisable(true);
+        inputVBox.setDisable(true);
 
         pause.setOnFinished(e -> {
-            inputVBox1.setDisable(false);
-            inputVBox2.setDisable(false);
+            inputVBox.setDisable(false);
 
             newQuestion();
         });

@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class modulePractiseController implements Initializable {
+public class controllerModulePractise implements Initializable {
 
     private ModulePractise quiz;
 
@@ -25,7 +25,7 @@ public class modulePractiseController implements Initializable {
     @FXML
     private AnchorPane rootPane;
     @FXML
-    private Label mainLabel, promptLabel, userScore, macronsHelper, numOfLettersLabel;
+    private Label mainLabel, promptLabel, userScore, numOfLettersLabel;
     @FXML
     private TextField inputField;
     @FXML
@@ -39,7 +39,7 @@ public class modulePractiseController implements Initializable {
     @FXML
     private HBox macronsBtnsHBox;
     @FXML
-    private VBox inputVBox1, inputVBox2, startVBox;
+    private VBox inputVBox, startVBox;
 
 
     @Override
@@ -93,9 +93,7 @@ public class modulePractiseController implements Initializable {
 
         // otherwise, continue the game
         startVBox.setVisible(false);
-        inputVBox1.setVisible(true);
-        inputVBox2.setVisible(true);
-        playbackBtn.setVisible(true);
+        inputVBox.setVisible(true);
 
         newQuestion();
     }
@@ -258,14 +256,10 @@ public class modulePractiseController implements Initializable {
 
     // this method is to pause before each new question, also while pausing it disables the quiz related utilities
     private void pauseBetweenEachQ() {
-        inputVBox1.setDisable(true);
-        inputVBox2.setDisable(true);
-        playbackBtn.setDisable(true);
+        inputVBox.setDisable(true);
 
         pause.setOnFinished(e -> {
-            inputVBox1.setDisable(false);
-            inputVBox2.setDisable(false);
-            playbackBtn.setDisable(false);
+            inputVBox.setDisable(false);
 
             newQuestion();
         });

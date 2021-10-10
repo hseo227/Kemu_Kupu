@@ -6,10 +6,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class encouragingMessage {
+public class EncouragingMessage {
     ArrayList<String> messageList = new ArrayList<String>();  // all the messages in the file
 
-    public encouragingMessage(String result) {
+    public EncouragingMessage(String result) {
         // get all the messages in the file
         String fileName = "messages/" + result;
 

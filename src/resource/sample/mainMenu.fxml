@@ -11,26 +11,26 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #000;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.mainMenuController">
+<AnchorPane fx:id="rootPane" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #000;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="sample.controllerMainMenu">
    <children>
       <ImageView fitHeight="500.0" fitWidth="1280.0" preserveRatio="true">
          <image>
-            <Image url="@koru1.png" />
+            <Image url="@images/koru1.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="500.0" fitWidth="1280.0" layoutY="673.0" preserveRatio="true">
          <image>
-            <Image url="@koru2.png" />
+            <Image url="@images/koru2.png" />
          </image>
       </ImageView>
-      <VBox alignment="CENTER" layoutX="278.75" layoutY="200.0" spacing="30.0">
+      <VBox alignment="CENTER" layoutX="307.0" layoutY="200.0" spacing="30.0">
          <children>
             <Label fx:id="mainMenuLabel" alignment="CENTER" text="Nau Mai, Haere Mai" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Heiti TC Medium" size="75.0" />
                </font>
             </Label>
-            <Label fx:id="mainMenuLabel1" alignment="TOP_CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="100.0" text="Welcome to Kēmu Kupu!" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="mainMenuLabel1" alignment="TOP_CENTER" prefHeight="100.0" text="Welcome to Kēmu Kupu!" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Heiti TC Medium" size="60.0" />
                </font>
@@ -52,6 +52,13 @@
          </children>
       </VBox>
       <Button fx:id="quitBtn" layoutX="1192.0" layoutY="588.0" mnemonicParsing="false" onAction="#quit" style="-fx-background-color: transparent;">
+         <graphic>
+            <ImageView fitHeight="80.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/quit.png" />
+               </image>
+            </ImageView>
+         </graphic>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -62,13 +69,6 @@
                </font>
             </Tooltip>
          </tooltip>
-         <graphic>
-            <ImageView fitHeight="80.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@quitImg3.png" />
-               </image>
-            </ImageView>
-         </graphic>
       </Button>
    </children>
 </AnchorPane>
