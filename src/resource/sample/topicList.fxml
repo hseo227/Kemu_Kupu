@@ -21,12 +21,12 @@
             <Font name="Heiti TC Medium" size="25.0" />
          </font>
       </Label>
-        <Button fx:id="backBtn" layoutX="1030.0" layoutY="100.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="40.0" prefWidth="150.0" text="Main Menu">
+        <Button fx:id="backBtn" layoutX="1030.0" layoutY="100.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #EBEBEB;" text="Main Menu">
             <font>
                 <Font name="Heiti TC Medium" size="20.0" />
             </font>
         </Button>
-        <Button fx:id="selectBtn" layoutX="578.0" layoutY="575.0" mnemonicParsing="false" onAction="#selectTopic" prefHeight="50.0" prefWidth="125.0" text="Select">
+        <Button fx:id="selectBtn" layoutX="578.0" layoutY="575.0" mnemonicParsing="false" onAction="#selectTopic" prefHeight="50.0" prefWidth="125.0" style="-fx-background-color: #EBEBEB;" text="Select">
             <font>
                 <Font name="Heiti TC Medium" size="25.0" />
             </font>
