@@ -28,7 +28,7 @@ public abstract class Module {
     protected Result currentResult;
     protected static ModuleType moduleType;
     protected final Words words;
-    protected encouragingMessage correctMessage, incorrectMessage, tryAgainMessage;
+    protected EncouragingMessage correctMessage, incorrectMessage, tryAgainMessage;
 
 
     // this method will only run once and will run at the start of the program
@@ -43,9 +43,9 @@ public abstract class Module {
         // setting up the words
         words = new Words(numOfQuestions);
 
-        correctMessage = new encouragingMessage("Correct");
-        incorrectMessage = new encouragingMessage("Incorrect");
-        tryAgainMessage = new encouragingMessage("TryAgain");
+        correctMessage = new EncouragingMessage("Correct");
+        incorrectMessage = new EncouragingMessage("Incorrect");
+        tryAgainMessage = new EncouragingMessage("TryAgain");
         currentIndex = 0;
         currentWord = "";
         mainLabelText = "";
