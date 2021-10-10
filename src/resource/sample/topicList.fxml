@@ -9,19 +9,24 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #000;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.topicListController">
+<AnchorPane fx:id="rootPane" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #000;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="sample.topicListController">
    <children>
         <Label fx:id="mainLabel" layoutX="100.0" layoutY="100.0" text="Select the topic for your spelling quiz:" textFill="WHITE">
             <font>
                 <Font name="Heiti TC Medium" size="35.0" />
             </font>
         </Label>
-        <Button fx:id="backBtn" layoutX="1065.0" layoutY="100.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="40.0" prefWidth="115.0" text="Main Menu">
+      <Label layoutX="100.0" layoutY="150.0" text="Note: first topic in the list is the default" textFill="WHITE">
+         <font>
+            <Font name="Heiti TC Medium" size="25.0" />
+         </font>
+      </Label>
+        <Button fx:id="backBtn" layoutX="1030.0" layoutY="100.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="40.0" prefWidth="150.0" text="Main Menu">
             <font>
-                <Font name="Heiti TC Medium" size="15.0" />
+                <Font name="Heiti TC Medium" size="20.0" />
             </font>
         </Button>
-        <Button fx:id="selectBtn" layoutX="582.0" layoutY="575.0" mnemonicParsing="false" onAction="#selectTopic" prefHeight="50.0" prefWidth="125.0" text="Select">
+        <Button fx:id="selectBtn" layoutX="578.0" layoutY="575.0" mnemonicParsing="false" onAction="#selectTopic" prefHeight="50.0" prefWidth="125.0" text="Select">
             <font>
                 <Font name="Heiti TC Medium" size="25.0" />
             </font>
@@ -44,10 +49,5 @@
                <Image url="@koru2.png" />
            </image>
        </ImageView>
-      <Label layoutX="100.0" layoutY="150.0" text="Note: first topic in the list is the default" textFill="WHITE">
-         <font>
-            <Font name="Heiti TC Medium" size="25.0" />
-         </font>
-      </Label>
    </children>
 </AnchorPane>
