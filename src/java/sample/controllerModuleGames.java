@@ -88,6 +88,7 @@ public class controllerModuleGames implements Initializable {
         // otherwise, continue the game
         startBtn.setVisible(false);
         inputVBox.setVisible(true);
+        shortCutLabel.setVisible(true);
 
         newQuestion();
     }

@@ -94,6 +94,7 @@ public class controllerModulePractise implements Initializable {
         // otherwise, continue the game
         startVBox.setVisible(false);
         inputVBox.setVisible(true);
+        shortCutLabel.setVisible(true);
 
         newQuestion();
     }
