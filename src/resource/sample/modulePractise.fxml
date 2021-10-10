@@ -79,7 +79,7 @@
                            <graphic>
                               <ImageView fitHeight="42.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@images/playbackImg.png" />
+                                    <Image url="@images/playback.png" />
                                  </image>
                               </ImageView>
                            </graphic>
