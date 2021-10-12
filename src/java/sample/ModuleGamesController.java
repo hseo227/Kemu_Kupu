@@ -29,7 +29,7 @@ public class ModuleGamesController implements Initializable {
     @FXML
     private AnchorPane rootPane;
     @FXML
-    private Label mainLabel, promptLabel, userScore, numOfLettersLabel;
+    private Label mainLabel, promptLabel, userScore, numOfLettersLabel, shortCutLabel;
     @FXML
     private TextField inputField;
     @FXML
