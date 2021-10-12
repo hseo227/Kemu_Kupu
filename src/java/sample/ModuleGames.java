@@ -1,16 +1,16 @@
 package sample;
 
 public class ModuleGames extends Module {
-    private static final int NUMOFQUESTIONS = 5;
+    private static final int NUMBER_OF_QUESTIONS = 5;
 
     public ModuleGames() {
-        super(NUMOFQUESTIONS);
+        super(NUMBER_OF_QUESTIONS);
     }
 
     // this function generate a new word and then ask the user
     // return true, if the quiz is not finished | return false, if the quiz is finished
     protected boolean newQuestion() {
-        if (currentIndex == NUMOFQUESTIONS) {  // the quiz is finished
+        if (currentIndex == NUMBER_OF_QUESTIONS) {  // the quiz is finished
             return false;
         }
 
@@ -21,7 +21,7 @@ public class ModuleGames extends Module {
         currentWord = words.nextWord();  // set up the word and get the word that is testing on
 
         // set the labels' messages and also speak out the message
-        mainLabelText = "Spell Word " + currentIndex + " of " + NUMOFQUESTIONS + ":";
+        mainLabelText = "Spell Word " + currentIndex + " of " + NUMBER_OF_QUESTIONS + ":";
         promptLabelText = "";
         speak("Please spell", currentWord);
 

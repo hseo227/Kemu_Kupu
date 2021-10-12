@@ -9,11 +9,11 @@ import java.io.IOException;
 public class SceneController {
     private static Scene scene;
 
-    private static final String mainMenuFXML = "mainMenu.fxml";
-    private static final String topicListFXML = "topicList.fxml";
-    private static final String practiseFXML = "modulePractise.fxml";
-    private static final String gamesFXML = "moduleGames.fxml";
-    private static final String rewardScreenFXML = "rewardScreen.fxml";
+    private static final String MAIN_MENU_FXML = "mainMenu.fxml";
+    private static final String TOPIC_LIST_FXML = "topicList.fxml";
+    private static final String PRACTISE_FXML = "modulePractise.fxml";
+    private static final String GAMES_FXML = "moduleGames.fxml";
+    private static final String REWARD_SCREEN_FXML = "rewardScreen.fxml";
 
 
     public static void initialise(Scene scn) {
@@ -21,23 +21,23 @@ public class SceneController {
     }
 
     public static void goToMainMenu() throws IOException {
-        changeScene(mainMenuFXML);
+        changeScene(MAIN_MENU_FXML);
     }
 
     public static void goToTopicList() throws IOException {
-        changeScene(topicListFXML);
+        changeScene(TOPIC_LIST_FXML);
     }
 
     public static void goToPractiseModule() throws IOException {
-        changeScene(practiseFXML);
+        changeScene(PRACTISE_FXML);
     }
 
     public static void goToGamesModule() throws IOException {
-        changeScene(gamesFXML);
+        changeScene(GAMES_FXML);
     }
     
     public static void goToRewardScreen() throws IOException {
-        changeScene(rewardScreenFXML);
+        changeScene(REWARD_SCREEN_FXML);
     }
 
     private static void changeScene(String fxml) throws IOException {
