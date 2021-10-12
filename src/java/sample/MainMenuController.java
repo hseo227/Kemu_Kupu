@@ -9,7 +9,7 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
-public class controllerMainMenu {
+public class MainMenuController {
 
     @FXML
     private AnchorPane rootPane;
