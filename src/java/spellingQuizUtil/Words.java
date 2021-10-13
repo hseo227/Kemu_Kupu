@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * This class handles everything related to the spelling words
+ */
 public class Words {
     private int currentIndex;
     private String currentWord;  // the word that is currently testing
@@ -13,6 +16,12 @@ public class Words {
     private static String selectedTopic;
 
 
+    /**
+     * Constructor
+     * Initialisation
+     * Get the word list that will be tested on
+     * @param numOfQuestions Number of questions
+     */
     public Words(int numOfQuestions) {
         currentIndex = 0;
         currentWord = "";
@@ -22,10 +31,15 @@ public class Words {
         wordsList = getRandomWordsInFile(wordListLocation, numOfQuestions);
     }
 
-    // this function get specific number of random words in the file
+    /**
+     * Get specific number of random words in the file
+     * @param fileName File name of the selected topic
+     * @param numOfWords Number of random words that it is going to get
+     * @return A list of random words that wil be tested on later
+     */
     private String[] getRandomWordsInFile(String fileName, int numOfWords) {
-        ArrayList<String> allWordsInFile = new ArrayList<String>();  // all the words in the file
-        ArrayList<String> wordsList = new ArrayList<String>();  // specific number of random words from the file
+        ArrayList<String> allWordsInFile = new ArrayList<>();  // all the words in the file
+        ArrayList<String> wordsList = new ArrayList<>();  // specific number of random words from the file
 
         // First, get all the words in the file
         try {
@@ -59,23 +73,38 @@ public class Words {
         return wordsList.toArray(new String[0]);
     }
 
-    // setting up for the next word to be tested on, and then return that word
+    /**
+     * Setting up for the next word to be tested on, and then return that word
+     * @return currentWord, the word that is going to be tested on
+     */
     public String nextWord() {
         currentWord = wordsList[currentIndex++];
         return currentWord;
     }
 
-    // this function compares both string with ignore cases and spaces outside the words
+    /**
+     * Compares both string with ignore cases and spaces outside the words
+     * Compare current word with user spelling
+     * @param userSpelling User spelling/input
+     * @return Return true if they are equal, otherwise false
+     */
     public boolean checkUserSpelling(String userSpelling) {
         return currentWord.trim().equalsIgnoreCase(userSpelling.trim());
     }
 
-    // selectedTopic's setter
+    /**
+     * selectedTopic's
+     *                 setter
+     * @param topic New topic
+     */
     public static void setTopic(String topic) {
         selectedTopic = topic;
     }
 
-    // this function return the number of letters of the current word, excluding space and comma
+    /**
+     * Calculate the number of letters of the current word, excluding space and comma
+     * @return Number of letters
+     */
     public int getNumOfLettersOfWord() {
         int count = 0;
 
@@ -87,7 +116,10 @@ public class Words {
         return count;
     }
 
-    // this function return the the number of words (lines) in the files
+    /**
+     * Calculate the number of words (lines) in the files
+     * @return Number of words
+     */
     public static int getNumOfWordsInWordsList() {
         String fileName = "words/" + selectedTopic;
         int count = 0;
@@ -108,7 +140,16 @@ public class Words {
         return count;
     }
 
-    // hint for the current word
+    /**
+     * Return the hint of the current word
+     * Hint types:
+     *      - No hint:                only show number of letters of the word, show by '_'
+     *      - Practise module hint:   same as No hint, but add some letters to the word
+     *                                  larger the word, the more letters are going to add, same as smaller
+     *      - Games module hint:      same as No hint, but only add the second letter to the word
+     * @param hintType Specify which type of hint the user is going to get
+     * @return Hint for specific hint type
+     */
     public String getHint(Hint hintType) {
         ArrayList<Integer> indexesOfHints = new ArrayList<>();
         StringBuilder hint = new StringBuilder();
