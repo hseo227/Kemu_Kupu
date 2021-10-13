@@ -1,19 +1,14 @@
 package controllers;
 
-import spellingQuiz.Module;
-import topicList.Topic;
-import spellingQuizUtil.Words;
-import spellingQuizUtil.ModuleType;
-
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.AnchorPane;
+import spellingQuiz.Module;
+import spellingQuizUtil.ModuleType;
+import spellingQuizUtil.Words;
+import topicList.Topic;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -23,14 +18,8 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class TopicListController implements Initializable {
-    private ArrayList<Topic> topicList = new ArrayList<>();
+    private final ArrayList<Topic> topicList = new ArrayList<>();
 
-    @FXML
-    private AnchorPane rootPane;
-    @FXML
-    private Label mainLabel;
-    @FXML
-    private Button selectBtn, backBtn;
     @FXML
     private TableView<Topic> table;
     @FXML
@@ -71,12 +60,12 @@ public class TopicListController implements Initializable {
         }
 
         // setting up the table and the column
-        topicListColumn.setCellValueFactory(new PropertyValueFactory<Topic, String>("name"));
+        topicListColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         table.getItems().setAll(topicList);
     }
 
     @FXML
-    private void selectTopic(ActionEvent event) throws IOException {
+    private void selectTopic() throws IOException {
         try {
             // if the user selected a topic, then it will continue, otherwise it will throw an exception
             Topic selectedTopic = table.getSelectionModel().getSelectedItem();
@@ -96,7 +85,7 @@ public class TopicListController implements Initializable {
     }
     
     @FXML
-    private void backToMainMenu(ActionEvent event) throws IOException {
+    private void backToMainMenu() throws IOException {
         SceneController.goToMainMenu();
     }
 }
