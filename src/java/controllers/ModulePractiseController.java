@@ -22,11 +22,11 @@ import java.util.ResourceBundle;
 public class ModulePractiseController extends ModuleBaseController {
 
     @FXML
-    private Label mainLabel, promptLabel, userScore, shortCutLabel;
+    private Label userScore, shortCutLabel;
     @FXML
     private TextField inputField;
     @FXML
-    private Button skipBtn, playbackBtn;
+    private Button skipBtn;
     @FXML
     private Slider speechSpeed;
     @FXML
@@ -37,6 +37,11 @@ public class ModulePractiseController extends ModuleBaseController {
     private VBox inputVBox, startVBox;
 
 
+    /**
+     * Setting up the check box
+     * Reset the score
+     * Format the speed slider
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -49,7 +54,6 @@ public class ModulePractiseController extends ModuleBaseController {
 
         // reset the score
         Score.reset();
-
 
         // Set up for speed slider
         // hide the slider
@@ -77,6 +81,10 @@ public class ModulePractiseController extends ModuleBaseController {
         });
     }
 
+    /**
+     * Start the quiz with number of question that user picked
+     * And then update the display
+     */
     @FXML
     protected void startQuiz() {
 
@@ -94,9 +102,13 @@ public class ModulePractiseController extends ModuleBaseController {
         newQuestion();
     }
 
+    /**
+     * When the user press 'Enter' key or press the 'Check' button,
+     * if the question is finished, go to next question
+     * otherwise, check the spelling
+     */
     @FXML
     protected void onEnter() {
-        // when the user press enter key or press the 'check' button...
         if (quiz.quizStateEqualsTo(QuizState.READY)) {
             skipBtn.setDisable(false);
             newQuestion();
@@ -105,9 +117,11 @@ public class ModulePractiseController extends ModuleBaseController {
         }
     }
 
-    // this method set up the Server thread for quiz.checkSpelling and then run it
+    /**
+     * Check the spelling, and then update the display and pause 2 seconds if needed
+     */
     protected void checkSpelling() {
-        String colour = "#FFF";  // set default text colour to white
+        String colour;
 
         FestivalSpeech.setSpeechSpeed((int) speechSpeed.getValue());  // set up speech speed
         quiz.setUserInput(inputField.getText());  // get user input/spelling
@@ -120,7 +134,7 @@ public class ModulePractiseController extends ModuleBaseController {
 
             // correct spelling (Mastered and Faulted)
             if (quiz.resultEqualsTo(Result.MASTERED) || quiz.resultEqualsTo(Result.FAULTED)) {
-                colour = "#00A804";  // change text colour to green
+                colour = "#00A804";  // set text colour to green
 
                 // set userScore label to the current score
                 userScore.setText("SCORE : " + Score.getScore());
@@ -129,13 +143,13 @@ public class ModulePractiseController extends ModuleBaseController {
 
             // incorrect spelling (Failed) OR the word is skipped
             } else {
-                colour = "#FF2715";  // change text colour to red
+                colour = "#FF2715";  // set text colour to red
                 skipBtn.setDisable(true);  // cannot press 'skip' when showing the answer
             }
 
         // incorrect spelling (1st attempt)
         } else {
-            colour = "#FF2715";  // change text colour to red
+            colour = "#FF2715";  // set text colour to red
             inputField.clear();
             disablePlaybackBtnTemp();
         }

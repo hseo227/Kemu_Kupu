@@ -20,11 +20,9 @@ import java.util.ResourceBundle;
 public class ModuleGamesController extends ModuleBaseController {
 
     @FXML
-    private Label mainLabel, promptLabel, userScore, shortCutLabel;
+    private Label userScore, shortCutLabel;
     @FXML
     private TextField inputField;
-    @FXML
-    private Button playbackBtn;
     @FXML
     private Slider speechSpeed;
     @FXML
@@ -33,6 +31,10 @@ public class ModuleGamesController extends ModuleBaseController {
     private VBox startVBox, inputVBox;
 
 
+    /**
+     * Reset the score
+     * Format the speed slider
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -65,6 +67,9 @@ public class ModuleGamesController extends ModuleBaseController {
         });
     }
 
+    /**
+     * Start the quiz and then update the display
+     */
     @FXML
     protected void startQuiz() {
 
@@ -82,15 +87,19 @@ public class ModuleGamesController extends ModuleBaseController {
         newQuestion();
     }
 
+    /**
+     * When the user press 'Enter' key or press the 'Check' button, check the spelling
+     */
     @FXML
     protected void onEnter() {
-        // when the user press enter key or press the 'check' button, check spelling
         checkSpelling();
     }
 
-    // this method set up the Server thread for quiz.checkSpelling and then run it
+    /**
+     * Check the spelling, and then update the display and pause 2 seconds if needed
+     */
     protected void checkSpelling() {
-        String colour = "#FFF";  // set default text colour to white
+        String colour;
 
         FestivalSpeech.setSpeechSpeed((int) speechSpeed.getValue());  // set up speech speed
         quiz.setUserInput(inputField.getText());  // get user input/spelling
@@ -103,21 +112,21 @@ public class ModuleGamesController extends ModuleBaseController {
 
             // correct spelling (Mastered and Faulted)
             if (quiz.resultEqualsTo(Result.MASTERED) || quiz.resultEqualsTo(Result.FAULTED)) {
-                colour = "#00A804";  // change text colour to green
+                colour = "#00A804";  // set text colour to green
 
                 // set userScore label to the current score
                 userScore.setText("SCORE : " + Score.getScore());
 
             // incorrect spelling (Failed) OR the word is skipped
             } else {
-                colour = "#FF2715";  // change text colour to red
+                colour = "#FF2715";  // set text colour to red
             }
 
             pauseBetweenEachQ();
 
         // incorrect spelling (1st attempt)
         } else {
-            colour = "#FF2715";  // change text colour to red
+            colour = "#FF2715";  // set text colour to red
             inputField.clear();
             disablePlaybackBtnTemp();
         }
