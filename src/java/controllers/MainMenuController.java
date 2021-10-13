@@ -9,22 +9,27 @@ import java.io.IOException;
 
 public class MainMenuController {
 
-
-    // load Practise Module
+    /**
+     * Load Practise Module
+     */
     @FXML
     private void loadPractiseModule() throws IOException {
         Module.setModuleType(ModuleType.practise);
         SceneManager.goToTopicList();
     }
 
-    // load Games Module
+    /**
+     * Load Games Module
+     */
     @FXML
     private void loadGamesModule() throws IOException {
         Module.setModuleType(ModuleType.games);
         SceneManager.goToTopicList();
     }
 
-    // Quit the game
+    /**
+     * Quit the game
+     */
     @FXML
     private void quit() {
         Platform.exit();

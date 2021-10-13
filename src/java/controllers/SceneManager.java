@@ -8,19 +8,26 @@ import java.io.IOException;
 import java.net.URL;
 
 public class SceneManager {
-    private static Scene scene;
-
     private static final String MAIN_MENU_FXML = "mainMenu.fxml";
     private static final String TOPIC_LIST_FXML = "topicList.fxml";
     private static final String PRACTISE_FXML = "modulePractise.fxml";
     private static final String GAMES_FXML = "moduleGames.fxml";
     private static final String REWARD_SCREEN_FXML = "rewardScreen.fxml";
 
+    private static Scene scene;
 
+    /**
+     * This method will only run once and will run at the start of the program.
+     * Set up the scene, so can change the scene in the future.
+     */
     public static void settingUp(Scene scn) {
         scene = scn;
     }
 
+    /**
+     * goTo...
+     * These methods are helper functions of changing the scene
+     */
     public static void goToMainMenu() throws IOException {
         changeScene(MAIN_MENU_FXML);
     }
@@ -41,6 +48,10 @@ public class SceneManager {
         changeScene(REWARD_SCREEN_FXML);
     }
 
+    /**
+     * Change the scene to the provided FXML file
+     * @param fxml The FXML file that is going to change to
+     */
     private static void changeScene(String fxml) throws IOException {
         URL url = SceneManager.class.getResource("../" + fxml);
 
