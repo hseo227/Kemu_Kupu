@@ -1,7 +1,10 @@
 package controllers;
 
 import spellingQuiz.ModulePractise;
+import spellingQuizUtil.Words;
 import spellingQuizUtil.Score;
+import spellingQuizUtil.Result;
+import spellingQuizUtil.QuizState;
 
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;

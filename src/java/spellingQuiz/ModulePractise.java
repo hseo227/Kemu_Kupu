@@ -1,5 +1,8 @@
 package spellingQuiz;
 
+import spellingQuizUtil.QuizState;
+import spellingQuizUtil.Result;
+
 public class ModulePractise extends Module {
     private final int NUMOFQUESTIONS;
 
@@ -10,7 +13,7 @@ public class ModulePractise extends Module {
 
     // this function generate a new word and then ask the user
     // return true, if the quiz is not finished | return false, if the quiz is finished
-    protected boolean newQuestion() {
+    public boolean newQuestion() {
         if (currentIndex == NUMOFQUESTIONS) {  // the quiz is finished
             return false;
         }
@@ -30,7 +33,7 @@ public class ModulePractise extends Module {
     }
 
     // this function check the spelling (input) and then set up a range of stuff
-    protected void checkSpelling() {
+    public void checkSpelling() {
         // first check if the word is skipped
         if (resultEqualsTo(Result.skipped)) {
             setQuizState(QuizState.ready);  // set the state to ready for the next question

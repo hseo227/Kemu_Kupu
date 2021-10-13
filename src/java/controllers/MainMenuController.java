@@ -1,6 +1,7 @@
 package controllers;
 
 import spellingQuiz.Module;
+import spellingQuizUtil.ModuleType;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;

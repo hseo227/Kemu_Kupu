@@ -8,18 +8,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 
-enum ModuleType {
-    practise, games
-}
-
-enum QuizState {
-    ready, running
-}
-
-enum Result {
-    mastered, faulted, failed, skipped
-}
-
 public abstract class Module {
     private final static String FESTIVAL_CMD_FILE = ".scm";
 
@@ -61,10 +49,10 @@ public abstract class Module {
     }
 
     // this function generate a new word and then ask the user
-    protected abstract boolean newQuestion();
+    public abstract boolean newQuestion();
 
     // this function check the spelling (input) and then set up a range of stuff
-    protected abstract void checkSpelling();
+    public abstract void checkSpelling();
 
     // this function will speak out the message using bash and festival scm
     protected void speak(String englishMessage, String maoriMessage) {

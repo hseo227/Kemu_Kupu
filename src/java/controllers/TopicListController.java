@@ -3,6 +3,7 @@ package controllers;
 import spellingQuiz.Module;
 import topicList.Topic;
 import spellingQuizUtil.Words;
+import spellingQuizUtil.ModuleType;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
