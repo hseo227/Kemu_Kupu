@@ -53,7 +53,7 @@
             </Label>
             <HBox alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" onAction="#newQuiz" style="-fx-background-color: transparent;">
+                  <Button mnemonicParsing="false" onAction="#playAgain" style="-fx-background-color: transparent;">
                      <graphic>
 			            <ImageView fitHeight="50.0" pickOnBounds="true" preserveRatio="true">
 			               <image>

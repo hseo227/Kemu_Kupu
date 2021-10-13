@@ -16,13 +16,19 @@ public class RewardScreenController implements Initializable {
     @FXML
     private Label userScoreLabel;
 
+    /**
+     * Set up the user score label
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         userScoreLabel.setText(Score.getScore() + " OUT OF " + Score.getTotalScore());
     }
-    
+
+    /**
+     * When 'Play Again' button is pressed, play the quiz again, either practise or games module
+     */
     @FXML
-    private void newQuiz() throws IOException {
+    private void playAgain() throws IOException {
         if (Module.moduleTypeEqualsTo(ModuleType.practise)) {
             SceneManager.goToPractiseModule();
         } else {
@@ -30,6 +36,9 @@ public class RewardScreenController implements Initializable {
         }
     }
 
+    /**
+     * When 'Main menu' button is pressed, go back to main menu
+     */
     @FXML
     private void backToMainMenu() throws IOException {
         SceneManager.goToMainMenu();
