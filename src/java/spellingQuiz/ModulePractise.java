@@ -5,36 +5,22 @@ import spellingQuizUtil.QuizState;
 import spellingQuizUtil.Result;
 import static spellingQuizUtil.FestivalSpeech.speak;
 
-public class ModulePractise extends Module {
-    private final int NUM_OF_QUESTIONS;
 
+public class ModulePractise extends Module {
+
+    /**
+     * Constructor
+     * Start the quiz with the number of questions that user chose
+     * @param numOfQuestions Number of questions for the quiz
+     */
     public ModulePractise(int numOfQuestions) {
         super(numOfQuestions);
-        NUM_OF_QUESTIONS = numOfQuestions;
     }
 
-    // this function generate a new word and then ask the user
-    // return true, if the quiz is not finished | return false, if the quiz is finished
-    public boolean newQuestion() {
-        if (currentIndex == NUM_OF_QUESTIONS) {  // the quiz is finished
-            return false;
-        }
-
-        setQuizState(QuizState.RUNNING);  // now set the state to running
-        setResult(Result.MASTERED);  // set original result to Mastered
-        currentIndex++;
-
-        currentWord = words.nextWord();  // set up the word and get the word that is testing on
-
-        // set the labels' messages and also speak out the message
-        mainLabelText = "Spell Word " + currentIndex + " of " + NUM_OF_QUESTIONS + ":";
-        promptLabelText = words.getHint(Hint.NO_HINT);
-        speak("Please spell", currentWord);
-
-        return true;
-    }
-
-    // this function check the spelling (input) and then set up a range of stuff
+    /**
+     * This function check the spelling (input)
+     * And then set up the labels, speak, increase score with respective Result
+     */
     public void checkSpelling() {
         // first check if the word is skipped
         if (resultEqualsTo(Result.SKIPPED)) {
