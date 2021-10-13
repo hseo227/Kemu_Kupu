@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
+import java.net.URL;
 
 public class SceneController {
     private static Scene scene;
@@ -41,7 +42,14 @@ public class SceneController {
     }
 
     private static void changeScene(String fxml) throws IOException {
-        Pane pane = FXMLLoader.load(SceneController.class.getResource("../" + fxml));
-        scene.setRoot(pane);
+        URL url = SceneController.class.getResource("../" + fxml);
+
+        // if successful to load FXML file then load it, otherwise print out error message
+        if (url != null) {
+            Pane pane = FXMLLoader.load(url);
+            scene.setRoot(pane);
+        } else {
+            System.err.println("Failed to load - " + fxml);
+        }
     }
 }
