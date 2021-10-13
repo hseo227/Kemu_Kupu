@@ -51,6 +51,7 @@ public class ModulePractise extends Module {
             mainLabelText = correctMessage.getEncourageMsg();
             promptLabelText = "";
             speak("Correct", "");
+            increaseScore();
 
         } else if (resultEqualsTo(Result.mastered)) {  // still 1st attempt, but incorrect
             setResult(Result.faulted);

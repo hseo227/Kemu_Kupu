@@ -143,13 +143,6 @@ public class ModuleGamesController implements Initializable {
             if (quiz.resultEqualsTo(Result.mastered) || quiz.resultEqualsTo(Result.faulted)) {
                 colour = "#00A804";  // change text colour to green
 
-                // increase the score
-                if (quiz.resultEqualsTo(Result.mastered)) {
-                    Score.increase20();  // Increase the higher score for 1st attempt
-                } else {
-                    Score.increase10();  // Increase the lower score for 2nd attempt
-                }
-
                 // set userScore label to the current score
                 userScore.setText("SCORE : " + Score.getScore());
 

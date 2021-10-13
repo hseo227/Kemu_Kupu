@@ -1,6 +1,7 @@
 package spellingQuizUtil;
 
 public class Score {
+	private static final int MARK_INCREASE = 10;
 
 	private static int score, totalScore;
 
@@ -9,14 +10,9 @@ public class Score {
 		score = 0;
 	}
 
-	// for increasing the score when correct on first try
-	public static void increase20() {
-		score += 20;
-	}
-
-	// for increasing the score when correct on second try
-	public static void increase10() {
-		score += 10;
+	// increase the score with respect score multiplier
+	public static void increaseBy(int scoreMultiplier) {
+		score += MARK_INCREASE * scoreMultiplier;
 	}
 
 	// score getter

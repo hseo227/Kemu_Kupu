@@ -157,4 +157,13 @@ public abstract class Module {
         return words.getNumOfLettersOfWord();
     }
 
+    // score increases, the score multiplier depends on the result
+    public void increaseScore() {
+        if (resultEqualsTo(Result.mastered)) {
+            Score.increaseBy(2);
+        } else {
+            Score.increaseBy(1);
+        }
+    }
+
 }
