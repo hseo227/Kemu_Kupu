@@ -41,7 +41,7 @@ public class SceneController {
     }
 
     private static void changeScene(String fxml) throws IOException {
-        Pane pane = FXMLLoader.load(SceneController.class.getResource(fxml));
+        Pane pane = FXMLLoader.load(SceneController.class.getResource("../" + fxml));
         scene.setRoot(pane);
     }
 }
