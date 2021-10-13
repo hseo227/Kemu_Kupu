@@ -178,6 +178,8 @@ public class ModulePractiseController implements Initializable {
 
     @FXML
     private void backToMainMenu(ActionEvent event) throws IOException {
+        // kill all the festival, so no festival in playing when it is in main menu screen
+        FestivalSpeech.shutDownAllFestival();
         SceneController.goToMainMenu();
     }
 

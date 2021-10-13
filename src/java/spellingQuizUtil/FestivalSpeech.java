@@ -52,4 +52,15 @@ public class FestivalSpeech {
             e.printStackTrace();
         }
     }
+
+    // kill all festival instantly
+    public static void shutDownAllFestival() {
+        try {
+            String command = "killall festival; killall aplay";
+            ProcessBuilder pb = new ProcessBuilder("bash", "-c", command);
+            pb.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
