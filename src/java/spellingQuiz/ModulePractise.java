@@ -2,6 +2,7 @@ package spellingQuiz;
 
 import spellingQuizUtil.QuizState;
 import spellingQuizUtil.Result;
+import static spellingQuizUtil.FestivalSpeech.speak;
 
 public class ModulePractise extends Module {
     private final int NUMOFQUESTIONS;

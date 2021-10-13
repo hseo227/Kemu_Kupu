@@ -1,18 +1,12 @@
 package spellingQuiz;
 
 import spellingQuizUtil.*;
-
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import static spellingQuizUtil.FestivalSpeech.speak;
 
 
 public abstract class Module {
-    private final static String FESTIVAL_CMD_FILE = ".scm";
 
-
-    protected int currentIndex, speechSpeed;
+    protected int currentIndex;
     protected String currentWord, mainLabelText, promptLabelText, userInput;
     protected QuizState currentQuizState;
     protected Result currentResult;
@@ -20,13 +14,6 @@ public abstract class Module {
     protected final Words words;
     protected EncouragingMessage correctMessage, incorrectMessage, tryAgainMessage;
 
-
-    // this method will only run once and will run at the start of the program
-    // create a file that will be used to run the festival
-    public static void initialise() throws IOException {
-        File file = new File(FESTIVAL_CMD_FILE);
-        file.createNewFile();
-    }
 
     // Constructor
     public Module(int numOfQuestions) {
@@ -53,37 +40,6 @@ public abstract class Module {
 
     // this function check the spelling (input) and then set up a range of stuff
     public abstract void checkSpelling();
-
-    // this function will speak out the message using bash and festival scm
-    protected void speak(String englishMessage, String maoriMessage) {
-        try {
-            // write the festival command into .scm file
-            PrintWriter writeFile = new PrintWriter(new FileWriter(FESTIVAL_CMD_FILE));
-
-            // adjust the speed first
-
-            // speak english / maori message if there is any
-            if (!englishMessage.equals("")) {
-                writeFile.println("(Parameter.set 'Duration_Stretch' " + (200 - speechSpeed) / 100.0 + ")");
-                writeFile.println("(SayText \"" + englishMessage + "\")");
-            }
-            if (!maoriMessage.equals("")) {
-                writeFile.println("(voice_akl_mi_pk06_cg)");  // change to maori voice
-                writeFile.println("(Parameter.set 'Duration_Stretch' " + (200 - speechSpeed) / 100.0 + ")");
-                writeFile.println("(SayText \"" + maoriMessage + "\")");
-            }
-
-            writeFile.close();
-
-            // run festival schema file
-            String command = "festival -b " + FESTIVAL_CMD_FILE;
-            ProcessBuilder pb = new ProcessBuilder("bash", "-c", command);
-            pb.start();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
     // this method will speak the word again, only the word
     public void speakWordAgain() {
@@ -136,11 +92,6 @@ public abstract class Module {
 
     protected String getUserInput() {
         return userInput;
-    }
-
-    // speechSpeed's setter
-    public void setSpeechSpeed(int speed) {
-        speechSpeed = speed;
     }
 
     // mainLabelText's getter

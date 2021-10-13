@@ -1,10 +1,5 @@
 package controllers;
 
-import spellingQuiz.ModuleGames;
-import spellingQuizUtil.Score;
-import spellingQuizUtil.Result;
-import spellingQuizUtil.QuizState;
-
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,6 +14,11 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import javafx.util.StringConverter;
+import spellingQuizUtil.Score;
+import spellingQuizUtil.Result;
+import spellingQuizUtil.QuizState;
+import spellingQuizUtil.FestivalSpeech;
+import spellingQuiz.ModuleGames;
 
 import java.io.IOException;
 import java.net.URL;
@@ -113,7 +113,7 @@ public class ModuleGamesController implements Initializable {
         pause.play();
 
         inputField.clear();
-        quiz.setSpeechSpeed((int) speechSpeed.getValue());  // set up speech speed
+        FestivalSpeech.setSpeechSpeed((int) speechSpeed.getValue());  // set up speech speed
 
         // if the quiz is not finished, continue the game (return true), otherwise false
         if (quiz.newQuestion()) {
@@ -130,7 +130,7 @@ public class ModuleGamesController implements Initializable {
     private void checkSpelling() {
         String colour = "#FFF";  // set default text colour to white
 
-        quiz.setSpeechSpeed((int) speechSpeed.getValue());  // set up speech speed
+        FestivalSpeech.setSpeechSpeed((int) speechSpeed.getValue());  // set up speech speed
         quiz.setUserInput(inputField.getText());  // get user input/spelling
         quiz.checkSpelling();
 
@@ -175,7 +175,7 @@ public class ModuleGamesController implements Initializable {
         pause.play();
 
         // set up speech speed and then speak
-        quiz.setSpeechSpeed((int) speechSpeed.getValue());
+        FestivalSpeech.setSpeechSpeed((int) speechSpeed.getValue());
         quiz.speakWordAgain();
     }
 

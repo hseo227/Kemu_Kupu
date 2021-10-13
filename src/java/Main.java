@@ -1,18 +1,17 @@
-import spellingQuiz.Module;
-import controllers.SceneController;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import spellingQuizUtil.FestivalSpeech;
+import controllers.SceneController;
 
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Module.initialise();
+        FestivalSpeech.settingUp();
 
         Parent root = FXMLLoader.load(getClass().getResource("mainMenu.fxml"));
         // set title and icon
