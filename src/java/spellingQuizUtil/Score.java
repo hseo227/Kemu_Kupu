@@ -32,7 +32,8 @@ public class Score {
 	}
 
 	/**
-	 * totalScore's getter
+	 * totalScore's
+	 * 				getter
 	 * @return totalScore
 	 */
 	public static int getTotalScore() {

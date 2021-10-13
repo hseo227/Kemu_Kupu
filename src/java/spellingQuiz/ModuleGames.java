@@ -3,6 +3,7 @@ package spellingQuiz;
 import spellingQuizUtil.Hint;
 import spellingQuizUtil.QuizState;
 import spellingQuizUtil.Result;
+
 import static spellingQuizUtil.FestivalSpeech.speak;
 
 

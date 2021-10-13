@@ -161,7 +161,7 @@ abstract public class ModuleBaseController implements Initializable {
     }
 
     /**
-     * The method is called everytime the user hit a key
+     * The method is called everytime the user hit a key in the text field
      * It is to check macron character short cut
      * Shortcut: a vowel followed by '-'
      * E.g. "a-" -> "ā"
@@ -203,7 +203,7 @@ abstract public class ModuleBaseController implements Initializable {
     }
 
     /**
-     * We also allow the user to click the buttons to add macron character instead of short cut
+     * Allow the user to click the buttons to add macron character instead of short cut
      * @param event This parameter is used to get the macron character that the user want to add in
      */
     @FXML

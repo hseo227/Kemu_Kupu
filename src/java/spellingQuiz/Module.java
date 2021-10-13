@@ -69,6 +69,7 @@ public abstract class Module {
 
     /**
      * This function check the spelling (input) and then set up the labels, speak, increase score
+     * Different module set up the labels differently
      */
     abstract public void checkSpelling();
 
