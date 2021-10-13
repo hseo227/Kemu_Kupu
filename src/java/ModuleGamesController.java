@@ -1,10 +1,12 @@
-package sample;
-
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -15,9 +17,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ModulePractiseController implements Initializable {
+public class ModuleGamesController implements Initializable {
 
-    private ModulePractise quiz;
+    private ModuleGames quiz;
 
     private final PauseTransition pause = new PauseTransition(Duration.seconds(2));
 
@@ -29,32 +31,22 @@ public class ModulePractiseController implements Initializable {
     @FXML
     private TextField inputField;
     @FXML
-    private Button backBtn, macronsA, macronsE, macronsI, macronsO, macronsU, skipBtn, checkBtn, playbackBtn;
+    private Button startBtn, backBtn, macronsA, macronsE, macronsI, macronsO, macronsU, skipBtn, checkBtn, playbackBtn;
     @FXML
     private Slider speechSpeed;
     @FXML
     private ToggleButton togSpdSlider;
     @FXML
-    private ChoiceBox<Integer> numOfQCheckBox;
-    @FXML
     private HBox macronsBtnsHBox;
     @FXML
-    private VBox inputVBox, startVBox;
+    private VBox inputVBox;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        // add check box from 1 to number of words in the words list, maximum is 10
-        for (int i = 1; i <= Math.min(Words.getNumOfWordsInWordsList(), 10); i++) {
-            numOfQCheckBox.getItems().add(i);
-        }
-        // set default number to 3
-        numOfQCheckBox.setValue(3);
-
         // reset the score
-    	Score.reset();
-
+        Score.reset();
 
         // Set up for speed slider
         // hide the slider
@@ -85,14 +77,14 @@ public class ModulePractiseController implements Initializable {
     @FXML
     private void startQuiz(ActionEvent event) {
 
-        // start a new game with specific number of questions
-        quiz = new ModulePractise(numOfQCheckBox.getValue());
+        // start a new game
+        quiz = new ModuleGames();
 
-    	// Display score
-    	userScore.setText("SCORE : " + Score.getScore());
+        // Display score
+        userScore.setText("SCORE : " + Score.getScore());
 
         // otherwise, continue the game
-        startVBox.setVisible(false);
+        startBtn.setVisible(false);
         inputVBox.setVisible(true);
         shortCutLabel.setVisible(true);
 
@@ -101,13 +93,8 @@ public class ModulePractiseController implements Initializable {
 
     @FXML
     private void onEnter(ActionEvent event) {
-        // when the user press enter key or press the 'check' button...
-        if (quiz.quizStateEqualsTo(QuizState.ready)) {
-            skipBtn.setDisable(false);
-            newQuestion();
-        } else {
-            checkSpelling();
-        }
+        // when the user press enter key or press the 'check' button, check spelling
+        checkSpelling();
     }
 
     // this method set up the Server thread for quiz.newQuestion and then run it
@@ -159,13 +146,12 @@ public class ModulePractiseController implements Initializable {
                 // set userScore label to the current score
                 userScore.setText("SCORE : " + Score.getScore());
 
-                pauseBetweenEachQ();
-
             // incorrect spelling (Failed) OR the word is skipped
             } else {
                 colour = "#FF2715";  // change text colour to red
-                skipBtn.setDisable(true);  // cannot press 'skip' when showing the answer
             }
+
+            pauseBetweenEachQ();
 
         // incorrect spelling (1st attempt)
         } else {
@@ -239,20 +225,20 @@ public class ModulePractiseController implements Initializable {
         String macronsCharacter = ((Button)event.getSource()).getText();
         inputField.appendText(macronsCharacter);
     }
-    
+
     @FXML
     private void skipWord(ActionEvent event) {
-    	quiz.setResult(Result.skipped);
+        quiz.setResult(Result.skipped);
         checkSpelling();
     }
 
     // this method is called when the quiz is finished
     private void rewardScreen() {
-    	try {
-        	SceneController.goToRewardScreen();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+        try {
+            SceneController.goToRewardScreen();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     // this method is to pause before each new question, also while pausing it disables the quiz related utilities

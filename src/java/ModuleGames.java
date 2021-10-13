@@ -1,5 +1,3 @@
-package sample;
-
 public class ModuleGames extends Module {
     private static final int NUMBER_OF_QUESTIONS = 5;
 

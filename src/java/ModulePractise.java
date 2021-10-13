@@ -1,5 +1,3 @@
-package sample;
-
 public class ModulePractise extends Module {
     private final int NUMOFQUESTIONS;
 

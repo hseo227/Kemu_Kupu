@@ -4,8 +4,6 @@
  * Do not change this class
  */
 
-package sample;
-
 public class Topic {
     private final String name;
 

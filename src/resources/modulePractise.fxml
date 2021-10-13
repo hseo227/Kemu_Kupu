@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextField?>
@@ -15,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #000;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="sample.ModuleGamesController">
+<AnchorPane fx:id="rootPane" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #000;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="ModulePractiseController">
    <children>
       <ImageView fitHeight="500.0" fitWidth="1280.0" preserveRatio="true">
          <image>
@@ -60,7 +61,7 @@
                   <Font name="Heiti TC Medium" size="50.0" />
                </font>
             </Label>
-            <Label fx:id="mainLabel" alignment="CENTER" prefWidth="800.0" text="New Spelling Quiz!" textFill="WHITE">
+            <Label fx:id="mainLabel" alignment="CENTER" prefWidth="800.0" text="Practice Spelling Quiz!" textFill="WHITE">
                <font>
                   <Font name="Heiti TC Medium" size="35.0" />
                </font>
@@ -151,11 +152,25 @@
             </VBox>
          </children>
       </VBox>
-      <Button fx:id="startBtn" layoutX="553.0" layoutY="350.0" mnemonicParsing="false" onAction="#startQuiz" prefHeight="50.0" prefWidth="175.0" style="-fx-background-color: #EBEBEB;" text="Start Quiz">
-         <font>
-            <Font name="Heiti TC Medium" size="25.0" />
-         </font>
-      </Button>
+      <VBox fx:id="startVBox" alignment="CENTER" layoutX="396.0" layoutY="360.0" spacing="30.0">
+         <children>
+            <HBox alignment="CENTER" spacing="10.0">
+               <children>
+                  <Label text="Number of questions you want to practise for: " textFill="WHITE">
+                     <font>
+                        <Font name="Heiti TC Medium" size="20.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox fx:id="numOfQCheckBox" prefHeight="30.0" prefWidth="70.0" style="-fx-font-size: 20;" />
+               </children>
+            </HBox>
+            <Button mnemonicParsing="false" onAction="#startQuiz" prefHeight="50.0" prefWidth="175.0" style="-fx-background-color: #EBEBEB;" text="Start Quiz">
+               <font>
+                  <Font name="Heiti TC Medium" size="25.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
       <Label fx:id="shortCutLabel" layoutX="50.0" layoutY="620.0" text="Shortcut: type a vowel followed by '-' (eg: 'a-' → 'ā')" textFill="#ff2917" visible="false">
          <font>
             <Font size="20.0" />

@@ -1,5 +1,3 @@
-package sample;
-
 public class Score {
 
 	private static int score, totalScore;
