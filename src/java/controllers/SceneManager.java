@@ -28,23 +28,23 @@ public class SceneManager {
      * goTo...
      * These methods are helper functions of changing the scene
      */
-    public static void goToMainMenu() throws IOException {
+    public static void goToMainMenu() {
         changeScene(MAIN_MENU_FXML);
     }
 
-    public static void goToTopicList() throws IOException {
+    public static void goToTopicList() {
         changeScene(TOPIC_LIST_FXML);
     }
 
-    public static void goToPractiseModule() throws IOException {
+    public static void goToPractiseModule() {
         changeScene(PRACTISE_FXML);
     }
 
-    public static void goToGamesModule() throws IOException {
+    public static void goToGamesModule() {
         changeScene(GAMES_FXML);
     }
     
-    public static void goToRewardScreen() throws IOException {
+    public static void goToRewardScreen() {
         changeScene(REWARD_SCREEN_FXML);
     }
 
@@ -52,14 +52,19 @@ public class SceneManager {
      * Change the scene to the provided FXML file
      * @param fxml The FXML file that is going to change to
      */
-    private static void changeScene(String fxml) throws IOException {
-        URL url = SceneManager.class.getResource("../" + fxml);
+    private static void changeScene(String fxml) {
 
         // if successful to load FXML file then load it, otherwise print out error message
-        if (url != null) {
-            Pane pane = FXMLLoader.load(url);
-            scene.setRoot(pane);
-        } else {
+        try {
+            URL url = SceneManager.class.getResource("../" + fxml);
+            if (url != null) {
+                Pane pane = FXMLLoader.load(url);
+                scene.setRoot(pane);
+
+            } else {
+                throw new IOException();
+            }
+        } catch (IOException e) {
             System.err.println("Failed to load - " + fxml);
         }
     }

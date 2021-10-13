@@ -5,15 +5,13 @@ import javafx.fxml.FXML;
 import spellingQuiz.Module;
 import spellingQuizUtil.ModuleType;
 
-import java.io.IOException;
-
 public class MainMenuController {
 
     /**
      * Load Practise Module
      */
     @FXML
-    private void loadPractiseModule() throws IOException {
+    private void loadPractiseModule() {
         Module.setModuleType(ModuleType.PRACTISE);
         SceneManager.goToTopicList();
     }
@@ -22,7 +20,7 @@ public class MainMenuController {
      * Load Games Module
      */
     @FXML
-    private void loadGamesModule() throws IOException {
+    private void loadGamesModule() {
         Module.setModuleType(ModuleType.GAMES);
         SceneManager.goToTopicList();
     }

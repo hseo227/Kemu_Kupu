@@ -249,11 +249,7 @@ public class ModulePractiseController implements Initializable {
 
     // this method is called when the quiz is finished
     private void rewardScreen() {
-        try {
-            SceneManager.goToRewardScreen();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        SceneManager.goToRewardScreen();
     }
 
     // this method is to pause before each new question, also while pausing it disables the quiz related utilities

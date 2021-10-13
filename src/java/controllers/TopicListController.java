@@ -11,7 +11,6 @@ import spellingQuizUtil.Words;
 import topicList.Topic;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -50,7 +49,7 @@ public class TopicListController implements Initializable {
      * or the default one, which is the first one, if the user did not select any topic
      */
     @FXML
-    private void selectTopic() throws IOException {
+    private void selectTopic() {
         try {
             // if the user selected a topic, then it will continue, otherwise it will throw an exception
             Topic selectedTopic = table.getSelectionModel().getSelectedItem();
@@ -73,7 +72,7 @@ public class TopicListController implements Initializable {
      * When 'Main menu' button is pressed, go back to main menu
      */
     @FXML
-    private void backToMainMenu() throws IOException {
+    private void backToMainMenu() {
         SceneManager.goToMainMenu();
     }
 }
