@@ -1,43 +1,30 @@
 package spellingQuiz;
 
+import spellingQuizUtil.Hint;
 import spellingQuizUtil.QuizState;
 import spellingQuizUtil.Result;
 import static spellingQuizUtil.FestivalSpeech.speak;
 
-public class ModulePractise extends Module {
-    private final int NUMOFQUESTIONS;
 
+public class ModulePractise extends Module {
+
+    /**
+     * Constructor
+     * Start the quiz with the number of questions that user chose
+     * @param numOfQuestions Number of questions for the quiz
+     */
     public ModulePractise(int numOfQuestions) {
         super(numOfQuestions);
-        NUMOFQUESTIONS = numOfQuestions;
     }
 
-    // this function generate a new word and then ask the user
-    // return true, if the quiz is not finished | return false, if the quiz is finished
-    public boolean newQuestion() {
-        if (currentIndex == NUMOFQUESTIONS) {  // the quiz is finished
-            return false;
-        }
-
-        setQuizState(QuizState.running);  // now set the state to running
-        setResult(Result.mastered);  // set original result to Mastered
-        currentIndex++;
-
-        currentWord = words.nextWord();  // set up the word and get the word that is testing on
-
-        // set the labels' messages and also speak out the message
-        mainLabelText = "Spell Word " + currentIndex + " of " + NUMOFQUESTIONS + ":";
-        promptLabelText = "";
-        speak("Please spell", currentWord);
-
-        return true;
-    }
-
-    // this function check the spelling (input) and then set up a range of stuff
+    /**
+     * This function check the spelling (input)
+     * And then set up the labels, speak, increase score with respective Result
+     */
     public void checkSpelling() {
         // first check if the word is skipped
-        if (resultEqualsTo(Result.skipped)) {
-            setQuizState(QuizState.ready);  // set the state to ready for the next question
+        if (resultEqualsTo(Result.SKIPPED)) {
+            setQuizState(QuizState.READY);  // set the state to ready for the next question
 
             // setting up the labels' text and speak out the message
             mainLabelText = "Correct answer: " + currentWord;
@@ -46,7 +33,7 @@ public class ModulePractise extends Module {
 
         // if statement for each result after checking the spelling (input)
         } else if ( words.checkUserSpelling(getUserInput()) ) {  // mastered and failed, 1st attempt and 2nd attempt respectively
-            setQuizState(QuizState.ready);  // set the state to ready for the next question
+            setQuizState(QuizState.READY);  // set the state to ready for the next question
 
             // setting up the labels' text and speak out the message
             mainLabelText = correctMessage.getEncourageMsg();
@@ -54,17 +41,17 @@ public class ModulePractise extends Module {
             speak("Correct", "");
             increaseScore();
 
-        } else if (resultEqualsTo(Result.mastered)) {  // still 1st attempt, but incorrect
-            setResult(Result.faulted);
+        } else if (resultEqualsTo(Result.MASTERED)) {  // still 1st attempt, but incorrect
+            setResult(Result.FAULTED);
 
             // setting up the labels' text and speak out the message
             mainLabelText = tryAgainMessage.getEncourageMsg();
-            promptLabelText = "Hint: " + words.getHintPractiseModule();
+            promptLabelText = words.getHint(Hint.PRACTISE_M_HINT);
             speak("Incorrect, try once more.", currentWord);
 
         } else {  // 2nd attempt, and it is the second times got it incorrect --> failed
-            setResult(Result.failed);
-            setQuizState(QuizState.ready);  // set the state to ready for the next question
+            setResult(Result.FAILED);
+            setQuizState(QuizState.READY);  // set the state to ready for the next question
 
             // setting up the labels' text and speak out the message
             mainLabelText = "Correct answer: " + currentWord;

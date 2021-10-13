@@ -5,24 +5,45 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+/**
+ * This class contains all the methods that are related to festival tts
+ */
 public class FestivalSpeech {
     private final static String FESTIVAL_CMD_FILE = ".scm";
     private static double speechSpeed;
 
 
-    // this method will only run once and will run at the start of the program
-    // create a file that will be used to run the festival
+    /**
+     * This method will only run once and will run at the start of the program
+     * Create a scheme file that will be used to run the festival tts
+     * @throws IOException Failed to create new scheme '.scm' file
+     */
     public static void settingUp() throws IOException {
         File file = new File(FESTIVAL_CMD_FILE);
         file.createNewFile();
     }
 
-    // calculate the speech speed that festival will understand and set it
+    /**
+     * Calculate the speech speed that festival will understand and set it
+     * speechSpeed = 2.0 - SayText slower
+     *               1.0 - SayText normal speed
+     *               0.5 - SayText faster
+     * @param speed This value is inverted, this is why (200 - speed)
+     */
     public static void setSpeechSpeed(int speed) {
         speechSpeed = (200 - speed) / 100.0;
     }
 
-    // this function will speak out the message using bash and festival scm
+    /**
+     * Speak out / SayText the message using bash and festival scm
+     * Speak the English and Maori words separately
+     * Speak the English words first then followed by Maori words
+     * Also speak both words/messages in selected speech speed
+     * To SayText, first write the commands into .scm file and then run the scheme file
+     *
+     * @param englishMessage Message in English only
+     * @param maoriMessage Message in Maori only
+     */
     public static void speak(String englishMessage, String maoriMessage) {
         try {
             // write the festival command into .scm file
@@ -43,7 +64,7 @@ public class FestivalSpeech {
 
             writeFile.close();
 
-            // run festival schema file
+            // run festival scheme file
             String command = "festival -b " + FESTIVAL_CMD_FILE;
             ProcessBuilder pb = new ProcessBuilder("bash", "-c", command);
             pb.start();
@@ -53,7 +74,9 @@ public class FestivalSpeech {
         }
     }
 
-    // kill all festival instantly
+    /**
+     * Kill all festival tts instantly
+     */
     public static void shutDownAllFestival() {
         try {
             String command = "killall festival; killall aplay";

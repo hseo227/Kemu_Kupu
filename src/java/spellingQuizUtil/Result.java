@@ -1,5 +1,8 @@
 package spellingQuizUtil;
 
+/**
+ * Enum Result helps updating the display
+ */
 public enum Result {
-    mastered, faulted, failed, skipped
+    MASTERED, FAULTED, FAILED, SKIPPED
 }
