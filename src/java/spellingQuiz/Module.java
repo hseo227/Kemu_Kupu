@@ -104,11 +104,6 @@ public abstract class Module {
         return promptLabelText;
     }
 
-    // get number of letters of the current word
-    public int getNumOfLettersOfWord() {
-        return words.getNumOfLettersOfWord();
-    }
-
     // score increases, the score multiplier depends on the result
     public void increaseScore() {
         if (resultEqualsTo(Result.MASTERED)) {

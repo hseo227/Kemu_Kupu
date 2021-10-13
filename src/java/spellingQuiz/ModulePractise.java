@@ -1,21 +1,22 @@
 package spellingQuiz;
 
+import spellingQuizUtil.Hint;
 import spellingQuizUtil.QuizState;
 import spellingQuizUtil.Result;
 import static spellingQuizUtil.FestivalSpeech.speak;
 
 public class ModulePractise extends Module {
-    private final int NUMOFQUESTIONS;
+    private final int NUM_OF_QUESTIONS;
 
     public ModulePractise(int numOfQuestions) {
         super(numOfQuestions);
-        NUMOFQUESTIONS = numOfQuestions;
+        NUM_OF_QUESTIONS = numOfQuestions;
     }
 
     // this function generate a new word and then ask the user
     // return true, if the quiz is not finished | return false, if the quiz is finished
     public boolean newQuestion() {
-        if (currentIndex == NUMOFQUESTIONS) {  // the quiz is finished
+        if (currentIndex == NUM_OF_QUESTIONS) {  // the quiz is finished
             return false;
         }
 
@@ -26,8 +27,8 @@ public class ModulePractise extends Module {
         currentWord = words.nextWord();  // set up the word and get the word that is testing on
 
         // set the labels' messages and also speak out the message
-        mainLabelText = "Spell Word " + currentIndex + " of " + NUMOFQUESTIONS + ":";
-        promptLabelText = "";
+        mainLabelText = "Spell Word " + currentIndex + " of " + NUM_OF_QUESTIONS + ":";
+        promptLabelText = words.getHint(Hint.NO_HINT);
         speak("Please spell", currentWord);
 
         return true;
@@ -59,7 +60,7 @@ public class ModulePractise extends Module {
 
             // setting up the labels' text and speak out the message
             mainLabelText = tryAgainMessage.getEncourageMsg();
-            promptLabelText = "Hint:" + words.getHintPractiseModule();
+            promptLabelText = words.getHint(Hint.PRACTISE_M_HINT);
             speak("Incorrect, try once more.", currentWord);
 
         } else {  // 2nd attempt, and it is the second times got it incorrect --> failed

@@ -108,35 +108,42 @@ public class Words {
         return count;
     }
 
-    // hint for the current word, only for practise module
-    public String getHintPractiseModule() {
-
-        // number of letters hints depends on the size of the current word, excluding space and comma
-        int numOfLettersHints = (int) Math.ceil((double) getNumOfLettersOfWord() / 4);
-
+    // hint for the current word
+    public String getHint(Hint hintType) {
         ArrayList<Integer> indexesOfHints = new ArrayList<>();
         StringBuilder hint = new StringBuilder();
-        Random rand = new Random();
-        int randIndex;
 
-        // get the random index of letter in the word (index of the hint)
-        for (int i = 0; i < numOfLettersHints; i++) {
-            // loop until get a different index
-            do {
-                randIndex = rand.nextInt(currentWord.length());
-            } while (indexesOfHints.contains(randIndex) || !Character.isLetter(currentWord.charAt(randIndex)));
+        // for practise module, the hint is to add random number of letters into the word
+        if (hintType == Hint.PRACTISE_M_HINT) {
+            // number of letters hints depends on the size of the current word, excluding space and comma
+            int numOfLettersHints = (int) Math.ceil((double) getNumOfLettersOfWord() / 4);
 
-            indexesOfHints.add(randIndex);
+            Random rand = new Random();
+            int randIndex;
+
+            // get the random index of letter in the word (index of the hint)
+            for (int i = 0; i < numOfLettersHints; i++) {
+                // loop until get a different index
+                do {
+                    randIndex = rand.nextInt(currentWord.length());
+                } while (indexesOfHints.contains(randIndex) || !Character.isLetter(currentWord.charAt(randIndex)));
+
+                indexesOfHints.add(randIndex);
+            }
+
+        // for games module, the hint is the second letter of the word
+        } else if (hintType == Hint.GAMES_M_HINT) {
+            indexesOfHints.add(1);
         }
 
         // now build the hint
         for (int i = 0; i < currentWord.length(); i++) {
-            hint.append(" ");
             if (indexesOfHints.contains(i) || !Character.isLetter(currentWord.charAt(i))) {
                 hint.append(currentWord.charAt(i));  // this is the letter hint
             } else {
                 hint.append("_");  // blank, let the user to guess it
             }
+            hint.append(" ");
         }
 
         return hint.toString();

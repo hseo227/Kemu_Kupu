@@ -1,5 +1,6 @@
 package spellingQuiz;
 
+import spellingQuizUtil.Hint;
 import spellingQuizUtil.QuizState;
 import spellingQuizUtil.Result;
 import static spellingQuizUtil.FestivalSpeech.speak;
@@ -26,7 +27,7 @@ public class ModuleGames extends Module {
 
         // set the labels' messages and also speak out the message
         mainLabelText = "Spell Word " + currentIndex + " of " + NUMBER_OF_QUESTIONS + ":";
-        promptLabelText = "";
+        promptLabelText = words.getHint(Hint.NO_HINT);
         speak("Please spell", currentWord);
 
         return true;
@@ -58,7 +59,7 @@ public class ModuleGames extends Module {
 
             // setting up the labels' text and speak out the message
             mainLabelText = tryAgainMessage.getEncourageMsg();
-            promptLabelText = "Hint: second letter is '" + currentWord.charAt(1) + "'";
+            promptLabelText = words.getHint(Hint.GAMES_M_HINT);
             speak("Incorrect, try once more.", currentWord);
 
         } else {  // 2nd attempt, and it is the second times got it incorrect --> failed
