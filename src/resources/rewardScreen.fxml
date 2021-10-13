@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #000;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="controllers.RewardScreenController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #000;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="controllers.RewardScreenController">
    <children>
       <ImageView fitHeight="500.0" fitWidth="1280.0" preserveRatio="true">
          <image>
@@ -36,7 +36,7 @@
       </ImageView>
       <VBox alignment="CENTER" layoutX="501.0" layoutY="220.0" spacing="30.0">
          <children>
-            <Label fx:id="promptLabel" alignment="CENTER" text="YOUR SCORE IS" textFill="WHITE">
+            <Label alignment="CENTER" text="YOUR SCORE IS" textFill="WHITE">
                <font>
                   <Font name="Heiti TC Medium" size="35.0" />
                </font>
@@ -46,14 +46,14 @@
                   <Font name="Heiti TC Medium" size="40.0" />
                </font>
             </Label>
-            <Label fx:id="messageLabel" alignment="CENTER" text="Tēnā Rawa Atu Koe" textFill="WHITE">
+            <Label alignment="CENTER" text="Tēnā Rawa Atu Koe" textFill="WHITE">
                <font>
                   <Font name="Heiti TC Medium" size="20.0" />
                </font>
             </Label>
             <HBox alignment="CENTER">
                <children>
-                  <Button fx:id="playAgainBtn" mnemonicParsing="false" onAction="#newQuiz" style="-fx-background-color: transparent;">
+                  <Button mnemonicParsing="false" onAction="#newQuiz" style="-fx-background-color: transparent;">
                      <graphic>
 			            <ImageView fitHeight="50.0" pickOnBounds="true" preserveRatio="true">
 			               <image>
@@ -72,7 +72,7 @@
 			            </Tooltip>
 			         </tooltip>
                   </Button>
-                  <Button fx:id="mainMenuBtn" mnemonicParsing="false" onAction="#backToMainMenu" style="-fx-background-color: transparent;">
+                  <Button mnemonicParsing="false" onAction="#backToMainMenu" style="-fx-background-color: transparent;">
                      <graphic>
 			            <ImageView fitHeight="50.0" pickOnBounds="true" preserveRatio="true">
 			               <image>
