@@ -45,7 +45,7 @@ public abstract class Module {
 
         correctMessage = new encouragingMessage("Correct");
         incorrectMessage = new encouragingMessage("Incorrect");
-        tryAgainMessage = new encouragingMessage("TryAgain");
+        tryAgainMessage = new encouragingMessage("Try Again");
         currentIndex = 0;
         currentWord = "";
         mainLabelText = "";

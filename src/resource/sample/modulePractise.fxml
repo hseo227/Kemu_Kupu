@@ -3,7 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextField?>
@@ -16,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #000;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.modulePractiseController">
+<AnchorPane fx:id="rootPane" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #000;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.moduleGamesController">
    <children>
       <ImageView fitHeight="500.0" fitWidth="1280.0" preserveRatio="true">
          <image>
@@ -42,19 +41,33 @@
             </Slider>
          </children>
       </VBox>
-      <Button fx:id="backBtn" layoutX="1065.0" layoutY="100.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="40.0" prefWidth="115.0" style="-fx-background-color: #EBEBEB;" text="Main Menu">
-         <font>
-            <Font name="Heiti TC Medium" size="15.0" />
-         </font>
+      <Button fx:id="backBtn" layoutX="1065.0" layoutY="100.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="40.0" prefWidth="115.0" style="-fx-background-color: transparent;">
+        <graphic>
+            <ImageView fitHeight="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@home.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <tooltip>
+            <Tooltip text="Click to go to Main Menu">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Tooltip>
+         </tooltip>
       </Button>
-      <VBox alignment="CENTER" fillWidth="false" layoutX="240.0" layoutY="150.0" spacing="30.0">
+      <VBox alignment="CENTER" fillWidth="false" layoutX="265.0" layoutY="150.0" spacing="30.0">
          <children>
             <Label fx:id="userScore" textFill="WHITE">
                <font>
                   <Font name="Heiti TC Medium" size="50.0" />
                </font>
             </Label>
-            <Label fx:id="mainLabel" alignment="CENTER" prefWidth="800.0" text="Practice Spelling Quiz!" textFill="WHITE">
+            <Label fx:id="mainLabel" alignment="CENTER" prefWidth="750.0" text="New Spelling Quiz!" textFill="WHITE">
                <font>
                   <Font name="Heiti TC Medium" size="35.0" />
                </font>
@@ -76,29 +89,29 @@
                         <Font name="Heiti TC Medium" size="20.0" />
                      </font>
                   </Label>
-                  <HBox fx:id="macronsBtnsHBox" alignment="TOP_CENTER" fillHeight="false" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="35.0" prefWidth="40.0" spacing="32.0">
+                  <HBox fx:id="macronsBtnsHBox" alignment="TOP_CENTER" fillHeight="false" spacing="32.0">
                      <children>
-                        <Button fx:id="macronsA" minWidth="-Infinity" mnemonicParsing="false" onAction="#addMacronsCharacter" prefHeight="35.0" prefWidth="40.0" style="-fx-background-color: #EBEBEB;" text="ā">
+                        <Button fx:id="macronsA" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#addMacronsCharacter" prefHeight="35.0" prefWidth="40.0" style="-fx-background-color: #EBEBEB;" text="ā">
                            <font>
                               <Font name="Heiti TC Medium" size="15.0" />
                            </font>
                         </Button>
-                        <Button fx:id="macronsE" minWidth="-Infinity" mnemonicParsing="false" onAction="#addMacronsCharacter" prefHeight="35.0" prefWidth="40.0" style="-fx-background-color: #EBEBEB;" text="ē">
+                        <Button fx:id="macronsE" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#addMacronsCharacter" prefHeight="35.0" prefWidth="40.0" style="-fx-background-color: #EBEBEB;" text="ē">
                            <font>
                               <Font name="Heiti TC Medium" size="15.0" />
                            </font>
                         </Button>
-                        <Button fx:id="macronsI" minWidth="-Infinity" mnemonicParsing="false" onAction="#addMacronsCharacter" prefHeight="35.0" prefWidth="40.0" style="-fx-background-color: #EBEBEB;" text="ī">
+                        <Button fx:id="macronsI" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#addMacronsCharacter" prefHeight="35.0" prefWidth="40.0" style="-fx-background-color: #EBEBEB;" text="ī">
                            <font>
                               <Font name="Heiti TC Medium" size="15.0" />
                            </font>
                         </Button>
-                        <Button fx:id="macronsO" minWidth="-Infinity" mnemonicParsing="false" onAction="#addMacronsCharacter" prefHeight="35.0" prefWidth="40.0" style="-fx-background-color: #EBEBEB;" text="ō">
+                        <Button fx:id="macronsO" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#addMacronsCharacter" prefHeight="35.0" prefWidth="40.0" style="-fx-background-color: #EBEBEB;" text="ō">
                            <font>
                               <Font name="Heiti TC Medium" size="15.0" />
                            </font>
                         </Button>
-                        <Button fx:id="macronsU" minWidth="-Infinity" mnemonicParsing="false" onAction="#addMacronsCharacter" prefHeight="35.0" prefWidth="40.0" style="-fx-background-color: #EBEBEB;" text="ū">
+                        <Button fx:id="macronsU" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#addMacronsCharacter" prefHeight="35.0" prefWidth="40.0" style="-fx-background-color: #EBEBEB;" text="ū">
                            <font>
                               <Font name="Heiti TC Medium" size="15.0" />
                            </font>
@@ -114,71 +127,79 @@
             </VBox>
          </children>
       </VBox>
-      <VBox fx:id="inputVBox2" layoutX="875.0" layoutY="360.0" spacing="30.0" visible="false">
-         <children>
-            <Button fx:id="checkBtn" mnemonicParsing="false" onAction="#onEnter" prefHeight="40.0" prefWidth="75.0" style="-fx-background-color: #EBEBEB;" text="Check">
-               <font>
-                  <Font name="Heiti TC Medium" size="15.0" />
-               </font>
-            </Button>
-            <Label fx:id="macronsHelper">
-               <graphic>
-                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@helpImg.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <tooltip>
-                  <Tooltip text="Shortcut: type a vowel followed by '-' (eg: 'a-' → 'ā')">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Tooltip>
-               </tooltip>
-            </Label>
-         </children>
-      </VBox>
-      <VBox fx:id="startVBox" alignment="CENTER" layoutX="396.0" layoutY="360.0" spacing="30.0">
-         <children>
-            <HBox alignment="CENTER" spacing="10.0">
-               <children>
-                  <Label text="Number of questions you want to practise for: " textFill="WHITE">
-                     <font>
-                        <Font name="Heiti TC Medium" size="20.0" />
-                     </font>
-                  </Label>
-                  <ChoiceBox fx:id="numOfQCheckBox" prefHeight="30.0" prefWidth="70.0" style="-fx-font-size: 20;" />
-               </children>
-            </HBox>
-            <Button mnemonicParsing="false" onAction="#startQuiz" prefHeight="50.0" prefWidth="175.0" style="-fx-background-color: #EBEBEB;" text="Start Quiz">
-               <font>
-                  <Font name="Heiti TC Medium" size="25.0" />
-               </font>
-            </Button>
-         </children>
-      </VBox>
-      <Button fx:id="playbackBtn" layoutX="375.0" layoutY="340.0" mnemonicParsing="false" onAction="#speakAgain" style="-fx-background-color: transparent;" visible="false">
-         <graphic>
-            <ImageView fitHeight="60.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@playbackImg.png" />
-               </image>
-            </ImageView>
-         </graphic>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <tooltip>
-            <Tooltip text="Click to playback">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Tooltip>
-         </tooltip>
+      <Button fx:id="startBtn" layoutX="552.5" layoutY="350.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#startQuiz" prefHeight="50.0" prefWidth="175.0" style="-fx-background-color: #EBEBEB;" text="Start Quiz">
+         <font>
+            <Font name="Heiti TC Medium" size="25.0" />
+         </font>
       </Button>
+      <VBox fx:id="inputVBox2" layoutX="350.0" layoutY="345.0" visible="false" spacing="80">
+         <children>
+         	<HBox alignment="CENTER" spacing="420">
+         		<children>
+         			<Button fx:id="playbackBtn" layoutX="375.0" layoutY="340.0" mnemonicParsing="false" onAction="#speakAgain" style="-fx-background-color: transparent;" visible="false">
+				         <graphic>
+				            <ImageView fitHeight="60.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
+				               <image>
+				                  <Image url="@play.png" />
+				               </image>
+				            </ImageView>
+				         </graphic>
+				         <cursor>
+				            <Cursor fx:constant="HAND" />
+				         </cursor>
+				         <tooltip>
+				            <Tooltip text="Click to playback">
+				               <font>
+				                  <Font size="14.0" />
+				               </font>
+				            </Tooltip>
+				         </tooltip>
+				    </Button>
+				    <Button fx:id="checkBtn" mnemonicParsing="false" alignment="BOTTOM_CENTER" onAction="#onEnter" style="-fx-background-color: transparent;">
+		               	<graphic>
+		                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+		                     <image>
+		                        <Image url="@check.png" />
+		                     </image>
+		                  </ImageView>
+		               </graphic>
+		               <cursor>
+		                  <Cursor fx:constant="HAND" />
+		               </cursor>
+		               <tooltip>
+		                  <Tooltip text="Click to submit your answer">
+		                     <font>
+		                        <Font size="14.0" />
+		                     </font>
+		                  </Tooltip>
+		               </tooltip>
+		            </Button>
+         		</children>
+         	</HBox>
+         	<HBox alignment="CENTER_RIGHT" layoutY="10.0">
+         		<children>
+         			<Label fx:id="macronsHelper">
+		               <graphic>
+		                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+		                     <image>
+		                        <Image url="@helpImg.png" />
+		                     </image>
+		                  </ImageView>
+		               </graphic>
+		               <cursor>
+		                  <Cursor fx:constant="HAND" />
+		               </cursor>
+		               <tooltip>
+		                  <Tooltip text="Shortcut: type a vowel followed by '-' (eg: 'a-' → 'ā')">
+		                     <font>
+		                        <Font size="14.0" />
+		                     </font>
+		                  </Tooltip>
+		               </tooltip>
+		            </Label>
+         		</children>
+         	</HBox>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
