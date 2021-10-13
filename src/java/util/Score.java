@@ -1,3 +1,5 @@
+package util;
+
 public class Score {
 
 	private static int score, totalScore;

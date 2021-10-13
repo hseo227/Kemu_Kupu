@@ -1,3 +1,5 @@
+package controllers;
+
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
