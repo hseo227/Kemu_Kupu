@@ -1,3 +1,6 @@
+import spellingQuiz.Module;
+import controllers.SceneController;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

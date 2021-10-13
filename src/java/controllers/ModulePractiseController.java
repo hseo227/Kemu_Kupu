@@ -1,5 +1,8 @@
 package controllers;
 
+import spellingQuiz.ModulePractise;
+import spellingQuizUtil.Score;
+
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

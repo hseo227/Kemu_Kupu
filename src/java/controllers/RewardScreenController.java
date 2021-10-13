@@ -1,5 +1,8 @@
 package controllers;
 
+import spellingQuiz.Module;
+import spellingQuizUtil.Score;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

@@ -1,5 +1,7 @@
 package spellingQuiz;
 
+import spellingQuizUtil.*;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
