@@ -32,7 +32,7 @@ public class ModulePractiseController implements Initializable {
     @FXML
     private AnchorPane rootPane;
     @FXML
-    private Label mainLabel, promptLabel, userScore, numOfLettersLabel, shortCutLabel;
+    private Label mainLabel, promptLabel, userScore, shortCutLabel;
     @FXML
     private TextField inputField;
     @FXML
@@ -131,7 +131,6 @@ public class ModulePractiseController implements Initializable {
         // if the quiz is not finished, continue the game (return true), otherwise false
         if (quiz.newQuestion()) {
             updateLabels("#FFF");  // update the labels with colour white
-            numOfLettersLabel.setText("Number of letters of the word is " + quiz.getNumOfLettersOfWord());
 
         } else {
             // if the game is finished, go to reward screen

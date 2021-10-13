@@ -53,7 +53,7 @@
             <Font name="Heiti TC Medium" size="20.0" />
          </font>
       </Button>
-      <VBox alignment="CENTER" fillWidth="false" layoutX="240.0" layoutY="126.0" spacing="30.0">
+      <VBox alignment="CENTER" fillWidth="false" layoutX="240.0" layoutY="155.0" spacing="30.0">
          <children>
             <Label fx:id="userScore" textFill="WHITE">
                <font>
@@ -108,11 +108,6 @@
                         </Button>
                      </children>
                   </HBox>
-                  <Label fx:id="numOfLettersLabel" textFill="WHITE">
-                     <font>
-                        <Font name="Heiti TC Medium" size="20.0" />
-                     </font>
-                  </Label>
                   <HBox fx:id="macronsBtnsHBox" alignment="TOP_CENTER" fillHeight="false" spacing="32.0">
                      <children>
                         <Button fx:id="macronsA" mnemonicParsing="false" onAction="#addMacronsCharacter" prefHeight="35.0" prefWidth="40.0" style="-fx-background-color: #EBEBEB;" text="ā">
