@@ -1,7 +1,7 @@
 package topicList;
 
 /**
- * Topic class for the table topic list
+ * Topic class for the table of topic list
  *
  * Do not change this class
  */

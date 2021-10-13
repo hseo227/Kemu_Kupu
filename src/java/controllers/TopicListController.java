@@ -10,9 +10,8 @@ import spellingQuizUtil.ModuleType;
 import spellingQuizUtil.Words;
 import topicList.Topic;
 
-import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -26,44 +25,30 @@ public class TopicListController implements Initializable {
     private TableColumn<Topic, String> topicListColumn;
 
 
-    // the method get all the topics' name and then set them into the table
+    /**
+     * This method get all the topics' name and then set them into the table
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        try {
-            // get all the topics, the filename is the name of the topic
-            String command = "ls words";
-            ProcessBuilder pb = new ProcessBuilder("bash", "-c", command);
+        // get the files/topics names
+        String[] files = new File("words").list();
 
-            Process process = pb.start();
-
-            BufferedReader stdout = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            BufferedReader stderr = new BufferedReader(new InputStreamReader(process.getErrorStream()));
-
-            int exitStatus = process.waitFor();
-
-            if (exitStatus == 0) {
-                // get the name of the topic (filename) and then add it into the list
-                String name;
-                while ((name = stdout.readLine()) != null) {
-                    topicList.add(new Topic(name));
-                }
-
-            } else {  // otherwise print out the error
-                String line;
-                while ((line = stderr.readLine()) != null) {
-                    System.err.println(line);
-                }
+        // if there are topic list, then set them into the table
+        if (files != null) {
+            for (String fileName : files) {
+                topicList.add(new Topic(fileName));
             }
 
-        } catch (Exception e) {
-            e.printStackTrace();
+            // setting up the table and the column
+            topicListColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+            table.getItems().setAll(topicList);
         }
-
-        // setting up the table and the column
-        topicListColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-        table.getItems().setAll(topicList);
     }
 
+    /**
+     * When 'Select' button is pressed, set the word list topic to the selected one
+     * or the default one, which is the first one, if the user did not select any topic
+     */
     @FXML
     private void selectTopic() throws IOException {
         try {
@@ -83,7 +68,10 @@ public class TopicListController implements Initializable {
             SceneManager.goToGamesModule();
         }
     }
-    
+
+    /**
+     * When 'Main menu' button is pressed, go back to main menu
+     */
     @FXML
     private void backToMainMenu() throws IOException {
         SceneManager.goToMainMenu();
