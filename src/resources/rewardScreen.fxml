@@ -16,22 +16,22 @@
    <children>
       <ImageView fitHeight="500.0" fitWidth="1280.0" preserveRatio="true">
          <image>
-            <Image url="@images/koru1.png" />
+            <Image url="@media/koru1.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="500.0" fitWidth="1280.0" layoutY="673.0" preserveRatio="true">
          <image>
-            <Image url="@images/koru2.png" />
+            <Image url="@media/koru2.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="500.0" fitWidth="5000.0" layoutX="-150.0" layoutY="300.0" preserveRatio="true">
          <image>
-            <Image url="@images/fireworks.gif" />
+            <Image url="@media/fireworks.gif" />
          </image>
       </ImageView>
       <ImageView fitHeight="500.0" fitWidth="5000.0" layoutX="900.0" layoutY="300.0" preserveRatio="true">
          <image>
-            <Image url="@images/fireworks.gif" />
+            <Image url="@media/fireworks.gif" />
          </image>
       </ImageView>
       <VBox alignment="CENTER" layoutX="501.0" layoutY="220.0" spacing="30.0">
@@ -57,7 +57,7 @@
                      <graphic>
 			            <ImageView fitHeight="50.0" pickOnBounds="true" preserveRatio="true">
 			               <image>
-			                  <Image url="@images/replay.png" />
+			                  <Image url="@media/replay.png" />
 			               </image>
 			            </ImageView>
 			         </graphic>
@@ -76,7 +76,7 @@
                      <graphic>
 			            <ImageView fitHeight="50.0" pickOnBounds="true" preserveRatio="true">
 			               <image>
-			                  <Image url="@images/home.png" />
+			                  <Image url="@media/home.png" />
 			               </image>
 			            </ImageView>
 			         </graphic>
