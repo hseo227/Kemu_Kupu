@@ -7,7 +7,7 @@ import java.io.PrintWriter;
 
 public class FestivalSpeech {
     private final static String FESTIVAL_CMD_FILE = ".scm";
-    private static int speechSpeed;
+    private static double speechSpeed;
 
 
     // this method will only run once and will run at the start of the program
@@ -17,9 +17,9 @@ public class FestivalSpeech {
         file.createNewFile();
     }
 
-    // speechSpeed's setter
+    // calculate the speech speed that festival will understand and set it
     public static void setSpeechSpeed(int speed) {
-        speechSpeed = speed;
+        speechSpeed = (200 - speed) / 100.0;
     }
 
     // this function will speak out the message using bash and festival scm
@@ -31,13 +31,13 @@ public class FestivalSpeech {
             // speak english / maori message if there is any
             if (!englishMessage.equals("")) {
                 // adjust the speed before say text
-                writeFile.println("(Parameter.set 'Duration_Stretch' " + (200 - speechSpeed) / 100.0 + ")");
+                writeFile.println("(Parameter.set 'Duration_Stretch' " + speechSpeed + ")");
                 writeFile.println("(SayText \"" + englishMessage + "\")");
             }
             if (!maoriMessage.equals("")) {
                 writeFile.println("(voice_akl_mi_pk06_cg)");  // change to maori voice
                 // adjust the speed before say text
-                writeFile.println("(Parameter.set 'Duration_Stretch' " + (200 - speechSpeed) / 100.0 + ")");
+                writeFile.println("(Parameter.set 'Duration_Stretch' " + speechSpeed + ")");
                 writeFile.println("(SayText \"" + maoriMessage + "\")");
             }
 
