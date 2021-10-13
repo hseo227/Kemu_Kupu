@@ -60,7 +60,7 @@ public class ModulePractiseController implements Initializable {
         numOfQCheckBox.setValue(3);
 
         // reset the score
-    	Score.reset();
+        Score.reset();
 
 
         // Set up for speed slider
@@ -95,8 +95,8 @@ public class ModulePractiseController implements Initializable {
         // start a new game with specific number of questions
         quiz = new ModulePractise(numOfQCheckBox.getValue());
 
-    	// Display score
-    	userScore.setText("SCORE : " + Score.getScore());
+        // Display score
+        userScore.setText("SCORE : " + Score.getScore());
 
         // otherwise, continue the game
         startVBox.setVisible(false);
@@ -160,13 +160,13 @@ public class ModulePractiseController implements Initializable {
 
                 pauseBetweenEachQ();
 
-            // incorrect spelling (Failed) OR the word is skipped
+                // incorrect spelling (Failed) OR the word is skipped
             } else {
                 colour = "#FF2715";  // change text colour to red
                 skipBtn.setDisable(true);  // cannot press 'skip' when showing the answer
             }
 
-        // incorrect spelling (1st attempt)
+            // incorrect spelling (1st attempt)
         } else {
             colour = "#FF2715";  // change text colour to red
             inputField.clear();
@@ -205,7 +205,7 @@ public class ModulePractiseController implements Initializable {
         String change = "";
 
         // check each dash in the word
-        for (int indexOfDash = word.indexOf("-"); indexOfDash >= 0; indexOfDash = word.indexOf("-", indexOfDash + 1)){
+        for (int indexOfDash = word.indexOf("-"); indexOfDash >= 0; indexOfDash = word.indexOf("-", indexOfDash + 1)) {
             // if '-' is at first index, ignore it
             if (indexOfDash != 0) {
                 // check if the character before '-' is a vowel
@@ -237,23 +237,23 @@ public class ModulePractiseController implements Initializable {
 
     @FXML
     private void addMacronsCharacter(ActionEvent event) {
-        String macronsCharacter = ((Button)event.getSource()).getText();
+        String macronsCharacter = ((Button) event.getSource()).getText();
         inputField.appendText(macronsCharacter);
     }
-    
+
     @FXML
     private void skipWord(ActionEvent event) {
-    	quiz.setResult(Result.SKIPPED);
+        quiz.setResult(Result.SKIPPED);
         checkSpelling();
     }
 
     // this method is called when the quiz is finished
     private void rewardScreen() {
-    	try {
-        	SceneManager.goToRewardScreen();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+        try {
+            SceneManager.goToRewardScreen();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     // this method is to pause before each new question, also while pausing it disables the quiz related utilities

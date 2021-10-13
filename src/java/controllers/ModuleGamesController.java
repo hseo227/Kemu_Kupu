@@ -191,7 +191,7 @@ public class ModuleGamesController implements Initializable {
         String change = "";
 
         // check each dash in the word
-        for (int indexOfDash = word.indexOf("-"); indexOfDash >= 0; indexOfDash = word.indexOf("-", indexOfDash + 1)){
+        for (int indexOfDash = word.indexOf("-"); indexOfDash >= 0; indexOfDash = word.indexOf("-", indexOfDash + 1)) {
             // if '-' is at first index, ignore it
             if (indexOfDash != 0) {
                 // check if the character before '-' is a vowel
@@ -223,7 +223,7 @@ public class ModuleGamesController implements Initializable {
 
     @FXML
     private void addMacronsCharacter(ActionEvent event) {
-        String macronsCharacter = ((Button)event.getSource()).getText();
+        String macronsCharacter = ((Button) event.getSource()).getText();
         inputField.appendText(macronsCharacter);
     }
 
