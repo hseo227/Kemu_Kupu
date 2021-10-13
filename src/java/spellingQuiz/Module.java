@@ -61,14 +61,15 @@ public abstract class Module {
             PrintWriter writeFile = new PrintWriter(new FileWriter(FESTIVAL_CMD_FILE));
 
             // adjust the speed first
-            writeFile.println("(Parameter.set 'Audio_Command \"aplay -q -c 1 -t raw -f s16 -r $(($SR*" + speechSpeed + "/100)) $FILE\")");
 
             // speak english / maori message if there is any
             if (!englishMessage.equals("")) {
+                writeFile.println("(Parameter.set 'Duration_Stretch' " + (200 - speechSpeed) / 100.0 + ")");
                 writeFile.println("(SayText \"" + englishMessage + "\")");
             }
             if (!maoriMessage.equals("")) {
                 writeFile.println("(voice_akl_mi_pk06_cg)");  // change to maori voice
+                writeFile.println("(Parameter.set 'Duration_Stretch' " + (200 - speechSpeed) / 100.0 + ")");
                 writeFile.println("(SayText \"" + maoriMessage + "\")");
             }
 
