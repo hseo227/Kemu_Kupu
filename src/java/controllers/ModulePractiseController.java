@@ -1,10 +1,5 @@
 package controllers;
 
-import spellingQuiz.ModulePractise;
-import spellingQuizUtil.Words;
-import spellingQuizUtil.Score;
-import spellingQuizUtil.Result;
-import spellingQuizUtil.QuizState;
 
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
@@ -16,6 +11,12 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import javafx.util.StringConverter;
+import spellingQuizUtil.FestivalSpeech;
+import spellingQuizUtil.QuizState;
+import spellingQuizUtil.Result;
+import spellingQuizUtil.Score;
+import spellingQuizUtil.Words;
+import spellingQuiz.ModulePractise;
 
 import java.io.IOException;
 import java.net.URL;
@@ -125,7 +126,7 @@ public class ModulePractiseController implements Initializable {
         pause.play();
 
         inputField.clear();
-        quiz.setSpeechSpeed((int) speechSpeed.getValue());  // set up speech speed
+        FestivalSpeech.setSpeechSpeed((int) speechSpeed.getValue());  // set up speech speed
 
         // if the quiz is not finished, continue the game (return true), otherwise false
         if (quiz.newQuestion()) {
@@ -142,7 +143,7 @@ public class ModulePractiseController implements Initializable {
     private void checkSpelling() {
         String colour = "#FFF";  // set default text colour to white
 
-        quiz.setSpeechSpeed((int) speechSpeed.getValue());  // set up speech speed
+        FestivalSpeech.setSpeechSpeed((int) speechSpeed.getValue());  // set up speech speed
         quiz.setUserInput(inputField.getText());  // get user input/spelling
         quiz.checkSpelling();
 
@@ -177,6 +178,8 @@ public class ModulePractiseController implements Initializable {
 
     @FXML
     private void backToMainMenu(ActionEvent event) throws IOException {
+        // kill all the festival, so no festival in playing when it is in main menu screen
+        FestivalSpeech.shutDownAllFestival();
         SceneController.goToMainMenu();
     }
 
@@ -188,7 +191,7 @@ public class ModulePractiseController implements Initializable {
         pause.play();
 
         // set up speech speed and then speak
-        quiz.setSpeechSpeed((int) speechSpeed.getValue());
+        FestivalSpeech.setSpeechSpeed((int) speechSpeed.getValue());
         quiz.speakWordAgain();
     }
 
