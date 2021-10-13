@@ -8,11 +8,11 @@ import static spellingQuizUtil.FestivalSpeech.speak;
 public abstract class Module {
     private final int NUMBER_OF_QUESTIONS;
 
-    protected int currentIndex;
+    private int currentIndex;
+    private QuizState currentQuizState;
+    private Result currentResult;
+    private static ModuleType moduleType;
     protected String currentWord, mainLabelText, promptLabelText, userInput;
-    protected QuizState currentQuizState;
-    protected Result currentResult;
-    protected static ModuleType moduleType;
     protected final Words words;
     protected EncouragingMessage correctMessage, incorrectMessage, tryAgainMessage;
 
