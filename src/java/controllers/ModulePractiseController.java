@@ -180,7 +180,7 @@ public class ModulePractiseController implements Initializable {
     private void backToMainMenu(ActionEvent event) throws IOException {
         // kill all the festival, so no festival in playing when it is in main menu screen
         FestivalSpeech.shutDownAllFestival();
-        SceneController.goToMainMenu();
+        SceneManager.goToMainMenu();
     }
 
     @FXML
@@ -251,7 +251,7 @@ public class ModulePractiseController implements Initializable {
     // this method is called when the quiz is finished
     private void rewardScreen() {
     	try {
-        	SceneController.goToRewardScreen();
+        	SceneManager.goToRewardScreen();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

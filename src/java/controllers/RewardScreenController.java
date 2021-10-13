@@ -24,15 +24,15 @@ public class RewardScreenController implements Initializable {
     @FXML
     private void newQuiz() throws IOException {
         if (Module.moduleTypeEqualsTo(ModuleType.practise)) {
-            SceneController.goToPractiseModule();
+            SceneManager.goToPractiseModule();
         } else {
-            SceneController.goToGamesModule();
+            SceneManager.goToGamesModule();
         }
     }
 
     @FXML
     private void backToMainMenu() throws IOException {
-        SceneController.goToMainMenu();
+        SceneManager.goToMainMenu();
     }
     
 

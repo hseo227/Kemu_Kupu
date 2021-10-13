@@ -14,14 +14,14 @@ public class MainMenuController {
     @FXML
     private void loadPractiseModule() throws IOException {
         Module.setModuleType(ModuleType.practise);
-        SceneController.goToTopicList();
+        SceneManager.goToTopicList();
     }
 
     // load Games Module
     @FXML
     private void loadGamesModule() throws IOException {
         Module.setModuleType(ModuleType.games);
-        SceneController.goToTopicList();
+        SceneManager.goToTopicList();
     }
 
     // Quit the game

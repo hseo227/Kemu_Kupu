@@ -7,7 +7,7 @@ import javafx.scene.layout.Pane;
 import java.io.IOException;
 import java.net.URL;
 
-public class SceneController {
+public class SceneManager {
     private static Scene scene;
 
     private static final String MAIN_MENU_FXML = "mainMenu.fxml";
@@ -17,7 +17,7 @@ public class SceneController {
     private static final String REWARD_SCREEN_FXML = "rewardScreen.fxml";
 
 
-    public static void initialise(Scene scn) {
+    public static void settingUp(Scene scn) {
         scene = scn;
     }
 
@@ -42,7 +42,7 @@ public class SceneController {
     }
 
     private static void changeScene(String fxml) throws IOException {
-        URL url = SceneController.class.getResource("../" + fxml);
+        URL url = SceneManager.class.getResource("../" + fxml);
 
         // if successful to load FXML file then load it, otherwise print out error message
         if (url != null) {
