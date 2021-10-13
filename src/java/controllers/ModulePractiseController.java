@@ -1,54 +1,38 @@
 package controllers;
 
-import javafx.animation.PauseTransition;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.util.Duration;
 import javafx.util.StringConverter;
+import spellingQuiz.ModulePractise;
 import spellingQuizUtil.FestivalSpeech;
 import spellingQuizUtil.QuizState;
 import spellingQuizUtil.Result;
 import spellingQuizUtil.Score;
 import spellingQuizUtil.Words;
-import spellingQuiz.ModulePractise;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ModulePractiseController implements Initializable {
+public class ModulePractiseController extends ModuleBaseController {
 
-    private ModulePractise quiz;
-
-    private final PauseTransition pause = new PauseTransition(Duration.seconds(2));
-
-
-    @FXML
-    private AnchorPane rootPane;
     @FXML
     private Label mainLabel, promptLabel, userScore, shortCutLabel;
     @FXML
     private TextField inputField;
     @FXML
-    private Button backBtn, macronsA, macronsE, macronsI, macronsO, macronsU, skipBtn, checkBtn, playbackBtn;
+    private Button skipBtn, playbackBtn;
     @FXML
     private Slider speechSpeed;
     @FXML
     private ToggleButton togSpdSlider;
     @FXML
     private ChoiceBox<Integer> numOfQCheckBox;
-    @FXML
-    private HBox macronsBtnsHBox;
     @FXML
     private VBox inputVBox, startVBox;
 
@@ -94,7 +78,7 @@ public class ModulePractiseController implements Initializable {
     }
 
     @FXML
-    private void startQuiz(ActionEvent event) {
+    protected void startQuiz() {
 
         // start a new game with specific number of questions
         quiz = new ModulePractise(numOfQCheckBox.getValue());
@@ -111,7 +95,7 @@ public class ModulePractiseController implements Initializable {
     }
 
     @FXML
-    private void onEnter(ActionEvent event) {
+    protected void onEnter() {
         // when the user press enter key or press the 'check' button...
         if (quiz.quizStateEqualsTo(QuizState.READY)) {
             skipBtn.setDisable(false);
@@ -121,29 +105,8 @@ public class ModulePractiseController implements Initializable {
         }
     }
 
-    // this method set up the Server thread for quiz.newQuestion and then run it
-    private void newQuestion() {
-
-        // disable playback button for 2 second, avoid the user spam it
-        playbackBtn.setDisable(true);
-        pause.setOnFinished(e -> playbackBtn.setDisable(false));
-        pause.play();
-
-        inputField.clear();
-        FestivalSpeech.setSpeechSpeed((int) speechSpeed.getValue());  // set up speech speed
-
-        // if the quiz is not finished, continue the game (return true), otherwise false
-        if (quiz.newQuestion()) {
-            updateLabels("#FFF");  // update the labels with colour white
-
-        } else {
-            // if the game is finished, go to reward screen
-            rewardScreen();
-        }
-    }
-
     // this method set up the Server thread for quiz.checkSpelling and then run it
-    private void checkSpelling() {
+    protected void checkSpelling() {
         String colour = "#FFF";  // set default text colour to white
 
         FestivalSpeech.setSpeechSpeed((int) speechSpeed.getValue());  // set up speech speed
@@ -177,104 +140,6 @@ public class ModulePractiseController implements Initializable {
         }
 
         updateLabels(colour);  // update the labels with corresponding colour
-    }
-
-    @FXML
-    private void backToMainMenu(ActionEvent event) throws IOException {
-        // kill all the festival, so no festival in playing when it is in main menu screen
-        FestivalSpeech.shutDownAllFestival();
-        SceneManager.goToMainMenu();
-    }
-
-    @FXML
-    private void speakAgain() {
-        // disable playback button for 2 second, avoid the user spam it
-        playbackBtn.setDisable(true);
-        pause.setOnFinished(e -> playbackBtn.setDisable(false));
-        pause.play();
-
-        // set up speech speed and then speak
-        FestivalSpeech.setSpeechSpeed((int) speechSpeed.getValue());
-        quiz.speakWordAgain();
-    }
-
-    @FXML
-    private void showHideSpeedSlider() {
-        speechSpeed.setVisible(togSpdSlider.isSelected());
-    }
-
-    @FXML
-    private void checkMacronShortCut() {
-        String word = inputField.getText();
-        String change = "";
-
-        // check each dash in the word
-        for (int indexOfDash = word.indexOf("-"); indexOfDash >= 0; indexOfDash = word.indexOf("-", indexOfDash + 1)) {
-            // if '-' is at first index, ignore it
-            if (indexOfDash != 0) {
-                // check if the character before '-' is a vowel
-                switch (word.charAt(indexOfDash - 1)) {
-                    case 'a':
-                        change = "ā";
-                        break;
-                    case 'e':
-                        change = "ē";
-                        break;
-                    case 'i':
-                        change = "ī";
-                        break;
-                    case 'o':
-                        change = "ō";
-                        break;
-                    case 'u':
-                        change = "ū";
-                        break;
-                    default:
-                        continue;
-                }
-
-                // replace the vowel and '-' with the macron character
-                inputField.replaceText(indexOfDash - 1, indexOfDash + 1, change);
-            }
-        }
-    }
-
-    @FXML
-    private void addMacronsCharacter(ActionEvent event) {
-        String macronsCharacter = ((Button) event.getSource()).getText();
-        inputField.appendText(macronsCharacter);
-    }
-
-    @FXML
-    private void skipWord(ActionEvent event) {
-        quiz.setResult(Result.SKIPPED);
-        checkSpelling();
-    }
-
-    // this method is called when the quiz is finished
-    private void rewardScreen() {
-        SceneManager.goToRewardScreen();
-    }
-
-    // this method is to pause before each new question, also while pausing it disables the quiz related utilities
-    private void pauseBetweenEachQ() {
-        inputVBox.setDisable(true);
-
-        pause.setOnFinished(e -> {
-            inputVBox.setDisable(false);
-
-            newQuestion();
-        });
-        pause.play();
-    }
-
-    // this method is to update the labels with specific colour
-    private void updateLabels(String colour) {
-        mainLabel.setStyle("-fx-text-fill: " + colour + ";");  // change to green text
-        promptLabel.setStyle("-fx-text-fill: " + colour + ";");  // change to green text
-
-        mainLabel.setText(quiz.getMainLabelText());
-        promptLabel.setText(quiz.getPromptLabelText());
     }
 
 }
