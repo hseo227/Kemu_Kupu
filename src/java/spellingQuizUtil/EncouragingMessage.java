@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * This class handles all the encouraging messages
+ */
 public class EncouragingMessage {
     ArrayList<String> messageList = new ArrayList<>();  // all the messages in the file
 

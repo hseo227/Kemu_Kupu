@@ -1,33 +1,51 @@
 package spellingQuizUtil;
 
+/**
+ * This class handles the scoring system
+ */
 public class Score {
-	private static final int MARK_INCREASE = 10;
-
+	private static final int SCORE_INCREASE = 10;
 	private static int score, totalScore;
 
-	// reset score after each round
+	/**
+	 * Reset score to 0 after each round
+	 */
 	public static void reset() {
 		score = 0;
 	}
 
-	// increase the score with respect score multiplier
+	/**
+	 * Increase the score with respective score multiplier
+	 * @param scoreMultiplier Tells how much the score is going to increase
+	 */
 	public static void increaseBy(int scoreMultiplier) {
-		score += MARK_INCREASE * scoreMultiplier;
+		score += SCORE_INCREASE * scoreMultiplier;
 	}
 
-	// score getter
+	/**
+	 * score's
+	 * 		   getter
+	 * @return score
+	 */
 	public static int getScore() {
 		return score;
 	}
 
-	// totalScore getter
+	/**
+	 * totalScore's getter
+	 * @return totalScore
+	 */
 	public static int getTotalScore() {
 		return totalScore;
 	}
 
-	// change totalScore base on the number of questions
+	/**
+	 * Change totalScore base on the number of questions
+	 * e.g. If there are 5 questions in quiz, then the totalScore is 100 = 2 * 10 * 5
+	 * @param numOfQuestions Number of questions
+	 */
 	public static void changeTotalScore(int numOfQuestions) {
-		totalScore = 20 * numOfQuestions;
+		totalScore = 2 * SCORE_INCREASE * numOfQuestions;
 	}
 
 }
