@@ -146,11 +146,15 @@
             </VBox>
          </children>
       </VBox>
-      <Button fx:id="startBtn" layoutX="553.0" layoutY="350.0" mnemonicParsing="false" onAction="#startQuiz" prefHeight="50.0" prefWidth="175.0" style="-fx-background-color: #EBEBEB;" text="Start Quiz">
-         <font>
-            <Font name="Heiti TC Medium" size="25.0" />
-         </font>
-      </Button>
+      <VBox fx:id="startVBox" layoutX="553.0" layoutY="350.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#startQuiz" prefHeight="50.0" prefWidth="175.0" style="-fx-background-color: #EBEBEB;" text="Start Quiz">
+               <font>
+                  <Font name="Heiti TC Medium" size="25.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
       <Label fx:id="shortCutLabel" layoutX="50.0" layoutY="620.0" text="Shortcut: type a vowel followed by '-' (eg: 'a-' → 'ā')" textFill="#ff2917" visible="false">
          <font>
             <Font size="20.0" />
