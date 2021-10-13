@@ -1,7 +1,6 @@
 package controllers;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
@@ -33,7 +32,7 @@ public class ModuleGamesController extends ModuleBaseController {
 
     /**
      * Reset the score
-     * Format the speed slider
+     * Setting up and Format the speed slider
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -46,7 +45,7 @@ public class ModuleGamesController extends ModuleBaseController {
         speechSpeed.setVisible(togSpdSlider.isSelected());
 
         // format the vertical slider
-        speechSpeed.setLabelFormatter(new StringConverter<Double>() {
+        speechSpeed.setLabelFormatter(new StringConverter<>() {
             @Override
             public String toString(Double n) {
                 if (n == speechSpeed.getMin()) {  // slowest speed

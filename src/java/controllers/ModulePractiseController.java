@@ -40,7 +40,7 @@ public class ModulePractiseController extends ModuleBaseController {
     /**
      * Setting up the check box
      * Reset the score
-     * Format the speed slider
+     * Setting up and Format the speed slider
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -60,7 +60,7 @@ public class ModulePractiseController extends ModuleBaseController {
         speechSpeed.setVisible(togSpdSlider.isSelected());
 
         // format the vertical slider
-        speechSpeed.setLabelFormatter(new StringConverter<Double>() {
+        speechSpeed.setLabelFormatter(new StringConverter<>() {
             @Override
             public String toString(Double n) {
                 if (n == speechSpeed.getMin()) {  // slowest speed
