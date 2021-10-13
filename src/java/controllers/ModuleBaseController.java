@@ -38,10 +38,7 @@ abstract public class ModuleBaseController implements Initializable {
     // this method set up the Server thread for quiz.newQuestion and then run it
     protected void newQuestion() {
 
-        // disable playback button for 2 second, avoid the user spam it
-        playbackBtn.setDisable(true);
-        pause.setOnFinished(e -> playbackBtn.setDisable(false));
-        pause.play();
+        disablePlaybackBtnTemp();
 
         inputField.clear();
         FestivalSpeech.setSpeechSpeed((int) speechSpeed.getValue());  // set up speech speed
@@ -59,14 +56,18 @@ abstract public class ModuleBaseController implements Initializable {
 
     @FXML
     protected void speakAgain() {
-        // disable playback button for 2 second, avoid the user spam it
-        playbackBtn.setDisable(true);
-        pause.setOnFinished(e -> playbackBtn.setDisable(false));
-        pause.play();
+        disablePlaybackBtnTemp();
 
         // set up speech speed and then speak
         FestivalSpeech.setSpeechSpeed((int) speechSpeed.getValue());
         quiz.speakWordAgain();
+    }
+
+    protected void disablePlaybackBtnTemp() {
+        // disable playback button for 2 second, avoid the user spam it
+        playbackBtn.setDisable(true);
+        pause.setOnFinished(e -> playbackBtn.setDisable(false));
+        pause.play();
     }
 
     @FXML

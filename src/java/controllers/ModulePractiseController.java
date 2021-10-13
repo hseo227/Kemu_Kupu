@@ -127,16 +127,17 @@ public class ModulePractiseController extends ModuleBaseController {
 
                 pauseBetweenEachQ();
 
-                // incorrect spelling (Failed) OR the word is skipped
+            // incorrect spelling (Failed) OR the word is skipped
             } else {
                 colour = "#FF2715";  // change text colour to red
                 skipBtn.setDisable(true);  // cannot press 'skip' when showing the answer
             }
 
-            // incorrect spelling (1st attempt)
+        // incorrect spelling (1st attempt)
         } else {
             colour = "#FF2715";  // change text colour to red
             inputField.clear();
+            disablePlaybackBtnTemp();
         }
 
         updateLabels(colour);  // update the labels with corresponding colour

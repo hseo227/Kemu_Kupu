@@ -119,6 +119,7 @@ public class ModuleGamesController extends ModuleBaseController {
         } else {
             colour = "#FF2715";  // change text colour to red
             inputField.clear();
+            disablePlaybackBtnTemp();
         }
 
         updateLabels(colour);  // update the labels with corresponding colour
