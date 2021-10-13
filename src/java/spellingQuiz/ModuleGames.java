@@ -18,8 +18,8 @@ public class ModuleGames extends Module {
             return false;
         }
 
-        setQuizState(QuizState.running);  // now set the state to running
-        setResult(Result.mastered);  // set original result to Mastered
+        setQuizState(QuizState.RUNNING);  // now set the state to running
+        setResult(Result.MASTERED);  // set original result to Mastered
         currentIndex++;
 
         currentWord = words.nextWord();  // set up the word and get the word that is testing on
@@ -35,8 +35,8 @@ public class ModuleGames extends Module {
     // this function check the spelling (input) and then set up a range of stuff
     public void checkSpelling() {
         // first check if the word is skipped
-        if (resultEqualsTo(Result.skipped)) {
-            setQuizState(QuizState.ready);  // set the state to ready for the next question
+        if (resultEqualsTo(Result.SKIPPED)) {
+            setQuizState(QuizState.READY);  // set the state to ready for the next question
 
             // setting up the labels' text and speak out the message
             mainLabelText = incorrectMessage.getEncourageMsg();
@@ -45,7 +45,7 @@ public class ModuleGames extends Module {
 
         // if statement for each result after checking the spelling (input)
         } else if ( words.checkUserSpelling(getUserInput()) ) {  // mastered and failed, 1st attempt and 2nd attempt respectively
-            setQuizState(QuizState.ready);  // set the state to ready for the next question
+            setQuizState(QuizState.READY);  // set the state to ready for the next question
 
             // setting up the labels' text and speak out the message
             mainLabelText = correctMessage.getEncourageMsg();
@@ -53,8 +53,8 @@ public class ModuleGames extends Module {
             speak("Correct", "");
             increaseScore();
 
-        } else if (resultEqualsTo(Result.mastered)) {  // still 1st attempt, but incorrect
-            setResult(Result.faulted);
+        } else if (resultEqualsTo(Result.MASTERED)) {  // still 1st attempt, but incorrect
+            setResult(Result.FAULTED);
 
             // setting up the labels' text and speak out the message
             mainLabelText = tryAgainMessage.getEncourageMsg();
@@ -62,8 +62,8 @@ public class ModuleGames extends Module {
             speak("Incorrect, try once more.", currentWord);
 
         } else {  // 2nd attempt, and it is the second times got it incorrect --> failed
-            setResult(Result.failed);
-            setQuizState(QuizState.ready);  // set the state to ready for the next question
+            setResult(Result.FAILED);
+            setQuizState(QuizState.READY);  // set the state to ready for the next question
 
             // setting up the labels' text and speak out the message
             mainLabelText = incorrectMessage.getEncourageMsg();

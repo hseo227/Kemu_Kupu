@@ -136,10 +136,10 @@ public class ModuleGamesController implements Initializable {
         // update the display
 
         // the quiz is done, so either Mastered, Faulted or Failed
-        if (quiz.quizStateEqualsTo(QuizState.ready)) {
+        if (quiz.quizStateEqualsTo(QuizState.READY)) {
 
             // correct spelling (Mastered and Faulted)
-            if (quiz.resultEqualsTo(Result.mastered) || quiz.resultEqualsTo(Result.faulted)) {
+            if (quiz.resultEqualsTo(Result.MASTERED) || quiz.resultEqualsTo(Result.FAULTED)) {
                 colour = "#00A804";  // change text colour to green
 
                 // set userScore label to the current score
@@ -229,7 +229,7 @@ public class ModuleGamesController implements Initializable {
 
     @FXML
     private void skipWord(ActionEvent event) {
-        quiz.setResult(Result.skipped);
+        quiz.setResult(Result.SKIPPED);
         checkSpelling();
     }
 

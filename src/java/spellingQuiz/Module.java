@@ -28,8 +28,8 @@ public abstract class Module {
         mainLabelText = "";
         promptLabelText = "";
         setUserInput("");
-        setQuizState(QuizState.ready);
-        setResult(Result.mastered);
+        setQuizState(QuizState.READY);
+        setResult(Result.MASTERED);
 
         // update the the total score
         Score.changeTotalScore(numOfQuestions);
@@ -111,7 +111,7 @@ public abstract class Module {
 
     // score increases, the score multiplier depends on the result
     public void increaseScore() {
-        if (resultEqualsTo(Result.mastered)) {
+        if (resultEqualsTo(Result.MASTERED)) {
             Score.increaseBy(2);
         } else {
             Score.increaseBy(1);

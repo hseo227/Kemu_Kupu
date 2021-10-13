@@ -14,7 +14,7 @@ public class MainMenuController {
      */
     @FXML
     private void loadPractiseModule() throws IOException {
-        Module.setModuleType(ModuleType.practise);
+        Module.setModuleType(ModuleType.PRACTISE);
         SceneManager.goToTopicList();
     }
 
@@ -23,7 +23,7 @@ public class MainMenuController {
      */
     @FXML
     private void loadGamesModule() throws IOException {
-        Module.setModuleType(ModuleType.games);
+        Module.setModuleType(ModuleType.GAMES);
         SceneManager.goToTopicList();
     }
 

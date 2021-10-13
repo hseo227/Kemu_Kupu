@@ -29,7 +29,7 @@ public class RewardScreenController implements Initializable {
      */
     @FXML
     private void playAgain() throws IOException {
-        if (Module.moduleTypeEqualsTo(ModuleType.practise)) {
+        if (Module.moduleTypeEqualsTo(ModuleType.PRACTISE)) {
             SceneManager.goToPractiseModule();
         } else {
             SceneManager.goToGamesModule();
