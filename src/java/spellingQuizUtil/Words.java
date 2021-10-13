@@ -131,10 +131,11 @@ public class Words {
 
         // now build the hint
         for (int i = 0; i < currentWord.length(); i++) {
+            hint.append(" ");
             if (indexesOfHints.contains(i) || !Character.isLetter(currentWord.charAt(i))) {
                 hint.append(currentWord.charAt(i));  // this is the letter hint
             } else {
-                hint.append("_ ");  // blank, let the user to guess it
+                hint.append("_");  // blank, let the user to guess it
             }
         }
 
