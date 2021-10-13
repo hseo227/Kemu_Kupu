@@ -41,10 +41,24 @@
             </Slider>
          </children>
       </VBox>
-      <Button fx:id="backBtn" layoutX="1065.0" layoutY="100.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="40.0" prefWidth="115.0" style="-fx-background-color: #EBEBEB;" text="Main Menu">
-         <font>
-            <Font name="Heiti TC Medium" size="15.0" />
-         </font>
+      <Button fx:id="backBtn" layoutX="1065.0" layoutY="100.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="40.0" prefWidth="115.0" style="-fx-background-color: transparent;">
+        <graphic>
+            <ImageView fitHeight="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@home.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <tooltip>
+            <Tooltip text="Click to go to Main Menu">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Tooltip>
+         </tooltip>
       </Button>
       <VBox alignment="CENTER" fillWidth="false" layoutX="265.0" layoutY="150.0" spacing="30.0">
          <children>
@@ -118,12 +132,26 @@
             <Font name="Heiti TC Medium" size="25.0" />
          </font>
       </Button>
-      <VBox fx:id="inputVBox2" layoutX="875.0" layoutY="360.0" spacing="30.0" visible="false">
+      <VBox fx:id="inputVBox2" layoutX="875.0" layoutY="360.0" visible="false">
          <children>
-            <Button fx:id="checkBtn" mnemonicParsing="false" onAction="#onEnter" prefHeight="40.0" prefWidth="75.0" style="-fx-background-color: #EBEBEB;" text="Check">
-               <font>
-                  <Font name="Heiti TC Medium" size="15.0" />
-               </font>
+            <Button fx:id="checkBtn" mnemonicParsing="false" alignment="CENTER" onAction="#onEnter" style="-fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@check.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <tooltip>
+                  <Tooltip text="Click to submit your answer">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Tooltip>
+               </tooltip>
             </Button>
             <Label fx:id="macronsHelper">
                <graphic>
@@ -150,7 +178,7 @@
          <graphic>
             <ImageView fitHeight="60.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@playbackImg.png" />
+                  <Image url="@play.png" />
                </image>
             </ImageView>
          </graphic>

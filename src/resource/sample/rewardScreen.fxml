@@ -35,12 +35,16 @@
             <Image url="@fireworks.gif" />
          </image>
       </ImageView>
-      <VBox alignment="CENTER" layoutX="480.0" layoutY="220.0" spacing="30.0">
+      <VBox alignment="CENTER" layoutX="480.0" layoutY="160.0" spacing="30.0">
          <children>
-            <Label fx:id="promptLabel" alignment="CENTER" text="YOUR SCORE IS" textFill="WHITE">
-               <font>
-                  <Font name="Heiti TC Medium" size="35.0" />
-               </font>
+            <Label fx:id="promptLabel" alignment="CENTER">
+                <graphic>
+		            <ImageView fitHeight="120.0" pickOnBounds="true" preserveRatio="true">
+		               <image>
+		                  <Image url="@score.png" />
+		               </image>
+		            </ImageView>
+		         </graphic>
             </Label>
             <Label fx:id="userScoreLabel" alignment="CENTER" textFill="YELLOW">
                <font>
@@ -52,11 +56,11 @@
                   <Font name="Heiti TC Medium" size="20.0" />
                </font>
             </Label>
-            <HBox alignment="CENTER">
+            <HBox alignment="CENTER" spacing="15">
                <children>
                   <Button fx:id="playAgainBtn" mnemonicParsing="false" onAction="#newQuiz" style="-fx-background-color: transparent;">
                      <graphic>
-			            <ImageView fitHeight="50.0" pickOnBounds="true" preserveRatio="true">
+			            <ImageView fitHeight="75.0" pickOnBounds="true" preserveRatio="true">
 			               <image>
 			                  <Image url="@replay.png" />
 			               </image>
@@ -68,14 +72,14 @@
 			         <tooltip>
 			            <Tooltip text="Click to Replay">
 			               <font>
-			                  <Font size="20.0" />
+			                  <Font size="14.0" />
 			               </font>
 			            </Tooltip>
 			         </tooltip>
                   </Button>
                   <Button fx:id="mainMenuBtn" mnemonicParsing="false" onAction="#backToMainMenu" style="-fx-background-color: transparent;">
                      <graphic>
-			            <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+			            <ImageView fitHeight="75.0" pickOnBounds="true" preserveRatio="true">
 			               <image>
 			                  <Image url="@home.png" />
 			               </image>
@@ -87,7 +91,7 @@
 			         <tooltip>
 			            <Tooltip text="Click to go to Main Menu">
 			               <font>
-			                  <Font size="20.0" />
+			                  <Font size="14.0" />
 			               </font>
 			            </Tooltip>
 			         </tooltip>

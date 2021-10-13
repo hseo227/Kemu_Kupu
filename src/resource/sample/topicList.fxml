@@ -16,10 +16,14 @@
                 <Font name="Heiti TC Medium" size="35.0" />
             </font>
         </Label>
-        <Button fx:id="backBtn" layoutX="1065.0" layoutY="100.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="40.0" prefWidth="115.0" text="Main Menu">
-            <font>
-                <Font name="Heiti TC Medium" size="15.0" />
-            </font>
+        <Button fx:id="backBtn" layoutX="1065.0" layoutY="100.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="40.0" prefWidth="115.0" style="-fx-background-color: transparent;">
+	         <graphic>
+	            <ImageView fitHeight="50.0" pickOnBounds="true" preserveRatio="true">
+	               <image>
+	                  <Image url="@home.png" />
+	               </image>
+	            </ImageView>
+	         </graphic>
         </Button>
         <Button fx:id="selectBtn" layoutX="582.0" layoutY="575.0" mnemonicParsing="false" onAction="#selectTopic" prefHeight="50.0" prefWidth="125.0" text="Select">
             <font>
