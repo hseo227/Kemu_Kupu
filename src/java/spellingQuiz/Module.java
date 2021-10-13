@@ -1,4 +1,6 @@
-package sample;
+package spellingQuiz;
+
+import spellingQuizUtil.*;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -6,20 +8,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 
-enum ModuleType {
-    practise, games
-}
-
-enum QuizState {
-    ready, running
-}
-
-enum Result {
-    mastered, faulted, failed, skipped
-}
-
 public abstract class Module {
-    private final static String FESTIVALCMDFILE = ".scm";
+    private final static String FESTIVAL_CMD_FILE = ".scm";
 
 
     protected int currentIndex, speechSpeed;
@@ -34,7 +24,7 @@ public abstract class Module {
     // this method will only run once and will run at the start of the program
     // create a file that will be used to run the festival
     public static void initialise() throws IOException {
-        File file = new File(FESTIVALCMDFILE);
+        File file = new File(FESTIVAL_CMD_FILE);
         file.createNewFile();
     }
 
@@ -59,16 +49,16 @@ public abstract class Module {
     }
 
     // this function generate a new word and then ask the user
-    protected abstract boolean newQuestion();
+    public abstract boolean newQuestion();
 
     // this function check the spelling (input) and then set up a range of stuff
-    protected abstract void checkSpelling();
+    public abstract void checkSpelling();
 
     // this function will speak out the message using bash and festival scm
     protected void speak(String englishMessage, String maoriMessage) {
         try {
             // write the festival command into .scm file
-            PrintWriter writeFile = new PrintWriter(new FileWriter(FESTIVALCMDFILE));
+            PrintWriter writeFile = new PrintWriter(new FileWriter(FESTIVAL_CMD_FILE));
 
             // adjust the speed first
             writeFile.println("(Parameter.set 'Audio_Command \"aplay -q -c 1 -t raw -f s16 -r $(($SR*" + speechSpeed + "/100)) $FILE\")");
@@ -85,7 +75,7 @@ public abstract class Module {
             writeFile.close();
 
             // run festival schema file
-            String command = "festival -b " + FESTIVALCMDFILE;
+            String command = "festival -b " + FESTIVAL_CMD_FILE;
             ProcessBuilder pb = new ProcessBuilder("bash", "-c", command);
             pb.start();
 
@@ -165,6 +155,15 @@ public abstract class Module {
     // get number of letters of the current word
     public int getNumOfLettersOfWord() {
         return words.getNumOfLettersOfWord();
+    }
+
+    // score increases, the score multiplier depends on the result
+    public void increaseScore() {
+        if (resultEqualsTo(Result.mastered)) {
+            Score.increaseBy(2);
+        } else {
+            Score.increaseBy(1);
+        }
     }
 
 }

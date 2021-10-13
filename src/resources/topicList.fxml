@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #000;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="sample.controllerTopicList">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #000;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="controllers.TopicListController">
    <children>
-        <Label fx:id="mainLabel" layoutX="100.0" layoutY="100.0" text="Select the topic for your spelling quiz:" textFill="WHITE">
+        <Label layoutX="100.0" layoutY="100.0" text="Select the topic for your spelling quiz:" textFill="WHITE">
             <font>
                 <Font name="Heiti TC Medium" size="35.0" />
             </font>
@@ -21,12 +21,12 @@
             <Font name="Heiti TC Medium" size="25.0" />
          </font>
       </Label>
-        <Button fx:id="backBtn" layoutX="1030.0" layoutY="100.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #EBEBEB;" text="Main Menu">
+        <Button layoutX="1030.0" layoutY="100.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #EBEBEB;" text="Main Menu">
             <font>
                 <Font name="Heiti TC Medium" size="20.0" />
             </font>
         </Button>
-        <Button fx:id="selectBtn" layoutX="578.0" layoutY="575.0" mnemonicParsing="false" onAction="#selectTopic" prefHeight="50.0" prefWidth="125.0" style="-fx-background-color: #EBEBEB;" text="Select">
+        <Button layoutX="578.0" layoutY="575.0" mnemonicParsing="false" onAction="#selectTopic" prefHeight="50.0" prefWidth="125.0" style="-fx-background-color: #EBEBEB;" text="Select">
             <font>
                 <Font name="Heiti TC Medium" size="25.0" />
             </font>
@@ -41,12 +41,12 @@
         </TableView>
        <ImageView fitHeight="500.0" fitWidth="1280.0" preserveRatio="true">
            <image>
-               <Image url="@images/koru1.png" />
+               <Image url="@media/koru1.png" />
            </image>
        </ImageView>
        <ImageView fitHeight="500.0" fitWidth="1280.0" layoutY="673.0" preserveRatio="true">
            <image>
-               <Image url="@images/koru2.png" />
+               <Image url="@media/koru2.png" />
            </image>
        </ImageView>
    </children>

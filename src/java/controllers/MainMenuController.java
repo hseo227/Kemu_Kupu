@@ -1,0 +1,33 @@
+package controllers;
+
+import javafx.application.Platform;
+import javafx.fxml.FXML;
+import spellingQuiz.Module;
+import spellingQuizUtil.ModuleType;
+
+import java.io.IOException;
+
+public class MainMenuController {
+
+
+    // load Practise Module
+    @FXML
+    private void loadPractiseModule() throws IOException {
+        Module.setModuleType(ModuleType.practise);
+        SceneController.goToTopicList();
+    }
+
+    // load Games Module
+    @FXML
+    private void loadGamesModule() throws IOException {
+        Module.setModuleType(ModuleType.games);
+        SceneController.goToTopicList();
+    }
+
+    // Quit the game
+    @FXML
+    private void quit() {
+        Platform.exit();
+    }
+
+}

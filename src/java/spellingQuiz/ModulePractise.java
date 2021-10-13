@@ -1,15 +1,19 @@
-package sample;
+package spellingQuiz;
 
-public class ModuleGames extends Module {
-    private static final int NUMOFQUESTIONS = 5;
+import spellingQuizUtil.QuizState;
+import spellingQuizUtil.Result;
 
-    public ModuleGames() {
-        super(NUMOFQUESTIONS);
+public class ModulePractise extends Module {
+    private final int NUMOFQUESTIONS;
+
+    public ModulePractise(int numOfQuestions) {
+        super(numOfQuestions);
+        NUMOFQUESTIONS = numOfQuestions;
     }
 
     // this function generate a new word and then ask the user
     // return true, if the quiz is not finished | return false, if the quiz is finished
-    protected boolean newQuestion() {
+    public boolean newQuestion() {
         if (currentIndex == NUMOFQUESTIONS) {  // the quiz is finished
             return false;
         }
@@ -29,14 +33,14 @@ public class ModuleGames extends Module {
     }
 
     // this function check the spelling (input) and then set up a range of stuff
-    protected void checkSpelling() {
+    public void checkSpelling() {
         // first check if the word is skipped
         if (resultEqualsTo(Result.skipped)) {
             setQuizState(QuizState.ready);  // set the state to ready for the next question
 
             // setting up the labels' text and speak out the message
-            mainLabelText = incorrectMessage.getEncourageMsg();
-            promptLabelText = "";
+            mainLabelText = "Correct answer: " + currentWord;
+            promptLabelText = "Press 'Enter' or click 'Check' button again to continue";
             speak("Word skipped", "");
 
         // if statement for each result after checking the spelling (input)
@@ -47,13 +51,14 @@ public class ModuleGames extends Module {
             mainLabelText = correctMessage.getEncourageMsg();
             promptLabelText = "";
             speak("Correct", "");
+            increaseScore();
 
         } else if (resultEqualsTo(Result.mastered)) {  // still 1st attempt, but incorrect
             setResult(Result.faulted);
 
             // setting up the labels' text and speak out the message
             mainLabelText = tryAgainMessage.getEncourageMsg();
-            promptLabelText = "Hint: second letter is '" + currentWord.charAt(1) + "'";
+            promptLabelText = "Hint: " + words.getHintPractiseModule();
             speak("Incorrect, try once more.", currentWord);
 
         } else {  // 2nd attempt, and it is the second times got it incorrect --> failed
@@ -61,8 +66,8 @@ public class ModuleGames extends Module {
             setQuizState(QuizState.ready);  // set the state to ready for the next question
 
             // setting up the labels' text and speak out the message
-            mainLabelText = incorrectMessage.getEncourageMsg();
-            promptLabelText = "";
+            mainLabelText = "Correct answer: " + currentWord;
+            promptLabelText = "Press 'Enter' or click 'Check' button again to continue";
             speak("Incorrect", "");
         }
     }

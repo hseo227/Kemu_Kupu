@@ -1,24 +1,20 @@
-package sample;
+package controllers;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
+import spellingQuiz.Module;
+import spellingQuizUtil.ModuleType;
+import spellingQuizUtil.Score;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class controllerRewardScreen implements Initializable {
+public class RewardScreenController implements Initializable {
 
     @FXML
-    private AnchorPane rootPane;
-    @FXML
-    private Label userScoreLabel, messageLabel, promptLabel;
-    @FXML
-    private Button playAgainBtn, mainMenuBtn;
+    private Label userScoreLabel;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -26,7 +22,7 @@ public class controllerRewardScreen implements Initializable {
     }
     
     @FXML
-    private void newQuiz(ActionEvent event) throws IOException {
+    private void newQuiz() throws IOException {
         if (Module.moduleTypeEqualsTo(ModuleType.practise)) {
             SceneController.goToPractiseModule();
         } else {
@@ -35,7 +31,7 @@ public class controllerRewardScreen implements Initializable {
     }
 
     @FXML
-    private void backToMainMenu(ActionEvent event) throws IOException {
+    private void backToMainMenu() throws IOException {
         SceneController.goToMainMenu();
     }
     

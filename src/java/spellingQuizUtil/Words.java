@@ -1,4 +1,4 @@
-package sample;
+package spellingQuizUtil;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
