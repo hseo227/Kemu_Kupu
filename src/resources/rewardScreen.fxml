@@ -34,28 +34,36 @@
             <Image url="@media/fireworks.gif" />
          </image>
       </ImageView>
-      <VBox alignment="CENTER" layoutX="501.0" layoutY="220.0" spacing="30.0">
+      <VBox alignment="CENTER" layoutX="450.0" layoutY="120.0" spacing="30.0">
          <children>
-            <Label alignment="CENTER" text="YOUR SCORE IS" textFill="WHITE">
-               <font>
-                  <Font name="Heiti TC Medium" size="35.0" />
-               </font>
+            <Label alignment="CENTER">
+               <graphic>
+ 		            <ImageView fitHeight="120.0" pickOnBounds="true" preserveRatio="true">
+ 		               <image>
+ 		                  <Image url="@media/score.png" />
+ 		               </image>
+ 		            </ImageView>
+ 		       </graphic>
             </Label>
             <Label fx:id="userScoreLabel" alignment="CENTER" textFill="YELLOW">
                <font>
-                  <Font name="Heiti TC Medium" size="40.0" />
+                  <Font name="Heiti TC Medium" size="60.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" text="Tēnā Rawa Atu Koe" textFill="WHITE">
-               <font>
-                  <Font name="Heiti TC Medium" size="20.0" />
-               </font>
+            <Label alignment="CENTER">
+               <graphic>
+ 		            <ImageView fitHeight="40.0" pickOnBounds="true" preserveRatio="true">
+ 		               <image>
+ 		                  <Image url="@media/tena-rawa-atu-koe.png" />
+ 		               </image>
+ 		            </ImageView>
+ 		       </graphic>
             </Label>
             <HBox alignment="CENTER">
                <children>
                   <Button mnemonicParsing="false" onAction="#playAgain" style="-fx-background-color: transparent;">
                      <graphic>
-			            <ImageView fitHeight="50.0" pickOnBounds="true" preserveRatio="true">
+			            <ImageView fitHeight="70.0" pickOnBounds="true" preserveRatio="true">
 			               <image>
 			                  <Image url="@media/replay.png" />
 			               </image>
@@ -74,7 +82,7 @@
                   </Button>
                   <Button mnemonicParsing="false" onAction="#backToMainMenu" style="-fx-background-color: transparent;">
                      <graphic>
-			            <ImageView fitHeight="50.0" pickOnBounds="true" preserveRatio="true">
+			            <ImageView fitHeight="70.0" pickOnBounds="true" preserveRatio="true">
 			               <image>
 			                  <Image url="@media/home.png" />
 			               </image>
