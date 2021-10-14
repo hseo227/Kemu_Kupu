@@ -102,7 +102,7 @@
                               <Font name="Heiti TC Medium" size="20.0" />
                            </font>
                         </TextField>
-                        <Button mnemonicParsing="false" onAction="#onEnter" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #EBEBEB;" text="Check">
+                        <Button fx:id="checkBtn" mnemonicParsing="false" onAction="#onEnter" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #EBEBEB;" text="Check">
                            <font>
                               <Font name="Heiti TC Medium" size="20.0" />
                            </font>

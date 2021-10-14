@@ -106,14 +106,17 @@ public class ModulePractiseController extends ModuleBaseController {
      * When the user press 'Enter' key or press the 'Check' button,
      * if the question is finished, go to next question
      * otherwise, check the spelling
+     * But do not go to next question or check the spelling when it is speaking the word
      */
     @FXML
     protected void onEnter() {
-        if (quiz.quizStateEqualsTo(QuizState.READY)) {
-            skipBtn.setDisable(false);
-            newQuestion();
-        } else {
-            checkSpelling();
+        if (!inhibitSubmitAction) {
+            if (quiz.quizStateEqualsTo(QuizState.READY)) {
+                skipBtn.setDisable(false);
+                newQuestion();
+            } else {
+                checkSpelling();
+            }
         }
     }
 
@@ -151,7 +154,7 @@ public class ModulePractiseController extends ModuleBaseController {
         } else {
             colour = "#FF2715";  // set text colour to red
             inputField.clear();
-            disablePlaybackBtnTemp();
+            disableButtonsWhenSpeaking();
         }
 
         updateLabels(colour);  // update the labels with corresponding colour

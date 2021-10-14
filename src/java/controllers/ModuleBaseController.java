@@ -20,13 +20,14 @@ abstract public class ModuleBaseController implements Initializable {
     private final PauseTransition pause = new PauseTransition(Duration.seconds(2));
 
     protected Module quiz;
+    protected boolean inhibitSubmitAction = false;
 
     @FXML
     private Label mainLabel, promptLabel;
     @FXML
     private TextField inputField;
     @FXML
-    private Button playbackBtn;
+    private Button playbackBtn, checkBtn, skipBtn;
     @FXML
     private Slider speechSpeed;
     @FXML
@@ -63,7 +64,7 @@ abstract public class ModuleBaseController implements Initializable {
      */
     protected void newQuestion() {
         inputField.clear();
-        disablePlaybackBtnTemp();
+        disableButtonsWhenSpeaking();
         FestivalSpeech.setSpeechSpeed((int) speechSpeed.getValue());  // set up speech speed
 
         // if the quiz is not finished, continue the game (return true), otherwise false
@@ -81,7 +82,7 @@ abstract public class ModuleBaseController implements Initializable {
      */
     @FXML
     protected void speakAgain() {
-        disablePlaybackBtnTemp();
+        disableButtonsWhenSpeaking();
 
         // set up speech speed and then speak
         FestivalSpeech.setSpeechSpeed((int) speechSpeed.getValue());
@@ -122,11 +123,21 @@ abstract public class ModuleBaseController implements Initializable {
     }
 
     /**
-     * Disable playback button for 2 second, it is to avoid the user spam it
+     * Disable some buttons for 2 second when the festival starts running
+     * It is to avoid the user spam those buttons
      */
-    protected void disablePlaybackBtnTemp() {
+    protected void disableButtonsWhenSpeaking() {
         playbackBtn.setDisable(true);
-        pause.setOnFinished(e -> playbackBtn.setDisable(false));
+        checkBtn.setDisable(true);
+        skipBtn.setDisable(true);
+        inhibitSubmitAction = true;
+
+        pause.setOnFinished(e -> {
+            playbackBtn.setDisable(false);
+            checkBtn.setDisable(false);
+            skipBtn.setDisable(false);
+            inhibitSubmitAction = false;
+        });
         pause.play();
     }
 

@@ -88,10 +88,13 @@ public class ModuleGamesController extends ModuleBaseController {
 
     /**
      * When the user press 'Enter' key or press the 'Check' button, check the spelling
+     * But do not check the spelling when it is speaking the word
      */
     @FXML
     protected void onEnter() {
-        checkSpelling();
+        if (!inhibitSubmitAction) {
+            checkSpelling();
+        }
     }
 
     /**
@@ -127,7 +130,7 @@ public class ModuleGamesController extends ModuleBaseController {
         } else {
             colour = "#FF2715";  // set text colour to red
             inputField.clear();
-            disablePlaybackBtnTemp();
+            disableButtonsWhenSpeaking();
         }
 
         updateLabels(colour);  // update the labels with corresponding colour
