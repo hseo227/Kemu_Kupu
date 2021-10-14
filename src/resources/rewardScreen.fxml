@@ -75,7 +75,7 @@
 			         <tooltip>
 			            <Tooltip text="Click to Replay">
 			               <font>
-			                  <Font size="20.0" />
+			                  <Font size="14.0" />
 			               </font>
 			            </Tooltip>
 			         </tooltip>
@@ -94,7 +94,7 @@
 			         <tooltip>
 			            <Tooltip text="Click to go to Main Menu">
 			               <font>
-			                  <Font size="20.0" />
+			                  <Font size="14.0" />
 			               </font>
 			            </Tooltip>
 			         </tooltip>
