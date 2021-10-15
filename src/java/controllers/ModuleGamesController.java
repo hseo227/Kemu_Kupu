@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 public class ModuleGamesController extends ModuleBaseController {
 
     @FXML
-    private Label userScore, shortCutLabel;
+    private Label userScore, shortCutLabel, newSpellingQuiz;
     @FXML
     private TextField inputField;
     @FXML

@@ -9,7 +9,8 @@ import static spellingQuizUtil.FestivalSpeech.speak;
 
 
 public class ModuleGames extends Module {
-    private static final int NUMBER_OF_QUESTIONS = 5;
+    
+	private static final int NUMBER_OF_QUESTIONS = 5;
 
     /**
      * Constructor

@@ -61,7 +61,7 @@
 	            </ImageView>
 	     </graphic>
       </Button>
-      <VBox alignment="CENTER" fillWidth="false" layoutX="230.0" layoutY="155.0" spacing="30.0">
+      <VBox alignment="CENTER" fillWidth="false" layoutX="350.0" layoutY="155.0" spacing="30.0">
          <children>
             <Label fx:id="userScore" textFill="WHITE">
                <font>
@@ -69,13 +69,9 @@
                </font>
             </Label>
             <Label fx:id="mainLabel" alignment="CENTER" style="-fx-background-color: transparent;">
-               <graphic>
-		            <ImageView fitHeight="150.0" pickOnBounds="true" preserveRatio="true">
-		               <image>
-		                  <Image url="@media/new-spelling-quiz.png" />
-		               </image>
-		            </ImageView>
-		    	</graphic>
+            	<font>
+                  <Font name="Heiti TC Medium" size="50.0" />
+               </font>
             </Label>
             <Label fx:id="promptLabel" textFill="WHITE">
                <font>
@@ -158,10 +154,19 @@
             </VBox>
          </children>
       </VBox>
-      <VBox fx:id="startVBox" layoutX="560.0" layoutY="380.0">
+      <VBox fx:id="startVBox" layoutX="560.0" layoutY="250.0" >
          <children>
-            <Button mnemonicParsing="false" onAction="#startQuiz" prefHeight="50.0" prefWidth="175.0" style="-fx-background-color: transparent;">
+         	<Label alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: transparent;">
                <graphic>
+		            <ImageView fitHeight="150.0" pickOnBounds="true" preserveRatio="true">
+		               <image>
+		                  <Image url="@media/new-spelling-quiz.png" />
+		               </image>
+		            </ImageView>
+		    	</graphic>
+             </Label>
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#startQuiz" style="-fx-background-color: transparent;">
+              <graphic>
 		            <ImageView fitHeight="80.0" pickOnBounds="true" preserveRatio="true">
 		               <image>
 		                  <Image url="@media/play.png" />
