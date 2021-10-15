@@ -50,29 +50,29 @@
                   <Font name="Heiti TC Medium" size="60.0" />
                </font>
             </Label>
-            <VBox alignment="CENTER" spacing="10.0">
+            <VBox fx:id="wordsVBox" alignment="CENTER" spacing="10.0">
                <children>
-                  <Label fx:id="word1" alignment="CENTER" text="word" textFill="WHITE">
+                  <Label fx:id="word1Label" alignment="CENTER" textFill="RED">
                      <font>
                         <Font name="Heiti TC Medium" size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="word2" alignment="CENTER" text="word" textFill="WHITE">
+                  <Label fx:id="word2Label" alignment="CENTER" textFill="RED">
                      <font>
                         <Font name="Heiti TC Medium" size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="word23" alignment="CENTER" text="word" textFill="WHITE">
+                  <Label fx:id="word3Label" alignment="CENTER" textFill="RED">
                      <font>
                         <Font name="Heiti TC Medium" size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="word4" alignment="CENTER" text="word" textFill="WHITE">
+                  <Label fx:id="word4Label" alignment="CENTER" textFill="RED">
                      <font>
                         <Font name="Heiti TC Medium" size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="word5" alignment="CENTER" text="word" textFill="WHITE">
+                  <Label fx:id="word5Label" alignment="CENTER" textFill="RED">
                      <font>
                         <Font name="Heiti TC Medium" size="20.0" />
                      </font>
