@@ -35,7 +35,7 @@ public class ModuleGames extends Module {
             speak("Word skipped", "");
 
         // if statement for each result after checking the spelling (input)
-        } else if ( words.checkUserSpelling(getUserInput()) ) {  // mastered and failed, 1st attempt and 2nd attempt respectively
+        } else if (words.checkUserSpelling(getUserInput())) {  // mastered and failed, 1st attempt and 2nd attempt respectively
             setQuizState(QuizState.READY);  // set the state to ready for the next question
             TestedWords.addCorrect(currentWord);
 
@@ -47,7 +47,6 @@ public class ModuleGames extends Module {
 
         } else if (resultEqualsTo(Result.MASTERED)) {  // still 1st attempt, but incorrect
             setResult(Result.FAULTED);
-            TestedWords.addIncorrect(currentWord);
 
             // setting up the labels' text and speak out the message
             mainLabelText = tryAgainMessage.getEncourageMsg();

@@ -3,6 +3,7 @@ package spellingQuiz;
 import spellingQuizUtil.Hint;
 import spellingQuizUtil.QuizState;
 import spellingQuizUtil.Result;
+import spellingQuizUtil.TestedWords;
 
 import static spellingQuizUtil.FestivalSpeech.speak;
 
@@ -16,6 +17,7 @@ public class ModulePractise extends Module {
      */
     public ModulePractise(int numOfQuestions) {
         super(numOfQuestions);
+    	TestedWords.practiceMode();
     }
 
     /**

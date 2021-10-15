@@ -5,11 +5,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import spellingQuiz.Module;
 import spellingQuizUtil.ModuleType;
 import spellingQuizUtil.Score;
 import spellingQuizUtil.TestedWords;
-import spellingQuizUtil.TestedWords.WordState;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -18,8 +18,7 @@ public class RewardScreenController implements Initializable {
 
     @FXML
     private Label userScoreLabel, word1Label, word2Label, word3Label, word4Label, word5Label;
-    VBox wordsVBox;
-
+private Text text;
     /**
      * Set up the user score label
      */
@@ -27,7 +26,6 @@ public class RewardScreenController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         userScoreLabel.setText(Score.getScore() + " OUT OF " + Score.getTotalScore());
         
-        word1Label.setText(TestedWords.get(0));
         word1Label.setText(TestedWords.get(0));
         word2Label.setText(TestedWords.get(1));
         word3Label.setText(TestedWords.get(2));
@@ -49,6 +47,7 @@ public class RewardScreenController implements Initializable {
         if (TestedWords.isCorrect(4)) {
             word5Label.setTextFill(Color.LIME);
         }
+    
     }
     
 

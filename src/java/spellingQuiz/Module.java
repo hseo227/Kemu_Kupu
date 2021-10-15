@@ -9,8 +9,9 @@ import java.util.ArrayList;
 
 public abstract class Module {
     private final int NUMBER_OF_QUESTIONS;
+    private final int MAX_NUMBER_OF_QUESTIONS = 5;
 
-    private int currentIndex;
+    protected int currentIndex;
     private QuizState currentQuizState;
     private Result currentResult;
     private static ModuleType moduleType;

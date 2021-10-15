@@ -6,9 +6,8 @@ public class TestedWords {
 	
 	private static ArrayList<String> testedWords = new ArrayList<>();
 	private static ArrayList<WordState> testedWordsState = new ArrayList<>();
-	private static WordState currentWordState;
 	
-	public enum WordState {
+	private enum WordState {
 	    CORRECT, INCORRECT
 	}
 	
@@ -36,6 +35,14 @@ public class TestedWords {
 	
 	public static void clear() {
 		testedWords.clear();
+		testedWordsState.clear();
+	}
+	
+	public static void practiceMode() {
+		for (int i = 0; i < 5; i++) {
+			testedWords.add("");
+			testedWordsState.add(WordState.INCORRECT);
+		}
 	}
 	
 }
