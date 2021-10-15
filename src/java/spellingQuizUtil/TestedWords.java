@@ -8,7 +8,7 @@ public class TestedWords {
 	private static ArrayList<WordState> testedWordsState = new ArrayList<>();
 	
 	private enum WordState {
-	    CORRECT, INCORRECT
+	    CORRECT, INCORRECT, PRACTICE
 	}
 	
 	public static void addCorrect(String word) {
@@ -39,9 +39,23 @@ public class TestedWords {
 	}
 	
 	public static void practiceMode() {
+
+		testedWords.add("");
+		testedWords.add("Good Practice!");
+		testedWords.add("Attempt a quiz to test your knowledge or");
+		testedWords.add("play another practice round to gain confidence!");
+		testedWords.add("");
+		
 		for (int i = 0; i < 5; i++) {
-			testedWords.add("");
-			testedWordsState.add(WordState.INCORRECT);
+			testedWordsState.add(WordState.PRACTICE);
+		}
+	}
+	
+	public static boolean isPracticeMode(int i) {
+		if (testedWordsState.get(i).equals(WordState.PRACTICE)) {
+			return true;
+		} else {
+			return false;
 		}
 	}
 	
