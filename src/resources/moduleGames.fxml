@@ -154,7 +154,7 @@
             </VBox>
          </children>
       </VBox>
-      <VBox fx:id="startVBox" layoutX="560.0" layoutY="250.0" >
+      <VBox fx:id="startVBox" layoutX="200.0" layoutY="250.0" alignment="CENTER">
          <children>
          	<Label alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: transparent;">
                <graphic>
