@@ -27,16 +27,20 @@
             <Image url="@media/koru2.png" />
          </image>
       </ImageView>
-      <VBox layoutX="100.0" layoutY="100.0" spacing="20.0">
+      <VBox layoutX="80.0" layoutY="100.0" spacing="20.0">
          <children>
-            <ToggleButton fx:id="togSpdSlider" mnemonicParsing="false" onAction="#showHideSpeedSlider" prefHeight="40.0" prefWidth="180.0" text="Speech Speed">
-               <font>
-                  <Font name="Heiti TC Medium" size="20.0" />
-               </font>
+            <ToggleButton fx:id="togSpdSlider" mnemonicParsing="false" onAction="#showHideSpeedSlider" prefHeight="40.0" style="-fx-background-color: transparent;">
+               <graphic>
+ 		            <ImageView fitHeight="40.0" pickOnBounds="true" preserveRatio="true">
+ 		               <image>
+ 		                  <Image url="@media/speech-speed.png" />
+ 		               </image>
+ 		            </ImageView>
+ 		     </graphic>
                <tooltip>
                   <Tooltip text="Click to open/close a speed slider">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="14.0" />
                      </font>
                   </Tooltip>
                </tooltip>
@@ -48,22 +52,30 @@
             </Slider>
          </children>
       </VBox>
-      <Button layoutX="1030.0" layoutY="100.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #EBEBEB;" text="Main Menu">
-         <font>
-            <Font name="Heiti TC Medium" size="20.0" />
-         </font>
+      <Button layoutX="1110.0" layoutY="100.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="40.0" style="-fx-background-color: transparent;">
+         <graphic>
+	            <ImageView fitHeight="60.0" pickOnBounds="true" preserveRatio="true">
+	               <image>
+	                  <Image url="@media/home.png" />
+	               </image>
+	            </ImageView>
+	     </graphic>
       </Button>
-      <VBox alignment="CENTER" fillWidth="false" layoutX="240.0" layoutY="155.0" spacing="30.0">
+      <VBox alignment="CENTER" fillWidth="false" layoutX="230.0" layoutY="155.0" spacing="30.0">
          <children>
             <Label fx:id="userScore" textFill="WHITE">
                <font>
                   <Font name="Heiti TC Medium" size="50.0" />
                </font>
             </Label>
-            <Label fx:id="mainLabel" alignment="CENTER" prefWidth="800.0" text="New Spelling Quiz!" textFill="WHITE">
-               <font>
-                  <Font name="Heiti TC Medium" size="35.0" />
-               </font>
+            <Label fx:id="mainLabel" alignment="CENTER" style="-fx-background-color: transparent;">
+               <graphic>
+		            <ImageView fitHeight="150.0" pickOnBounds="true" preserveRatio="true">
+		               <image>
+		                  <Image url="@media/new-spelling-quiz.png" />
+		               </image>
+		            </ImageView>
+		    	</graphic>
             </Label>
             <Label fx:id="promptLabel" textFill="WHITE">
                <font>
@@ -88,7 +100,7 @@
                            <tooltip>
                               <Tooltip text="Click to playback">
                                  <font>
-                                    <Font size="20.0" />
+                                    <Font size="14.0" />
                                  </font>
                               </Tooltip>
                            </tooltip>
@@ -146,12 +158,16 @@
             </VBox>
          </children>
       </VBox>
-      <VBox fx:id="startVBox" layoutX="553.0" layoutY="350.0">
+      <VBox fx:id="startVBox" layoutX="560.0" layoutY="380.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#startQuiz" prefHeight="50.0" prefWidth="175.0" style="-fx-background-color: #EBEBEB;" text="Start Quiz">
-               <font>
-                  <Font name="Heiti TC Medium" size="25.0" />
-               </font>
+            <Button mnemonicParsing="false" onAction="#startQuiz" prefHeight="50.0" prefWidth="175.0" style="-fx-background-color: transparent;">
+               <graphic>
+		            <ImageView fitHeight="80.0" pickOnBounds="true" preserveRatio="true">
+		               <image>
+		                  <Image url="@media/play.png" />
+		               </image>
+		            </ImageView>
+		     </graphic>
             </Button>
          </children>
       </VBox>
