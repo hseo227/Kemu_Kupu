@@ -4,6 +4,8 @@ import spellingQuizUtil.*;
 
 import static spellingQuizUtil.FestivalSpeech.speak;
 
+import java.util.ArrayList;
+
 
 public abstract class Module {
     private final int NUMBER_OF_QUESTIONS;
@@ -38,7 +40,8 @@ public abstract class Module {
         setUserInput("");
         setQuizState(QuizState.READY);
         setResult(Result.MASTERED);
-
+        TestedWords.clear();
+        
         // update the the total score
         Score.changeTotalScore(numOfQuestions);
     }
