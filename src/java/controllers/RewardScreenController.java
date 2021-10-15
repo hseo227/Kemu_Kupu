@@ -32,7 +32,13 @@ private Text text;
         word4Label.setText(TestedWords.get(3));
         word5Label.setText(TestedWords.get(4));
         
-        if (TestedWords.isCorrect(0)) {
+        if  (TestedWords.isPracticeMode(0)) {
+            word1Label.setTextFill(Color.WHITE);
+            word2Label.setTextFill(Color.WHITE);
+            word3Label.setTextFill(Color.WHITE);
+            word4Label.setTextFill(Color.WHITE);
+            word5Label.setTextFill(Color.WHITE);
+        } else if (TestedWords.isCorrect(0)) {
             word1Label.setTextFill(Color.LIME);
         }
         if (TestedWords.isCorrect(1)) {
