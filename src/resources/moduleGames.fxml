@@ -47,7 +47,7 @@
             </ToggleButton>
             <Slider fx:id="speechSpeed" blockIncrement="5.0" majorTickUnit="60.0" max="160.0" min="40.0" minorTickCount="11" orientation="VERTICAL" prefHeight="200.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" style="-fx-background-color: #EBEBEB; -fx-font-size: 18.0px;" value="100.0">
                <padding>
-                  <Insets left="10.0" />
+                  <Insets left="20.0" />
                </padding>
             </Slider>
          </children>
