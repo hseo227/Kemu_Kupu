@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 public class ModuleGamesController extends ModuleBaseController {
 
     @FXML
-    private Label userScore, shortCutLabel, newSpellingQuiz;
+    private Label userScore, shortCutLabel, newSpellingQuiz, score;
     @FXML
     private TextField inputField;
     @FXML
@@ -76,12 +76,13 @@ public class ModuleGamesController extends ModuleBaseController {
         quiz = new ModuleGames();
 
         // Display score
-        userScore.setText("SCORE : " + Score.getScore());
+        userScore.setText(Score.getScore() + "   ");
 
         // otherwise, continue the game
         startVBox.setVisible(false);
         inputVBox.setVisible(true);
         shortCutLabel.setVisible(true);
+        score.setVisible(true);
 
         newQuestion();
     }
@@ -117,7 +118,7 @@ public class ModuleGamesController extends ModuleBaseController {
                 colour = "#00A804";  // set text colour to green
 
                 // set userScore label to the current score
-                userScore.setText("SCORE : " + Score.getScore());
+                userScore.setText(Score.getScore() + "");
 
             // incorrect spelling (Failed) OR the word is skipped
             } else {

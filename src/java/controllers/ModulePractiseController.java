@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.StringConverter;
 import spellingQuiz.ModulePractise;
@@ -34,7 +35,9 @@ public class ModulePractiseController extends ModuleBaseController {
     @FXML
     private ChoiceBox<Integer> numOfQCheckBox;
     @FXML
-    private VBox inputVBox, startVBox;
+    private VBox inputVBox, startVBox, score;
+    @FXML
+    private HBox inputHBox;
 
 
     /**
@@ -97,7 +100,9 @@ public class ModulePractiseController extends ModuleBaseController {
         // otherwise, continue the game
         startVBox.setVisible(false);
         inputVBox.setVisible(true);
+        inputHBox.setVisible(true);
         shortCutLabel.setVisible(true);
+        score.setVisible(true);
 
         newQuestion();
     }

@@ -35,7 +35,6 @@ abstract public class ModuleBaseController implements Initializable {
     @FXML
     private VBox inputVBox;
 
-
     /**
      * Different module start the quiz differently.
      *      Games module always starts with 5 questions;
