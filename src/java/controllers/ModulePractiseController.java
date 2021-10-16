@@ -23,7 +23,7 @@ import java.util.ResourceBundle;
 public class ModulePractiseController extends ModuleBaseController {
 
     @FXML
-    private Label userScore, shortCutLabel;
+    private Label userScore, shortCutLabel, score;
     @FXML
     private TextField inputField;
     @FXML
@@ -35,9 +35,7 @@ public class ModulePractiseController extends ModuleBaseController {
     @FXML
     private ChoiceBox<Integer> numOfQCheckBox;
     @FXML
-    private VBox inputVBox, startVBox, score;
-    @FXML
-    private HBox inputHBox;
+    private VBox inputVBox, startVBox;
 
 
     /**
@@ -95,12 +93,11 @@ public class ModulePractiseController extends ModuleBaseController {
         quiz = new ModulePractise(numOfQCheckBox.getValue());
 
         // Display score
-        userScore.setText("SCORE : " + Score.getScore());
+        userScore.setText("" + Score.getScore());
 
         // otherwise, continue the game
         startVBox.setVisible(false);
         inputVBox.setVisible(true);
-        inputHBox.setVisible(true);
         shortCutLabel.setVisible(true);
         score.setVisible(true);
 
@@ -145,7 +142,7 @@ public class ModulePractiseController extends ModuleBaseController {
                 colour = "#00A804";  // set text colour to green
 
                 // set userScore label to the current score
-                userScore.setText("SCORE : " + Score.getScore());
+                userScore.setText("" + Score.getScore());
 
                 pauseBetweenEachQ();
 
