@@ -61,13 +61,13 @@
 	            </ImageView>
 	     </graphic>
       </Button>
-      <VBox alignment="CENTER" fillWidth="false" layoutX="400.0" layoutY="70.0" spacing="30.0">
+      <VBox alignment="CENTER" fillWidth="false" layoutX="400.0" layoutY="110.0" spacing="30.0">
          <children>
          	<HBox alignment="CENTER">
          		<children>
          			<Label fx:id="score" visible="false">
 		                <graphic>
-		                   <ImageView fitHeight="150.0" pickOnBounds="true" preserveRatio="true">
+		                   <ImageView fitHeight="60.0" pickOnBounds="true" preserveRatio="true">
 		                      <image>
 		                         <Image url="@media/user-score.png" />
 		                      </image>
