@@ -76,7 +76,7 @@ public class ModuleGamesController extends ModuleBaseController {
         quiz = new ModuleGames();
 
         // Display score
-        userScore.setText(Score.getScore() + "   ");
+        userScore.setText(Score.getScore() + "");
 
         // otherwise, continue the game
         startVBox.setVisible(false);
