@@ -27,7 +27,7 @@
             <Image url="@media/koru2.png" />
          </image>
       </ImageView>
-      <VBox layoutX="80.0" layoutY="100.0" spacing="20.0">
+      <VBox layoutX="80.0" layoutY="110.0" spacing="20.0">
          <children>
             <ToggleButton fx:id="togSpdSlider" mnemonicParsing="false" onAction="#showHideSpeedSlider" prefHeight="40.0" style="-fx-background-color: transparent;">
                <graphic>
@@ -61,19 +61,32 @@
 	            </ImageView>
 	     </graphic>
       </Button>
-      <VBox alignment="CENTER" fillWidth="false" layoutX="350.0" layoutY="155.0" spacing="30.0">
+      <VBox alignment="CENTER" fillWidth="false" layoutX="400.0" layoutY="70.0" spacing="30.0">
          <children>
-            <Label fx:id="userScore" textFill="WHITE">
-               <font>
-                  <Font name="Heiti TC Medium" size="50.0" />
-               </font>
-            </Label>
+         	<HBox alignment="CENTER">
+         		<children>
+         			<Label fx:id="score" visible="false">
+		                <graphic>
+		                   <ImageView fitHeight="150.0" pickOnBounds="true" preserveRatio="true">
+		                      <image>
+		                         <Image url="@media/user-score.png" />
+		                      </image>
+		                   </ImageView>
+		                </graphic>
+		            </Label>
+		            <Label fx:id="userScore" textFill="YELLOW">
+		               <font>
+		                  <Font name="Heiti TC Medium" size="70.0" />
+		               </font>
+		            </Label>
+         		</children>
+         	</HBox>
             <Label fx:id="mainLabel" alignment="CENTER" style="-fx-background-color: transparent;">
             	<font>
                   <Font name="Heiti TC Medium" size="50.0" />
                </font>
             </Label>
-            <Label fx:id="promptLabel" textFill="WHITE">
+            <Label fx:id="promptLabel" alignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Heiti TC Medium" size="25.0" />
                </font>
@@ -86,7 +99,7 @@
                            <graphic>
                               <ImageView fitHeight="42.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@media/playback.png" />
+                                    <Image url="@media/replay.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -100,19 +113,30 @@
                                  </font>
                               </Tooltip>
                            </tooltip>
-                           <HBox.margin>
-                              <Insets left="40.0" />
-                           </HBox.margin>
                         </Button>
                         <TextField fx:id="inputField" onAction="#onEnter" onKeyTyped="#checkMacronShortCut" prefHeight="50.0" prefWidth="330.0" promptText="Type Your Answer Here">
                            <font>
                               <Font name="Heiti TC Medium" size="20.0" />
                            </font>
                         </TextField>
-                        <Button fx:id="checkBtn" mnemonicParsing="false" onAction="#onEnter" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #EBEBEB;" text="Check">
-                           <font>
-                              <Font name="Heiti TC Medium" size="20.0" />
-                           </font>
+                        <Button fx:id="checkBtn" mnemonicParsing="false" onAction="#onEnter" prefHeight="40.0" style="-fx-background-color: transparent;">
+                           <graphic>
+                              <ImageView fitHeight="42.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@media/check.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <tooltip>
+                              <Tooltip text="Click to submit your answer">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Tooltip>
+                           </tooltip>
                         </Button>
                      </children>
                   </HBox>
@@ -145,10 +169,24 @@
                         </Button>
                      </children>
                   </HBox>
-                  <Button fx:id="skipBtn" mnemonicParsing="false" onAction="#skipWord" prefHeight="40.0" prefWidth="75.0" style="-fx-background-color: #EBEBEB;" text="Skip">
-                     <font>
-                        <Font name="Heiti TC Medium" size="20.0" />
-                     </font>
+                  <Button fx:id="skipBtn" mnemonicParsing="false" onAction="#skipWord" prefHeight="40.0" style="-fx-background-color: transparent;">
+                     <graphic>
+                         <ImageView fitHeight="42.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                               <Image url="@media/skip.png" />
+                            </image>
+                         </ImageView>
+                      </graphic>
+                      <cursor>
+                         <Cursor fx:constant="HAND" />
+                      </cursor>
+                      <tooltip>
+                         <Tooltip text="Click to skip current word">
+                            <font>
+                               <Font size="14.0" />
+                            </font>
+                         </Tooltip>
+                      </tooltip>
                   </Button>
                </children>
             </VBox>
@@ -176,10 +214,14 @@
             </Button>
          </children>
       </VBox>
-      <Label fx:id="shortCutLabel" layoutX="50.0" layoutY="620.0" text="Shortcut: type a vowel followed by '-' (eg: 'a-' → 'ā')" textFill="#ff2917" visible="false">
-         <font>
-            <Font size="20.0" />
-         </font>
+      <Label fx:id="shortCutLabel" layoutX="80.0" layoutY="600.0" visible="false">
+         <graphic>
+            <ImageView fitHeight="40.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: transparent;">
+               <image>
+                  <Image url="@media/macron-shortcut.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </Label>
    </children>
 </AnchorPane>
