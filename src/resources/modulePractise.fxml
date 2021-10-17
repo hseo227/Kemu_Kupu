@@ -48,12 +48,12 @@
                         </Label>
                     </children>
                 </HBox>
-                <Label fx:id="mainLabel" alignment="CENTER" prefWidth="800.0">
+                <Label fx:id="mainLabel" alignment="CENTER" prefHeight="57.0" prefWidth="800.0">
                     <font>
                         <Font name="Heiti TC Medium" size="50.0" />
                     </font>
                 </Label>
-                <Label fx:id="promptLabel" textFill="WHITE">
+                <Label fx:id="promptLabel" alignment="CENTER" prefHeight="29.0">
                     <font>
                         <Font name="Heiti TC Medium" size="25.0" />
                     </font>

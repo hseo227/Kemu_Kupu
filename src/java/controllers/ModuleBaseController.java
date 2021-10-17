@@ -10,10 +10,12 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.util.Duration;
 import spellingQuiz.Module;
 import spellingQuizUtil.FestivalSpeech;
 import spellingQuizUtil.Result;
+import spellingQuizUtil.Score;
 
 abstract public class ModuleBaseController implements Initializable {
     // 2 seconds pause
@@ -23,7 +25,7 @@ abstract public class ModuleBaseController implements Initializable {
     protected boolean inhibitSubmitAction = false;
 
     @FXML
-    private Label mainLabel, promptLabel;
+    private Label mainLabel, promptLabel, userScore;
     @FXML
     private TextField inputField;
     @FXML
@@ -143,14 +145,51 @@ abstract public class ModuleBaseController implements Initializable {
 
     /**
      * Update the labels with given colour
+     * Also change the size of the text so the label fits the text perfectly
      * @param colour Colour of the label text
      */
     protected void updateLabels(String colour) {
-        mainLabel.setStyle("-fx-text-fill: " + colour + ";");  // change to green text
-        promptLabel.setStyle("-fx-text-fill: " + colour + ";");  // change to green text
+        String mainLabelText = quiz.getMainLabelText();
+        String promptLabelText = quiz.getPromptLabelText();
+        int mainLabelSize, promptLabelSize;
 
-        mainLabel.setText(quiz.getMainLabelText());
-        promptLabel.setText(quiz.getPromptLabelText());
+        // change the size of the text according to the length of the text
+        // longer the word length, smaller the size of the text in the labels
+        // main label text
+        if (mainLabelText.length() < 30) {
+            mainLabelSize = 50;
+        } else if (mainLabelText.length() < 45) {
+            mainLabelSize = 40;
+        } else {
+            mainLabelSize = 25;
+        }
+
+        // prompt label text
+        if (promptLabelText.length() < 80) {
+            promptLabelSize = 25;
+        } else {
+            promptLabelSize = 20;
+        }
+
+        // change the size of the text
+        mainLabel.setFont(new Font("Heiti TC Medium", mainLabelSize));
+        promptLabel.setFont(new Font("Heiti TC Medium", promptLabelSize));
+
+        // change the colour of the text
+        mainLabel.setStyle("-fx-text-fill: " + colour + ";");
+        promptLabel.setStyle("-fx-text-fill: " + colour + ";");
+
+        // change the text
+        mainLabel.setText(mainLabelText);
+        promptLabel.setText(promptLabelText);
+    }
+
+    /**
+     * Update the score in the score label
+     * set userScore label to the current score
+     */
+    protected void updateScore() {
+        userScore.setText(Score.getScore() + "");
     }
 
     /**
