@@ -28,7 +28,7 @@ public class FestivalSpeech {
             // create the scheme file
             file = new File(FESTIVAL_CMD_FILE);
             file.createNewFile();
-            
+
         } catch(IOException e) {
             System.err.println("Unable to create scheme file \"" + FESTIVAL_CMD_FILE + "\"");
         }

@@ -12,7 +12,9 @@ import spellingQuizUtil.Statistics;
 import tableUtil.Leaderboard;
 import tableUtil.StatsTable;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -28,6 +30,7 @@ public class RewardScreenController implements Initializable {
     private final String LEADERBOARD_FILE = ".hide/leaderboard";
 
     private final ArrayList<StatsTable> statisticsList = new ArrayList<>();
+    private final ArrayList<Leaderboard> leaderboardList = new ArrayList<>();
 
     @FXML
     private Label userScoreLabel;
@@ -40,9 +43,7 @@ public class RewardScreenController implements Initializable {
     @FXML
     private TableView<Leaderboard> leaderboardTable;
     @FXML
-    private TableColumn<Leaderboard, Integer> rankCol, totalScoreCol, totalTimeCol;
-    @FXML
-    private TableColumn<Leaderboard, String> nameCol;
+    private TableColumn<Leaderboard, String> rankCol, nameCol, totalScoreCol, totalTimeCol;
     @FXML
     private ToggleButton leaderboardTogBtn;
 
@@ -75,6 +76,11 @@ public class RewardScreenController implements Initializable {
     @FXML
     private void backToMainMenu() {
         SceneManager.goToMainMenu();
+    }
+
+    @FXML
+    private void showHideLeaderboard() {
+        leaderboardTable.setVisible(leaderboardTogBtn.isSelected());
     }
 
     private void settingUpStatsTable() {
@@ -125,6 +131,31 @@ public class RewardScreenController implements Initializable {
         } catch(IOException e) {
             System.err.println("Unable to create scheme file \"" + LEADERBOARD_FILE + "\"");
         }
+
+
+
+        // First, get all the words in the file
+        try {
+            BufferedReader readFile = new BufferedReader(new FileReader(LEADERBOARD_FILE));
+            String line;
+
+            // go through all the lines in the file and add into the list
+            while ((line = readFile.readLine()) != null) {
+                String[] splitted = line.split("___");
+                leaderboardList.add(new Leaderboard(splitted[0], splitted[1], splitted[2], splitted[3]));
+            }
+            readFile.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // setting up the table and the column
+        rankCol.setCellValueFactory(new PropertyValueFactory<>("rank"));
+        nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        totalScoreCol.setCellValueFactory(new PropertyValueFactory<>("totalScore"));
+        totalTimeCol.setCellValueFactory(new PropertyValueFactory<>("totalTime"));
+        leaderboardTable.getItems().setAll(leaderboardList);
 
     }
     
