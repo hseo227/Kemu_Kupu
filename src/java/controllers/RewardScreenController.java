@@ -3,13 +3,12 @@ package controllers;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import spellingQuiz.Module;
 import spellingQuizUtil.ModuleType;
 import spellingQuizUtil.Score;
-import spellingQuizUtil.TestedWords;
+import spellingQuizUtil.Statistics;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -26,31 +25,31 @@ private Text text;
     public void initialize(URL url, ResourceBundle resourceBundle) {
         userScoreLabel.setText(Score.getScore() + " OUT OF " + Score.getTotalScore());
         
-        word1Label.setText(TestedWords.get(0));
-        word2Label.setText(TestedWords.get(1));
-        word3Label.setText(TestedWords.get(2));
-        word4Label.setText(TestedWords.get(3));
-        word5Label.setText(TestedWords.get(4));
+        word1Label.setText(Statistics.get(0));
+        word2Label.setText(Statistics.get(1));
+        word3Label.setText(Statistics.get(2));
+        word4Label.setText(Statistics.get(3));
+        word5Label.setText(Statistics.get(4));
         
-        if  (TestedWords.isPracticeMode(0)) {
+        if  (Statistics.isPracticeMode(0)) {
             word1Label.setTextFill(Color.WHITE);
             word2Label.setTextFill(Color.WHITE);
             word3Label.setTextFill(Color.WHITE);
             word4Label.setTextFill(Color.WHITE);
             word5Label.setTextFill(Color.WHITE);
-        } else if (TestedWords.isCorrect(0)) {
+        } else if (Statistics.isCorrect(0)) {
             word1Label.setTextFill(Color.LIME);
         }
-        if (TestedWords.isCorrect(1)) {
+        if (Statistics.isCorrect(1)) {
             word2Label.setTextFill(Color.LIME);
         }
-        if (TestedWords.isCorrect(2)) {
+        if (Statistics.isCorrect(2)) {
             word3Label.setTextFill(Color.LIME);
         }
-        if (TestedWords.isCorrect(3)) {
+        if (Statistics.isCorrect(3)) {
             word4Label.setTextFill(Color.LIME);
         }
-        if (TestedWords.isCorrect(4)) {
+        if (Statistics.isCorrect(4)) {
             word5Label.setTextFill(Color.LIME);
         }
     

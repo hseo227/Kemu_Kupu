@@ -2,7 +2,7 @@ package spellingQuizUtil;
 
 import java.util.ArrayList;
 
-public class TestedWords {
+public class Statistics {
 	
 	private static ArrayList<String> testedWords = new ArrayList<>();
 	private static ArrayList<WordState> testedWordsState = new ArrayList<>();

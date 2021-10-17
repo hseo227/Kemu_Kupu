@@ -25,7 +25,7 @@ abstract public class ModuleBaseController implements Initializable {
     protected boolean inhibitSubmitAction = false;
 
     @FXML
-    private Label mainLabel, promptLabel, userScore;
+    private Label mainLabel, promptLabel, userScoreLabel;
     @FXML
     private TextField inputField;
     @FXML
@@ -189,7 +189,7 @@ abstract public class ModuleBaseController implements Initializable {
      * set userScore label to the current score
      */
     protected void updateScore() {
-        userScore.setText(Score.getScore() + "");
+        userScoreLabel.setText(Score.getScore() + "");
     }
 
     /**

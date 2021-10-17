@@ -8,7 +8,7 @@ import static spellingQuizUtil.FestivalSpeech.speak;
 public abstract class Module {
     private final int NUMBER_OF_QUESTIONS;
 
-    protected int currentIndex;
+    private int currentIndex;
     private QuizState currentQuizState;
     private Result currentResult;
     private static ModuleType moduleType;
@@ -38,7 +38,7 @@ public abstract class Module {
         setUserInput("");
         setQuizState(QuizState.READY);
         setResult(Result.MASTERED);
-        TestedWords.clear();
+        Statistics.clear();
         
         // update the the total score
         Score.changeTotalScore(numOfQuestions);
