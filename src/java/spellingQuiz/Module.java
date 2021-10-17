@@ -83,12 +83,13 @@ public abstract class Module {
 
     /**
      * Score increases, the score multiplier depends on the result
+     * @return The amount of score is increased
      */
-    protected void increaseScore() {
+    protected int increaseScore() {
         if (resultEqualsTo(Result.MASTERED)) {
-            Score.increaseBy(2);
+            return Score.increaseBy(2);
         } else {
-            Score.increaseBy(1);
+            return Score.increaseBy(1);
         }
     }
 

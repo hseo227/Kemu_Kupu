@@ -20,10 +20,14 @@ public class Score {
 
 	/**
 	 * Increase the score with respective score multiplier
+	 * and then output how much score is increased
 	 * @param scoreMultiplier Tells how much the score is going to increase
+	 * @return The amount of score is increased
 	 */
-	public static void increaseBy(int scoreMultiplier) {
-		score += SCORE_INCREASE * scoreMultiplier;
+	public static int increaseBy(int scoreMultiplier) {
+		int scoreIncreased = SCORE_INCREASE * scoreMultiplier;
+		score += scoreIncreased;
+		return scoreIncreased;
 	}
 
 	/**
