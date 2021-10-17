@@ -47,13 +47,19 @@ public class RewardScreenController implements Initializable {
     private ToggleButton leaderboardTogBtn;
 
     /**
-     * Set up the user score label
+     * Set up the reward screen
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         userScoreLabel.setText(Score.getScore() + " OUT OF " + Score.getTotalScore());
 
         settingUpStatsTable();
+
+        // only set up and shows the leaderboard if it is in games module
+        if (Module.moduleTypeEqualsTo(ModuleType.GAMES)) {
+            leaderboardTogBtn.setVisible(true);
+            settingUpLeaderboardTable();
+        }
     }
 
     /**

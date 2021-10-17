@@ -70,6 +70,7 @@ abstract public class ModuleBaseController implements Initializable {
      */
     protected void newQuestion() {
         inputField.clear();
+        inputField.requestFocus();
         disableButtonsWhenSpeaking();
         FestivalSpeech.setSpeechSpeed((int) speechSpeed.getValue());  // set up speech speed
 
