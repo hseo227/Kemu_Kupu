@@ -2,10 +2,7 @@ package controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableRow;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import spellingQuiz.Module;
 import spellingQuizUtil.ModuleType;
@@ -15,16 +12,20 @@ import spellingQuizUtil.Statistics;
 import tableUtil.Leaderboard;
 import tableUtil.StatsTable;
 
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class RewardScreenController implements Initializable {
-    protected final static String WHITE = "#FFF";
-    protected final static String GREEN = "#7CFC00";
-    protected final static String YELLOW = "#EEDC82";
-    protected final static String RED = "#FA8072";
-    protected final static String BLUE = "#89CFF0";
+    private final String WHITE = "#FFF";
+    private final String GREEN = "#7CFC00";
+    private final String YELLOW = "#EEDC82";
+    private final String RED = "#FA8072";
+    private final String BLUE = "#89CFF0";
+
+    private final String LEADERBOARD_FILE = ".hide/leaderboard";
 
     private final ArrayList<StatsTable> statisticsList = new ArrayList<>();
 
@@ -37,11 +38,13 @@ public class RewardScreenController implements Initializable {
     @FXML
     private TableColumn<StatsTable, String> wordCol, resultCol;
     @FXML
-    private TableView<Leaderboard> leaderboardTogBtn;
+    private TableView<Leaderboard> leaderboardTable;
     @FXML
     private TableColumn<Leaderboard, Integer> rankCol, totalScoreCol, totalTimeCol;
     @FXML
     private TableColumn<Leaderboard, String> nameCol;
+    @FXML
+    private ToggleButton leaderboardTogBtn;
 
     /**
      * Set up the user score label
@@ -50,8 +53,8 @@ public class RewardScreenController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         userScoreLabel.setText(Score.getScore() + " OUT OF " + Score.getTotalScore());
 
-        setttingUpStatsTable();
-        setttingUpLeaderboardTable();
+        settingUpStatsTable();
+        settingUpLeaderboardTable();
     }
 
     /**
@@ -74,7 +77,7 @@ public class RewardScreenController implements Initializable {
         SceneManager.goToMainMenu();
     }
 
-    private void setttingUpStatsTable() {
+    private void settingUpStatsTable() {
         ArrayList<String> words = Statistics.getTestedWords();
         ArrayList<Result> results = Statistics.getWordResult();
         ArrayList<Integer> scores = Statistics.getWordScore();
@@ -115,7 +118,14 @@ public class RewardScreenController implements Initializable {
         });
     }
 
-    private void setttingUpLeaderboardTable() {
+    private void settingUpLeaderboardTable() {
+        try {
+            File file = new File(LEADERBOARD_FILE);
+            file.createNewFile();
+        } catch(IOException e) {
+            System.err.println("Unable to create scheme file \"" + LEADERBOARD_FILE + "\"");
+        }
+
     }
     
 

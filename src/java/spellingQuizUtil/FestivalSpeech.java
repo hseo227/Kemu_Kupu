@@ -9,18 +9,29 @@ import java.io.PrintWriter;
  * This class contains all the methods that are related to festival tts
  */
 public class FestivalSpeech {
-    private final static String FESTIVAL_CMD_FILE = ".scm";
+    private final static String FESTIVAL_CMD_FILE = ".hide/.scm";
     private static double speechSpeed;
 
 
     /**
      * This method will only run once and will run at the start of the program
-     * Create a scheme file that will be used to run the festival tts
-     * @throws IOException Failed to create new scheme '.scm' file
+     * Create the necessary folder that scheme file will be in
+     * and then create a scheme file that will be used to run the festival tts
      */
-    public static void settingUp() throws IOException {
-        File file = new File(FESTIVAL_CMD_FILE);
-        file.createNewFile();
+    public static void settingUp() {
+        try {
+            // create the folder
+            String dirName = FESTIVAL_CMD_FILE.substring(0, FESTIVAL_CMD_FILE.lastIndexOf("/"));
+            File file = new File(dirName);
+            file.mkdirs();
+
+            // create the scheme file
+            file = new File(FESTIVAL_CMD_FILE);
+            file.createNewFile();
+            
+        } catch(IOException e) {
+            System.err.println("Unable to create scheme file \"" + FESTIVAL_CMD_FILE + "\"");
+        }
     }
 
     /**
