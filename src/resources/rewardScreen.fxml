@@ -52,7 +52,7 @@
                   <Font name="Heiti TC Medium" size="60.0" />
                </font>
             </Label>
-             <TableView fx:id="table" prefHeight="250.0" prefWidth="700.0" style="-fx-font-size: 18.0px;">
+             <TableView fx:id="statisticsTable" prefHeight="250.0" prefWidth="700.0" style="-fx-font-size: 18.0px;">
                  <columns>
                      <TableColumn fx:id="roundCol" editable="false" resizable="false" sortable="false" text="Round" />
                      <TableColumn fx:id="wordCol" editable="false" prefWidth="250.0" resizable="false" sortable="false" text="Word" />

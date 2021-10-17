@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import spellingQuiz.Module;
@@ -23,7 +24,7 @@ public class RewardScreenController implements Initializable {
     @FXML
     private Label userScoreLabel;
     @FXML
-    private TableView<TableStatistics> table;
+    private TableView<TableStatistics> statisticsTable;
     @FXML
     private TableColumn<TableStatistics, Integer> roundCol, scoreCol, timeCol;
     @FXML
@@ -42,7 +43,7 @@ public class RewardScreenController implements Initializable {
         ArrayList<Integer> times = Statistics.getWordTime();
 
         for (int i = 0 ; i < words.size(); i++) {
-            statisticsList.add(new TableStatistics(i + 1, words.get(i), results.get(i).name(), scores.get(i), times.get(i)));
+            statisticsList.add(new TableStatistics(i + 1, words.get(i), results.get(i).name().toLowerCase(), scores.get(i), times.get(i)));
         }
 
         // setting up the table and the column
@@ -51,9 +52,30 @@ public class RewardScreenController implements Initializable {
         resultCol.setCellValueFactory(new PropertyValueFactory<>("result"));
         scoreCol.setCellValueFactory(new PropertyValueFactory<>("score"));
         timeCol.setCellValueFactory(new PropertyValueFactory<>("time"));
-        table.getItems().setAll(statisticsList);
+        statisticsTable.getItems().setAll(statisticsList);
+
+        // set the rows' colour correspond to the result
+        //
+        // From: https://stackoverflow.com/a/56309916
+        statisticsTable.setRowFactory(tr -> new TableRow<>() {
+            @Override
+            protected void updateItem(TableStatistics item, boolean empty) {
+                super.updateItem(item, empty);
+
+                if (item == null || item.getResult() == null) {
+                    setStyle("");
+                } else if (item.getResult().equals("mastered")) {
+                    setStyle("-fx-background-color: #7CFC00");
+                } else if (item.getResult().equals("faulted")) {
+                    setStyle("-fx-background-color: #EEDC82");
+                } else if (item.getResult().equals("failed")) {
+                    setStyle("-fx-background-color: #FA8072");
+                } else {
+                    setStyle("-fx-background-color: #89CFF0");
+                }
+            }
+        });
     }
-    
 
     /**
      * When 'Play Again' button is pressed, play the quiz again, either practise or games module
