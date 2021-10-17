@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -123,6 +124,20 @@
             </HBox>
          </children>
       </VBox>
-      <Button layoutX="182.0" layoutY="555.0" mnemonicParsing="false" text="Leaderboard" />
+      <ToggleButton fx:id="leaderboardTogBtn" layoutX="122.0" layoutY="233.0" mnemonicParsing="false" text="Leaderboard">
+         <font>
+            <Font size="20.0" />
+         </font></ToggleButton>
+      <TableView fx:id="leaderboardTable" layoutX="290.0" layoutY="233.0" prefHeight="250.0" prefWidth="700.0" style="-fx-font-size: 18.0px;" visible="false">
+         <columns>
+            <TableColumn fx:id="rankCol" editable="false" prefWidth="100.0" resizable="false" sortable="false" text="Rank" />
+            <TableColumn fx:id="nameCol" editable="false" prefWidth="220.0" resizable="false" sortable="false" text="Name" />
+            <TableColumn fx:id="totalScoreCol" editable="false" prefWidth="150.0" resizable="false" sortable="false" text="Total Score" />
+            <TableColumn fx:id="totalTimeCol" editable="false" prefWidth="210.0" resizable="false" sortable="false" text="Time Taken in total (s)" />
+         </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
    </children>
 </AnchorPane>

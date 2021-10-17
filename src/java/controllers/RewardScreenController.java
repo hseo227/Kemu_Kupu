@@ -12,6 +12,7 @@ import spellingQuizUtil.ModuleType;
 import spellingQuizUtil.Result;
 import spellingQuizUtil.Score;
 import spellingQuizUtil.Statistics;
+import tableUtil.Leaderboard;
 import tableUtil.TableStatistics;
 
 import java.net.URL;
@@ -35,6 +36,12 @@ public class RewardScreenController implements Initializable {
     private TableColumn<TableStatistics, Integer> roundCol, scoreCol, timeCol;
     @FXML
     private TableColumn<TableStatistics, String> wordCol, resultCol;
+    @FXML
+    private TableView<Leaderboard> leaderboardTogBtn;
+    @FXML
+    private TableColumn<Leaderboard, Integer> rankCol, totalScoreCol, totalTimeCol;
+    @FXML
+    private TableColumn<Leaderboard, String> nameCol;
 
     /**
      * Set up the user score label
@@ -43,6 +50,31 @@ public class RewardScreenController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         userScoreLabel.setText(Score.getScore() + " OUT OF " + Score.getTotalScore());
 
+        setttingUpStatsTable();
+        setttingUpLeaderboardTable();
+    }
+
+    /**
+     * When 'Play Again' button is pressed, play the quiz again, either practise or games module
+     */
+    @FXML
+    private void playAgain() {
+        if (Module.moduleTypeEqualsTo(ModuleType.PRACTISE)) {
+            SceneManager.goToPractiseModule();
+        } else {
+            SceneManager.goToGamesModule();
+        }
+    }
+
+    /**
+     * When 'Main menu' button is pressed, go back to main menu
+     */
+    @FXML
+    private void backToMainMenu() {
+        SceneManager.goToMainMenu();
+    }
+
+    private void setttingUpStatsTable() {
         ArrayList<String> words = Statistics.getTestedWords();
         ArrayList<Result> results = Statistics.getWordResult();
         ArrayList<Integer> scores = Statistics.getWordScore();
@@ -83,24 +115,7 @@ public class RewardScreenController implements Initializable {
         });
     }
 
-    /**
-     * When 'Play Again' button is pressed, play the quiz again, either practise or games module
-     */
-    @FXML
-    private void playAgain() {
-        if (Module.moduleTypeEqualsTo(ModuleType.PRACTISE)) {
-            SceneManager.goToPractiseModule();
-        } else {
-            SceneManager.goToGamesModule();
-        }
-    }
-
-    /**
-     * When 'Main menu' button is pressed, go back to main menu
-     */
-    @FXML
-    private void backToMainMenu() {
-        SceneManager.goToMainMenu();
+    private void setttingUpLeaderboardTable() {
     }
     
 
