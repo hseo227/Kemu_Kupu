@@ -37,9 +37,6 @@ public class ModuleGamesController extends ModuleBaseController {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        // reset the score
-        Score.reset();
-
         // Set up for speed slider
         // hide the slider
         speechSpeed.setVisible(togSpdSlider.isSelected());

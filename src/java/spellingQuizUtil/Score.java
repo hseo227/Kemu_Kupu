@@ -9,9 +9,13 @@ public class Score {
 
 	/**
 	 * Reset score to 0 after each round
+	 * Also, reset totalScore and change it base on the number of questions
+	 * e.g. If there are 5 questions in quiz, then the totalScore is 100 = 2 * 10 * 5
+	 * @param numOfQuestions Number of questions
 	 */
-	public static void reset() {
+	public static void reset(int numOfQuestions) {
 		score = 0;
+		totalScore = 2 * SCORE_INCREASE * numOfQuestions;
 	}
 
 	/**
@@ -38,15 +42,6 @@ public class Score {
 	 */
 	public static int getTotalScore() {
 		return totalScore;
-	}
-
-	/**
-	 * Change totalScore base on the number of questions
-	 * e.g. If there are 5 questions in quiz, then the totalScore is 100 = 2 * 10 * 5
-	 * @param numOfQuestions Number of questions
-	 */
-	public static void changeTotalScore(int numOfQuestions) {
-		totalScore = 2 * SCORE_INCREASE * numOfQuestions;
 	}
 
 }

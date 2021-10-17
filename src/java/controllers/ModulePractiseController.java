@@ -52,8 +52,6 @@ public class ModulePractiseController extends ModuleBaseController {
         // set default number to 3
         numOfQCheckBox.setValue(3);
 
-        // reset the score
-        Score.reset();
 
         // Set up for speed slider
         // hide the slider

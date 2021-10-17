@@ -38,10 +38,10 @@ public abstract class Module {
         setUserInput("");
         setQuizState(QuizState.READY);
         setResult(Result.MASTERED);
-        Statistics.clear();
-        
-        // update the the total score
-        Score.changeTotalScore(numOfQuestions);
+
+        // Reset the score system and the statistics system
+        Score.reset(numOfQuestions);
+        Statistics.reset();
     }
 
     /**
