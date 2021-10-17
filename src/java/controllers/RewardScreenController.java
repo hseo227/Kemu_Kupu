@@ -168,6 +168,11 @@ public class RewardScreenController implements Initializable {
                     }
                     readFile.close();
 
+                    // if current user score is lower than everyone's score, then add it at the last
+                    if (currentUserIsNotAdded) {
+                        leaderboardList.add(new Leaderboard(rankIndex, dialog.getEditor().getText(), String.valueOf(Score.getScore()), String.valueOf(Statistics.getTotalTime())));
+                    }
+
                 } catch (IOException e) {
                     System.err.println("Failed to read " + LEADERBOARD_FILE);
                 }
