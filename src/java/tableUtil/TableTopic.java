@@ -1,4 +1,4 @@
-package topicList;
+package tableUtil;
 
 /**
  * Topic class for the table of topic list
@@ -6,10 +6,10 @@ package topicList;
  * Do not change this class
  */
 
-public class Topic {
+public class TableTopic {
     private final String name;
 
-    public Topic(String name) {
+    public TableTopic(String name) {
         this.name = name;
     }
 
