@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class RewardScreenController implements Initializable {
+    protected final static String WHITE = "#FFF";
     protected final static String GREEN = "#7CFC00";
     protected final static String YELLOW = "#EEDC82";
     protected final static String RED = "#FA8072";
@@ -68,7 +69,7 @@ public class RewardScreenController implements Initializable {
                 super.updateItem(item, empty);
 
                 if (item == null || item.getResult() == null) {
-                    setStyle("");
+                    setStyle("-fx-background-color: " + WHITE);
                 } else if (item.getResult().equals("mastered")) {
                     setStyle("-fx-background-color: " + GREEN);
                 } else if (item.getResult().equals("faulted")) {

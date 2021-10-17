@@ -55,8 +55,8 @@
              <TableView fx:id="statisticsTable" prefHeight="250.0" prefWidth="700.0" style="-fx-font-size: 18.0px;">
                  <columns>
                      <TableColumn fx:id="roundCol" editable="false" resizable="false" sortable="false" text="Round" />
-                     <TableColumn fx:id="wordCol" editable="false" prefWidth="250.0" resizable="false" sortable="false" text="Word" />
-                     <TableColumn fx:id="resultCol" editable="false" prefWidth="100.0" resizable="false" sortable="false" text="Result" />
+                     <TableColumn fx:id="wordCol" editable="false" prefWidth="230.0" resizable="false" sortable="false" text="Word" />
+                     <TableColumn fx:id="resultCol" editable="false" prefWidth="120.0" resizable="false" sortable="false" text="Result" />
                      <TableColumn fx:id="scoreCol" editable="false" prefWidth="100.0" resizable="false" sortable="false" text="Score" />
                      <TableColumn fx:id="timeCol" editable="false" prefWidth="150.0" resizable="false" sortable="false" text="Time Taken (s)" />
                  </columns>
