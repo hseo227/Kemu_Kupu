@@ -1,9 +1,6 @@
 package spellingQuiz;
 
-import spellingQuizUtil.Hint;
-import spellingQuizUtil.QuizState;
-import spellingQuizUtil.Result;
-import spellingQuizUtil.Statistics;
+import spellingQuizUtil.*;
 
 import static spellingQuizUtil.FestivalSpeech.speak;
 
@@ -66,7 +63,7 @@ public class ModulePractise extends Module {
         }
 
         // add current word statistics
-        Statistics.addStatistics(currentWord, getResult(), scoreIncreased, 1);
+        Statistics.addStatistics(currentWord, getResult(), scoreIncreased, Timer.end());
     }
 
 }
