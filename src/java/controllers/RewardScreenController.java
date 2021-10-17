@@ -13,7 +13,7 @@ import spellingQuizUtil.Result;
 import spellingQuizUtil.Score;
 import spellingQuizUtil.Statistics;
 import tableUtil.Leaderboard;
-import tableUtil.TableStatistics;
+import tableUtil.StatsTable;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -26,16 +26,16 @@ public class RewardScreenController implements Initializable {
     protected final static String RED = "#FA8072";
     protected final static String BLUE = "#89CFF0";
 
-    private final ArrayList<TableStatistics> statisticsList = new ArrayList<>();
+    private final ArrayList<StatsTable> statisticsList = new ArrayList<>();
 
     @FXML
     private Label userScoreLabel;
     @FXML
-    private TableView<TableStatistics> statisticsTable;
+    private TableView<StatsTable> statisticsTable;
     @FXML
-    private TableColumn<TableStatistics, Integer> roundCol, scoreCol, timeCol;
+    private TableColumn<StatsTable, Integer> roundCol, scoreCol, timeCol;
     @FXML
-    private TableColumn<TableStatistics, String> wordCol, resultCol;
+    private TableColumn<StatsTable, String> wordCol, resultCol;
     @FXML
     private TableView<Leaderboard> leaderboardTogBtn;
     @FXML
@@ -81,7 +81,7 @@ public class RewardScreenController implements Initializable {
         ArrayList<Integer> times = Statistics.getWordTime();
 
         for (int i = 0 ; i < words.size(); i++) {
-            statisticsList.add(new TableStatistics(i + 1, words.get(i), results.get(i).name().toLowerCase(), scores.get(i), times.get(i)));
+            statisticsList.add(new StatsTable(i + 1, words.get(i), results.get(i).name().toLowerCase(), scores.get(i), times.get(i)));
         }
 
         // setting up the table and the column
@@ -97,7 +97,7 @@ public class RewardScreenController implements Initializable {
         // From: https://stackoverflow.com/a/56309916
         statisticsTable.setRowFactory(tr -> new TableRow<>() {
             @Override
-            protected void updateItem(TableStatistics item, boolean empty) {
+            protected void updateItem(StatsTable item, boolean empty) {
                 super.updateItem(item, empty);
 
                 if (item == null || item.getResult() == null) {

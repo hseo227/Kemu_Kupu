@@ -1,12 +1,12 @@
 package tableUtil;
 
 /**
- * TableStatistics class for the table of statistics in reward screen
+ * StatsTable class for the table of statistics in reward screen
  *
  * Do not change this class
  */
 
-public class TableStatistics {
+public class StatsTable {
     private final int round;
     private final String word;
     private final String result;
@@ -14,7 +14,7 @@ public class TableStatistics {
     private final int time;
 
 
-    public TableStatistics(int round, String word, String result, int score, int time) {
+    public StatsTable(int round, String word, String result, int score, int time) {
         this.round = round;
         this.word = word;
         this.result = result;

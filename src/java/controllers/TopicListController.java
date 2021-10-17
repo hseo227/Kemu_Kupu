@@ -8,7 +8,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import spellingQuiz.Module;
 import spellingQuizUtil.ModuleType;
 import spellingQuizUtil.Words;
-import tableUtil.TableTopic;
+import tableUtil.Topic;
 
 import java.io.File;
 import java.net.URL;
@@ -16,12 +16,12 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class TopicListController implements Initializable {
-    private final ArrayList<TableTopic> topicList = new ArrayList<>();
+    private final ArrayList<Topic> topicList = new ArrayList<>();
 
     @FXML
-    private TableView<TableTopic> table;
+    private TableView<Topic> table;
     @FXML
-    private TableColumn<TableTopic, String> topicListColumn;
+    private TableColumn<Topic, String> topicListColumn;
 
 
     /**
@@ -35,7 +35,7 @@ public class TopicListController implements Initializable {
         // if there are topic list, then set them into the table
         if (files != null) {
             for (String fileName : files) {
-                topicList.add(new TableTopic(fileName));
+                topicList.add(new Topic(fileName));
             }
 
             // setting up the table and the column
@@ -52,7 +52,7 @@ public class TopicListController implements Initializable {
     private void selectTopic() {
         try {
             // if the user selected a topic, then it will continue, otherwise it will throw an exception
-            TableTopic selectedTopic = table.getSelectionModel().getSelectedItem();
+            Topic selectedTopic = table.getSelectionModel().getSelectedItem();
             Words.setTopic(selectedTopic.getName());
 
         } catch (Exception e) {

@@ -1,15 +1,15 @@
 package tableUtil;
 
 /**
- * TableTopic class for the table of topic list
+ * Topic class for the table of topic list
  *
  * Do not change this class
  */
 
-public class TableTopic {
+public class Topic {
     private final String name;
 
-    public TableTopic(String name) {
+    public Topic(String name) {
         this.name = name;
     }
 
