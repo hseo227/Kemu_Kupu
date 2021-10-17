@@ -85,6 +85,12 @@ public class RewardScreenController implements Initializable {
     @FXML
     private void showHideLeaderboard() {
         leaderboardTable.setVisible(leaderboardTogBtn.isSelected());
+
+        if (leaderboardTogBtn.isSelected()) {
+            leaderboardTogBtn.setText("Statistics");
+        } else {
+            leaderboardTogBtn.setText("Leaderboard");
+        }
     }
 
     private void settingUpStatsTable() {
