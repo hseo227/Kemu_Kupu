@@ -7,20 +7,20 @@ package tableUtil;
  */
 
 public class Leaderboard {
-    private final String rank;
+    private final int rank;
     private final String name;
     private final String totalScore;
     private final String totalTime;
 
 
-    public Leaderboard(String rank, String name, String totalScore, String totalTime) {
+    public Leaderboard(int rank, String name, String totalScore, String totalTime) {
         this.rank = rank;
         this.name = name;
         this.totalScore = totalScore;
         this.totalTime = totalTime;
     }
 
-    public String getRank() {
+    public int getRank() {
         return rank;
     }
 

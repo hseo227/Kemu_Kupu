@@ -1,9 +1,11 @@
 package controllers;
 
+import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Duration;
 import spellingQuiz.Module;
 import spellingQuizUtil.ModuleType;
 import spellingQuizUtil.Result;
@@ -132,32 +134,44 @@ public class RewardScreenController implements Initializable {
             System.err.println("Unable to create scheme file \"" + LEADERBOARD_FILE + "\"");
         }
 
+        PauseTransition pause = new PauseTransition(Duration.seconds(1));
+        pause.setOnFinished(p -> {
+            TextInputDialog dialog = new TextInputDialog("Player 1");
+            dialog.getDialogPane().lookupButton(ButtonType.CANCEL).setVisible(false);
+            dialog.setTitle("What is your name?");
+            dialog.setHeaderText("Enter your name! (Don't include this character *)");
 
+            dialog.setOnCloseRequest(d -> {
 
-        // First, get all the words in the file
-        try {
-            BufferedReader readFile = new BufferedReader(new FileReader(LEADERBOARD_FILE));
-            String line;
+                // First, get all the words in the file
+                try {
+                    BufferedReader readFile = new BufferedReader(new FileReader(LEADERBOARD_FILE));
+                    String line;
+                    int rankIndex = 1;
 
-            // go through all the lines in the file and add into the list
-            while ((line = readFile.readLine()) != null) {
-                String[] splitted = line.split("___");
-                leaderboardList.add(new Leaderboard(splitted[0], splitted[1], splitted[2], splitted[3]));
-            }
-            readFile.close();
+                    // go through all the lines in the file and add into the list
+                    while ((line = readFile.readLine()) != null) {
+                        String[] splitted = line.split("\\*\\*\\*");
+                        leaderboardList.add(new Leaderboard(rankIndex, splitted[0], splitted[1], splitted[2]));
+                    }
+                    readFile.close();
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
-        // setting up the table and the column
-        rankCol.setCellValueFactory(new PropertyValueFactory<>("rank"));
-        nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
-        totalScoreCol.setCellValueFactory(new PropertyValueFactory<>("totalScore"));
-        totalTimeCol.setCellValueFactory(new PropertyValueFactory<>("totalTime"));
-        leaderboardTable.getItems().setAll(leaderboardList);
+                // setting up the table and the column
+                rankCol.setCellValueFactory(new PropertyValueFactory<>("rank"));
+                nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+                totalScoreCol.setCellValueFactory(new PropertyValueFactory<>("totalScore"));
+                totalTimeCol.setCellValueFactory(new PropertyValueFactory<>("totalTime"));
+                leaderboardTable.getItems().setAll(leaderboardList);
+            });
+
+            dialog.show();
+        });
+        pause.play();
 
     }
-    
 
 }
