@@ -263,6 +263,16 @@
                </image>
             </ImageView>
          </graphic>
+         <cursor>
+            <Cursor fx:constant="MOVE" />
+         </cursor>
+         <tooltip>
+            <Tooltip text="E.g. &quot;a-&quot; =&gt; &quot;ā&quot;">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Tooltip>
+         </tooltip>
       </Label>
    </children>
 </AnchorPane>
