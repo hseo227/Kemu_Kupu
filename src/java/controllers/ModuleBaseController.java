@@ -18,6 +18,10 @@ import spellingQuizUtil.Result;
 import spellingQuizUtil.Score;
 
 abstract public class ModuleBaseController implements Initializable {
+    protected final static String WHITE = "#FFF";
+    protected final static String GREEN = "#00A804";
+    protected final static String RED = "#FF2715";
+
     // 2 seconds pause
     private final PauseTransition pause = new PauseTransition(Duration.seconds(2));
 
@@ -71,7 +75,7 @@ abstract public class ModuleBaseController implements Initializable {
 
         // if the quiz is not finished, continue the game (return true), otherwise false
         if (quiz.newQuestion()) {
-            updateLabels("#FFF");  // update the labels with colour white
+            updateLabels(WHITE);  // update the labels with colour white
 
         } else {
             // if the game is finished, go to reward screen

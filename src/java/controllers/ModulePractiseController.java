@@ -13,7 +13,6 @@ import spellingQuiz.ModulePractise;
 import spellingQuizUtil.FestivalSpeech;
 import spellingQuizUtil.QuizState;
 import spellingQuizUtil.Result;
-import spellingQuizUtil.Score;
 import spellingQuizUtil.Words;
 
 import java.net.URL;
@@ -135,7 +134,7 @@ public class ModulePractiseController extends ModuleBaseController {
 
             // correct spelling (Mastered and Faulted)
             if (quiz.resultEqualsTo(Result.MASTERED) || quiz.resultEqualsTo(Result.FAULTED)) {
-                colour = "#00A804";  // set text colour to green
+                colour = GREEN;  // set text colour to green
 
                 updateScore();
 
@@ -143,13 +142,13 @@ public class ModulePractiseController extends ModuleBaseController {
 
             // incorrect spelling (Failed) OR the word is skipped
             } else {
-                colour = "#FF2715";  // set text colour to red
+                colour = RED;  // set text colour to red
                 skipBtn.setDisable(true);  // cannot press 'skip' when showing the answer
             }
 
         // incorrect spelling (1st attempt)
         } else {
-            colour = "#FF2715";  // set text colour to red
+            colour = RED;  // set text colour to red
             inputField.clear();
             disableButtonsWhenSpeaking();
         }

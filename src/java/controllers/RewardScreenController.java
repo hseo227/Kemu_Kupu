@@ -19,6 +19,11 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class RewardScreenController implements Initializable {
+    protected final static String GREEN = "#7CFC00";
+    protected final static String YELLOW = "#EEDC82";
+    protected final static String RED = "#FA8072";
+    protected final static String BLUE = "#89CFF0";
+
     private final ArrayList<TableStatistics> statisticsList = new ArrayList<>();
 
     @FXML
@@ -65,13 +70,13 @@ public class RewardScreenController implements Initializable {
                 if (item == null || item.getResult() == null) {
                     setStyle("");
                 } else if (item.getResult().equals("mastered")) {
-                    setStyle("-fx-background-color: #7CFC00");
+                    setStyle("-fx-background-color: " + GREEN);
                 } else if (item.getResult().equals("faulted")) {
-                    setStyle("-fx-background-color: #EEDC82");
+                    setStyle("-fx-background-color: " + YELLOW);
                 } else if (item.getResult().equals("failed")) {
-                    setStyle("-fx-background-color: #FA8072");
+                    setStyle("-fx-background-color: " + RED);
                 } else {
-                    setStyle("-fx-background-color: #89CFF0");
+                    setStyle("-fx-background-color: " + BLUE);
                 }
             }
         });
