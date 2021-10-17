@@ -1,7 +1,5 @@
 package tableUtil;
 
-import spellingQuizUtil.Result;
-
 /**
  * TableStatistics class for the table of statistics in reward screen
  *
@@ -11,12 +9,12 @@ import spellingQuizUtil.Result;
 public class TableStatistics {
     private final int round;
     private final String word;
-    private final Result result;
+    private final String result;
     private final int score;
     private final int time;
 
 
-    public TableStatistics(int round, String word, Result result, int score, int time) {
+    public TableStatistics(int round, String word, String result, int score, int time) {
         this.round = round;
         this.word = word;
         this.result = result;
@@ -32,7 +30,7 @@ public class TableStatistics {
         return word;
     }
 
-    public Result getResult() {
+    public String getResult() {
         return result;
     }
 
