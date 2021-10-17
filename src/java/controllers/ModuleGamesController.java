@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 public class ModuleGamesController extends ModuleBaseController {
 
     @FXML
-    private Label userScore, shortCutLabel, newSpellingQuiz, score;
+    private Label userScore, shortCutLabel;
     @FXML
     private TextField inputField;
     @FXML
@@ -27,7 +27,7 @@ public class ModuleGamesController extends ModuleBaseController {
     @FXML
     private ToggleButton togSpdSlider;
     @FXML
-    private VBox startVBox, inputVBox;
+    private VBox startVBox, gameVBox;
 
 
     /**
@@ -80,9 +80,8 @@ public class ModuleGamesController extends ModuleBaseController {
 
         // otherwise, continue the game
         startVBox.setVisible(false);
-        inputVBox.setVisible(true);
+        gameVBox.setVisible(true);
         shortCutLabel.setVisible(true);
-        score.setVisible(true);
 
         newQuestion();
     }

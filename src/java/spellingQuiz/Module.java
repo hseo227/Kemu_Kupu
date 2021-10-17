@@ -4,12 +4,9 @@ import spellingQuizUtil.*;
 
 import static spellingQuizUtil.FestivalSpeech.speak;
 
-import java.util.ArrayList;
-
 
 public abstract class Module {
     private final int NUMBER_OF_QUESTIONS;
-    private final int MAX_NUMBER_OF_QUESTIONS = 5;
 
     protected int currentIndex;
     private QuizState currentQuizState;

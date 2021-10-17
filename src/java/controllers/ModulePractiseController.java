@@ -7,7 +7,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.StringConverter;
 import spellingQuiz.ModulePractise;
@@ -23,7 +22,7 @@ import java.util.ResourceBundle;
 public class ModulePractiseController extends ModuleBaseController {
 
     @FXML
-    private Label userScore, shortCutLabel, score;
+    private Label userScore, shortCutLabel;
     @FXML
     private TextField inputField;
     @FXML
@@ -35,7 +34,7 @@ public class ModulePractiseController extends ModuleBaseController {
     @FXML
     private ChoiceBox<Integer> numOfQCheckBox;
     @FXML
-    private VBox inputVBox, startVBox;
+    private VBox startVBox, gameVBox;
 
 
     /**
@@ -93,13 +92,12 @@ public class ModulePractiseController extends ModuleBaseController {
         quiz = new ModulePractise(numOfQCheckBox.getValue());
 
         // Display score
-        userScore.setText("" + Score.getScore());
+        userScore.setText(Score.getScore() + "");
 
         // otherwise, continue the game
         startVBox.setVisible(false);
-        inputVBox.setVisible(true);
+        gameVBox.setVisible(true);
         shortCutLabel.setVisible(true);
-        score.setVisible(true);
 
         newQuestion();
     }
@@ -142,7 +140,7 @@ public class ModulePractiseController extends ModuleBaseController {
                 colour = "#00A804";  // set text colour to green
 
                 // set userScore label to the current score
-                userScore.setText("" + Score.getScore());
+                userScore.setText(Score.getScore() + "");
 
                 pauseBetweenEachQ();
 
