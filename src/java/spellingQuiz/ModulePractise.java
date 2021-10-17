@@ -3,6 +3,8 @@ package spellingQuiz;
 import spellingQuizUtil.Hint;
 import spellingQuizUtil.QuizState;
 import spellingQuizUtil.Result;
+import spellingQuizUtil.Score;
+import spellingQuizUtil.Statistics;
 
 import static spellingQuizUtil.FestivalSpeech.speak;
 
@@ -49,6 +51,7 @@ public class ModulePractise extends Module {
             mainLabelText = tryAgainMessage.getEncourageMsg();
             promptLabelText = words.getHint(Hint.PRACTISE_M_HINT);
             speak("Incorrect, try once more.", currentWord);
+            return;
 
         } else {  // 2nd attempt, and it is the second times got it incorrect --> failed
             setResult(Result.FAILED);
@@ -59,6 +62,8 @@ public class ModulePractise extends Module {
             promptLabelText = "Press 'Enter' or click 'Check' button again to continue";
             speak("Incorrect", "");
         }
+
+        Statistics.addStatistics(currentWord, getResult(), Score.getScore(), 1);
     }
 
 }

@@ -93,7 +93,7 @@ public abstract class Module {
     }
 
     /**
-     * QuizState's
+     * currentQuizState's
      *             setter
      *             equals to
      */
@@ -105,12 +105,16 @@ public abstract class Module {
     }
 
     /**
-     * Result's
+     * currentResult's
      *          setter
+     *          getter
      *          equals to
      */
     public void setResult(Result newResult) {
         currentResult = newResult;
+    }
+    public Result getResult() {
+        return currentResult;
     }
     public boolean resultEqualsTo(Result result) {
         return currentResult == result;
