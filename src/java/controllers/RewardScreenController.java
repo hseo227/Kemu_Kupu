@@ -152,7 +152,15 @@ public class RewardScreenController implements Initializable {
                     // go through all the lines in the file and add into the list
                     while ((line = readFile.readLine()) != null) {
                         String[] splitted = line.split("\\*\\*\\*");
+
+                        // if current user score is higher, add the current user stats first and then the old users stats
+                        if (Score.getScore() > Integer.parseInt(splitted[1])) {
+                            leaderboardList.add(new Leaderboard(rankIndex, dialog.getEditor().getText(), String.valueOf(Score.getScore()), String.valueOf(Statistics.getTotalTime())));
+                            rankIndex++;
+                        }
+
                         leaderboardList.add(new Leaderboard(rankIndex, splitted[0], splitted[1], splitted[2]));
+                        rankIndex++;
                     }
                     readFile.close();
 

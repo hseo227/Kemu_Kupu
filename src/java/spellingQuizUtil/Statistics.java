@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class Statistics {
 	
-	private static ArrayList<String> testedWords = new ArrayList<>();
-	private static ArrayList<Result> wordResult = new ArrayList<>();
-	private static ArrayList<Integer> wordScore = new ArrayList<>();
-	private static ArrayList<Integer> wordTime = new ArrayList<>();
+	private static final ArrayList<String> testedWords = new ArrayList<>();
+	private static final ArrayList<Result> wordResult = new ArrayList<>();
+	private static final ArrayList<Integer> wordScore = new ArrayList<>();
+	private static final ArrayList<Integer> wordTime = new ArrayList<>();
 	
 	public static void addStatistics(String word, Result result, int score, int time) {
 		testedWords.add(word);
@@ -37,6 +37,14 @@ public class Statistics {
 
 	public static ArrayList<Integer> getWordTime() {
 		return wordTime;
+	}
+
+	public static int getTotalTime() {
+		int sum = 0;
+		for (int i : wordTime) {
+			sum += i;
+		}
+		return sum;
 	}
 
 }
