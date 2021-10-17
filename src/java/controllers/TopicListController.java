@@ -8,7 +8,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import spellingQuiz.Module;
 import spellingQuizUtil.ModuleType;
 import spellingQuizUtil.Words;
-import topicList.Topic;
+import tableUtil.Topic;
 
 import java.io.File;
 import java.net.URL;

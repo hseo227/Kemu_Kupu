@@ -11,7 +11,6 @@ import spellingQuiz.ModuleGames;
 import spellingQuizUtil.FestivalSpeech;
 import spellingQuizUtil.QuizState;
 import spellingQuizUtil.Result;
-import spellingQuizUtil.Score;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -36,9 +35,6 @@ public class ModuleGamesController extends ModuleBaseController {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        // reset the score
-        Score.reset();
 
         // Set up for speed slider
         // hide the slider
@@ -114,20 +110,20 @@ public class ModuleGamesController extends ModuleBaseController {
 
             // correct spelling (Mastered and Faulted)
             if (quiz.resultEqualsTo(Result.MASTERED) || quiz.resultEqualsTo(Result.FAULTED)) {
-                colour = "#00A804";  // set text colour to green
+                colour = GREEN;  // set text colour to green
 
                 updateScore();
 
             // incorrect spelling (Failed) OR the word is skipped
             } else {
-                colour = "#FF2715";  // set text colour to red
+                colour = RED;  // set text colour to red
             }
 
             pauseBetweenEachQ();
 
         // incorrect spelling (1st attempt)
         } else {
-            colour = "#FF2715";  // set text colour to red
+            colour = RED;  // set text colour to red
             inputField.clear();
             disableButtonsWhenSpeaking();
         }

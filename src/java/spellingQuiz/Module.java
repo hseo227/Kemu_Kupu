@@ -8,7 +8,7 @@ import static spellingQuizUtil.FestivalSpeech.speak;
 public abstract class Module {
     private final int NUMBER_OF_QUESTIONS;
 
-    protected int currentIndex;
+    private int currentIndex;
     private QuizState currentQuizState;
     private Result currentResult;
     private static ModuleType moduleType;
@@ -38,10 +38,10 @@ public abstract class Module {
         setUserInput("");
         setQuizState(QuizState.READY);
         setResult(Result.MASTERED);
-        TestedWords.clear();
-        
-        // update the the total score
-        Score.changeTotalScore(numOfQuestions);
+
+        // Reset the score system and the statistics system
+        Score.reset(numOfQuestions);
+        Statistics.reset();
     }
 
     /**
@@ -54,6 +54,7 @@ public abstract class Module {
             return false;
         }
 
+        Timer.start();
         setQuizState(QuizState.RUNNING);  // now set the state to running
         setResult(Result.MASTERED);  // set original result to Mastered
         currentIndex++;
@@ -83,17 +84,18 @@ public abstract class Module {
 
     /**
      * Score increases, the score multiplier depends on the result
+     * @return The amount of score is increased
      */
-    protected void increaseScore() {
+    protected int increaseScore() {
         if (resultEqualsTo(Result.MASTERED)) {
-            Score.increaseBy(2);
+            return Score.increaseBy(2);
         } else {
-            Score.increaseBy(1);
+            return Score.increaseBy(1);
         }
     }
 
     /**
-     * QuizState's
+     * currentQuizState's
      *             setter
      *             equals to
      */
@@ -105,12 +107,16 @@ public abstract class Module {
     }
 
     /**
-     * Result's
+     * currentResult's
      *          setter
+     *          getter
      *          equals to
      */
     public void setResult(Result newResult) {
         currentResult = newResult;
+    }
+    public Result getResult() {
+        return currentResult;
     }
     public boolean resultEqualsTo(Result result) {
         return currentResult == result;

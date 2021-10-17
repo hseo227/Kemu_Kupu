@@ -1,4 +1,4 @@
-package topicList;
+package tableUtil;
 
 /**
  * Topic class for the table of topic list

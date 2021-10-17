@@ -1,9 +1,6 @@
 package spellingQuiz;
 
-import spellingQuizUtil.Hint;
-import spellingQuizUtil.QuizState;
-import spellingQuizUtil.Result;
-import spellingQuizUtil.TestedWords;
+import spellingQuizUtil.*;
 
 import static spellingQuizUtil.FestivalSpeech.speak;
 
@@ -17,14 +14,16 @@ public class ModulePractise extends Module {
      */
     public ModulePractise(int numOfQuestions) {
         super(numOfQuestions);
-    	TestedWords.practiceMode();
     }
 
     /**
      * This function check the spelling (input)
      * And then set up the labels, speak, increase score with respective Result
+     * Finally update the statistics
      */
     public void checkSpelling() {
+        int scoreIncreased = 0;
+
         // first check if the word is skipped
         if (resultEqualsTo(Result.SKIPPED)) {
             setQuizState(QuizState.READY);  // set the state to ready for the next question
@@ -42,7 +41,7 @@ public class ModulePractise extends Module {
             mainLabelText = correctMessage.getEncourageMsg();
             promptLabelText = "";
             speak("Correct", "");
-            increaseScore();
+            scoreIncreased = increaseScore();
 
         } else if (resultEqualsTo(Result.MASTERED)) {  // still 1st attempt, but incorrect
             setResult(Result.FAULTED);
@@ -51,6 +50,7 @@ public class ModulePractise extends Module {
             mainLabelText = tryAgainMessage.getEncourageMsg();
             promptLabelText = words.getHint(Hint.PRACTISE_M_HINT);
             speak("Incorrect, try once more.", currentWord);
+            return;  // so do not add any statistics
 
         } else {  // 2nd attempt, and it is the second times got it incorrect --> failed
             setResult(Result.FAILED);
@@ -61,6 +61,9 @@ public class ModulePractise extends Module {
             promptLabelText = "Press 'Enter' or click 'Check' button again to continue";
             speak("Incorrect", "");
         }
+
+        // add current word statistics
+        Statistics.addStatistics(currentWord, getResult(), scoreIncreased, Timer.end());
     }
 
 }

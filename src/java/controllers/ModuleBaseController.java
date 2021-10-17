@@ -18,6 +18,10 @@ import spellingQuizUtil.Result;
 import spellingQuizUtil.Score;
 
 abstract public class ModuleBaseController implements Initializable {
+    protected final static String WHITE = "#FFF";
+    protected final static String GREEN = "#00A804";
+    protected final static String RED = "#FF2715";
+
     // 2 seconds pause
     private final PauseTransition pause = new PauseTransition(Duration.seconds(2));
 
@@ -25,7 +29,7 @@ abstract public class ModuleBaseController implements Initializable {
     protected boolean inhibitSubmitAction = false;
 
     @FXML
-    private Label mainLabel, promptLabel, userScore;
+    private Label mainLabel, promptLabel, userScoreLabel;
     @FXML
     private TextField inputField;
     @FXML
@@ -66,12 +70,13 @@ abstract public class ModuleBaseController implements Initializable {
      */
     protected void newQuestion() {
         inputField.clear();
+        inputField.requestFocus();
         disableButtonsWhenSpeaking();
         FestivalSpeech.setSpeechSpeed((int) speechSpeed.getValue());  // set up speech speed
 
         // if the quiz is not finished, continue the game (return true), otherwise false
         if (quiz.newQuestion()) {
-            updateLabels("#FFF");  // update the labels with colour white
+            updateLabels(WHITE);  // update the labels with colour white
 
         } else {
             // if the game is finished, go to reward screen
@@ -189,7 +194,7 @@ abstract public class ModuleBaseController implements Initializable {
      * set userScore label to the current score
      */
     protected void updateScore() {
-        userScore.setText(Score.getScore() + "");
+        userScoreLabel.setText(Score.getScore() + "");
     }
 
     /**
