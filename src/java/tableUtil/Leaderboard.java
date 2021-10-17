@@ -35,4 +35,8 @@ public class Leaderboard {
     public String getTotalTime() {
         return totalTime;
     }
+
+    public String getAllStats() {
+        return String.join("***", name, totalScore, totalTime);
+    }
 }

@@ -14,10 +14,7 @@ import spellingQuizUtil.Statistics;
 import tableUtil.Leaderboard;
 import tableUtil.StatsTable;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -57,7 +54,6 @@ public class RewardScreenController implements Initializable {
         userScoreLabel.setText(Score.getScore() + " OUT OF " + Score.getTotalScore());
 
         settingUpStatsTable();
-        settingUpLeaderboardTable();
     }
 
     /**
@@ -148,15 +144,17 @@ public class RewardScreenController implements Initializable {
                     BufferedReader readFile = new BufferedReader(new FileReader(LEADERBOARD_FILE));
                     String line;
                     int rankIndex = 1;
+                    boolean currentUserIsNotAdded = true;
 
                     // go through all the lines in the file and add into the list
                     while ((line = readFile.readLine()) != null) {
                         String[] splitted = line.split("\\*\\*\\*");
 
                         // if current user score is higher, add the current user stats first and then the old users stats
-                        if (Score.getScore() > Integer.parseInt(splitted[1])) {
+                        if (currentUserIsNotAdded && Score.getScore() > Integer.parseInt(splitted[1])) {
                             leaderboardList.add(new Leaderboard(rankIndex, dialog.getEditor().getText(), String.valueOf(Score.getScore()), String.valueOf(Statistics.getTotalTime())));
                             rankIndex++;
+                            currentUserIsNotAdded = false;
                         }
 
                         leaderboardList.add(new Leaderboard(rankIndex, splitted[0], splitted[1], splitted[2]));
@@ -165,7 +163,7 @@ public class RewardScreenController implements Initializable {
                     readFile.close();
 
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    System.err.println("Failed to read " + LEADERBOARD_FILE);
                 }
 
                 // setting up the table and the column
@@ -174,6 +172,20 @@ public class RewardScreenController implements Initializable {
                 totalScoreCol.setCellValueFactory(new PropertyValueFactory<>("totalScore"));
                 totalTimeCol.setCellValueFactory(new PropertyValueFactory<>("totalTime"));
                 leaderboardTable.getItems().setAll(leaderboardList);
+
+                // Now store the leaderboard
+                try {
+                    PrintWriter writeFile = new PrintWriter(new FileWriter(LEADERBOARD_FILE));
+
+                    for (Leaderboard i : leaderboardList) {
+                        writeFile.println(i.getAllStats());
+                    }
+
+                    writeFile.close();
+
+                } catch (IOException e) {
+                    System.err.println("Failed to write into " + LEADERBOARD_FILE);
+                }
             });
 
             dialog.show();
