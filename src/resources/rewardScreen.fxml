@@ -52,6 +52,9 @@
                <font>
                   <Font name="Heiti TC Medium" size="60.0" />
                </font>
+               <padding>
+                  <Insets bottom="20.0"/>
+               </padding>
             </Label>
              <TableView fx:id="statisticsTable" prefHeight="250.0" prefWidth="700.0" style="-fx-font-size: 18.0px;">
                  <columns>
@@ -65,7 +68,7 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
              </TableView>
-            <Label fx:id="tenaRawaAtuKoe" alignment="CENTER" layoutY="550">
+            <Label fx:id="tenaRawaAtuKoe" alignment="CENTER" layoutY="560">
             	<graphic>
  		            <ImageView fitHeight="40.0" pickOnBounds="true" preserveRatio="true">
  		               <image>
@@ -74,7 +77,7 @@
  		            </ImageView>
  		       </graphic>
                <padding>
-                  <Insets bottom="20.0" top="20.0" />
+                  <Insets bottom="10.0" top="10.0" />
                </padding>
             </Label>
             <HBox alignment="CENTER">
@@ -124,7 +127,7 @@
             </HBox>
          </children>
       </VBox>
-      <HBox fx:id="toggleBtns" visible="false" layoutX="400.0" layoutY="490.0">
+      <HBox fx:id="toggleBtns" visible="false" layoutX="400.0" layoutY="510.0">
       	<children>
       		<Button fx:id="statsBtn" mnemonicParsing="false" onAction="#showHideLeaderboard" style="-fx-background-color: transparent;">
 		         <graphic>
@@ -166,7 +169,7 @@
 		      </Button>
       	</children>
       </HBox>
-      <TableView fx:id="leaderboardTable" layoutX="290.0" layoutY="229.0" prefHeight="250.0" prefWidth="700.0" style="-fx-font-size: 18.0px;" visible="false">
+      <TableView fx:id="leaderboardTable" layoutX="290.0" layoutY="250.0" prefHeight="241.0" prefWidth="700.0" style="-fx-font-size: 18.0px;" visible="false">
          <columns>
             <TableColumn fx:id="rankCol" editable="false" prefWidth="100.0" resizable="false" sortable="false" text="Rank" />
             <TableColumn fx:id="nameCol" editable="false" prefWidth="215.0" resizable="false" sortable="false" text="Name" />
