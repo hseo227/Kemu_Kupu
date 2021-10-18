@@ -34,22 +34,20 @@ public class Words {
      * Get specific number of random words in the file
      * @param fileName File name of the selected topic
      * @param numOfWords Number of random words that it is going to get
-     * @return A list of random words that wil be tested on later
+     * @return A list of random words that wil be tested on later, so the size of list is numOfWords
      */
     private String[] getRandomWordsInFile(String fileName, int numOfWords) {
-        ArrayList<String> allWordsInFile;  // all the words in the file
-        ArrayList<String> wordsList = new ArrayList<>();  // specific number of random words from the file
+        ArrayList<String> wordsList = new ArrayList<>();  // list that stores the random words of size 'numOfWords'
 
         // First, get all the words in the file
-        allWordsInFile = FileControl.readFile(fileName);
-
+        ArrayList<String> allWordsInFile = FileControl.readFile(fileName);
 
         // Finally, get random words
         Random rand = new Random();
         String randWord;
 
         for (int i = 0; i < numOfWords; i++) {
-            // get a random word from the list, that has all the words from the file
+            // get a random word from the list (allWordsInFile)
             do {
                 randWord = allWordsInFile.get(rand.nextInt(allWordsInFile.size()));
             } while (wordsList.contains(randWord));  // loop until get a different word
@@ -127,7 +125,7 @@ public class Words {
         ArrayList<Integer> indexesOfHints = new ArrayList<>();
         StringBuilder hint = new StringBuilder();
 
-        // for practise module, the hint is to add random number of letters into the word
+        // for practise module, the hint is to add random letters into the word
         if (hintType == Hint.PRACTISE_M_HINT) {
             // number of letters hints depends on the size of the current word, excluding space and comma
             int numOfLettersHints = (int) Math.ceil((double) getNumOfLettersOfWord() / 4);
@@ -153,7 +151,7 @@ public class Words {
         // now build the hint
         for (int i = 0; i < currentWord.length(); i++) {
             if (indexesOfHints.contains(i) || !Character.isLetter(currentWord.charAt(i))) {
-                hint.append(currentWord.charAt(i));  // this is the letter hint
+                hint.append(currentWord.charAt(i));  // this is the letter hint or the space, comma
             } else {
                 hint.append("_");  // blank, let the user to guess it
             }

@@ -73,6 +73,7 @@ public class FestivalSpeech {
                 commands.add("(SayText \"" + maoriMessage + "\")");
             }
 
+            // write the commands into the scheme file
             FileControl.writeFile(FESTIVAL_CMD_FILE, commands);
 
             // run festival scheme file
@@ -80,8 +81,8 @@ public class FestivalSpeech {
             ProcessBuilder pb = new ProcessBuilder("bash", "-c", command);
             pb.start();
 
-        } catch (Exception e) {
-            System.err.println("Failed to write into " + FESTIVAL_CMD_FILE);
+        } catch (IOException e) {
+            System.err.println("Failed to run linux command that speaks out the scheme file");
         }
     }
 
@@ -93,7 +94,7 @@ public class FestivalSpeech {
             String command = "killall festival; killall aplay";
             ProcessBuilder pb = new ProcessBuilder("bash", "-c", command);
             pb.start();
-        } catch (Exception e) {
+        } catch (IOException e) {
             System.err.println("Failed to run linux command that stops the festival");
         }
     }

@@ -17,10 +17,8 @@ public class EncouragingMessage {
      * @param result Encouraging messages for that specific result
      */
     public EncouragingMessage(String result) {
-        // get all the messages in the file
+        // get all the messages/contents in the file and store them into the list
         String fileName = "messages/" + result;
-
-        // First, get all the words in the file
         messageList = FileControl.readFile(fileName);
     }
 
@@ -29,7 +27,7 @@ public class EncouragingMessage {
      * @return A random encouraging message
      */
     public String getEncourageMsg() {
-        // get random message
+        // get a random message
         Random rand = new Random();
         return messageList.get(rand.nextInt(messageList.size()));
     }
