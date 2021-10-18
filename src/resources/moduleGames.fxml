@@ -6,7 +6,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -175,7 +174,7 @@
       </VBox>
       <VBox layoutX="80.0" layoutY="110.0" spacing="20.0">
          <children>
-            <ToggleButton fx:id="togSpdSlider" mnemonicParsing="false" onAction="#showHideSpeedSlider" style="-fx-background-color: transparent;">
+            <Button mnemonicParsing="false" onAction="#showHideSpeedSlider" style="-fx-background-color: transparent;">
                <graphic>
  		            <ImageView fitHeight="40.0" pickOnBounds="true" preserveRatio="true">
  		               <image>
@@ -193,7 +192,7 @@
                      </font>
                   </Tooltip>
                </tooltip>
-            </ToggleButton>
+            </Button>
             <Slider fx:id="speechSpeed" blockIncrement="5.0" majorTickUnit="60.0" max="160.0" min="40.0" minorTickCount="11" orientation="VERTICAL" prefHeight="200.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" style="-fx-background-color: #EBEBEB; -fx-font-size: 18.0px;" value="100.0" visible="false">
                <padding>
                   <Insets left="20.0" />

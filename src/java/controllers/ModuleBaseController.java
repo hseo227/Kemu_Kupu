@@ -8,7 +8,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.util.Duration;
@@ -39,8 +38,6 @@ abstract public class ModuleBaseController implements Initializable {
     private Button playbackBtn, checkBtn, skipBtn;
     @FXML
     private Slider speechSpeed;
-    @FXML
-    private ToggleButton togSpdSlider;
     @FXML
     private VBox inputVBox;
 
@@ -112,11 +109,11 @@ abstract public class ModuleBaseController implements Initializable {
     }
 
     /**
-     * Show/Hide the speed slider by clicking the toggle button
+     * Show/Hide the speed slider by clicking the button
      */
     @FXML
     protected void showHideSpeedSlider() {
-        speechSpeed.setVisible(togSpdSlider.isSelected());
+        speechSpeed.setVisible(!speechSpeed.isVisible());
     }
 
     /**
