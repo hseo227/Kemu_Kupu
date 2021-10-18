@@ -32,7 +32,8 @@ public class Words {
 
     /**
      * Get specific number of random words in the file
-     * @param fileName File name of the selected topic
+     *
+     * @param fileName   File name of the selected topic
      * @param numOfWords Number of random words that it is going to get
      * @return A list of random words that wil be tested on later, so the size of list is numOfWords
      */

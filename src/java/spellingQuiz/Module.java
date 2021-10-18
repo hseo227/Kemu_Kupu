@@ -106,6 +106,7 @@ public abstract class Module {
     protected void setQuizState(QuizState newQuizState) {
         currentQuizState = newQuizState;
     }
+
     public boolean quizStateEqualsTo(QuizState quizState) {
         return currentQuizState == quizState;
     }
@@ -119,9 +120,11 @@ public abstract class Module {
     public void setResult(Result newResult) {
         currentResult = newResult;
     }
+
     protected Result getResult() {
         return currentResult;
     }
+
     public boolean resultEqualsTo(Result result) {
         return currentResult == result;
     }
@@ -134,6 +137,7 @@ public abstract class Module {
     public static void setModuleType(ModuleType newModuleType) {
         moduleType = newModuleType;
     }
+
     public static boolean moduleTypeEqualsTo(ModuleType newModuleType) {
         return moduleType == newModuleType;
     }
