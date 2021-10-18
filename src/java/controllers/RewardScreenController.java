@@ -230,6 +230,15 @@ public class RewardScreenController implements Initializable {
                 leaderboardList.add(new Leaderboard(rankIndex, userName, String.valueOf(Score.getScore()), String.valueOf(Statistics.getTotalTime())));
                 currentUserRank = rankIndex++;
                 currentUserIsNotAdded = false;
+
+            // if current user score is equal to the leaderboard one, then compare the time taken
+            // the shorter the time, the better
+            } else if (currentUserIsNotAdded && Score.getScore() == Integer.parseInt(splitted[1])) {
+                if (Statistics.getTotalTime() <= Integer.parseInt(splitted[2])) {
+                    leaderboardList.add(new Leaderboard(rankIndex, userName, String.valueOf(Score.getScore()), String.valueOf(Statistics.getTotalTime())));
+                    currentUserRank = rankIndex++;
+                    currentUserIsNotAdded = false;
+                }
             }
 
             leaderboardList.add(new Leaderboard(rankIndex++, splitted[0], splitted[1], splitted[2]));
