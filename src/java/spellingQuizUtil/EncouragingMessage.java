@@ -1,6 +1,6 @@
 package spellingQuizUtil;
 
-import fileManager.FileManager;
+import fileManager.FileControl;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -21,7 +21,7 @@ public class EncouragingMessage {
         String fileName = "messages/" + result;
 
         // First, get all the words in the file
-        messageList = FileManager.readFile(fileName);
+        messageList = FileControl.readFile(fileName);
     }
 
     /**

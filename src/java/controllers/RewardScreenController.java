@@ -1,6 +1,6 @@
 package controllers;
 
-import fileManager.FileManager;
+import fileManager.FileControl;
 import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -215,7 +215,7 @@ public class RewardScreenController implements Initializable {
      */
     private int prepareLeaderboardList(String userName) {
         // get all the contents in the leaderboard file
-        ArrayList<String> listOfItems = FileManager.readFile(LEADERBOARD_FILE);
+        ArrayList<String> listOfItems = FileControl.readFile(LEADERBOARD_FILE);
 
         int rankIndex = 1;
         int currentUserRank = 0;
@@ -257,7 +257,7 @@ public class RewardScreenController implements Initializable {
             itemsToStore.add(String.join("***", i.getAllStats()));
         }
 
-        FileManager.writeFile(LEADERBOARD_FILE, itemsToStore);
+        FileControl.writeFile(LEADERBOARD_FILE, itemsToStore);
     }
 
 }

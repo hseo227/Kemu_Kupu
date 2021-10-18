@@ -1,6 +1,6 @@
 package spellingQuizUtil;
 
-import fileManager.FileManager;
+import fileManager.FileControl;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -41,7 +41,7 @@ public class Words {
         ArrayList<String> wordsList = new ArrayList<>();  // specific number of random words from the file
 
         // First, get all the words in the file
-        allWordsInFile = FileManager.readFile(fileName);
+        allWordsInFile = FileControl.readFile(fileName);
 
 
         // Finally, get random words
@@ -110,7 +110,7 @@ public class Words {
     public static int getNumOfWordsInWordsList() {
         String fileName = "words/" + selectedTopic;
 
-        return FileManager.readFile(fileName).size();
+        return FileControl.readFile(fileName).size();
     }
 
     /**

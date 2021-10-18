@@ -3,7 +3,16 @@ package fileManager;
 import java.io.*;
 import java.util.ArrayList;
 
-public class FileManager {
+/**
+ * This class contains all the necessary controls of the file.
+ */
+public class FileControl {
+
+    /**
+     * Read and get the contents the file
+     * @param fileName The file that it is going to read
+     * @return ArrayList of contents
+     */
     public static ArrayList<String> readFile(String fileName) {
         ArrayList<String> listOfItems = new ArrayList<>();
 
@@ -24,6 +33,11 @@ public class FileManager {
         return listOfItems;
     }
 
+    /**
+     * Overwrite the contents of the file
+     * @param fileName The file that it is going to write
+     * @param listOfItems The contents that it is to store
+     */
     public static void writeFile(String fileName, ArrayList<String> listOfItems) {
         try {
             PrintWriter writeFile = new PrintWriter(new FileWriter(fileName));
@@ -31,7 +45,6 @@ public class FileManager {
             for (String i : listOfItems) {
                 writeFile.println(i);
             }
-
             writeFile.close();
 
         } catch (IOException e) {

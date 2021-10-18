@@ -1,6 +1,6 @@
 package spellingQuizUtil;
 
-import fileManager.FileManager;
+import fileManager.FileControl;
 
 import java.io.File;
 import java.io.IOException;
@@ -73,7 +73,7 @@ public class FestivalSpeech {
                 commands.add("(SayText \"" + maoriMessage + "\")");
             }
 
-            FileManager.writeFile(FESTIVAL_CMD_FILE, commands);
+            FileControl.writeFile(FESTIVAL_CMD_FILE, commands);
 
             // run festival scheme file
             String command = "festival -b " + FESTIVAL_CMD_FILE;
