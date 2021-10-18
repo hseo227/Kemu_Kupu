@@ -124,7 +124,7 @@
             </HBox>
          </children>
       </VBox>
-      <ToggleButton fx:id="leaderboardTogBtn" layoutX="122.0" layoutY="233.0" mnemonicParsing="false" onAction="#showHideLeaderboard" prefWidth="140.0" text="Leaderboard" visible="false">
+      <ToggleButton fx:id="leaderboardTogBtn" layoutX="122.0" layoutY="233.0" mnemonicParsing="false" onAction="#showHideLeaderboard" prefWidth="150.0" text="Leaderboard" visible="false">
          <font>
             <Font size="20.0" />
          </font>
