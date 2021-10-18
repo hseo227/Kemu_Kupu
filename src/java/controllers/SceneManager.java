@@ -65,7 +65,7 @@ public class SceneManager {
                 throw new IOException();
             }
         } catch (IOException e) {
-            System.err.println("Failed to load - " + fxml);
+            System.err.println("Failed to load " + fxml);
         }
     }
 }

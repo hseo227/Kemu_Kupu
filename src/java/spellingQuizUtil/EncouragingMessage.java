@@ -33,7 +33,7 @@ public class EncouragingMessage {
             readFile.close();
 
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("Failed to read " + fileName);
         }
     }
 

@@ -81,7 +81,7 @@ public class FestivalSpeech {
             pb.start();
 
         } catch (Exception e) {
-            e.printStackTrace();
+            System.err.println("Failed to write into " + FESTIVAL_CMD_FILE);
         }
     }
 
@@ -94,7 +94,7 @@ public class FestivalSpeech {
             ProcessBuilder pb = new ProcessBuilder("bash", "-c", command);
             pb.start();
         } catch (Exception e) {
-            e.printStackTrace();
+            System.err.println("Failed to run linux command that stops the festival");
         }
     }
 }

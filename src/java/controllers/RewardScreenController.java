@@ -139,7 +139,7 @@ public class RewardScreenController implements Initializable {
             File file = new File(LEADERBOARD_FILE);
             file.createNewFile();
         } catch(IOException e) {
-            System.err.println("Unable to create scheme file \"" + LEADERBOARD_FILE + "\"");
+            System.err.println("Unable to create file that stores the leaderboard \"" + LEADERBOARD_FILE + "\"");
         }
 
         PauseTransition pause = new PauseTransition(Duration.seconds(1));

@@ -53,7 +53,7 @@ public class Words {
             readFile.close();
 
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("Failed to read " + fileName);
         }
 
 
@@ -134,7 +134,7 @@ public class Words {
             readFile.close();
 
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("Failed to read " + fileName);
         }
 
         return count;
