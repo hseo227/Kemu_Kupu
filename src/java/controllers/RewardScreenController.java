@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
 import javafx.util.Duration;
 import spellingQuiz.Module;
 import spellingQuizUtil.ModuleType;
@@ -30,9 +31,13 @@ public class RewardScreenController implements Initializable {
     private final ArrayList<Leaderboard> leaderboardList = new ArrayList<>();
 
     @FXML
-    private Label userScoreLabel;
+    private Label userScoreLabel, tenaRawaAtuKoe;
     @FXML
-    private ToggleButton leaderboardTogBtn;
+//    private ToggleButton leaderboardTogBtn;
+    private Button leaderboardBtn, statsBtn;
+    
+    @FXML
+    private HBox toggleBtns;
 
     @FXML
     private TableView<StatsTable> statisticsTable;
@@ -58,8 +63,10 @@ public class RewardScreenController implements Initializable {
 
         // only set up the leaderboard if it is in games module
         if (Module.moduleTypeEqualsTo(ModuleType.GAMES)) {
-            leaderboardTogBtn.setVisible(true);
+        	toggleBtns.setVisible(true);
+        	statsBtn.setDisable(true);
             settingUpLeaderboardTable();
+            tenaRawaAtuKoe.setVisible(false);
         }
     }
 
@@ -84,18 +91,24 @@ public class RewardScreenController implements Initializable {
     }
 
     /**
-     * Show/Hide the leaderboard by clicking the toggle button
-     * at the same time, change the toggle button's text
+     * Show/Hide the leaderboard by clicking the statistics button.
+     * Clicking the statistics button will disable the leaderboard button, and vice versa.
      */
     @FXML
     private void showHideLeaderboard() {
-        leaderboardTable.setVisible(leaderboardTogBtn.isSelected());
+        
+        leaderboardBtn.setOnMouseClicked(event -> {
+        	leaderboardTable.setVisible(true);
+        	leaderboardBtn.setDisable(true);
+        	statsBtn.setDisable(false);
+        });
+        
+        statsBtn.setOnMouseClicked(event -> {
+        	leaderboardTable.setVisible(false);
+        	statsBtn.setDisable(true);
+        	leaderboardBtn.setDisable(false);
+        });
 
-        if (leaderboardTogBtn.isSelected()) {
-            leaderboardTogBtn.setText("Statistics");
-        } else {
-            leaderboardTogBtn.setText("Leaderboard");
-        }
     }
 
     /**
