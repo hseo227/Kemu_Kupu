@@ -1,9 +1,10 @@
 package spellingQuizUtil;
 
+import fileManager.FileControl;
+
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
 
 /**
  * This class contains all the methods that are related to festival tts
@@ -57,31 +58,31 @@ public class FestivalSpeech {
      */
     public static void speak(String englishMessage, String maoriMessage) {
         try {
-            // write the festival command into .scm file
-            PrintWriter writeFile = new PrintWriter(new FileWriter(FESTIVAL_CMD_FILE));
+            ArrayList<String> commands = new ArrayList<>();
 
             // speak english / maori message if there is any
             if (!englishMessage.equals("")) {
                 // adjust the speed before say text
-                writeFile.println("(Parameter.set 'Duration_Stretch' " + speechSpeed + ")");
-                writeFile.println("(SayText \"" + englishMessage + "\")");
+                commands.add("(Parameter.set 'Duration_Stretch' " + speechSpeed + ")");
+                commands.add("(SayText \"" + englishMessage + "\")");
             }
             if (!maoriMessage.equals("")) {
-                writeFile.println("(voice_akl_mi_pk06_cg)");  // change to maori voice
+                commands.add("(voice_akl_mi_pk06_cg)");  // change to maori voice
                 // adjust the speed before say text
-                writeFile.println("(Parameter.set 'Duration_Stretch' " + speechSpeed + ")");
-                writeFile.println("(SayText \"" + maoriMessage + "\")");
+                commands.add("(Parameter.set 'Duration_Stretch' " + speechSpeed + ")");
+                commands.add("(SayText \"" + maoriMessage + "\")");
             }
 
-            writeFile.close();
+            // write the commands into the scheme file
+            FileControl.writeFile(FESTIVAL_CMD_FILE, commands);
 
             // run festival scheme file
             String command = "festival -b " + FESTIVAL_CMD_FILE;
             ProcessBuilder pb = new ProcessBuilder("bash", "-c", command);
             pb.start();
 
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException e) {
+            System.err.println("Failed to run linux command that speaks out the scheme file");
         }
     }
 
@@ -93,8 +94,8 @@ public class FestivalSpeech {
             String command = "killall festival; killall aplay";
             ProcessBuilder pb = new ProcessBuilder("bash", "-c", command);
             pb.start();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException e) {
+            System.err.println("Failed to run linux command that stops the festival");
         }
     }
 }

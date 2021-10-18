@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.VBox;
 import javafx.util.StringConverter;
 import spellingQuiz.ModuleGames;
@@ -15,6 +14,9 @@ import spellingQuizUtil.Result;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * This class stores only the display (GUI) functionalities of Games Module
+ */
 public class ModuleGamesController extends ModuleBaseController {
 
     @FXML
@@ -24,23 +26,16 @@ public class ModuleGamesController extends ModuleBaseController {
     @FXML
     private Slider speechSpeed;
     @FXML
-    private ToggleButton togSpdSlider;
-    @FXML
     private VBox startVBox, gameVBox;
 
 
     /**
-     * Reset the score
-     * Setting up and Format the speed slider
+     * Format the speed slider
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        // Set up for speed slider
-        // hide the slider
-        speechSpeed.setVisible(togSpdSlider.isSelected());
-
-        // format the vertical slider
+        // format the speed slider
         speechSpeed.setLabelFormatter(new StringConverter<>() {
             @Override
             public String toString(Double n) {
@@ -71,10 +66,8 @@ public class ModuleGamesController extends ModuleBaseController {
         // start a new game
         quiz = new ModuleGames();
 
-        // Display score
+        // Update the display
         updateScore();
-
-        // otherwise, continue the game
         startVBox.setVisible(false);
         gameVBox.setVisible(true);
         shortCutLabel.setVisible(true);
@@ -94,10 +87,11 @@ public class ModuleGamesController extends ModuleBaseController {
     }
 
     /**
-     * Check the spelling, and then update the display and pause 2 seconds if needed
+     * Check the spelling, and then update the display
+     * Pause 2 seconds before going to the next question
      */
     protected void checkSpelling() {
-        String colour;
+        String textColour;
 
         FestivalSpeech.setSpeechSpeed((int) speechSpeed.getValue());  // set up speech speed
         quiz.setUserInput(inputField.getText());  // get user input/spelling
@@ -110,25 +104,24 @@ public class ModuleGamesController extends ModuleBaseController {
 
             // correct spelling (Mastered and Faulted)
             if (quiz.resultEqualsTo(Result.MASTERED) || quiz.resultEqualsTo(Result.FAULTED)) {
-                colour = GREEN;  // set text colour to green
-
+                textColour = GREEN;
                 updateScore();
 
             // incorrect spelling (Failed) OR the word is skipped
             } else {
-                colour = RED;  // set text colour to red
+                textColour = RED;
             }
 
             pauseBetweenEachQ();
 
         // incorrect spelling (1st attempt)
         } else {
-            colour = RED;  // set text colour to red
+            textColour = RED;
             inputField.clear();
             disableButtonsWhenSpeaking();
         }
 
-        updateLabels(colour);  // update the labels with corresponding colour
+        updateLabels(textColour);  // update the labels with corresponding text colour
     }
 
 }

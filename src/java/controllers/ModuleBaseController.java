@@ -17,6 +17,9 @@ import spellingQuizUtil.FestivalSpeech;
 import spellingQuizUtil.Result;
 import spellingQuizUtil.Score;
 
+/**
+ * This class contains all the common display (GUI) functionalities of both Games and Practise Module
+ */
 abstract public class ModuleBaseController implements Initializable {
     protected final static String WHITE = "#FFF";
     protected final static String GREEN = "#00A804";
@@ -115,8 +118,9 @@ abstract public class ModuleBaseController implements Initializable {
     }
 
     /**
-     * 2 seconds pause before each new question and while pausing it disables the quiz related utilities/buttons
-     * after the pause, call method newQuestion()
+     * 2 seconds pause before each new question and
+     * while pausing it disables the utilities/buttons that related to the quiz
+     * after the pause, it automatically goes to the next question
      */
     protected void pauseBetweenEachQ() {
         inputVBox.setDisable(true);
@@ -158,7 +162,7 @@ abstract public class ModuleBaseController implements Initializable {
         String promptLabelText = quiz.getPromptLabelText();
         int mainLabelSize, promptLabelSize;
 
-        // change the size of the text according to the length of the text
+        // set the size of the text according to the length of the text
         // longer the word length, smaller the size of the text in the labels
         // main label text
         if (mainLabelText.length() < 30) {
@@ -184,7 +188,7 @@ abstract public class ModuleBaseController implements Initializable {
         mainLabel.setStyle("-fx-text-fill: " + colour + ";");
         promptLabel.setStyle("-fx-text-fill: " + colour + ";");
 
-        // change the text
+        // update the text
         mainLabel.setText(mainLabelText);
         promptLabel.setText(promptLabelText);
     }

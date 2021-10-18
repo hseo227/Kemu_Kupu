@@ -36,7 +36,11 @@ public class Leaderboard {
         return totalTime;
     }
 
-    public String getAllStats() {
-        return String.join("***", name, totalScore, totalTime);
+    /**
+     * Get all the stats in an array
+     * @return All stats in an array
+     */
+    public String[] getAllStats() {
+        return new String[] {name, totalScore, totalTime};
     }
 }

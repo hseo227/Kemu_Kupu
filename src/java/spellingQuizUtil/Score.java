@@ -9,8 +9,9 @@ public class Score {
 
 	/**
 	 * Reset score to 0 after each round
-	 * Also, reset totalScore and change it base on the number of questions
+	 * Also, reset totalScore and change it based on the number of questions
 	 * e.g. If there are 5 questions in quiz, then the totalScore is 100 = 2 * 10 * 5
+	 *
 	 * @param numOfQuestions Number of questions
 	 */
 	public static void reset(int numOfQuestions) {
@@ -20,7 +21,7 @@ public class Score {
 
 	/**
 	 * Increase the score with respective score multiplier
-	 * and then output how much score is increased
+	 * and then output how much the score is increased
 	 * @param scoreMultiplier Tells how much the score is going to increase
 	 * @return The amount of score is increased
 	 */

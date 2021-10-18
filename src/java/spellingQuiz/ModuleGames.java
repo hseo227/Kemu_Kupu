@@ -5,6 +5,9 @@ import spellingQuizUtil.*;
 import static spellingQuizUtil.FestivalSpeech.speak;
 
 
+/**
+ * This class stores only the functionalities of Games Module
+ */
 public class ModuleGames extends Module {
     private static final int NUMBER_OF_QUESTIONS = 5;
 
@@ -19,7 +22,7 @@ public class ModuleGames extends Module {
     /**
      * This function check the spelling (input)
      * And then set up the labels, speak, increase score with respective Result
-     * Finally update the statistics
+     * Finally add current word statistics
      */
     public void checkSpelling() {
         int scoreIncreased = 0;
@@ -34,7 +37,7 @@ public class ModuleGames extends Module {
             speak("Word skipped", "");
 
         // if statement for each result after checking the spelling (input)
-        } else if ( words.checkUserSpelling(getUserInput()) ) {  // mastered and failed, 1st attempt and 2nd attempt respectively
+        } else if ( words.checkUserSpelling(userInput) ) {  // mastered and failed, 1st attempt and 2nd attempt respectively
             setQuizState(QuizState.READY);  // set the state to ready for the next question
 
             // setting up the labels' text and speak out the message
