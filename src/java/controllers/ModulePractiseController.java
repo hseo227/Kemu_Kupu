@@ -18,6 +18,9 @@ import spellingQuizUtil.Words;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * This class stores only the functionalities of Practise Module
+ */
 public class ModulePractiseController extends ModuleBaseController {
 
     @FXML
@@ -37,9 +40,8 @@ public class ModulePractiseController extends ModuleBaseController {
 
 
     /**
-     * Setting up the check box
-     * Reset the score
-     * Setting up and Format the speed slider
+     * Setting up the check box and
+     * Format the speed slider
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -51,12 +53,7 @@ public class ModulePractiseController extends ModuleBaseController {
         // set default number to 3
         numOfQCheckBox.setValue(3);
 
-
-        // Set up for speed slider
-        // hide the slider
-        speechSpeed.setVisible(togSpdSlider.isSelected());
-
-        // format the vertical slider
+        // format the speed slider
         speechSpeed.setLabelFormatter(new StringConverter<>() {
             @Override
             public String toString(Double n) {
@@ -88,10 +85,8 @@ public class ModulePractiseController extends ModuleBaseController {
         // start a new game with specific number of questions
         quiz = new ModulePractise(numOfQCheckBox.getValue());
 
-        // Display score
+        // Update the display
         updateScore();
-
-        // otherwise, continue the game
         startVBox.setVisible(false);
         gameVBox.setVisible(true);
         shortCutLabel.setVisible(true);
@@ -118,10 +113,11 @@ public class ModulePractiseController extends ModuleBaseController {
     }
 
     /**
-     * Check the spelling, and then update the display and pause 2 seconds if needed
+     * Check the spelling, and then update the display
+     * Only pause 2 seconds and go to next question if the user got the spelling correct
      */
     protected void checkSpelling() {
-        String colour;
+        String textColour;
 
         FestivalSpeech.setSpeechSpeed((int) speechSpeed.getValue());  // set up speech speed
         quiz.setUserInput(inputField.getText());  // get user input/spelling
@@ -134,26 +130,24 @@ public class ModulePractiseController extends ModuleBaseController {
 
             // correct spelling (Mastered and Faulted)
             if (quiz.resultEqualsTo(Result.MASTERED) || quiz.resultEqualsTo(Result.FAULTED)) {
-                colour = GREEN;  // set text colour to green
-
+                textColour = GREEN;
                 updateScore();
-
                 pauseBetweenEachQ();
 
             // incorrect spelling (Failed) OR the word is skipped
             } else {
-                colour = RED;  // set text colour to red
+                textColour = RED;
                 skipBtn.setDisable(true);  // cannot press 'skip' when showing the answer
             }
 
         // incorrect spelling (1st attempt)
         } else {
-            colour = RED;  // set text colour to red
+            textColour = RED;
             inputField.clear();
             disableButtonsWhenSpeaking();
         }
 
-        updateLabels(colour);  // update the labels with corresponding colour
+        updateLabels(textColour);  // update the labels with corresponding text colour
     }
 
 }
