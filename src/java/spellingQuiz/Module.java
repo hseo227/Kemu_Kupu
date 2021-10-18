@@ -16,8 +16,10 @@ public abstract class Module {
     private Result currentResult;
     private static ModuleType moduleType;
     protected String currentWord, mainLabelText, promptLabelText, userInput;
-    protected final Words words;
     protected EncouragingMessage correctMessage, incorrectMessage, tryAgainMessage;
+    protected final Words words;
+    protected final Score score;
+    protected final Statistics statistics;
 
 
     /**
@@ -31,6 +33,8 @@ public abstract class Module {
         // setting up the words
         words = new Words(NUMBER_OF_QUESTIONS);
 
+        score = new Score(numOfQuestions);
+        statistics = new Statistics();
         correctMessage = new EncouragingMessage("Correct");
         incorrectMessage = new EncouragingMessage("Incorrect");
         tryAgainMessage = new EncouragingMessage("TryAgain");
@@ -41,10 +45,6 @@ public abstract class Module {
         setUserInput("");
         setQuizState(QuizState.READY);
         setResult(Result.MASTERED);
-
-        // Reset the score system and the statistics system
-        Score.reset(numOfQuestions);
-        Statistics.reset();
     }
 
     /**
@@ -83,19 +83,6 @@ public abstract class Module {
      */
     public void speakWordAgain() {
         speak("", currentWord);
-    }
-
-    /**
-     * Score increases, the score multiplier depends on the result
-     * After the score increases, it outputs how much the score has been increased
-     * @return The amount of score is increased
-     */
-    protected int increaseScore() {
-        if (resultEqualsTo(Result.MASTERED)) {
-            return Score.increaseBy(2);
-        } else {
-            return Score.increaseBy(1);
-        }
     }
 
     /**

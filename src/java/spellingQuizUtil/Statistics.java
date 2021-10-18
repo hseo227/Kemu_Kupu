@@ -13,6 +13,17 @@ public class Statistics {
 	private static final ArrayList<Integer> wordTime = new ArrayList<>();
 
 	/**
+	 * Constructor
+	 * Reset the statistics
+	 */
+	public Statistics() {
+		testedWords.clear();
+		wordResult.clear();
+		wordScore.clear();
+		wordTime.clear();
+	}
+
+	/**
 	 * Add and store the current word's statistics
 	 *
 	 * @param word   Current word
@@ -20,21 +31,11 @@ public class Statistics {
 	 * @param score  Score of the current word
 	 * @param time   Time taken of the current word
 	 */
-	public static void addStatistics(String word, Result result, int score, int time) {
+	public void addStatistics(String word, Result result, int score, int time) {
 		testedWords.add(word);
 		wordResult.add(result.name().toLowerCase());
 		wordScore.add(score);
 		wordTime.add(time);
-	}
-
-	/**
-	 * Reset the statistics
-	 */
-	public static void reset() {
-		testedWords.clear();
-		wordResult.clear();
-		wordScore.clear();
-		wordTime.clear();
 	}
 
 	/**
