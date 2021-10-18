@@ -29,15 +29,14 @@ public class RewardScreenController implements Initializable {
 
     private final ArrayList<StatsTable> statisticsList = new ArrayList<>();
     private final ArrayList<Leaderboard> leaderboardList = new ArrayList<>();
+    private final ArrayList<String> leaderboardListToSave = new ArrayList<>();
 
     @FXML
-    private Label userScoreLabel, tenaRawaAtuKoe;
+    private Label userScoreLabel, practiseMod;
     @FXML
-//    private ToggleButton leaderboardTogBtn;
     private Button leaderboardBtn, statsBtn;
-    
     @FXML
-    private HBox toggleBtns;
+    private HBox gamesMod;
 
     @FXML
     private TableView<StatsTable> statisticsTable;
@@ -63,10 +62,9 @@ public class RewardScreenController implements Initializable {
 
         // only set up the leaderboard if it is in games module
         if (Module.moduleTypeEqualsTo(ModuleType.GAMES)) {
-        	toggleBtns.setVisible(true);
-        	statsBtn.setDisable(true);
+            practiseMod.setVisible(false);
+        	gamesMod.setVisible(true);
             settingUpLeaderboardTable();
-            tenaRawaAtuKoe.setVisible(false);
         }
     }
 
@@ -91,18 +89,18 @@ public class RewardScreenController implements Initializable {
     }
 
     /**
-     * Show/Hide the leaderboard by clicking the statistics button.
-     * Clicking the statistics button will disable the leaderboard button, and vice versa.
+     * Switch between statistics table and leaderboard table
+     * by clicking corresponding buttons
      */
     @FXML
-    private void showHideLeaderboard() {
-        
+    private void switchTable() {
+
         leaderboardBtn.setOnMouseClicked(event -> {
         	leaderboardTable.setVisible(true);
         	leaderboardBtn.setDisable(true);
         	statsBtn.setDisable(false);
         });
-        
+
         statsBtn.setOnMouseClicked(event -> {
         	leaderboardTable.setVisible(false);
         	statsBtn.setDisable(true);
@@ -185,6 +183,7 @@ public class RewardScreenController implements Initializable {
                 totalScoreCol.setCellValueFactory(new PropertyValueFactory<>("totalScore"));
                 totalTimeCol.setCellValueFactory(new PropertyValueFactory<>("totalTime"));
                 leaderboardTable.getItems().setAll(leaderboardList);
+                leaderboardTable.scrollTo(currentUserRank);  // shows where the current user is at in leaderboard
 
                 // This chunk of code colours the row of current user in leaderboard table
                 // So the user can see their current rank easily
@@ -201,8 +200,6 @@ public class RewardScreenController implements Initializable {
                     }
                 });
 
-                // Now store/save the leaderboard
-                storeLeaderboardIntoFile();
             });
 
             dialog.show();
@@ -230,7 +227,7 @@ public class RewardScreenController implements Initializable {
 
             // if current user score is higher, then add the current user stats first and then the old users stats
             if (currentUserIsNotAdded && Score.getScore() > Integer.parseInt(splitted[1])) {
-                leaderboardList.add(new Leaderboard(rankIndex, userName, String.valueOf(Score.getScore()), String.valueOf(Statistics.getTotalTime())));
+                addCurrentUser(rankIndex, userName);
                 currentUserRank = rankIndex++;
                 currentUserIsNotAdded = false;
 
@@ -238,38 +235,39 @@ public class RewardScreenController implements Initializable {
             // the shorter the time, the better
             } else if (currentUserIsNotAdded && Score.getScore() == Integer.parseInt(splitted[1])) {
                 if (Statistics.getTotalTime() <= Integer.parseInt(splitted[2])) {
-                    leaderboardList.add(new Leaderboard(rankIndex, userName, String.valueOf(Score.getScore()), String.valueOf(Statistics.getTotalTime())));
+                    addCurrentUser(rankIndex, userName);
                     currentUserRank = rankIndex++;
                     currentUserIsNotAdded = false;
                 }
             }
 
             leaderboardList.add(new Leaderboard(rankIndex++, splitted[0], splitted[1], splitted[2]));
+            leaderboardListToSave.add(item);
         }
 
         // if current user has not been added into the leaderboard (because the score is lower than everyone's score)
         // then add it at the last place
         if (currentUserIsNotAdded) {
-            leaderboardList.add(new Leaderboard(rankIndex, userName, String.valueOf(Score.getScore()), String.valueOf(Statistics.getTotalTime())));
+            addCurrentUser(rankIndex, userName);
             currentUserRank = rankIndex;
         }
+
+        // Now store/save the leaderboard into the file
+        // The statistics is stored in the form of
+        //      NAME***TOTAL_SCORE***TOTAL_TIME
+        FileControl.writeFile(LEADERBOARD_FILE, leaderboardListToSave);
 
         return currentUserRank;
     }
 
     /**
-     * Store/save the leaderboard into the file
-     * The statistics is stored in the form of
-     *      NAME***TOTAL_SCORE***TOTAL_TIME
+     * This helper method add the current user stats into the leaderboard list
+     * and also the list that will save into the file later
+     * @param rankIndex The rank of current user
+     * @param userName The name of current user
      */
-    private void storeLeaderboardIntoFile() {
-        ArrayList<String> itemsToStore = new ArrayList<>();
-
-        for (Leaderboard i : leaderboardList) {
-            itemsToStore.add(String.join("***", i.getAllStats()));
-        }
-
-        FileControl.writeFile(LEADERBOARD_FILE, itemsToStore);
+    private void addCurrentUser(int rankIndex, String userName) {
+        leaderboardList.add(new Leaderboard(rankIndex, userName, String.valueOf(Score.getScore()), String.valueOf(Statistics.getTotalTime())));
+        leaderboardListToSave.add(String.join("***", leaderboardList.get(leaderboardList.size() - 1).getAllStats()));
     }
-
 }

@@ -6,7 +6,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -68,7 +67,7 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
              </TableView>
-            <Label fx:id="tenaRawaAtuKoe" alignment="CENTER" layoutY="560">
+            <Label fx:id="practiseMod" alignment="CENTER" layoutY="560">
             	<graphic>
  		            <ImageView fitHeight="40.0" pickOnBounds="true" preserveRatio="true">
  		               <image>
@@ -127,9 +126,9 @@
             </HBox>
          </children>
       </VBox>
-      <HBox fx:id="toggleBtns" visible="false" layoutX="400.0" layoutY="510.0">
+      <HBox fx:id="gamesMod" layoutX="400.0" layoutY="510.0" visible="false">
       	<children>
-      		<Button fx:id="statsBtn" mnemonicParsing="false" onAction="#showHideLeaderboard" style="-fx-background-color: transparent;">
+      		<Button fx:id="statsBtn" mnemonicParsing="false" onAction="#switchTable" style="-fx-background-color: transparent;" disable="true">
 		         <graphic>
 		            <ImageView fitHeight="40.0" pickOnBounds="true" preserveRatio="true">
 		               <image>
@@ -148,7 +147,7 @@
 		              </Tooltip>
 		          </tooltip>
 		    </Button>
-      		<Button fx:id="leaderboardBtn" mnemonicParsing="false" onAction="#showHideLeaderboard" style="-fx-background-color: transparent;">
+      		<Button fx:id="leaderboardBtn" mnemonicParsing="false" onAction="#switchTable" style="-fx-background-color: transparent;">
 		         <graphic>
 		            <ImageView fitHeight="40.0" pickOnBounds="true" preserveRatio="true">
 		               <image>
