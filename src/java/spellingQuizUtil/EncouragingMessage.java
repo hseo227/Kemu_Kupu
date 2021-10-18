@@ -1,8 +1,7 @@
 package spellingQuizUtil;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import fileManager.FileManager;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -10,7 +9,7 @@ import java.util.Random;
  * This class handles all the encouraging messages
  */
 public class EncouragingMessage {
-    ArrayList<String> messageList = new ArrayList<>();  // all the messages in the file
+    ArrayList<String> messageList;  // all the messages in the file
 
 
     /**
@@ -22,19 +21,7 @@ public class EncouragingMessage {
         String fileName = "messages/" + result;
 
         // First, get all the words in the file
-        try {
-            BufferedReader readFile = new BufferedReader(new FileReader(fileName));
-            String line;
-
-            // go through all the lines in the file and add into the list
-            while ((line = readFile.readLine()) != null) {
-            	messageList.add(line);
-            }
-            readFile.close();
-
-        } catch (IOException e) {
-            System.err.println("Failed to read " + fileName);
-        }
+        messageList = FileManager.readFile(fileName);
     }
 
     /**

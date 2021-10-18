@@ -1,5 +1,6 @@
 package controllers;
 
+import fileManager.FileManager;
 import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -171,35 +172,30 @@ public class RewardScreenController implements Initializable {
     }
 
     private void prepareLeaderboardList(String userName) {
-        try {
-            BufferedReader readFile = new BufferedReader(new FileReader(LEADERBOARD_FILE));
-            String line;
-            int rankIndex = 1;
-            boolean currentUserIsNotAdded = true;
+        // get all the contents in the leaderboard file
+        ArrayList<String> listOfItems = FileManager.readFile(LEADERBOARD_FILE);
 
-            // go through all the lines in the file and add into the list
-            while ((line = readFile.readLine()) != null) {
-                String[] splitted = line.split("\\*\\*\\*");
+        int rankIndex = 1;
+        boolean currentUserIsNotAdded = true;
 
-                // if current user score is higher, add the current user stats first and then the old users stats
-                if (currentUserIsNotAdded && Score.getScore() > Integer.parseInt(splitted[1])) {
-                    leaderboardList.add(new Leaderboard(rankIndex, userName, String.valueOf(Score.getScore()), String.valueOf(Statistics.getTotalTime())));
-                    rankIndex++;
-                    currentUserIsNotAdded = false;
-                }
+        // go through all the lines in the file and add into the list
+        for (String item : listOfItems) {
+            String[] splitted = item.split("\\*\\*\\*");
 
-                leaderboardList.add(new Leaderboard(rankIndex, splitted[0], splitted[1], splitted[2]));
-                rankIndex++;
-            }
-            readFile.close();
-
-            // if current user score is lower than everyone's score, then add it at the last
-            if (currentUserIsNotAdded) {
+            // if current user score is higher, add the current user stats first and then the old users stats
+            if (currentUserIsNotAdded && Score.getScore() > Integer.parseInt(splitted[1])) {
                 leaderboardList.add(new Leaderboard(rankIndex, userName, String.valueOf(Score.getScore()), String.valueOf(Statistics.getTotalTime())));
+                rankIndex++;
+                currentUserIsNotAdded = false;
             }
 
-        } catch (IOException e) {
-            System.err.println("Failed to read " + LEADERBOARD_FILE);
+            leaderboardList.add(new Leaderboard(rankIndex, splitted[0], splitted[1], splitted[2]));
+            rankIndex++;
+        }
+
+        // if current user score is lower than everyone's score, then add it at the last
+        if (currentUserIsNotAdded) {
+            leaderboardList.add(new Leaderboard(rankIndex, userName, String.valueOf(Score.getScore()), String.valueOf(Statistics.getTotalTime())));
         }
     }
 
