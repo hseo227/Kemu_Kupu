@@ -84,6 +84,7 @@ public abstract class Module {
 
     /**
      * Score increases, the score multiplier depends on the result
+     * After the score increases, it outputs how much the score has been increased
      * @return The amount of score is increased
      */
     protected int increaseScore() {
@@ -96,8 +97,8 @@ public abstract class Module {
 
     /**
      * currentQuizState's
-     *             setter
-     *             equals to
+     *                    setter
+     *                    equals to
      */
     protected void setQuizState(QuizState newQuizState) {
         currentQuizState = newQuizState;
@@ -108,14 +109,14 @@ public abstract class Module {
 
     /**
      * currentResult's
-     *          setter
-     *          getter
-     *          equals to
+     *                 setter
+     *                 getter
+     *                 equals to
      */
     public void setResult(Result newResult) {
         currentResult = newResult;
     }
-    public Result getResult() {
+    protected Result getResult() {
         return currentResult;
     }
     public boolean resultEqualsTo(Result result) {
@@ -137,13 +138,9 @@ public abstract class Module {
     /**
      * userInput's
      *             setter
-     *             getter
      */
     public void setUserInput(String newUserInput) {
         userInput = newUserInput;
-    }
-    protected String getUserInput() {
-        return userInput;
     }
 
     /**

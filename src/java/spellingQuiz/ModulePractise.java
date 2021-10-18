@@ -19,7 +19,7 @@ public class ModulePractise extends Module {
     /**
      * This function check the spelling (input)
      * And then set up the labels, speak, increase score with respective Result
-     * Finally update the statistics
+     * Finally add current word statistics
      */
     public void checkSpelling() {
         int scoreIncreased = 0;
@@ -34,7 +34,7 @@ public class ModulePractise extends Module {
             speak("Word skipped", "");
 
         // if statement for each result after checking the spelling (input)
-        } else if ( words.checkUserSpelling(getUserInput()) ) {  // mastered and failed, 1st attempt and 2nd attempt respectively
+        } else if ( words.checkUserSpelling(userInput) ) {  // mastered and failed, 1st attempt and 2nd attempt respectively
             setQuizState(QuizState.READY);  // set the state to ready for the next question
 
             // setting up the labels' text and speak out the message
