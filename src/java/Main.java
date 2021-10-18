@@ -5,8 +5,8 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-import spellingQuizUtil.FestivalSpeech;
 import controllers.SceneManager;
+import fileManager.FileManager;
 
 import java.io.InputStream;
 import java.net.URL;
@@ -15,11 +15,11 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FestivalSpeech.settingUp();
+        FileManager.settingUp();
 
 
-        URL mainMenuFxmlUrl = getClass().getResource("mainMenu.fxml");
-        InputStream iconImageStream = getClass().getResourceAsStream("media/window-icon.png");
+        URL mainMenuFxmlUrl = getClass().getResource("/mainMenu.fxml");
+        InputStream iconImageStream = getClass().getResourceAsStream("/media/window-icon.png");
 
         // if successful to load main menu FXML and icon image then load them, otherwise print out error message
         if (mainMenuFxmlUrl != null && iconImageStream != null) {

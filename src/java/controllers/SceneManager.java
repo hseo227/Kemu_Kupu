@@ -56,7 +56,7 @@ public class SceneManager {
 
         // if successful to load FXML file then load it, otherwise print out error message
         try {
-            URL url = SceneManager.class.getResource("../" + fxml);
+            URL url = SceneManager.class.getResource("/" + fxml);
             if (url != null) {
                 Pane pane = FXMLLoader.load(url);
                 scene.setRoot(pane);

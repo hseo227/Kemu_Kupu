@@ -44,7 +44,7 @@ public class ModulePractise extends Module {
             mainLabelText = correctMessage.getEncourageMsg();
             promptLabelText = "";
             speak("Correct", "");
-            scoreIncreased = increaseScore();
+            scoreIncreased = score.increaseScore(getResult());
 
         } else if (resultEqualsTo(Result.MASTERED)) {  // still 1st attempt, but incorrect
             setResult(Result.FAULTED);
@@ -66,7 +66,7 @@ public class ModulePractise extends Module {
         }
 
         // add current word statistics
-        Statistics.addStatistics(currentWord, getResult(), scoreIncreased, Timer.end());
+        statistics.addStatistics(currentWord, getResult(), scoreIncreased, Timer.end());
     }
 
 }

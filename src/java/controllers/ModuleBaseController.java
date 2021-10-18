@@ -88,10 +88,12 @@ abstract public class ModuleBaseController implements Initializable {
     }
 
     /**
-     * Speak the word again, only the maori word
+     * When playback button is pressed, speak the word again, only the maori word
      */
     @FXML
     protected void speakAgain() {
+        inputField.requestFocus();
+        inputField.positionCaret(inputField.getText().length());
         disableButtonsWhenSpeaking();
 
         // set up speech speed and then speak
@@ -134,7 +136,7 @@ abstract public class ModuleBaseController implements Initializable {
     }
 
     /**
-     * Disable some buttons for 2 second when the festival starts running
+     * Disable playback, check and skip buttons for 2 second when the festival starts running
      * It is to avoid the user spam those buttons
      */
     protected void disableButtonsWhenSpeaking() {
@@ -269,5 +271,7 @@ abstract public class ModuleBaseController implements Initializable {
     protected void addMacronsCharacter(ActionEvent event) {
         String macronsCharacter = ((Button) event.getSource()).getText();
         inputField.appendText(macronsCharacter);
+        inputField.requestFocus();
+        inputField.positionCaret(inputField.getText().length());
     }
 }
