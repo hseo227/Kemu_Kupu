@@ -18,7 +18,7 @@ import spellingQuizUtil.Result;
 import spellingQuizUtil.Score;
 
 /**
- * This class contains all the common functionalities of both Games and Practise Module
+ * This class contains all the common display (GUI) functionalities of both Games and Practise Module
  */
 abstract public class ModuleBaseController implements Initializable {
     protected final static String WHITE = "#FFF";

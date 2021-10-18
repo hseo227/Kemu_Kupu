@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.VBox;
 import javafx.util.StringConverter;
 import spellingQuiz.ModuleGames;
@@ -16,7 +15,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * This class stores only the functionalities of Games Module
+ * This class stores only the display (GUI) functionalities of Games Module
  */
 public class ModuleGamesController extends ModuleBaseController {
 
@@ -26,8 +25,6 @@ public class ModuleGamesController extends ModuleBaseController {
     private TextField inputField;
     @FXML
     private Slider speechSpeed;
-    @FXML
-    private ToggleButton togSpdSlider;
     @FXML
     private VBox startVBox, gameVBox;
 

@@ -5,6 +5,9 @@ import spellingQuizUtil.*;
 import static spellingQuizUtil.FestivalSpeech.speak;
 
 
+/**
+ * This class contains all the common functionalities of both Games and Practise Module
+ */
 public abstract class Module {
     private final int NUMBER_OF_QUESTIONS;
 

@@ -5,6 +5,9 @@ import spellingQuizUtil.*;
 import static spellingQuizUtil.FestivalSpeech.speak;
 
 
+/**
+ * This class stores only the functionalities of Practise Module
+ */
 public class ModulePractise extends Module {
 
     /**

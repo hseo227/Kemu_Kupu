@@ -6,7 +6,6 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.VBox;
 import javafx.util.StringConverter;
 import spellingQuiz.ModulePractise;
@@ -19,7 +18,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * This class stores only the functionalities of Practise Module
+ * This class stores only the display (GUI) functionalities of Practise Module
  */
 public class ModulePractiseController extends ModuleBaseController {
 
@@ -31,8 +30,6 @@ public class ModulePractiseController extends ModuleBaseController {
     private Button skipBtn;
     @FXML
     private Slider speechSpeed;
-    @FXML
-    private ToggleButton togSpdSlider;
     @FXML
     private ChoiceBox<Integer> numOfQCheckBox;
     @FXML

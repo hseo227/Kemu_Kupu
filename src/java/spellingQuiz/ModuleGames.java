@@ -5,6 +5,9 @@ import spellingQuizUtil.*;
 import static spellingQuizUtil.FestivalSpeech.speak;
 
 
+/**
+ * This class stores only the functionalities of Games Module
+ */
 public class ModuleGames extends Module {
     private static final int NUMBER_OF_QUESTIONS = 5;
 
