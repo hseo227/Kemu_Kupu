@@ -1,8 +1,6 @@
 package fileManager;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 public class FileManager {
@@ -24,5 +22,20 @@ public class FileManager {
         }
 
         return listOfItems;
+    }
+
+    public static void writeFile(String fileName, ArrayList<String> listOfItems) {
+        try {
+            PrintWriter writeFile = new PrintWriter(new FileWriter(fileName));
+
+            for (String i : listOfItems) {
+                writeFile.println(i);
+            }
+
+            writeFile.close();
+
+        } catch (IOException e) {
+            System.err.println("Failed to write into " + fileName);
+        }
     }
 }

@@ -200,18 +200,13 @@ public class RewardScreenController implements Initializable {
     }
 
     private void storeLeaderboardIntoFile() {
-        try {
-            PrintWriter writeFile = new PrintWriter(new FileWriter(LEADERBOARD_FILE));
+        ArrayList<String> itemsToStore = new ArrayList<>();
 
-            for (Leaderboard i : leaderboardList) {
-                writeFile.println(i.getAllStats());
-            }
-
-            writeFile.close();
-
-        } catch (IOException e) {
-            System.err.println("Failed to write into " + LEADERBOARD_FILE);
+        for (Leaderboard i : leaderboardList) {
+            itemsToStore.add(i.getAllStats());
         }
+
+        FileManager.writeFile(LEADERBOARD_FILE, itemsToStore);
     }
 
 }
