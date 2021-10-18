@@ -2,6 +2,7 @@ package controllers;
 
 import fileManager.FileControl;
 import javafx.animation.PauseTransition;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -93,20 +94,16 @@ public class RewardScreenController implements Initializable {
      * by clicking corresponding buttons
      */
     @FXML
-    private void switchTable() {
-
-        leaderboardBtn.setOnMouseClicked(event -> {
-        	leaderboardTable.setVisible(true);
-        	leaderboardBtn.setDisable(true);
-        	statsBtn.setDisable(false);
-        });
-
-        statsBtn.setOnMouseClicked(event -> {
-        	leaderboardTable.setVisible(false);
-        	statsBtn.setDisable(true);
-        	leaderboardBtn.setDisable(false);
-        });
-
+    private void switchTable(ActionEvent event) {
+        if (((Button) event.getSource()).getId().equals("statsBtn")) {
+            leaderboardTable.setVisible(false);
+            leaderboardBtn.setDisable(false);
+            statsBtn.setDisable(true);
+        } else {
+            leaderboardTable.setVisible(true);
+            leaderboardBtn.setDisable(true);
+            statsBtn.setDisable(false);
+        }
     }
 
     /**
