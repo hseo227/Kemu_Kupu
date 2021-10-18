@@ -9,13 +9,13 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Duration;
 import spellingQuiz.Module;
 import spellingQuizUtil.ModuleType;
-import spellingQuizUtil.Result;
 import spellingQuizUtil.Score;
 import spellingQuizUtil.Statistics;
 import tableUtil.Leaderboard;
 import tableUtil.StatsTable;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -34,20 +34,23 @@ public class RewardScreenController implements Initializable {
     @FXML
     private Label userScoreLabel;
     @FXML
+    private ToggleButton leaderboardTogBtn;
+
+    @FXML
     private TableView<StatsTable> statisticsTable;
     @FXML
-    private TableColumn<StatsTable, Integer> roundCol, scoreCol, timeCol;
-    @FXML
-    private TableColumn<StatsTable, String> wordCol, resultCol;
+    private TableColumn<StatsTable, String> roundCol, wordCol, resultCol, scoreCol, timeCol;
+
     @FXML
     private TableView<Leaderboard> leaderboardTable;
     @FXML
     private TableColumn<Leaderboard, String> rankCol, nameCol, totalScoreCol, totalTimeCol;
-    @FXML
-    private ToggleButton leaderboardTogBtn;
 
     /**
-     * Set up the reward screen
+     * Set up the reward screen:
+     *      - user score
+     *      - statistics table
+     *      - leaderboard table if it is games module
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -55,7 +58,7 @@ public class RewardScreenController implements Initializable {
 
         settingUpStatsTable();
 
-        // only set up and shows the leaderboard if it is in games module
+        // only set up the leaderboard if it is in games module
         if (Module.moduleTypeEqualsTo(ModuleType.GAMES)) {
             leaderboardTogBtn.setVisible(true);
             settingUpLeaderboardTable();
@@ -63,7 +66,7 @@ public class RewardScreenController implements Initializable {
     }
 
     /**
-     * When 'Play Again' button is pressed, play the quiz again, either practise or games module
+     * When 'Play Again' button is pressed, play the quiz again, either Practise or Games module
      */
     @FXML
     private void playAgain() {
@@ -82,6 +85,10 @@ public class RewardScreenController implements Initializable {
         SceneManager.goToMainMenu();
     }
 
+    /**
+     * Show/Hide the leaderboard by clicking the toggle button
+     * at the same time, change the toggle button's text
+     */
     @FXML
     private void showHideLeaderboard() {
         leaderboardTable.setVisible(leaderboardTogBtn.isSelected());
@@ -93,17 +100,21 @@ public class RewardScreenController implements Initializable {
         }
     }
 
+    /**
+     * Get all the statistics of the current game and then set them into the stats table
+     */
     private void settingUpStatsTable() {
         ArrayList<String> words = Statistics.getTestedWords();
-        ArrayList<Result> results = Statistics.getWordResult();
+        ArrayList<String> results = Statistics.getWordResult();
         ArrayList<Integer> scores = Statistics.getWordScore();
         ArrayList<Integer> times = Statistics.getWordTime();
 
+        // getting all the statistics
         for (int i = 0 ; i < words.size(); i++) {
-            statisticsList.add(new StatsTable(i + 1, words.get(i), results.get(i).name().toLowerCase(), scores.get(i), times.get(i)));
+            statisticsList.add(new StatsTable(i + 1, words.get(i), results.get(i), scores.get(i), times.get(i)));
         }
 
-        // setting up the table and the column
+        // setting up the table and the columns
         roundCol.setCellValueFactory(new PropertyValueFactory<>("round"));
         wordCol.setCellValueFactory(new PropertyValueFactory<>("word"));
         resultCol.setCellValueFactory(new PropertyValueFactory<>("result"));
@@ -111,9 +122,11 @@ public class RewardScreenController implements Initializable {
         timeCol.setCellValueFactory(new PropertyValueFactory<>("time"));
         statisticsTable.getItems().setAll(statisticsList);
 
-        // set the rows' colour correspond to the result
+        // codes from: https://stackoverflow.com/a/56309916
         //
-        // From: https://stackoverflow.com/a/56309916
+        // This chunk of code colours the rows in stat table
+        // the colour is corresponded to the result
+        //      master = green, faulted = yellow, failed = red, skipped = blue
         statisticsTable.setRowFactory(tr -> new TableRow<>() {
             @Override
             protected void updateItem(StatsTable item, boolean empty) {
@@ -134,7 +147,11 @@ public class RewardScreenController implements Initializable {
         });
     }
 
+    /**
+     * Get the old leaderboard and add the current user stats, and then set them into the leaderboard table
+     */
     private void settingUpLeaderboardTable() {
+        // if the file that stores the leaderboard does not exist, then create this file
         try {
             File file = new File(LEADERBOARD_FILE);
             file.createNewFile();
@@ -142,25 +159,32 @@ public class RewardScreenController implements Initializable {
             System.err.println("Unable to create file that stores the leaderboard \"" + LEADERBOARD_FILE + "\"");
         }
 
+
+        // the pause is needed to have the TextInputDialog in front of the main window
         PauseTransition pause = new PauseTransition(Duration.seconds(1));
         pause.setOnFinished(p -> {
+
+            // TextInputDialog asks the user to enter their name
             TextInputDialog dialog = new TextInputDialog("Player 1");
             dialog.getDialogPane().lookupButton(ButtonType.CANCEL).setVisible(false);
             dialog.setTitle("What is your name?");
             dialog.setHeaderText("Enter your name! (Don't include this character *)");
 
+            // when TextInputDialog is closed, get the user's name and then store it into the leaderboard
             dialog.setOnCloseRequest(d -> {
 
-                // First, prepare the leaderboard list by sorting the previous leaderboard and current user stats
+                // sorting out the leaderboard list and also get the rank of the current user
                 int currentUserRank = prepareLeaderboardList(dialog.getEditor().getText());
 
-                // setting up the table and the column
+                // setting up the table and the columns
                 rankCol.setCellValueFactory(new PropertyValueFactory<>("rank"));
                 nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
                 totalScoreCol.setCellValueFactory(new PropertyValueFactory<>("totalScore"));
                 totalTimeCol.setCellValueFactory(new PropertyValueFactory<>("totalTime"));
                 leaderboardTable.getItems().setAll(leaderboardList);
 
+                // This chunk of code colours the row of current user in leaderboard table
+                // So the user can see their current rank easily
                 leaderboardTable.setRowFactory(tr -> new TableRow<>() {
                     @Override
                     protected void updateItem(Leaderboard item, boolean empty) {
@@ -174,7 +198,7 @@ public class RewardScreenController implements Initializable {
                     }
                 });
 
-                // Now store the leaderboard
+                // Now store/save the leaderboard
                 storeLeaderboardIntoFile();
             });
 
@@ -183,6 +207,12 @@ public class RewardScreenController implements Initializable {
         pause.play();
     }
 
+    /**
+     * This method prepares the leaderboard list by sorting the previous leaderboard and current user stats.
+     * While sorting it, get the rank of the current user
+     * @param userName Current name's name
+     * @return The rank of the current user
+     */
     private int prepareLeaderboardList(String userName) {
         // get all the contents in the leaderboard file
         ArrayList<String> listOfItems = FileManager.readFile(LEADERBOARD_FILE);
@@ -191,23 +221,22 @@ public class RewardScreenController implements Initializable {
         int currentUserRank = 0;
         boolean currentUserIsNotAdded = true;
 
-        // go through all the lines in the file and add into the list
+        // go through all the contents of the file and add them into the leaderboard list
         for (String item : listOfItems) {
             String[] splitted = item.split("\\*\\*\\*");
 
-            // if current user score is higher, add the current user stats first and then the old users stats
+            // if current user score is higher, then add the current user stats first and then the old users stats
             if (currentUserIsNotAdded && Score.getScore() > Integer.parseInt(splitted[1])) {
                 leaderboardList.add(new Leaderboard(rankIndex, userName, String.valueOf(Score.getScore()), String.valueOf(Statistics.getTotalTime())));
-                currentUserRank = rankIndex;
-                rankIndex++;
+                currentUserRank = rankIndex++;
                 currentUserIsNotAdded = false;
             }
 
-            leaderboardList.add(new Leaderboard(rankIndex, splitted[0], splitted[1], splitted[2]));
-            rankIndex++;
+            leaderboardList.add(new Leaderboard(rankIndex++, splitted[0], splitted[1], splitted[2]));
         }
 
-        // if current user score is lower than everyone's score, then add it at the last
+        // if current user has not been added into the leaderboard (because the score is lower than everyone's score)
+        // then add it at the last place
         if (currentUserIsNotAdded) {
             leaderboardList.add(new Leaderboard(rankIndex, userName, String.valueOf(Score.getScore()), String.valueOf(Statistics.getTotalTime())));
             currentUserRank = rankIndex;
@@ -216,11 +245,16 @@ public class RewardScreenController implements Initializable {
         return currentUserRank;
     }
 
+    /**
+     * Store/save the leaderboard into the file
+     * The statistics is stored in the form of
+     *      NAME***TOTAL_SCORE***TOTAL_TIME
+     */
     private void storeLeaderboardIntoFile() {
         ArrayList<String> itemsToStore = new ArrayList<>();
 
         for (Leaderboard i : leaderboardList) {
-            itemsToStore.add(i.getAllStats());
+            itemsToStore.add(String.join("***", i.getAllStats()));
         }
 
         FileManager.writeFile(LEADERBOARD_FILE, itemsToStore);

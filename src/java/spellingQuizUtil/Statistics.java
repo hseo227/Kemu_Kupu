@@ -5,13 +5,13 @@ import java.util.ArrayList;
 public class Statistics {
 	
 	private static final ArrayList<String> testedWords = new ArrayList<>();
-	private static final ArrayList<Result> wordResult = new ArrayList<>();
+	private static final ArrayList<String> wordResult = new ArrayList<>();
 	private static final ArrayList<Integer> wordScore = new ArrayList<>();
 	private static final ArrayList<Integer> wordTime = new ArrayList<>();
 	
 	public static void addStatistics(String word, Result result, int score, int time) {
 		testedWords.add(word);
-		wordResult.add(result);
+		wordResult.add(result.name().toLowerCase());
 		wordScore.add(score);
 		wordTime.add(time);
 	}
@@ -27,7 +27,7 @@ public class Statistics {
 		return testedWords;
 	}
 
-	public static ArrayList<Result> getWordResult() {
+	public static ArrayList<String> getWordResult() {
 		return wordResult;
 	}
 
