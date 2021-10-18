@@ -151,37 +151,8 @@ public class RewardScreenController implements Initializable {
 
             dialog.setOnCloseRequest(d -> {
 
-                // First, get all the words in the file
-                try {
-                    BufferedReader readFile = new BufferedReader(new FileReader(LEADERBOARD_FILE));
-                    String line;
-                    int rankIndex = 1;
-                    boolean currentUserIsNotAdded = true;
-
-                    // go through all the lines in the file and add into the list
-                    while ((line = readFile.readLine()) != null) {
-                        String[] splitted = line.split("\\*\\*\\*");
-
-                        // if current user score is higher, add the current user stats first and then the old users stats
-                        if (currentUserIsNotAdded && Score.getScore() > Integer.parseInt(splitted[1])) {
-                            leaderboardList.add(new Leaderboard(rankIndex, dialog.getEditor().getText(), String.valueOf(Score.getScore()), String.valueOf(Statistics.getTotalTime())));
-                            rankIndex++;
-                            currentUserIsNotAdded = false;
-                        }
-
-                        leaderboardList.add(new Leaderboard(rankIndex, splitted[0], splitted[1], splitted[2]));
-                        rankIndex++;
-                    }
-                    readFile.close();
-
-                    // if current user score is lower than everyone's score, then add it at the last
-                    if (currentUserIsNotAdded) {
-                        leaderboardList.add(new Leaderboard(rankIndex, dialog.getEditor().getText(), String.valueOf(Score.getScore()), String.valueOf(Statistics.getTotalTime())));
-                    }
-
-                } catch (IOException e) {
-                    System.err.println("Failed to read " + LEADERBOARD_FILE);
-                }
+                // First, prepare the leaderboard list by sorting the previous leaderboard and current user stats
+                prepareLeaderboardList(dialog.getEditor().getText());
 
                 // setting up the table and the column
                 rankCol.setCellValueFactory(new PropertyValueFactory<>("rank"));
@@ -191,24 +162,60 @@ public class RewardScreenController implements Initializable {
                 leaderboardTable.getItems().setAll(leaderboardList);
 
                 // Now store the leaderboard
-                try {
-                    PrintWriter writeFile = new PrintWriter(new FileWriter(LEADERBOARD_FILE));
-
-                    for (Leaderboard i : leaderboardList) {
-                        writeFile.println(i.getAllStats());
-                    }
-
-                    writeFile.close();
-
-                } catch (IOException e) {
-                    System.err.println("Failed to write into " + LEADERBOARD_FILE);
-                }
+                storeLeaderboardIntoFile();
             });
 
             dialog.show();
         });
         pause.play();
+    }
 
+    private void prepareLeaderboardList(String userName) {
+        try {
+            BufferedReader readFile = new BufferedReader(new FileReader(LEADERBOARD_FILE));
+            String line;
+            int rankIndex = 1;
+            boolean currentUserIsNotAdded = true;
+
+            // go through all the lines in the file and add into the list
+            while ((line = readFile.readLine()) != null) {
+                String[] splitted = line.split("\\*\\*\\*");
+
+                // if current user score is higher, add the current user stats first and then the old users stats
+                if (currentUserIsNotAdded && Score.getScore() > Integer.parseInt(splitted[1])) {
+                    leaderboardList.add(new Leaderboard(rankIndex, userName, String.valueOf(Score.getScore()), String.valueOf(Statistics.getTotalTime())));
+                    rankIndex++;
+                    currentUserIsNotAdded = false;
+                }
+
+                leaderboardList.add(new Leaderboard(rankIndex, splitted[0], splitted[1], splitted[2]));
+                rankIndex++;
+            }
+            readFile.close();
+
+            // if current user score is lower than everyone's score, then add it at the last
+            if (currentUserIsNotAdded) {
+                leaderboardList.add(new Leaderboard(rankIndex, userName, String.valueOf(Score.getScore()), String.valueOf(Statistics.getTotalTime())));
+            }
+
+        } catch (IOException e) {
+            System.err.println("Failed to read " + LEADERBOARD_FILE);
+        }
+    }
+
+    private void storeLeaderboardIntoFile() {
+        try {
+            PrintWriter writeFile = new PrintWriter(new FileWriter(LEADERBOARD_FILE));
+
+            for (Leaderboard i : leaderboardList) {
+                writeFile.println(i.getAllStats());
+            }
+
+            writeFile.close();
+
+        } catch (IOException e) {
+            System.err.println("Failed to write into " + LEADERBOARD_FILE);
+        }
     }
 
 }
