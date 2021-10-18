@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class RewardScreenController implements Initializable {
-    private final String WHITE = "#FFF";
     private final String GREEN = "#7CFC00";
     private final String YELLOW = "#EEDC82";
     private final String RED = "#FA8072";
@@ -121,7 +120,7 @@ public class RewardScreenController implements Initializable {
                 super.updateItem(item, empty);
 
                 if (item == null || item.getResult() == null) {
-                    setStyle("-fx-background-color: " + WHITE);
+                    setStyle("");
                 } else if (item.getResult().equals("mastered")) {
                     setStyle("-fx-background-color: " + GREEN);
                 } else if (item.getResult().equals("faulted")) {
@@ -153,7 +152,7 @@ public class RewardScreenController implements Initializable {
             dialog.setOnCloseRequest(d -> {
 
                 // First, prepare the leaderboard list by sorting the previous leaderboard and current user stats
-                prepareLeaderboardList(dialog.getEditor().getText());
+                int currentUserRank = prepareLeaderboardList(dialog.getEditor().getText());
 
                 // setting up the table and the column
                 rankCol.setCellValueFactory(new PropertyValueFactory<>("rank"));
@@ -161,6 +160,19 @@ public class RewardScreenController implements Initializable {
                 totalScoreCol.setCellValueFactory(new PropertyValueFactory<>("totalScore"));
                 totalTimeCol.setCellValueFactory(new PropertyValueFactory<>("totalTime"));
                 leaderboardTable.getItems().setAll(leaderboardList);
+
+                leaderboardTable.setRowFactory(tr -> new TableRow<>() {
+                    @Override
+                    protected void updateItem(Leaderboard item, boolean empty) {
+                        super.updateItem(item, empty);
+
+                        if (item == null || item.getRank() != currentUserRank) {
+                            setStyle("");
+                        } else if (item.getRank() == currentUserRank) {
+                            setStyle("-fx-background-color: " + BLUE);
+                        }
+                    }
+                });
 
                 // Now store the leaderboard
                 storeLeaderboardIntoFile();
@@ -171,11 +183,12 @@ public class RewardScreenController implements Initializable {
         pause.play();
     }
 
-    private void prepareLeaderboardList(String userName) {
+    private int prepareLeaderboardList(String userName) {
         // get all the contents in the leaderboard file
         ArrayList<String> listOfItems = FileManager.readFile(LEADERBOARD_FILE);
 
         int rankIndex = 1;
+        int currentUserRank = 0;
         boolean currentUserIsNotAdded = true;
 
         // go through all the lines in the file and add into the list
@@ -185,6 +198,7 @@ public class RewardScreenController implements Initializable {
             // if current user score is higher, add the current user stats first and then the old users stats
             if (currentUserIsNotAdded && Score.getScore() > Integer.parseInt(splitted[1])) {
                 leaderboardList.add(new Leaderboard(rankIndex, userName, String.valueOf(Score.getScore()), String.valueOf(Statistics.getTotalTime())));
+                currentUserRank = rankIndex;
                 rankIndex++;
                 currentUserIsNotAdded = false;
             }
@@ -196,7 +210,10 @@ public class RewardScreenController implements Initializable {
         // if current user score is lower than everyone's score, then add it at the last
         if (currentUserIsNotAdded) {
             leaderboardList.add(new Leaderboard(rankIndex, userName, String.valueOf(Score.getScore()), String.valueOf(Statistics.getTotalTime())));
+            currentUserRank = rankIndex;
         }
+
+        return currentUserRank;
     }
 
     private void storeLeaderboardIntoFile() {
