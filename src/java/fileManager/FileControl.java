@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 /**
- * This class contains all the necessary controls of the file.
+ * This class contains all the necessary controls (Read & Write) of the file.
  */
 public class FileControl {
 

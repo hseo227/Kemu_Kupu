@@ -14,19 +14,17 @@ import spellingQuizUtil.Statistics;
 import tableUtil.Leaderboard;
 import tableUtil.StatsTable;
 
-import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+
+import static fileManager.FileManager.LEADERBOARD_FILE;
 
 public class RewardScreenController implements Initializable {
     private final String GREEN = "#7CFC00";
     private final String YELLOW = "#EEDC82";
     private final String RED = "#FA8072";
     private final String BLUE = "#89CFF0";
-
-    private final String LEADERBOARD_FILE = ".hide/leaderboard";
 
     private final ArrayList<StatsTable> statisticsList = new ArrayList<>();
     private final ArrayList<Leaderboard> leaderboardList = new ArrayList<>();
@@ -151,14 +149,6 @@ public class RewardScreenController implements Initializable {
      * Get the old leaderboard and add the current user stats, and then set them into the leaderboard table
      */
     private void settingUpLeaderboardTable() {
-        // if the file that stores the leaderboard does not exist, then create this file
-        try {
-            File file = new File(LEADERBOARD_FILE);
-            file.createNewFile();
-        } catch(IOException e) {
-            System.err.println("Unable to create file that stores the leaderboard \"" + LEADERBOARD_FILE + "\"");
-        }
-
 
         // the pause is needed to have the TextInputDialog in front of the main window
         PauseTransition pause = new PauseTransition(Duration.seconds(1));
