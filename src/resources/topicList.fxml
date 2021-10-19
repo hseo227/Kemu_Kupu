@@ -31,7 +31,7 @@
 		            </ImageView>
 		     </graphic>
 	    </Label>
-        <Button layoutX="1110.0" layoutY="100.0" mnemonicParsing="false" onAction="#backToMainMenu" style="-fx-background-color: transparent;">
+        <Button layoutX="1040.0" layoutY="100.0" mnemonicParsing="false" onAction="#backToMainMenu" style="-fx-background-color: transparent;">
             <graphic>
 		        <ImageView fitHeight="60.0" pickOnBounds="true" preserveRatio="true">
 		           <image>
