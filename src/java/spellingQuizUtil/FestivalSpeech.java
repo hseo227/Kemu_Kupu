@@ -37,23 +37,23 @@ public class FestivalSpeech {
      */
     public static void speak(String englishMessage, String maoriMessage) {
         try {
-            ArrayList<String> commands = new ArrayList<>();
+            ArrayList<String> festivalCommands = new ArrayList<>();
 
             // speak english / maori message if there is any
             if (!englishMessage.equals("")) {
                 // adjust the speed before say text
-                commands.add("(Parameter.set 'Duration_Stretch' " + speechSpeed + ")");
-                commands.add("(SayText \"" + englishMessage + "\")");
+                festivalCommands.add("(Parameter.set 'Duration_Stretch' " + speechSpeed + ")");
+                festivalCommands.add("(SayText \"" + englishMessage + "\")");
             }
             if (!maoriMessage.equals("")) {
-                commands.add("(voice_akl_mi_pk06_cg)");  // change to maori voice
+                festivalCommands.add("(voice_akl_mi_pk06_cg)");  // change to maori voice
                 // adjust the speed before say text
-                commands.add("(Parameter.set 'Duration_Stretch' " + speechSpeed + ")");
-                commands.add("(SayText \"" + maoriMessage + "\")");
+                festivalCommands.add("(Parameter.set 'Duration_Stretch' " + speechSpeed + ")");
+                festivalCommands.add("(SayText \"" + maoriMessage.replace('-', ' ') + "\")");  // remove '-'
             }
 
-            // write the commands into the scheme file
-            FileControl.writeFile(FESTIVAL_CMD_FILE, commands);
+            // write the festival commands into the scheme file
+            FileControl.writeFile(FESTIVAL_CMD_FILE, festivalCommands);
 
             // run festival scheme file
             String command = "festival -b " + FESTIVAL_CMD_FILE;
