@@ -7,7 +7,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
-import javafx.util.StringConverter;
 import spellingQuiz.ModulePractise;
 import spellingQuizUtil.FestivalSpeech;
 import spellingQuizUtil.QuizState;
@@ -37,11 +36,12 @@ public class ModulePractiseController extends ModuleBaseController {
 
 
     /**
-     * Setting up the check box and
-     * Format the speed slider
+     * Setting up the fxml beforehand
+     * Also, setting up the check box
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        settingUp();
 
         // add check box from 1 to number of words in the words list, maximum is 10
         for (int i = 1; i <= Math.min(Words.getNumOfWordsInWordsList(), 10); i++) {
@@ -49,27 +49,6 @@ public class ModulePractiseController extends ModuleBaseController {
         }
         // set default number to 3
         numOfQCheckBox.setValue(3);
-
-        // format the speed slider
-        speechSpeed.setLabelFormatter(new StringConverter<>() {
-            @Override
-            public String toString(Double n) {
-                if (n == speechSpeed.getMin()) {  // slowest speed
-                    return "Slow";
-                } else if (n == (speechSpeed.getMin() + speechSpeed.getMax()) / 2) {  // normal speed, in the middle
-                    return "Default";
-                } else if (n == speechSpeed.getMax()) {  // fastest speed
-                    return "Fast";
-                }
-
-                return null;
-            }
-
-            @Override
-            public Double fromString(String s) {
-                return null;
-            }
-        });
     }
 
     /**
@@ -141,7 +120,6 @@ public class ModulePractiseController extends ModuleBaseController {
         } else {
             textColour = RED;
             inputField.clear();
-            disableButtonsWhenSpeaking();
         }
 
         updateLabels(textColour);  // update the labels with corresponding text colour

@@ -5,7 +5,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
-import javafx.util.StringConverter;
 import spellingQuiz.ModuleGames;
 import spellingQuizUtil.FestivalSpeech;
 import spellingQuizUtil.QuizState;
@@ -30,31 +29,11 @@ public class ModuleGamesController extends ModuleBaseController {
 
 
     /**
-     * Format the speed slider
+     * Setting up the fxml beforehand
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        // format the speed slider
-        speechSpeed.setLabelFormatter(new StringConverter<>() {
-            @Override
-            public String toString(Double n) {
-                if (n == speechSpeed.getMin()) {  // slowest speed
-                    return "Slow";
-                } else if (n == (speechSpeed.getMin() + speechSpeed.getMax()) / 2) {  // normal speed, in the middle
-                    return "Default";
-                } else if (n == speechSpeed.getMax()) {  // fastest speed
-                    return "Fast";
-                }
-
-                return null;
-            }
-
-            @Override
-            public Double fromString(String s) {
-                return null;
-            }
-        });
+        settingUp();
     }
 
     /**
@@ -118,7 +97,6 @@ public class ModuleGamesController extends ModuleBaseController {
         } else {
             textColour = RED;
             inputField.clear();
-            disableButtonsWhenSpeaking();
         }
 
         updateLabels(textColour);  // update the labels with corresponding text colour

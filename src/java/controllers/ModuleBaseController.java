@@ -1,6 +1,8 @@
 package controllers;
 
 import javafx.animation.PauseTransition;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,10 +13,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.util.Duration;
+import javafx.util.StringConverter;
 import spellingQuiz.Module;
-import spellingQuizUtil.FestivalSpeech;
-import spellingQuizUtil.Result;
-import spellingQuizUtil.Score;
+import spellingQuizUtil.*;
 
 /**
  * This class contains all the common display (GUI) functionalities of both Games and Practise Module
@@ -30,6 +31,8 @@ abstract public class ModuleBaseController implements Initializable {
     protected Module quiz;
     protected boolean inhibitSubmitAction = false;
 
+    public static BooleanProperty isSpeaking;
+
     @FXML
     private Label mainLabel, promptLabel, userScoreLabel;
     @FXML
@@ -41,6 +44,46 @@ abstract public class ModuleBaseController implements Initializable {
     @FXML
     private VBox inputVBox;
 
+
+    /**
+     * Call this method when initialize the fxml and set up necessary stuff
+     *      Set isSpeaking listener
+     *      Format the speed slider
+     */
+    protected void settingUp() {
+
+        // Set listener for isSpeaking
+        // When it is speaking, disable buttons (playback, check and skip buttons)
+        isSpeaking = new SimpleBooleanProperty();
+        isSpeaking.addListener((observableValue, old, newValue) -> {
+            playbackBtn.setDisable(newValue);
+            checkBtn.setDisable(newValue);
+            skipBtn.setDisable(newValue);
+            inhibitSubmitAction = newValue;
+        });
+        isSpeaking.set(true);
+
+        // format the speed slider
+        speechSpeed.setLabelFormatter(new StringConverter<>() {
+            @Override
+            public String toString(Double n) {
+                if (n == speechSpeed.getMin()) {  // slowest speed
+                    return "Slow";
+                } else if (n == (speechSpeed.getMin() + speechSpeed.getMax()) / 2) {  // normal speed, in the middle
+                    return "Default";
+                } else if (n == speechSpeed.getMax()) {  // fastest speed
+                    return "Fast";
+                }
+
+                return null;
+            }
+
+            @Override
+            public Double fromString(String s) {
+                return null;
+            }
+        });
+    }
 
     /**
      * Different module start the quiz differently.
@@ -71,7 +114,6 @@ abstract public class ModuleBaseController implements Initializable {
     protected void newQuestion() {
         inputField.clear();
         inputField.requestFocus();
-        disableButtonsWhenSpeaking();
         FestivalSpeech.setSpeechSpeed((int) speechSpeed.getValue());  // set up speech speed
 
         // if the quiz is not finished, continue the game (return true), otherwise false
@@ -91,7 +133,6 @@ abstract public class ModuleBaseController implements Initializable {
     protected void speakAgain() {
         inputField.requestFocus();
         inputField.positionCaret(inputField.getText().length());
-        disableButtonsWhenSpeaking();
 
         // set up speech speed and then speak
         FestivalSpeech.setSpeechSpeed((int) speechSpeed.getValue());
@@ -128,25 +169,6 @@ abstract public class ModuleBaseController implements Initializable {
             inputVBox.setDisable(false);
 
             newQuestion();
-        });
-        pause.play();
-    }
-
-    /**
-     * Disable playback, check and skip buttons for 2 second when the festival starts running
-     * It is to avoid the user spam those buttons
-     */
-    protected void disableButtonsWhenSpeaking() {
-        playbackBtn.setDisable(true);
-        checkBtn.setDisable(true);
-        skipBtn.setDisable(true);
-        inhibitSubmitAction = true;
-
-        pause.setOnFinished(e -> {
-            playbackBtn.setDisable(false);
-            checkBtn.setDisable(false);
-            skipBtn.setDisable(false);
-            inhibitSubmitAction = false;
         });
         pause.play();
     }
