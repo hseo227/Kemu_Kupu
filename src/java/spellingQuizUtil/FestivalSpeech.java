@@ -55,7 +55,8 @@ public class FestivalSpeech {
             // write the festival commands into the scheme file
             FileControl.writeFile(FESTIVAL_CMD_FILE, festivalCommands);
 
-            // run festival scheme file
+            // shut down all previous festival and then speak/run festival scheme file
+            shutDownAllFestival();
             String command = "festival -b " + FESTIVAL_CMD_FILE;
             ProcessBuilder pb = new ProcessBuilder("bash", "-c", command);
             pb.start();
@@ -72,8 +73,10 @@ public class FestivalSpeech {
         try {
             String command = "killall festival; killall aplay";
             ProcessBuilder pb = new ProcessBuilder("bash", "-c", command);
-            pb.start();
-        } catch (IOException e) {
+            Process process = pb.start();
+            process.waitFor();
+
+        } catch (Exception e) {
             System.err.println("Failed to run linux command that stops the festival");
         }
     }
