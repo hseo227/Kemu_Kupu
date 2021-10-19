@@ -1,11 +1,7 @@
 package controllers;
 
 import javafx.animation.PauseTransition;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,11 +14,12 @@ import javafx.scene.text.Font;
 import javafx.util.Duration;
 import javafx.util.StringConverter;
 import spellingQuiz.Module;
-import spellingQuizUtil.*;
+import spellingQuizUtil.FestivalSpeech;
+import spellingQuizUtil.ModuleType;
+import spellingQuizUtil.Result;
+import spellingQuizUtil.Score;
 
-import static spellingQuizUtil.FestivalSpeech.*;
-
-import java.util.ArrayList;
+import static spellingQuizUtil.FestivalSpeech.numOfRunningFestival;
 
 /**
  * This class contains all the common display (GUI) functionalities of both Games and Practise Module
@@ -38,10 +35,6 @@ abstract public class ModuleBaseController implements Initializable {
     protected Module quiz;
     protected boolean inhibitSubmitAction = false;
 
-//    public static BooleanProperty isSpeaking;
-//    public static ArrayList<BooleanProperty> isSpeaking;
-//    public static int indexOfSpeaking = 0;
-
     @FXML
     private Label mainLabel, promptLabel, userScoreLabel;
     @FXML
@@ -56,66 +49,27 @@ abstract public class ModuleBaseController implements Initializable {
 
     /**
      * Call this method when initialize the fxml and set up necessary stuff
-     *      Set isSpeaking listener
+     *      Set numOfRunningFestival listener
      *      Format the speed slider
      */
     protected void settingUp() {
 
-        // Set listener for isSpeaking
-        // When it is speaking, disable buttons (playback, check and skip buttons)
+        // Set listener for numOfRunningFestival
+        // When there are running festivals, disable buttons (playback, check and skip buttons)
+        numOfRunningFestival = new SimpleIntegerProperty(0);
+        numOfRunningFestival.addListener((observableValue, oldN, newN) -> {
 
-//        isSpeaking = new SimpleBooleanProperty();
-//        isSpeaking.addListener((observableValue, old, newValue) -> {
-//            playbackBtn.setDisable(newValue);
-//            checkBtn.setDisable(newValue);
-//            skipBtn.setDisable(newValue);
-//            inhibitSubmitAction = newValue;
-//        });
+            // if there are no running festival, then false
+            boolean isSpeaking = (numOfRunningFestival.get() != 0);
 
+            playbackBtn.setDisable(isSpeaking);
+            checkBtn.setDisable(isSpeaking);
+            skipBtn.setDisable(isSpeaking);
+            inhibitSubmitAction = isSpeaking;
 
-//        listOfFestival = new ArrayList<>();
-//        for (int i = 0; i < 3; i++) {
-//            listOfFestival.add(new SimpleBooleanProperty(false));
-//
-//            listOfFestival.get(i).addListener((observableValue, old, newValue) -> {
-//
-//                boolean isStillSpeaking = (indexOfRunningFestival.size() != 0);
-////                for (BooleanProperty eachSpeaking : listOfFestival) {
-////                    System.out.print(eachSpeaking.get());
-////                    isStillSpeaking = isStillSpeaking || eachSpeaking.get();
-////                }
-////                System.out.println();
-//
-//                playbackBtn.setDisable(isStillSpeaking);
-//                checkBtn.setDisable(isStillSpeaking);
-//                skipBtn.setDisable(isStillSpeaking);
-//                inhibitSubmitAction = isStillSpeaking;
-//
-//                // cannot press 'skip' when showing the answer
-//                if (Module.moduleTypeEqualsTo(ModuleType.PRACTISE) && (quiz.resultEqualsTo(Result.SKIPPED) || quiz.resultEqualsTo(Result.FAILED))) {
-//                    skipBtn.setDisable(true);
-//                }
-//
-//
-//            });
-//        }
-
-        numOfRunning = new SimpleIntegerProperty(0);
-        numOfRunning.addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
-                boolean isStillSpeaking = (numOfRunning.get() != 0);
-                System.out.println(numOfRunning.get());
-
-                playbackBtn.setDisable(isStillSpeaking);
-                checkBtn.setDisable(isStillSpeaking);
-                skipBtn.setDisable(isStillSpeaking);
-                inhibitSubmitAction = isStillSpeaking;
-
-                // cannot press 'skip' when showing the answer
-                if (Module.moduleTypeEqualsTo(ModuleType.PRACTISE) && (quiz.resultEqualsTo(Result.SKIPPED) || quiz.resultEqualsTo(Result.FAILED))) {
-                    skipBtn.setDisable(true);
-                }
+            // only disable 'skip' if the user got the word wrong (Failed and Skipped) in Practise module
+            if (isWrongInPractiseModule()) {
+                skipBtn.setDisable(true);
             }
         });
 
@@ -203,6 +157,15 @@ abstract public class ModuleBaseController implements Initializable {
     protected void skipWord() {
         quiz.setResult(Result.SKIPPED);
         checkSpelling();
+    }
+
+    /**
+     * Helper method that tells whether the user gets it wrong in Practise module
+     * @return True if wrong in Practise module, otherwise false
+     */
+    private boolean isWrongInPractiseModule() {
+        return Module.moduleTypeEqualsTo(ModuleType.PRACTISE)
+                && (quiz.resultEqualsTo(Result.FAILED) || quiz.resultEqualsTo(Result.SKIPPED));
     }
 
     /**

@@ -1,7 +1,6 @@
 package spellingQuizUtil;
 
 import fileManager.FileControl;
-import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
 
 import java.io.IOException;
@@ -15,10 +14,7 @@ import static fileManager.FileManager.FESTIVAL_CMD_FILE;
 public class FestivalSpeech {
     private static double speechSpeed;
 
-    public  static IntegerProperty numOfRunning;
-//    public static int indexOfFestival = 0;
-//    public static ArrayList<Integer> indexOfRunningFestival = new ArrayList<>();
-//    public static ArrayList<BooleanProperty> listOfFestival;
+    public static IntegerProperty numOfRunningFestival;
 
     /**
      * Calculate the speech speed that festival will understand and set it
@@ -58,6 +54,7 @@ public class FestivalSpeech {
                 festivalCommands.add("(SayText \"" + maoriMessage.replace('-', ' ') + "\")");  // remove '-'
             }
 
+
             // write the festival commands into the scheme file
             FileControl.writeFile(FESTIVAL_CMD_FILE, festivalCommands);
 
@@ -66,11 +63,10 @@ public class FestivalSpeech {
             ProcessBuilder pb = new ProcessBuilder("bash", "-c", command);
             Process process = pb.start();
 
-            // when set isSpeaking to true, disable all the input related buttons
-//            indexOfRunningFestival.add(indexOfFestival++);
-//            indexOfFestival = indexOfFestival % 3;
-//            listOfFestival.get(indexOfRunningFestival.get(indexOfRunningFestival.size()-1)).set(true);
-            numOfRunning.set(numOfRunning.get() + 1);
+
+            // update the number of running festival
+            // disable all the input related buttons if there are running festivals
+            numOfRunningFestival.set(numOfRunningFestival.get() + 1);
             new Thread(() -> {
                 try {
                     process.waitFor();  // wait for the festival is done
@@ -78,8 +74,7 @@ public class FestivalSpeech {
                     e.printStackTrace();
                 }
 
-                numOfRunning.set(numOfRunning.get() - 1);
-//                listOfFestival.get(indexOfRunningFestival.remove(0)).set(false);  // un-disable the buttons after festival is done
+                numOfRunningFestival.set(numOfRunningFestival.get() - 1);
 
             }).start();
 
