@@ -5,6 +5,7 @@ import fileManager.FileControl;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import static controllers.ModuleBaseController.indexOfSpeaking;
 import static fileManager.FileManager.FESTIVAL_CMD_FILE;
 import static controllers.ModuleBaseController.isSpeaking;
 
@@ -13,7 +14,7 @@ import static controllers.ModuleBaseController.isSpeaking;
  */
 public class FestivalSpeech {
     private static double speechSpeed;
-
+    private static ArrayList<Integer> currentIndexOfSpeaking = new ArrayList<>();
 
     /**
      * Calculate the speech speed that festival will understand and set it
@@ -62,7 +63,9 @@ public class FestivalSpeech {
             Process process = pb.start();
 
             // when set isSpeaking to true, disable all the input related buttons
-            isSpeaking.set(true);
+            currentIndexOfSpeaking.add(indexOfSpeaking++);
+            indexOfSpeaking = indexOfSpeaking % 3;
+            isSpeaking.get(currentIndexOfSpeaking.get(currentIndexOfSpeaking.size()-1)).set(true);
             new Thread(() -> {
                 try {
                     process.waitFor();  // wait for the festival is done
@@ -70,7 +73,7 @@ public class FestivalSpeech {
                     e.printStackTrace();
                 }
 
-                isSpeaking.set(false);  // un-disable the buttons after festival is done
+                isSpeaking.get(currentIndexOfSpeaking.remove(0)).set(false);  // un-disable the buttons after festival is done
 
             }).start();
 

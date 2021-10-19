@@ -17,6 +17,8 @@ import javafx.util.StringConverter;
 import spellingQuiz.Module;
 import spellingQuizUtil.*;
 
+import java.util.ArrayList;
+
 /**
  * This class contains all the common display (GUI) functionalities of both Games and Practise Module
  */
@@ -31,7 +33,10 @@ abstract public class ModuleBaseController implements Initializable {
     protected Module quiz;
     protected boolean inhibitSubmitAction = false;
 
-    public static BooleanProperty isSpeaking;
+//    public static BooleanProperty isSpeaking;
+    public static ArrayList<BooleanProperty> isSpeaking;
+    public static int indexOfSpeaking = 0;
+    public static ArrayList<Boolean> speakingFestival;
 
     @FXML
     private Label mainLabel, promptLabel, userScoreLabel;
@@ -54,14 +59,36 @@ abstract public class ModuleBaseController implements Initializable {
 
         // Set listener for isSpeaking
         // When it is speaking, disable buttons (playback, check and skip buttons)
-        isSpeaking = new SimpleBooleanProperty();
-        isSpeaking.addListener((observableValue, old, newValue) -> {
-            playbackBtn.setDisable(newValue);
-            checkBtn.setDisable(newValue);
-            skipBtn.setDisable(newValue);
-            inhibitSubmitAction = newValue;
-        });
-        isSpeaking.set(true);
+
+//        isSpeaking = new SimpleBooleanProperty();
+//        isSpeaking.addListener((observableValue, old, newValue) -> {
+//            playbackBtn.setDisable(newValue);
+//            checkBtn.setDisable(newValue);
+//            skipBtn.setDisable(newValue);
+//            inhibitSubmitAction = newValue;
+//        });
+
+
+        isSpeaking = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            isSpeaking.add(new SimpleBooleanProperty(false));
+
+            isSpeaking.get(i).addListener((observableValue, old, newValue) -> {
+
+                boolean isStillSpeaking = false;
+                for (BooleanProperty eachSpeaking : isSpeaking) {
+                    System.out.print(eachSpeaking.get());
+                    isStillSpeaking = isStillSpeaking || eachSpeaking.get();
+                }
+                System.out.println();
+
+                playbackBtn.setDisable(isStillSpeaking);
+                checkBtn.setDisable(isStillSpeaking);
+                skipBtn.setDisable(isStillSpeaking);
+                inhibitSubmitAction = isStillSpeaking;
+
+            });
+        }
 
         // format the speed slider
         speechSpeed.setLabelFormatter(new StringConverter<>() {
