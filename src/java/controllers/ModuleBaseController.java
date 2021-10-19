@@ -17,7 +17,7 @@ import javafx.util.StringConverter;
 import spellingQuiz.Module;
 import spellingQuizUtil.*;
 
-import static spellingQuizUtil.FestivalSpeech.isSpeaking;
+import static spellingQuizUtil.FestivalSpeech.listOfFestival;
 
 import java.util.ArrayList;
 
@@ -70,14 +70,14 @@ abstract public class ModuleBaseController implements Initializable {
 //        });
 
 
-        isSpeaking = new ArrayList<>();
+        listOfFestival = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
-            isSpeaking.add(new SimpleBooleanProperty(false));
+            listOfFestival.add(new SimpleBooleanProperty(false));
 
-            isSpeaking.get(i).addListener((observableValue, old, newValue) -> {
+            listOfFestival.get(i).addListener((observableValue, old, newValue) -> {
 
                 boolean isStillSpeaking = false;
-                for (BooleanProperty eachSpeaking : isSpeaking) {
+                for (BooleanProperty eachSpeaking : listOfFestival) {
                     System.out.print(eachSpeaking.get());
                     isStillSpeaking = isStillSpeaking || eachSpeaking.get();
                 }

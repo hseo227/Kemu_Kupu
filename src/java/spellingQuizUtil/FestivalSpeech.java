@@ -13,9 +13,9 @@ import static fileManager.FileManager.FESTIVAL_CMD_FILE;
  */
 public class FestivalSpeech {
     private static double speechSpeed;
-    public static ArrayList<Integer> currentIndexOfSpeaking = new ArrayList<>();
-    public static ArrayList<BooleanProperty> isSpeaking;
-    public static int indexOfSpeaking = 0;
+    public static int indexOfFestival = 0;
+    public static ArrayList<Integer> indexOfRunningFestival = new ArrayList<>();
+    public static ArrayList<BooleanProperty> listOfFestival;
 
     /**
      * Calculate the speech speed that festival will understand and set it
@@ -64,9 +64,9 @@ public class FestivalSpeech {
             Process process = pb.start();
 
             // when set isSpeaking to true, disable all the input related buttons
-            currentIndexOfSpeaking.add(indexOfSpeaking++);
-            indexOfSpeaking = indexOfSpeaking % 3;
-            isSpeaking.get(currentIndexOfSpeaking.get(currentIndexOfSpeaking.size()-1)).set(true);
+            indexOfRunningFestival.add(indexOfFestival++);
+            indexOfFestival = indexOfFestival % 3;
+            listOfFestival.get(indexOfRunningFestival.get(indexOfRunningFestival.size()-1)).set(true);
             new Thread(() -> {
                 try {
                     process.waitFor();  // wait for the festival is done
@@ -74,7 +74,7 @@ public class FestivalSpeech {
                     e.printStackTrace();
                 }
 
-                isSpeaking.get(currentIndexOfSpeaking.remove(0)).set(false);  // un-disable the buttons after festival is done
+                listOfFestival.get(indexOfRunningFestival.remove(0)).set(false);  // un-disable the buttons after festival is done
 
             }).start();
 
