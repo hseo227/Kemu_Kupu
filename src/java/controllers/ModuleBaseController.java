@@ -57,10 +57,10 @@ abstract public class ModuleBaseController implements Initializable {
         // Set listener for numOfRunningFestival
         // When there are running festivals, disable buttons (playback, check and skip buttons)
         numOfRunningFestival = new SimpleIntegerProperty(0);
-        numOfRunningFestival.addListener((observableValue, oldN, newN) -> {
+        numOfRunningFestival.addListener((observableValue, oldV, newValue) -> {
 
             // if there are no running festival, then false
-            boolean isSpeaking = (numOfRunningFestival.get() != 0);
+            boolean isSpeaking = ((int) newValue != 0);
 
             playbackBtn.setDisable(isSpeaking);
             checkBtn.setDisable(isSpeaking);
