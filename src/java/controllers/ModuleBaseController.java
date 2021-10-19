@@ -3,6 +3,9 @@ package controllers;
 import javafx.animation.PauseTransition;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,7 +20,7 @@ import javafx.util.StringConverter;
 import spellingQuiz.Module;
 import spellingQuizUtil.*;
 
-import static spellingQuizUtil.FestivalSpeech.listOfFestival;
+import static spellingQuizUtil.FestivalSpeech.*;
 
 import java.util.ArrayList;
 
@@ -70,18 +73,39 @@ abstract public class ModuleBaseController implements Initializable {
 //        });
 
 
-        listOfFestival = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            listOfFestival.add(new SimpleBooleanProperty(false));
+//        listOfFestival = new ArrayList<>();
+//        for (int i = 0; i < 3; i++) {
+//            listOfFestival.add(new SimpleBooleanProperty(false));
+//
+//            listOfFestival.get(i).addListener((observableValue, old, newValue) -> {
+//
+//                boolean isStillSpeaking = (indexOfRunningFestival.size() != 0);
+////                for (BooleanProperty eachSpeaking : listOfFestival) {
+////                    System.out.print(eachSpeaking.get());
+////                    isStillSpeaking = isStillSpeaking || eachSpeaking.get();
+////                }
+////                System.out.println();
+//
+//                playbackBtn.setDisable(isStillSpeaking);
+//                checkBtn.setDisable(isStillSpeaking);
+//                skipBtn.setDisable(isStillSpeaking);
+//                inhibitSubmitAction = isStillSpeaking;
+//
+//                // cannot press 'skip' when showing the answer
+//                if (Module.moduleTypeEqualsTo(ModuleType.PRACTISE) && (quiz.resultEqualsTo(Result.SKIPPED) || quiz.resultEqualsTo(Result.FAILED))) {
+//                    skipBtn.setDisable(true);
+//                }
+//
+//
+//            });
+//        }
 
-            listOfFestival.get(i).addListener((observableValue, old, newValue) -> {
-
-                boolean isStillSpeaking = false;
-                for (BooleanProperty eachSpeaking : listOfFestival) {
-                    System.out.print(eachSpeaking.get());
-                    isStillSpeaking = isStillSpeaking || eachSpeaking.get();
-                }
-                System.out.println();
+        numOfRunning = new SimpleIntegerProperty(0);
+        numOfRunning.addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
+                boolean isStillSpeaking = (numOfRunning.get() != 0);
+                System.out.println(numOfRunning.get());
 
                 playbackBtn.setDisable(isStillSpeaking);
                 checkBtn.setDisable(isStillSpeaking);
@@ -89,13 +113,11 @@ abstract public class ModuleBaseController implements Initializable {
                 inhibitSubmitAction = isStillSpeaking;
 
                 // cannot press 'skip' when showing the answer
-                if (Module.moduleTypeEqualsTo(ModuleType.PRACTISE) && quiz.resultEqualsTo(Result.SKIPPED)) {
+                if (Module.moduleTypeEqualsTo(ModuleType.PRACTISE) && (quiz.resultEqualsTo(Result.SKIPPED) || quiz.resultEqualsTo(Result.FAILED))) {
                     skipBtn.setDisable(true);
                 }
-
-
-            });
-        }
+            }
+        });
 
         // format the speed slider
         speechSpeed.setLabelFormatter(new StringConverter<>() {
