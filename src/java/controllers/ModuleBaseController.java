@@ -1,6 +1,7 @@
 package controllers;
 
 import javafx.animation.PauseTransition;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,10 +12,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.util.Duration;
+import javafx.util.StringConverter;
 import spellingQuiz.Module;
 import spellingQuizUtil.FestivalSpeech;
+import spellingQuizUtil.ModuleType;
 import spellingQuizUtil.Result;
 import spellingQuizUtil.Score;
+
+import static spellingQuizUtil.FestivalSpeech.numOfRunningFestival;
 
 /**
  * This class contains all the common display (GUI) functionalities of both Games and Practise Module
@@ -41,6 +46,54 @@ abstract public class ModuleBaseController implements Initializable {
     @FXML
     private VBox inputVBox;
 
+
+    /**
+     * Call this method when initialize the fxml and set up necessary stuff
+     *      Set numOfRunningFestival listener
+     *      Format the speed slider
+     */
+    protected void settingUp() {
+
+        // Set listener for numOfRunningFestival
+        // When there are running festivals, disable buttons (playback, check and skip buttons)
+        numOfRunningFestival = new SimpleIntegerProperty(0);
+        numOfRunningFestival.addListener((observableValue, oldN, newN) -> {
+
+            // if there are no running festival, then false
+            boolean isSpeaking = (numOfRunningFestival.get() != 0);
+
+            playbackBtn.setDisable(isSpeaking);
+            checkBtn.setDisable(isSpeaking);
+            skipBtn.setDisable(isSpeaking);
+            inhibitSubmitAction = isSpeaking;
+
+            // only disable 'skip' if the user got the word wrong (Failed and Skipped) in Practise module
+            if (isWrongInPractiseModule()) {
+                skipBtn.setDisable(true);
+            }
+        });
+
+        // format the speed slider
+        speechSpeed.setLabelFormatter(new StringConverter<>() {
+            @Override
+            public String toString(Double n) {
+                if (n == speechSpeed.getMin()) {  // slowest speed
+                    return "Slow";
+                } else if (n == (speechSpeed.getMin() + speechSpeed.getMax()) / 2) {  // normal speed, in the middle
+                    return "Default";
+                } else if (n == speechSpeed.getMax()) {  // fastest speed
+                    return "Fast";
+                }
+
+                return null;
+            }
+
+            @Override
+            public Double fromString(String s) {
+                return null;
+            }
+        });
+    }
 
     /**
      * Different module start the quiz differently.
@@ -71,7 +124,6 @@ abstract public class ModuleBaseController implements Initializable {
     protected void newQuestion() {
         inputField.clear();
         inputField.requestFocus();
-        disableButtonsWhenSpeaking();
         FestivalSpeech.setSpeechSpeed((int) speechSpeed.getValue());  // set up speech speed
 
         // if the quiz is not finished, continue the game (return true), otherwise false
@@ -91,7 +143,6 @@ abstract public class ModuleBaseController implements Initializable {
     protected void speakAgain() {
         inputField.requestFocus();
         inputField.positionCaret(inputField.getText().length());
-        disableButtonsWhenSpeaking();
 
         // set up speech speed and then speak
         FestivalSpeech.setSpeechSpeed((int) speechSpeed.getValue());
@@ -106,6 +157,15 @@ abstract public class ModuleBaseController implements Initializable {
     protected void skipWord() {
         quiz.setResult(Result.SKIPPED);
         checkSpelling();
+    }
+
+    /**
+     * Helper method that tells whether the user gets it wrong in Practise module
+     * @return True if wrong in Practise module, otherwise false
+     */
+    private boolean isWrongInPractiseModule() {
+        return Module.moduleTypeEqualsTo(ModuleType.PRACTISE)
+                && (quiz.resultEqualsTo(Result.FAILED) || quiz.resultEqualsTo(Result.SKIPPED));
     }
 
     /**
@@ -128,25 +188,6 @@ abstract public class ModuleBaseController implements Initializable {
             inputVBox.setDisable(false);
 
             newQuestion();
-        });
-        pause.play();
-    }
-
-    /**
-     * Disable playback, check and skip buttons for 2 second when the festival starts running
-     * It is to avoid the user spam those buttons
-     */
-    protected void disableButtonsWhenSpeaking() {
-        playbackBtn.setDisable(true);
-        checkBtn.setDisable(true);
-        skipBtn.setDisable(true);
-        inhibitSubmitAction = true;
-
-        pause.setOnFinished(e -> {
-            playbackBtn.setDisable(false);
-            checkBtn.setDisable(false);
-            skipBtn.setDisable(false);
-            inhibitSubmitAction = false;
         });
         pause.play();
     }

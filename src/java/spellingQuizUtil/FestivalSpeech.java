@@ -1,6 +1,7 @@
 package spellingQuizUtil;
 
 import fileManager.FileControl;
+import javafx.beans.property.IntegerProperty;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import static fileManager.FileManager.FESTIVAL_CMD_FILE;
 public class FestivalSpeech {
     private static double speechSpeed;
 
+    public static IntegerProperty numOfRunningFestival;
 
     /**
      * Calculate the speech speed that festival will understand and set it
@@ -52,14 +54,29 @@ public class FestivalSpeech {
                 festivalCommands.add("(SayText \"" + maoriMessage.replace('-', ' ') + "\")");  // remove '-'
             }
 
+
             // write the festival commands into the scheme file
             FileControl.writeFile(FESTIVAL_CMD_FILE, festivalCommands);
 
-            // shut down all previous festival and then speak/run festival scheme file
-            shutDownAllFestival();
+            // speak/run festival scheme file
             String command = "festival -b " + FESTIVAL_CMD_FILE;
             ProcessBuilder pb = new ProcessBuilder("bash", "-c", command);
-            pb.start();
+            Process process = pb.start();
+
+
+            // update the number of running festival
+            // disable all the input related buttons if there are running festivals
+            numOfRunningFestival.set(numOfRunningFestival.get() + 1);
+            new Thread(() -> {
+                try {
+                    process.waitFor();  // wait for the festival is done
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                numOfRunningFestival.set(numOfRunningFestival.get() - 1);
+
+            }).start();
 
         } catch (IOException e) {
             System.err.println("Failed to run linux command that speaks out the scheme file");
@@ -73,10 +90,9 @@ public class FestivalSpeech {
         try {
             String command = "killall festival; killall aplay";
             ProcessBuilder pb = new ProcessBuilder("bash", "-c", command);
-            Process process = pb.start();
-            process.waitFor();
+            pb.start();
 
-        } catch (Exception e) {
+        } catch (IOException e) {
             System.err.println("Failed to run linux command that stops the festival");
         }
     }
