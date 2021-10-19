@@ -1,20 +1,21 @@
 package spellingQuizUtil;
 
 import fileManager.FileControl;
+import javafx.beans.property.BooleanProperty;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static controllers.ModuleBaseController.indexOfSpeaking;
 import static fileManager.FileManager.FESTIVAL_CMD_FILE;
-import static controllers.ModuleBaseController.isSpeaking;
 
 /**
  * This class contains all the methods that are related to festival tts
  */
 public class FestivalSpeech {
     private static double speechSpeed;
-    private static ArrayList<Integer> currentIndexOfSpeaking = new ArrayList<>();
+    public static ArrayList<Integer> currentIndexOfSpeaking = new ArrayList<>();
+    public static ArrayList<BooleanProperty> isSpeaking;
+    public static int indexOfSpeaking = 0;
 
     /**
      * Calculate the speech speed that festival will understand and set it

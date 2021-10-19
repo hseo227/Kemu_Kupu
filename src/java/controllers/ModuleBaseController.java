@@ -17,6 +17,8 @@ import javafx.util.StringConverter;
 import spellingQuiz.Module;
 import spellingQuizUtil.*;
 
+import static spellingQuizUtil.FestivalSpeech.isSpeaking;
+
 import java.util.ArrayList;
 
 /**
@@ -34,9 +36,8 @@ abstract public class ModuleBaseController implements Initializable {
     protected boolean inhibitSubmitAction = false;
 
 //    public static BooleanProperty isSpeaking;
-    public static ArrayList<BooleanProperty> isSpeaking;
-    public static int indexOfSpeaking = 0;
-    public static ArrayList<Boolean> speakingFestival;
+//    public static ArrayList<BooleanProperty> isSpeaking;
+//    public static int indexOfSpeaking = 0;
 
     @FXML
     private Label mainLabel, promptLabel, userScoreLabel;
