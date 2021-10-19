@@ -221,8 +221,8 @@ abstract public class ModuleBaseController implements Initializable {
     /**
      * The method is called everytime the user hit a key in the text field
      * It is to check macron character short cut
-     * Shortcut: a vowel followed by '-'
-     * E.g. "a-" -> "ā"
+     * Shortcut: a vowel followed by '='
+     * E.g. "a=" -> "ā"
      */
     @FXML
     protected void checkMacronShortCut() {
@@ -230,11 +230,11 @@ abstract public class ModuleBaseController implements Initializable {
         String change;
 
         // check each dash in the word
-        for (int indexOfDash = word.indexOf("-"); indexOfDash >= 0; indexOfDash = word.indexOf("-", indexOfDash + 1)) {
-            // if '-' is at first index, ignore it
-            if (indexOfDash != 0) {
-                // check if the character before '-' is a vowel
-                switch (word.charAt(indexOfDash - 1)) {
+        for (int indexOfEqual = word.indexOf("="); indexOfEqual >= 0; indexOfEqual = word.indexOf("=", indexOfEqual + 1)) {
+            // if '=' is at first index, ignore it
+            if (indexOfEqual != 0) {
+                // check if the character before '=' is a vowel
+                switch (word.charAt(indexOfEqual - 1)) {
                     case 'a':
                         change = "ā";
                         break;
@@ -254,8 +254,8 @@ abstract public class ModuleBaseController implements Initializable {
                         continue;
                 }
 
-                // replace the vowel and '-' with the macron character
-                inputField.replaceText(indexOfDash - 1, indexOfDash + 1, change);
+                // replace the vowel and '=' with the macron character
+                inputField.replaceText(indexOfEqual - 1, indexOfEqual + 1, change);
             }
         }
     }
