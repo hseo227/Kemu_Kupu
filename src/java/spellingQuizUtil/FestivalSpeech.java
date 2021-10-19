@@ -1,12 +1,13 @@
 package spellingQuizUtil;
 
 import fileManager.FileControl;
-import javafx.beans.property.IntegerProperty;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
 import static fileManager.FileManager.FESTIVAL_CMD_FILE;
+import static controllers.ModuleBaseController.festivalIsFinished;
+import static controllers.ModuleBaseController.festivalStartsRunning;
 
 /**
  * This class contains all the methods that are related to festival tts
@@ -14,7 +15,6 @@ import static fileManager.FileManager.FESTIVAL_CMD_FILE;
 public class FestivalSpeech {
     private static double speechSpeed;
 
-    public static IntegerProperty numOfRunningFestival;
 
     /**
      * Calculate the speech speed that festival will understand and set it
@@ -66,15 +66,14 @@ public class FestivalSpeech {
 
             // update the number of running festival
             // disable all the input related buttons if there are running festivals
-            numOfRunningFestival.set(numOfRunningFestival.get() + 1);
+            festivalStartsRunning();
             new Thread(() -> {
                 try {
                     process.waitFor();  // wait for the festival is done
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    System.err.println("There is a problem when waiting for the festival to finish");
                 }
-
-                numOfRunningFestival.set(numOfRunningFestival.get() - 1);
+                festivalIsFinished();
 
             }).start();
 

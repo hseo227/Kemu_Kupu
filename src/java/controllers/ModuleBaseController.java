@@ -1,6 +1,7 @@
 package controllers;
 
 import javafx.animation.PauseTransition;
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,8 +20,6 @@ import spellingQuizUtil.ModuleType;
 import spellingQuizUtil.Result;
 import spellingQuizUtil.Score;
 
-import static spellingQuizUtil.FestivalSpeech.numOfRunningFestival;
-
 /**
  * This class contains all the common display (GUI) functionalities of both Games and Practise Module
  */
@@ -34,6 +33,8 @@ abstract public class ModuleBaseController implements Initializable {
 
     protected Module quiz;
     protected boolean inhibitSubmitAction = false;
+
+    private static IntegerProperty numOfRunningFestival;
 
     @FXML
     private Label mainLabel, promptLabel, userScoreLabel;
@@ -190,6 +191,20 @@ abstract public class ModuleBaseController implements Initializable {
             newQuestion();
         });
         pause.play();
+    }
+
+    /**
+     * Helper method of Increasing number of running festival
+     */
+    public static void festivalStartsRunning() {
+        numOfRunningFestival.set(numOfRunningFestival.get() + 1);
+    }
+
+    /**
+     * Helper method of Decreasing number of running festival
+     */
+    public static void festivalIsFinished() {
+        numOfRunningFestival.set(numOfRunningFestival.get() - 1);
     }
 
     /**
