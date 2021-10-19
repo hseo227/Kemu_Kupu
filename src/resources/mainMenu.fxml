@@ -89,7 +89,7 @@
       </VBox>
       <Button layoutX="1192.0" layoutY="588.0" mnemonicParsing="false" onAction="#quit" style="-fx-background-color: transparent;">
          <graphic>
-            <ImageView fitHeight="80.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="50.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@media/quit.png" />
                </image>
