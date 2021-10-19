@@ -87,6 +87,12 @@ abstract public class ModuleBaseController implements Initializable {
                 skipBtn.setDisable(isStillSpeaking);
                 inhibitSubmitAction = isStillSpeaking;
 
+                // cannot press 'skip' when showing the answer
+                if (Module.moduleTypeEqualsTo(ModuleType.PRACTISE) && quiz.resultEqualsTo(Result.SKIPPED)) {
+                    skipBtn.setDisable(true);
+                }
+
+
             });
         }
 

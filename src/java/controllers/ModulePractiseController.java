@@ -113,7 +113,6 @@ public class ModulePractiseController extends ModuleBaseController {
             // incorrect spelling (Failed) OR the word is skipped
             } else {
                 textColour = RED;
-                skipBtn.setDisable(true);  // cannot press 'skip' when showing the answer
             }
 
         // incorrect spelling (1st attempt)
