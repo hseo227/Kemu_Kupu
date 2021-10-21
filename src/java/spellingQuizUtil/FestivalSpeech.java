@@ -1,19 +1,19 @@
 package spellingQuizUtil;
 
 import fileManager.FileControl;
+import javafx.beans.property.IntegerProperty;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
 import static fileManager.FileManager.FESTIVAL_CMD_FILE;
-import static controllers.ModuleBaseController.festivalIsFinished;
-import static controllers.ModuleBaseController.festivalStartsRunning;
 
 /**
  * This class contains all the methods that are related to festival tts
  */
 public class FestivalSpeech {
     private static double speechSpeed;
+    public static IntegerProperty numOfRunningFestival;
 
 
     /**
@@ -94,5 +94,19 @@ public class FestivalSpeech {
         } catch (IOException e) {
             System.err.println("Failed to run linux command that stops the festival");
         }
+    }
+
+    /**
+     * Helper method of Increasing number of running festival
+     */
+    private static void festivalStartsRunning() {
+        numOfRunningFestival.set(numOfRunningFestival.get() + 1);
+    }
+
+    /**
+     * Helper method of Decreasing number of running festival
+     */
+    private static void festivalIsFinished() {
+        numOfRunningFestival.set(numOfRunningFestival.get() - 1);
     }
 }
