@@ -35,7 +35,7 @@ public class RewardScreenController implements Initializable {
     @FXML
     private Label userScoreLabel, practiseMod;
     @FXML
-    private Button leaderboardBtn, statsBtn;
+    private Button leaderboardBtn, statsBtn, clearBtn;
     @FXML
     private HBox gamesMod;
 
@@ -104,6 +104,15 @@ public class RewardScreenController implements Initializable {
             leaderboardBtn.setDisable(true);
             statsBtn.setDisable(false);
         }
+    }
+
+    /**
+     * Clear both the leaderboard table and the leaderboard file
+     */
+    @FXML
+    private void clearLeaderboard() {
+        leaderboardTable.getItems().clear();
+        FileControl.clearFile(LEADERBOARD_FILE);
     }
 
     /**

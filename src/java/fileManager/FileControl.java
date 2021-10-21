@@ -51,4 +51,19 @@ public class FileControl {
             System.err.println("Failed to write into " + fileName);
         }
     }
+
+    /**
+     * Clear the file by overwriting the contents with ""
+     * @param fileName The file that it is going to clear
+     */
+    public static void clearFile(String fileName) {
+        try {
+            PrintWriter writeFile = new PrintWriter(new FileWriter(fileName));
+            writeFile.write("");
+            writeFile.close();
+
+        } catch (IOException e) {
+            System.err.println("Failed to clear the file \"" + fileName + "\"");
+        }
+    }
 }

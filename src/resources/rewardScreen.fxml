@@ -179,5 +179,17 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
+	   <Button fx:id="clearBtn" layoutX="1000.0" layoutY="250.0" mnemonicParsing="false" onAction="#clearLeaderboard" text="Clear" visible="false">
+		   <cursor>
+			   <Cursor fx:constant="HAND" />
+		   </cursor>
+		   <tooltip>
+			   <Tooltip text="Clear the leaderboard">
+				   <font>
+					   <Font size="18.0" />
+				   </font>
+			   </Tooltip>
+		   </tooltip>
+	   </Button>
    </children>
 </AnchorPane>
