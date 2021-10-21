@@ -6,6 +6,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import spellingQuiz.ModulePractise;
 import spellingQuizUtil.FestivalSpeech;
@@ -33,6 +34,8 @@ public class ModulePractiseController extends ModuleBaseController {
     private ChoiceBox<Integer> numOfQCheckBox;
     @FXML
     private VBox startVBox, gameVBox;
+    @FXML
+    private HBox timeHBox;
 
 
     /**
@@ -65,6 +68,7 @@ public class ModulePractiseController extends ModuleBaseController {
         updateScore();
         startVBox.setVisible(false);
         gameVBox.setVisible(true);
+        timeHBox.setVisible(true);
         shortCutLabel.setVisible(true);
 
         newQuestion();
@@ -114,6 +118,8 @@ public class ModulePractiseController extends ModuleBaseController {
             } else {
                 textColour = RED;
             }
+
+            timeline.stop();
 
         // incorrect spelling (1st attempt)
         } else {

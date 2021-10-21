@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import spellingQuiz.ModuleGames;
 import spellingQuizUtil.FestivalSpeech;
@@ -26,6 +27,8 @@ public class ModuleGamesController extends ModuleBaseController {
     private Slider speechSpeed;
     @FXML
     private VBox startVBox, gameVBox;
+    @FXML
+    private HBox timeHBox;
 
 
     /**
@@ -49,6 +52,7 @@ public class ModuleGamesController extends ModuleBaseController {
         updateScore();
         startVBox.setVisible(false);
         gameVBox.setVisible(true);
+        timeHBox.setVisible(true);
         shortCutLabel.setVisible(true);
 
         newQuestion();
@@ -91,6 +95,7 @@ public class ModuleGamesController extends ModuleBaseController {
                 textColour = RED;
             }
 
+            timeline.stop();
             pauseBetweenEachQ();
 
         // incorrect spelling (1st attempt)

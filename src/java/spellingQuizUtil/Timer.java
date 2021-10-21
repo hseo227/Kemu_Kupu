@@ -19,7 +19,7 @@ public class Timer {
      *      To get the time taken in second -> (endTime - startTime) / 1000
      * @return The time has elapsed in second
      */
-    public static int end() {
+    public static int getTime() {
         return (int) ((System.currentTimeMillis() - startTime) / 1000);
     }
 }

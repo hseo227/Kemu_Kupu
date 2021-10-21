@@ -1,6 +1,8 @@
 package controllers;
 
+import javafx.animation.KeyFrame;
 import javafx.animation.PauseTransition;
+import javafx.animation.Timeline;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,6 +20,7 @@ import spellingQuizUtil.FestivalSpeech;
 import spellingQuizUtil.ModuleType;
 import spellingQuizUtil.Result;
 import spellingQuizUtil.Score;
+import spellingQuizUtil.Timer;
 
 import static spellingQuizUtil.FestivalSpeech.numOfRunningFestival;
 
@@ -34,10 +37,10 @@ abstract public class ModuleBaseController implements Initializable {
 
     protected Module quiz;
     protected boolean inhibitSubmitAction = false;
-
+    protected Timeline timeline;
 
     @FXML
-    private Label mainLabel, promptLabel, userScoreLabel;
+    private Label mainLabel, promptLabel, userScoreLabel, timeLabel;
     @FXML
     private TextField inputField;
     @FXML
@@ -50,10 +53,17 @@ abstract public class ModuleBaseController implements Initializable {
 
     /**
      * Call this method when initialize the fxml and set up necessary stuff
+     *      Set up the timeline - update the time label every second
      *      Set numOfRunningFestival listener
      *      Format the speed slider
      */
     protected void settingUp() {
+
+        // Set up the timeline
+        timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
+            timeLabel.setText(String.valueOf(Timer.getTime()));
+        }));
+        timeline.setCycleCount( Timeline.INDEFINITE );  // no time limit, so run forever
 
         // Set listener for numOfRunningFestival
         // When there are running festivals, disable buttons (playback, check and skip buttons)
@@ -123,6 +133,8 @@ abstract public class ModuleBaseController implements Initializable {
      * If the quiz is finished, it will take the user to the Reward Screen.
      */
     protected void newQuestion() {
+        timeline.play();
+        timeLabel.setText("0");
         inputField.clear();
         inputField.requestFocus();
         FestivalSpeech.setSpeechSpeed((int) speechSpeed.getValue());  // set up speech speed
