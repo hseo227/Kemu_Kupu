@@ -72,7 +72,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                            <tooltip>
-                              <Tooltip text="Click to playback">
+                              <Tooltip text="Click to play the word again">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
