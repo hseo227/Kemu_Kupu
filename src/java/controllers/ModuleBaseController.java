@@ -53,17 +53,18 @@ abstract public class ModuleBaseController implements Initializable {
 
     /**
      * Call this method when initialize the fxml and set up necessary stuff
-     *      Set up the timeline - update the time label every second
+     *      Set up the timeline
      *      Set numOfRunningFestival listener
      *      Format the speed slider
      */
     protected void settingUp() {
 
-        // Set up the timeline
-        timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
+        // Set up the timeline - update the time label constantly
+        timeline = new Timeline(new KeyFrame(Duration.millis(100), event -> {
             timeLabel.setText(String.valueOf(Timer.getTime()));
         }));
         timeline.setCycleCount( Timeline.INDEFINITE );  // no time limit, so run forever
+        timeline.play();
 
         // Set listener for numOfRunningFestival
         // When there are running festivals, disable buttons (playback, check and skip buttons)
@@ -133,8 +134,6 @@ abstract public class ModuleBaseController implements Initializable {
      * If the quiz is finished, it will take the user to the Reward Screen.
      */
     protected void newQuestion() {
-        timeline.play();
-        timeLabel.setText("0");
         inputField.clear();
         inputField.requestFocus();
         FestivalSpeech.setSpeechSpeed((int) speechSpeed.getValue());  // set up speech speed

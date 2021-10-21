@@ -119,8 +119,6 @@ public class ModulePractiseController extends ModuleBaseController {
                 textColour = RED;
             }
 
-            timeline.stop();
-
         // incorrect spelling (1st attempt)
         } else {
             textColour = RED;

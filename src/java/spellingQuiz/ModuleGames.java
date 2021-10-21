@@ -66,7 +66,7 @@ public class ModuleGames extends Module {
         }
 
         // add current word statistics
-        statistics.addStatistics(currentWord, getResult(), scoreIncreased, Timer.getTime());
+        statistics.addStatistics(currentWord, getResult(), scoreIncreased, Timer.stop());
     }
 
 }

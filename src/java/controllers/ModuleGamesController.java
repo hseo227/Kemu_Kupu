@@ -95,7 +95,6 @@ public class ModuleGamesController extends ModuleBaseController {
                 textColour = RED;
             }
 
-            timeline.stop();
             pauseBetweenEachQ();
 
         // incorrect spelling (1st attempt)
