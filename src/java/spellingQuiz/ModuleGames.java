@@ -48,6 +48,7 @@ public class ModuleGames extends Module {
 
         } else if (resultEqualsTo(Result.MASTERED)) {  // still 1st attempt, but incorrect
             setResult(Result.FAULTED);
+            setQuizState(QuizState.RUNNING);  // set the state to Running, because still on the same question
 
             // setting up the labels' text and speak out the message
             mainLabelText = tryAgainMessage.getEncourageMsg();

@@ -16,11 +16,7 @@ import javafx.scene.text.Font;
 import javafx.util.Duration;
 import javafx.util.StringConverter;
 import spellingQuiz.Module;
-import spellingQuizUtil.FestivalSpeech;
-import spellingQuizUtil.ModuleType;
-import spellingQuizUtil.Result;
-import spellingQuizUtil.Score;
-import spellingQuizUtil.Timer;
+import spellingQuizUtil.*;
 
 import static spellingQuizUtil.FestivalSpeech.numOfRunningFestival;
 
@@ -82,6 +78,11 @@ abstract public class ModuleBaseController implements Initializable {
             // only disable 'skip' if the user got the word wrong (Failed and Skipped) in Practise module
             if (isWrongInPractiseModule()) {
                 skipBtn.setDisable(true);
+            }
+
+            // if it started a new question after the festival is finished, then starts the timer
+            if (quiz.quizStateEqualsTo(QuizState.JUST_STARTED)) {
+                Timer.start();
             }
         });
 

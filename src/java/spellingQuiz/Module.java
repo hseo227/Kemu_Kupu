@@ -57,7 +57,6 @@ public abstract class Module {
             return false;
         }
 
-        Timer.start();
         setQuizState(QuizState.RUNNING);  // now set the state to running
         setResult(Result.MASTERED);  // set original result to Mastered
         currentIndex++;
