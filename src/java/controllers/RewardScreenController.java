@@ -97,10 +97,12 @@ public class RewardScreenController implements Initializable {
     private void switchTable(ActionEvent event) {
         if (((Button) event.getSource()).getId().equals("statsBtn")) {
             leaderboardTable.setVisible(false);
+            clearBtn.setVisible(false);
             leaderboardBtn.setDisable(false);
             statsBtn.setDisable(true);
         } else {
             leaderboardTable.setVisible(true);
+            clearBtn.setVisible(true);
             leaderboardBtn.setDisable(true);
             statsBtn.setDisable(false);
         }
