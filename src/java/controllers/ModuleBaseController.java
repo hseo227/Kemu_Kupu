@@ -16,6 +16,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.util.Duration;
 import javafx.util.StringConverter;
+import controllers.commonControllers.CommonControllers;
 import spellingQuiz.Module;
 import spellingQuizUtil.*;
 
@@ -24,7 +25,7 @@ import static spellingQuizUtil.FestivalSpeech.numOfRunningFestival;
 /**
  * This class contains all the common display (GUI) functionalities of both Games and Practise Module
  */
-abstract public class ModuleBaseController implements Initializable {
+abstract public class ModuleBaseController extends CommonControllers implements Initializable {
     protected final static String WHITE = "#FFF";
     protected final static String GREEN = "#00A804";
     protected final static String RED = "#FF2715";

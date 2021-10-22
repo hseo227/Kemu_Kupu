@@ -6,6 +6,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import controllers.commonControllers.CommonControllers;
 import spellingQuiz.Module;
 import spellingQuizUtil.ModuleType;
 import spellingQuizUtil.Words;
@@ -16,7 +17,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class TopicListController implements Initializable {
+public class TopicListController extends CommonControllers implements Initializable {
     private final String GREEN = "#7CFC00";
     private final String YELLOW = "#EEDC82";
     private final String BLUE = "#0015C3";

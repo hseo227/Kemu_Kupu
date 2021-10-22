@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.util.Duration;
+import controllers.commonControllers.CommonControllers;
 import spellingQuiz.Module;
 import spellingQuizUtil.ModuleType;
 import spellingQuizUtil.Score;
@@ -22,7 +23,7 @@ import java.util.ResourceBundle;
 
 import static fileManager.FileManager.LEADERBOARD_FILE;
 
-public class RewardScreenController implements Initializable {
+public class RewardScreenController extends CommonControllers implements Initializable {
     private final String GREEN = "#7CFC00";
     private final String YELLOW = "#EEDC82";
     private final String RED = "#FA8072";

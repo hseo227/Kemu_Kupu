@@ -2,10 +2,11 @@ package controllers;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import controllers.commonControllers.CommonControllers;
 import spellingQuiz.Module;
 import spellingQuizUtil.ModuleType;
 
-public class MainMenuController {
+public class MainMenuController extends CommonControllers {
 
     /**
      * Load Practise Module
