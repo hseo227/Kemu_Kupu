@@ -3,6 +3,7 @@ package controllers;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import spellingQuiz.Module;
@@ -16,6 +17,10 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class TopicListController implements Initializable {
+    private final String GREEN = "#7CFC00";
+    private final String YELLOW = "#EEDC82";
+    private final String BLUE = "#0015C3";
+
     private final ArrayList<Topic> topicList = new ArrayList<>();
 
     @FXML
@@ -41,6 +46,24 @@ public class TopicListController implements Initializable {
             // setting up the table and the column
             topicListColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
             table.getItems().setAll(topicList);
+
+            // colour the table, alternate row colour and the selected row has a different colour
+            table.setRowFactory(tr -> new TableRow<>() {
+                @Override
+                protected void updateItem(Topic item, boolean empty) {
+                    super.updateItem(item, empty);
+
+                    if (item == null || item.getName() == null) {
+                        setStyle("");
+                    } else if (item.equals(table.getSelectionModel().getSelectedItem())) {
+                        setStyle("-fx-background-color: " + BLUE);
+                    } else if (topicList.indexOf(item) % 2 == 0) {
+                        setStyle("-fx-background-color: " + GREEN);
+                    } else {
+                        setStyle("-fx-background-color: " + YELLOW);
+                    }
+                }
+            });
         }
     }
 

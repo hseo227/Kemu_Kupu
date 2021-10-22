@@ -95,16 +95,20 @@ public class RewardScreenController implements Initializable {
      */
     @FXML
     private void switchTable(ActionEvent event) {
-        if (((Button) event.getSource()).getId().equals("statsBtn")) {
+        if (event.getSource().equals(statsBtn)) {
             leaderboardTable.setVisible(false);
             clearBtn.setVisible(false);
             leaderboardBtn.setDisable(false);
             statsBtn.setDisable(true);
+            leaderboardBtn.setOpacity(0.5);
+            statsBtn.setOpacity(1);
         } else {
             leaderboardTable.setVisible(true);
             clearBtn.setVisible(true);
             leaderboardBtn.setDisable(true);
             statsBtn.setDisable(false);
+            leaderboardBtn.setOpacity(1);
+            statsBtn.setOpacity(0.5);
         }
     }
 
