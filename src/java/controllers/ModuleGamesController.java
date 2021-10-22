@@ -1,11 +1,8 @@
 package controllers;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import spellingQuiz.ModuleGames;
 import spellingQuizUtil.FestivalSpeech;
 import spellingQuizUtil.QuizState;
@@ -20,15 +17,9 @@ import java.util.ResourceBundle;
 public class ModuleGamesController extends ModuleBaseController {
 
     @FXML
-    private Label shortCutLabel;
-    @FXML
     private TextField inputField;
     @FXML
     private Slider speechSpeed;
-    @FXML
-    private VBox startVBox, gameVBox;
-    @FXML
-    private HBox timeHBox;
 
 
     /**
@@ -40,22 +31,13 @@ public class ModuleGamesController extends ModuleBaseController {
     }
 
     /**
-     * Start the quiz and then update the display
+     * Start the quiz and also update the display
      */
     @FXML
     protected void startQuiz() {
-
         // start a new game
         quiz = new ModuleGames();
-
-        // Update the display
-        updateScore();
-        startVBox.setVisible(false);
-        gameVBox.setVisible(true);
-        timeHBox.setVisible(true);
-        shortCutLabel.setVisible(true);
-
-        newQuestion();
+        updateStartDisplay();
     }
 
     /**

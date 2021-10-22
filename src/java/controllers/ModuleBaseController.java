@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.util.Duration;
@@ -36,7 +37,7 @@ abstract public class ModuleBaseController implements Initializable {
     protected Timeline timeline;
 
     @FXML
-    private Label mainLabel, promptLabel, userScoreLabel, timeLabel;
+    private Label mainLabel, promptLabel, userScoreLabel, timeLabel, shortCutLabel;
     @FXML
     private TextField inputField;
     @FXML
@@ -44,7 +45,9 @@ abstract public class ModuleBaseController implements Initializable {
     @FXML
     private Slider speechSpeed;
     @FXML
-    private VBox inputVBox;
+    private VBox startVBox, gameVBox, inputVBox;
+    @FXML
+    private HBox timeHBox;
 
 
     /**
@@ -108,6 +111,20 @@ abstract public class ModuleBaseController implements Initializable {
                 return null;
             }
         });
+    }
+
+    /**
+     * Update the start display and then start a new question
+     */
+    protected void updateStartDisplay() {
+        // Update the display
+        updateScore();
+        startVBox.setVisible(false);
+        gameVBox.setVisible(true);
+        timeHBox.setVisible(true);
+        shortCutLabel.setVisible(true);
+
+        newQuestion();
     }
 
     /**
