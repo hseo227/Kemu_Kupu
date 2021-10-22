@@ -78,7 +78,7 @@ abstract public class ModuleBaseController implements Initializable {
             inhibitSubmitAction = isSpeaking;
 
             // only disable 'skip' if the user got the word wrong (Failed and Skipped) in Practise module
-            if (!isSpeaking && isWrongInPractiseModule()) {
+            if (isWrongInPractiseModule()) {
                 skipBtn.setDisable(true);
             }
 
