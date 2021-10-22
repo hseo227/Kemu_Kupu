@@ -20,54 +20,28 @@ public class ModuleGames extends Module {
     }
 
     /**
-     * This function check the spelling (input)
-     * And then set up the labels, speak, increase score with respective Result
-     * Finally add current word statistics
+     * This function updates the text of the labels according to the results
      */
-    public void checkSpelling() {
-        int scoreIncreased = 0;
-
-        // first check if the word is skipped
+    protected void updateLabelsContents() {
         if (resultEqualsTo(Result.SKIPPED)) {
-            setQuizState(QuizState.READY);  // set the state to ready for the next question
-
-            // setting up the labels' text and speak out the message
             mainLabelText = incorrectMessage.getEncourageMsg();
             promptLabelText = "";
-            speak("Word skipped", "");
 
-        // if statement for each result after checking the spelling (input)
-        } else if ( words.checkUserSpelling(userInput) ) {  // mastered and failed, 1st attempt and 2nd attempt respectively
-            setQuizState(QuizState.READY);  // set the state to ready for the next question
-
-            // setting up the labels' text and speak out the message
+        // correct spelling (Mastered and Failed), 1st attempt and 2nd attempt respectively
+        } else if ( words.checkUserSpelling(userInput) ) {
             mainLabelText = correctMessage.getEncourageMsg();
             promptLabelText = "";
-            speak("Correct", "");
-            scoreIncreased = score.increaseScore(getResult());
 
-        } else if (resultEqualsTo(Result.MASTERED)) {  // still 1st attempt, but incorrect
-            setResult(Result.FAULTED);
-            setQuizState(QuizState.RUNNING);  // set the state to Running, because still on the same question
-
-            // setting up the labels' text and speak out the message
+        // still 1st attempt, but incorrect
+        } else if (resultEqualsTo(Result.MASTERED)) {
             mainLabelText = tryAgainMessage.getEncourageMsg();
             promptLabelText = words.getHint(Hint.GAMES_M_HINT);
-            speak("Incorrect, try once more.", currentWord);
-            return;  // so do not add any statistics
 
-        } else {  // 2nd attempt, and it is the second times got it incorrect --> failed
-            setResult(Result.FAILED);
-            setQuizState(QuizState.READY);  // set the state to ready for the next question
-
-            // setting up the labels' text and speak out the message
+        // 2nd attempt, and it is the second times got it incorrect --> failed
+        } else {
             mainLabelText = incorrectMessage.getEncourageMsg();
             promptLabelText = "";
-            speak("Incorrect", "");
         }
-
-        // add current word statistics
-        statistics.addStatistics(currentWord, getResult(), scoreIncreased, Timer.stop());
     }
 
 }
