@@ -1,6 +1,8 @@
 package controllers;
 
+import javafx.animation.KeyFrame;
 import javafx.animation.PauseTransition;
+import javafx.animation.Timeline;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,15 +11,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.util.Duration;
 import javafx.util.StringConverter;
 import spellingQuiz.Module;
-import spellingQuizUtil.FestivalSpeech;
-import spellingQuizUtil.ModuleType;
-import spellingQuizUtil.Result;
-import spellingQuizUtil.Score;
+import spellingQuizUtil.*;
 
 import static spellingQuizUtil.FestivalSpeech.numOfRunningFestival;
 
@@ -34,10 +34,10 @@ abstract public class ModuleBaseController implements Initializable {
 
     protected Module quiz;
     protected boolean inhibitSubmitAction = false;
-
+    protected Timeline timeline;
 
     @FXML
-    private Label mainLabel, promptLabel, userScoreLabel;
+    private Label mainLabel, promptLabel, userScoreLabel, timeLabel, shortCutLabel;
     @FXML
     private TextField inputField;
     @FXML
@@ -45,15 +45,27 @@ abstract public class ModuleBaseController implements Initializable {
     @FXML
     private Slider speechSpeed;
     @FXML
-    private VBox inputVBox;
+    private VBox startVBox, gameVBox, inputVBox;
+    @FXML
+    private HBox timeHBox;
 
 
     /**
      * Call this method when initialize the fxml and set up necessary stuff
+     *      Reset the timer
+     *      Set up the timeline
      *      Set numOfRunningFestival listener
      *      Format the speed slider
      */
     protected void settingUp() {
+        Timer.reset();
+
+        // Set up the timeline - update the time label constantly
+        timeline = new Timeline(new KeyFrame(Duration.millis(100), event -> {
+            timeLabel.setText(String.valueOf(Timer.getTime()));
+        }));
+        timeline.setCycleCount( Timeline.INDEFINITE );  // no time limit, so run forever
+        timeline.play();
 
         // Set listener for numOfRunningFestival
         // When there are running festivals, disable buttons (playback, check and skip buttons)
@@ -71,6 +83,11 @@ abstract public class ModuleBaseController implements Initializable {
             // only disable 'skip' if the user got the word wrong (Failed and Skipped) in Practise module
             if (isWrongInPractiseModule()) {
                 skipBtn.setDisable(true);
+            }
+
+            // if it started a new question after the festival is finished, then starts the timer
+            if (!isSpeaking && quiz.quizStateEqualsTo(QuizState.JUST_STARTED)) {
+                Timer.start();
             }
         });
 
@@ -94,6 +111,20 @@ abstract public class ModuleBaseController implements Initializable {
                 return null;
             }
         });
+    }
+
+    /**
+     * Update the start display and then start a new question
+     */
+    protected void updateStartDisplay() {
+        // Update the display
+        updateScore();
+        startVBox.setVisible(false);
+        gameVBox.setVisible(true);
+        timeHBox.setVisible(true);
+        shortCutLabel.setVisible(true);
+
+        newQuestion();
     }
 
     /**
@@ -123,6 +154,7 @@ abstract public class ModuleBaseController implements Initializable {
      * If the quiz is finished, it will take the user to the Reward Screen.
      */
     protected void newQuestion() {
+        Timer.reset();
         inputField.clear();
         inputField.requestFocus();
         FestivalSpeech.setSpeechSpeed((int) speechSpeed.getValue());  // set up speech speed

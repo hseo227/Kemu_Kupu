@@ -57,8 +57,7 @@ public abstract class Module {
             return false;
         }
 
-        Timer.start();
-        setQuizState(QuizState.RUNNING);  // now set the state to running
+        setQuizState(QuizState.JUST_STARTED);  // now set the state to just started
         setResult(Result.MASTERED);  // set original result to Mastered
         currentIndex++;
 
@@ -73,10 +72,49 @@ public abstract class Module {
     }
 
     /**
-     * This function check the spelling (input) and then set up the labels, speak, increase score
+     * This function check the spelling (input),
+     * set up the labels, speak, increase score and add statistics of the current word
+     */
+    public void checkSpelling() {
+        // update the labels first
+        updateLabelsContents();
+
+        int scoreIncreased = 0;
+
+        // first check if the word is skipped
+        if (resultEqualsTo(Result.SKIPPED)) {
+            speak("Word skipped", "");
+
+        // correct spelling (Mastered and Failed), 1st attempt and 2nd attempt respectively
+        } else if ( words.checkUserSpelling(userInput) ) {
+            // speak out the message and then increase the score
+            speak("Correct", "");
+            scoreIncreased = score.increaseScore(getResult());
+
+        // still 1st attempt, but incorrect
+        } else if (resultEqualsTo(Result.MASTERED)) {
+            setResult(Result.FAULTED);
+            setQuizState(QuizState.RUNNING);  // set the state to Running, because still on the same question
+            speak("Incorrect, try once more.", currentWord);
+            return;  // return now, so do not add any statistics later on
+
+        // 2nd attempt, and it is the second times got it incorrect --> failed
+        } else {
+            setResult(Result.FAILED);
+            speak("Incorrect", "");
+        }
+
+        // except getting incorrect the 1st attempt,
+        // set the state to ready for the next question and then add current word statistics
+        setQuizState(QuizState.READY);
+        statistics.addStatistics(currentWord, getResult(), scoreIncreased, Timer.stop());
+    }
+
+    /**
+     * Update the labels contents
      * Different module set up the labels differently
      */
-    abstract public void checkSpelling();
+    abstract protected void updateLabelsContents();
 
     /**
      * This method will speak the word again, only the maori word

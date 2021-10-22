@@ -3,10 +3,8 @@ package controllers;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
 import spellingQuiz.ModulePractise;
 import spellingQuizUtil.FestivalSpeech;
 import spellingQuizUtil.QuizState;
@@ -22,17 +20,13 @@ import java.util.ResourceBundle;
 public class ModulePractiseController extends ModuleBaseController {
 
     @FXML
-    private Label shortCutLabel;
-    @FXML
     private TextField inputField;
-    @FXML
-    private Button skipBtn;
     @FXML
     private Slider speechSpeed;
     @FXML
-    private ChoiceBox<Integer> numOfQCheckBox;
+    private Button skipBtn;
     @FXML
-    private VBox startVBox, gameVBox;
+    private ChoiceBox<Integer> numOfQCheckBox;
 
 
     /**
@@ -53,21 +47,13 @@ public class ModulePractiseController extends ModuleBaseController {
 
     /**
      * Start the quiz with number of question that user picked
-     * And then update the display
+     * And also update the display
      */
     @FXML
     protected void startQuiz() {
-
         // start a new game with specific number of questions
         quiz = new ModulePractise(numOfQCheckBox.getValue());
-
-        // Update the display
-        updateScore();
-        startVBox.setVisible(false);
-        gameVBox.setVisible(true);
-        shortCutLabel.setVisible(true);
-
-        newQuestion();
+        updateStartDisplay();
     }
 
     /**
