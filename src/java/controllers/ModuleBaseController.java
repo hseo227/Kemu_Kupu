@@ -49,11 +49,13 @@ abstract public class ModuleBaseController implements Initializable {
 
     /**
      * Call this method when initialize the fxml and set up necessary stuff
+     *      Reset the timer
      *      Set up the timeline
      *      Set numOfRunningFestival listener
      *      Format the speed slider
      */
     protected void settingUp() {
+        Timer.reset();
 
         // Set up the timeline - update the time label constantly
         timeline = new Timeline(new KeyFrame(Duration.millis(100), event -> {
@@ -76,12 +78,12 @@ abstract public class ModuleBaseController implements Initializable {
             inhibitSubmitAction = isSpeaking;
 
             // only disable 'skip' if the user got the word wrong (Failed and Skipped) in Practise module
-            if (isWrongInPractiseModule()) {
+            if (!isSpeaking && isWrongInPractiseModule()) {
                 skipBtn.setDisable(true);
             }
 
             // if it started a new question after the festival is finished, then starts the timer
-            if (quiz.quizStateEqualsTo(QuizState.JUST_STARTED)) {
+            if (!isSpeaking && quiz.quizStateEqualsTo(QuizState.JUST_STARTED)) {
                 Timer.start();
             }
         });
@@ -135,6 +137,7 @@ abstract public class ModuleBaseController implements Initializable {
      * If the quiz is finished, it will take the user to the Reward Screen.
      */
     protected void newQuestion() {
+        Timer.reset();
         inputField.clear();
         inputField.requestFocus();
         FestivalSpeech.setSpeechSpeed((int) speechSpeed.getValue());  // set up speech speed

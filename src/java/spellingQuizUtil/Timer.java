@@ -43,4 +43,14 @@ public class Timer {
             return (int) ((endTime - startTime) / 1000);
         }
     }
+
+    /**
+     * When this method is called (timer reset),
+     * it resets the timer to initial state, 0 seconds and is not running
+     */
+    public static void reset() {
+        timerIsRunning = false;
+        startTime = 0;
+        endTime = 0;
+    }
 }

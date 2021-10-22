@@ -57,7 +57,7 @@ public abstract class Module {
             return false;
         }
 
-        setQuizState(QuizState.RUNNING);  // now set the state to running
+        setQuizState(QuizState.JUST_STARTED);  // now set the state to just started
         setResult(Result.MASTERED);  // set original result to Mastered
         currentIndex++;
 
