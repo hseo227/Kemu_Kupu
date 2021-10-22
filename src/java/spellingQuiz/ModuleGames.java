@@ -1,8 +1,7 @@
 package spellingQuiz;
 
-import spellingQuizUtil.*;
-
-import static spellingQuizUtil.FestivalSpeech.speak;
+import spellingQuizUtil.Hint;
+import spellingQuizUtil.Result;
 
 
 /**

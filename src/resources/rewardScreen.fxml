@@ -52,7 +52,7 @@
                   <Font name="Heiti TC Medium" size="60.0" />
                </font>
                <padding>
-                  <Insets bottom="20.0"/>
+                  <Insets bottom="20.0" />
                </padding>
             </Label>
              <TableView fx:id="statisticsTable" prefHeight="250.0" prefWidth="700.0" style="-fx-font-size: 18.0px;">
@@ -128,7 +128,7 @@
       </VBox>
       <HBox fx:id="gamesMod" layoutX="400.0" layoutY="510.0" visible="false">
       	<children>
-      		<Button fx:id="statsBtn" mnemonicParsing="false" onAction="#switchTable" style="-fx-background-color: transparent;" disable="true">
+      		<Button fx:id="statsBtn" disable="true" mnemonicParsing="false" onAction="#switchTable" opacity="1" style="-fx-background-color: transparent;">
 		         <graphic>
 		            <ImageView fitHeight="40.0" pickOnBounds="true" preserveRatio="true">
 		               <image>
@@ -147,7 +147,7 @@
 		              </Tooltip>
 		          </tooltip>
 		    </Button>
-      		<Button fx:id="leaderboardBtn" mnemonicParsing="false" onAction="#switchTable" style="-fx-background-color: transparent;">
+      		<Button fx:id="leaderboardBtn" mnemonicParsing="false" onAction="#switchTable" opacity="0.5" style="-fx-background-color: transparent;">
 		         <graphic>
 		            <ImageView fitHeight="40.0" pickOnBounds="true" preserveRatio="true">
 		               <image>
@@ -168,7 +168,7 @@
 		      </Button>
       	</children>
       </HBox>
-      <TableView fx:id="leaderboardTable" layoutX="290.0" layoutY="250.0" prefHeight="241.0" prefWidth="700.0" style="-fx-font-size: 18.0px;" visible="false">
+      <TableView fx:id="leaderboardTable" layoutX="290.0" layoutY="254.0" prefHeight="250.0" prefWidth="700.0" style="-fx-font-size: 18.0px;" visible="false">
          <columns>
             <TableColumn fx:id="rankCol" editable="false" prefWidth="100.0" resizable="false" sortable="false" text="Rank" />
             <TableColumn fx:id="nameCol" editable="false" prefWidth="215.0" resizable="false" sortable="false" text="Name" />
