@@ -46,7 +46,7 @@ public class Timer {
 
     /**
      * When this method is called (timer reset),
-     * it resets the timer to initial state, 0 seconds and is not running
+     * it resets the timer to initial state, 0 seconds and IS NOT running
      */
     public static void reset() {
         timerIsRunning = false;
