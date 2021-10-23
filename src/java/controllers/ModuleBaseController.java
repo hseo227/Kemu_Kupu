@@ -76,14 +76,12 @@ abstract public class ModuleBaseController extends CommonControllers implements 
             // if there are no running festival, then false
             boolean isSpeaking = ((int) newValue != 0);
 
-            playbackBtn.setDisable(isSpeaking);
-            checkBtn.setDisable(isSpeaking);
-            skipBtn.setDisable(isSpeaking);
+            disableItems(isSpeaking, playbackBtn, checkBtn, skipBtn);
             inhibitSubmitAction = isSpeaking;
 
             // only disable 'skip' if the user got the word wrong (Failed and Skipped) in Practise module
             if (isWrongInPractiseModule()) {
-                skipBtn.setDisable(true);
+                disableItems(true, skipBtn);
             }
 
             // if it started a new question after the festival is finished, then starts the timer
@@ -216,10 +214,10 @@ abstract public class ModuleBaseController extends CommonControllers implements 
      * after the pause, it automatically goes to the next question
      */
     protected void pauseBetweenEachQ() {
-        inputVBox.setDisable(true);
+        disableItems(true, inputVBox);
 
         pause.setOnFinished(e -> {
-            inputVBox.setDisable(false);
+            disableItems(false, inputVBox);
 
             newQuestion();
         });

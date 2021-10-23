@@ -101,15 +101,15 @@ public class RewardScreenController extends CommonControllers implements Initial
             clearBtn.setVisible(false);
             leaderboardBtn.setDisable(false);
             statsBtn.setDisable(true);
-            leaderboardBtn.setOpacity(0.5);
-            statsBtn.setOpacity(1);
+            leaderboardBtn.setOpacity(opacityLower);
+            statsBtn.setOpacity(opacityHigher);
         } else {
             leaderboardTable.setVisible(true);
             clearBtn.setVisible(true);
             leaderboardBtn.setDisable(true);
             statsBtn.setDisable(false);
-            leaderboardBtn.setOpacity(1);
-            statsBtn.setOpacity(0.5);
+            leaderboardBtn.setOpacity(opacityHigher);
+            statsBtn.setOpacity(opacityLower);
         }
     }
 
