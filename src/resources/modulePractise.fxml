@@ -204,7 +204,7 @@
                 </Slider>
             </children>
         </VBox>
-        <Button layoutX="1040.0" layoutY="100.0" mnemonicParsing="false" onMouseEntered="#buttonHovered" onMouseExited="#buttonExited" onAction="#backToMainMenu" style="-fx-background-color: transparent;">
+        <Button layoutX="1040.0" layoutY="100.0" mnemonicParsing="false" onAction="#backToMainMenu" onMouseEntered="#buttonHovered" onMouseExited="#buttonExited" style="-fx-background-color: transparent;">
             <graphic>
                 <ImageView fitHeight="60.0" pickOnBounds="true" preserveRatio="true">
                     <image>
@@ -248,7 +248,7 @@
                         <ChoiceBox fx:id="numOfQCheckBox" prefHeight="30.0" prefWidth="70.0" style="-fx-font-size: 20;" />
                     </children>
                 </HBox>
-                <Button alignment="CENTER" mnemonicParsing="false" onMouseEntered="#buttonHovered" onMouseExited="#buttonExited" onAction="#startQuiz" style="-fx-background-color: transparent;">
+                <Button alignment="CENTER" mnemonicParsing="false" onAction="#startQuiz" onMouseEntered="#buttonHovered" onMouseExited="#buttonExited" style="-fx-background-color: transparent;">
                     <graphic>
                         <ImageView fitHeight="80.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -288,18 +288,10 @@
                 </Tooltip>
             </tooltip>
         </Label>
-      <HBox fx:id="timeHBox" alignment="CENTER" layoutX="1020.0" layoutY="600.0" spacing="10.0" visible="false">
-         <children>
-            <Label text="Time taken:" textFill="WHITE">
-               <font>
-                  <Font name="Heiti TC Medium" size="20.0" />
-               </font></Label>
-              <Label fx:id="timeLabel" alignment="CENTER_RIGHT" prefWidth="40.0" textFill="white">
-                  <font>
-                      <Font name="Heiti TC Medium" size="20.0" />
-                  </font>
-              </Label>
-         </children>
-      </HBox>
+        <Label fx:id="timeLabel" layoutX="1020.0" layoutY="600.0" textFill="white" visible="false">
+            <font>
+                <Font name="Heiti TC Medium" size="20.0" />
+            </font>
+        </Label>
     </children>
 </AnchorPane>

@@ -11,7 +11,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.util.Duration;
@@ -47,8 +46,6 @@ abstract public class ModuleBaseController extends CommonControllers implements 
     private Slider speechSpeed;
     @FXML
     private VBox startVBox, gameVBox, inputVBox;
-    @FXML
-    private HBox timeHBox;
 
 
     /**
@@ -63,7 +60,7 @@ abstract public class ModuleBaseController extends CommonControllers implements 
 
         // Set up the timeline - update the time label constantly
         timeline = new Timeline(new KeyFrame(Duration.millis(100), event -> {
-            timeLabel.setText(String.valueOf(Timer.getTime()));
+            timeLabel.setText("Time taken:  " + Timer.getTime());
         }));
         timeline.setCycleCount( Timeline.INDEFINITE );  // no time limit, so run forever
         timeline.play();
@@ -122,7 +119,7 @@ abstract public class ModuleBaseController extends CommonControllers implements 
         updateScore();
         startVBox.setVisible(false);
         gameVBox.setVisible(true);
-        timeHBox.setVisible(true);
+        timeLabel.setVisible(true);
         shortCutLabel.setVisible(true);
 
         newQuestion();

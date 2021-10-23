@@ -273,18 +273,10 @@
             </Tooltip>
          </tooltip>
       </Label>
-      <HBox fx:id="timeHBox" alignment="CENTER" layoutX="1020.0" layoutY="600.0" spacing="10.0" visible="false">
-         <children>
-            <Label text="Time taken:" textFill="WHITE">
-               <font>
-                  <Font name="Heiti TC Medium" size="20.0" />
-               </font></Label>
-            <Label fx:id="timeLabel" alignment="CENTER_RIGHT" prefWidth="40.0" textFill="white">
-               <font>
-                  <Font name="Heiti TC Medium" size="20.0" />
-               </font>
-            </Label>
-         </children>
-      </HBox>
+      <Label fx:id="timeLabel" layoutX="1020.0" layoutY="600.0" textFill="white" visible="false">
+         <font>
+            <Font name="Heiti TC Medium" size="20.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
