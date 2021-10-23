@@ -101,7 +101,7 @@ public class RewardScreenController extends CommonControllers implements Initial
             clearBtn.setVisible(false);
             leaderboardBtn.setDisable(false);
             statsBtn.setDisable(true);
-            leaderboardBtn.setOpacity(opacityLower);
+            leaderboardBtn.setOpacity(0.73);
             statsBtn.setOpacity(opacityHigher);
         } else {
             leaderboardTable.setVisible(true);
@@ -109,7 +109,7 @@ public class RewardScreenController extends CommonControllers implements Initial
             leaderboardBtn.setDisable(true);
             statsBtn.setDisable(false);
             leaderboardBtn.setOpacity(opacityHigher);
-            statsBtn.setOpacity(opacityLower);
+            statsBtn.setOpacity(0.73);
         }
     }
 

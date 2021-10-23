@@ -147,7 +147,7 @@
 		              </Tooltip>
 		          </tooltip>
 		    </Button>
-      		<Button fx:id="leaderboardBtn" mnemonicParsing="false" onAction="#switchTable" opacity="0.5" style="-fx-background-color: transparent;">
+      		<Button fx:id="leaderboardBtn" mnemonicParsing="false" onAction="#switchTable" opacity="0.73" style="-fx-background-color: transparent;">
 		         <graphic>
 		            <ImageView fitHeight="40.0" pickOnBounds="true" preserveRatio="true">
 		               <image>
@@ -179,7 +179,14 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-	   <Button fx:id="clearBtn" layoutX="1000.0" layoutY="250.0" mnemonicParsing="false" onAction="#clearLeaderboard" onMouseEntered="#buttonHovered" onMouseExited="#buttonExited" text="Clear" visible="false">
+	   <Button fx:id="clearBtn" layoutX="1000.0" layoutY="250.0" mnemonicParsing="false" onAction="#clearLeaderboard" onMouseEntered="#buttonHovered" onMouseExited="#buttonExited" visible="false" style="-fx-background-color: transparent;">
+		   <graphic>
+	            <ImageView fitHeight="35.0" pickOnBounds="true" preserveRatio="true">
+	               <image>
+	                  <Image url="@media/clear.png" />
+	               </image>
+	            </ImageView>
+	       </graphic>
 		   <cursor>
 			   <Cursor fx:constant="HAND" />
 		   </cursor>
