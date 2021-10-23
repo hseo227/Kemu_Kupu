@@ -273,7 +273,7 @@
             </Tooltip>
          </tooltip>
       </Label>
-      <HBox fx:id="timeHBox" alignment="CENTER" layoutX="1030.0" layoutY="170.0" spacing="10.0" visible="false">
+      <HBox fx:id="timeHBox" alignment="CENTER" layoutX="1020.0" layoutY="600.0" spacing="10.0" visible="false">
          <children>
             <Label text="Time taken:" textFill="WHITE">
                <font>
