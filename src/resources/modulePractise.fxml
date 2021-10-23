@@ -247,7 +247,7 @@
       </Button>
       <VBox fx:id="startVBox" alignment="CENTER" layoutX="190.0" layoutY="230.0" spacing="20.0">
          <children>
-            <Label alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: transparent;">
+            <Label alignment="CENTER" mnemonicParsing="false">
                <graphic>
                   <ImageView fitHeight="150.0" pickOnBounds="true" preserveRatio="true">
                      <image>
