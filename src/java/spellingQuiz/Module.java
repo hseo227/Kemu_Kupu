@@ -120,6 +120,9 @@ public abstract class Module {
      * This method will speak the word again, only the maori word
      */
     public void speakWordAgain() {
+        if (quizStateEqualsTo(QuizState.JUST_STARTED)) {
+            setQuizState(QuizState.RUNNING);
+        }
         speak("", currentWord);
     }
 
