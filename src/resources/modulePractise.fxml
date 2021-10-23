@@ -61,7 +61,7 @@
                     <children>
                         <HBox alignment="CENTER" spacing="30.0">
                             <children>
-                                <Button fx:id="playbackBtn" mnemonicParsing="false" onAction="#speakAgain" style="-fx-background-color: transparent;">
+                                <Button fx:id="playbackBtn" mnemonicParsing="false" onAction="#speakAgain" onMouseEntered="#buttonHovered" onMouseExited="#buttonExited" style="-fx-background-color: transparent;">
                                     <graphic>
                                         <ImageView fitHeight="42.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
@@ -85,7 +85,7 @@
                                         <Font name="Heiti TC Medium" size="20.0" />
                                     </font>
                                 </TextField>
-                                <Button fx:id="checkBtn" mnemonicParsing="false" onAction="#onEnter" style="-fx-background-color: transparent;">
+                                <Button fx:id="checkBtn" mnemonicParsing="false" onAction="#onEnter" onMouseEntered="#buttonHovered" onMouseExited="#buttonExited" style="-fx-background-color: transparent;">
                                     <graphic>
                                         <ImageView fitHeight="42.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
@@ -108,7 +108,7 @@
                         </HBox>
                         <HBox alignment="TOP_CENTER" fillHeight="false" spacing="32.0">
                             <children>
-                                <Button mnemonicParsing="false" onAction="#addMacronsCharacter" prefHeight="35.0" prefWidth="40.0" style="-fx-background-color: #EBEBEB;" text="ā">
+                                <Button mnemonicParsing="false" onAction="#addMacronsCharacter" onMouseEntered="#buttonHovered" onMouseExited="#buttonExited" prefHeight="35.0" prefWidth="40.0" style="-fx-background-color: #EBEBEB;" text="ā">
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
@@ -116,7 +116,7 @@
                                         <Font name="Heiti TC Medium" size="18.0" />
                                     </font>
                                 </Button>
-                                <Button mnemonicParsing="false" onAction="#addMacronsCharacter" prefHeight="35.0" prefWidth="40.0" style="-fx-background-color: #EBEBEB;" text="ē">
+                                <Button mnemonicParsing="false" onAction="#addMacronsCharacter" onMouseEntered="#buttonHovered" onMouseExited="#buttonExited" prefHeight="35.0" prefWidth="40.0" style="-fx-background-color: #EBEBEB;" text="ē">
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
@@ -124,7 +124,7 @@
                                         <Font name="Heiti TC Medium" size="18.0" />
                                     </font>
                                 </Button>
-                                <Button mnemonicParsing="false" onAction="#addMacronsCharacter" prefHeight="35.0" prefWidth="40.0" style="-fx-background-color: #EBEBEB;" text="ī">
+                                <Button mnemonicParsing="false" onAction="#addMacronsCharacter" onMouseEntered="#buttonHovered" onMouseExited="#buttonExited" prefHeight="35.0" prefWidth="40.0" style="-fx-background-color: #EBEBEB;" text="ī">
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
@@ -132,7 +132,7 @@
                                         <Font name="Heiti TC Medium" size="18.0" />
                                     </font>
                                 </Button>
-                                <Button mnemonicParsing="false" onAction="#addMacronsCharacter" prefHeight="35.0" prefWidth="40.0" style="-fx-background-color: #EBEBEB;" text="ō">
+                                <Button mnemonicParsing="false" onAction="#addMacronsCharacter" onMouseEntered="#buttonHovered" onMouseExited="#buttonExited" prefHeight="35.0" prefWidth="40.0" style="-fx-background-color: #EBEBEB;" text="ō">
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
@@ -140,7 +140,7 @@
                                         <Font name="Heiti TC Medium" size="18.0" />
                                     </font>
                                 </Button>
-                                <Button mnemonicParsing="false" onAction="#addMacronsCharacter" prefHeight="35.0" prefWidth="40.0" style="-fx-background-color: #EBEBEB;" text="ū">
+                                <Button mnemonicParsing="false" onAction="#addMacronsCharacter" onMouseEntered="#buttonHovered" onMouseExited="#buttonExited" prefHeight="35.0" prefWidth="40.0" style="-fx-background-color: #EBEBEB;" text="ū">
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
@@ -150,7 +150,7 @@
                                 </Button>
                             </children>
                         </HBox>
-                        <Button fx:id="skipBtn" mnemonicParsing="false" onAction="#skipWord" prefHeight="40.0" style="-fx-background-color: transparent;">
+                        <Button fx:id="skipBtn" mnemonicParsing="false" onAction="#skipWord" onMouseEntered="#buttonHovered" onMouseExited="#buttonExited" prefHeight="40.0" style="-fx-background-color: transparent;">
                             <graphic>
                                 <ImageView fitHeight="42.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -175,7 +175,7 @@
         </VBox>
         <VBox layoutX="80.0" layoutY="110.0" spacing="20.0">
             <children>
-                <Button mnemonicParsing="false" onAction="#showHideSpeedSlider" style="-fx-background-color: transparent;">
+                <Button mnemonicParsing="false" onAction="#showHideSpeedSlider" onMouseEntered="#buttonHovered" onMouseExited="#buttonExited" style="-fx-background-color: transparent;">
                     <graphic>
                         <ImageView fitHeight="40.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -204,7 +204,7 @@
                 </Slider>
             </children>
         </VBox>
-        <Button layoutX="1040.0" layoutY="100.0" mnemonicParsing="false" onAction="#backToMainMenu" style="-fx-background-color: transparent;">
+        <Button layoutX="1040.0" layoutY="100.0" mnemonicParsing="false" onMouseEntered="#buttonHovered" onMouseExited="#buttonExited" onAction="#backToMainMenu" style="-fx-background-color: transparent;">
             <graphic>
                 <ImageView fitHeight="60.0" pickOnBounds="true" preserveRatio="true">
                     <image>
@@ -248,7 +248,7 @@
                         <ChoiceBox fx:id="numOfQCheckBox" prefHeight="30.0" prefWidth="70.0" style="-fx-font-size: 20;" />
                     </children>
                 </HBox>
-                <Button alignment="CENTER" mnemonicParsing="false" onAction="#startQuiz" style="-fx-background-color: transparent;">
+                <Button alignment="CENTER" mnemonicParsing="false" onMouseEntered="#buttonHovered" onMouseExited="#buttonExited" onAction="#startQuiz" style="-fx-background-color: transparent;">
                     <graphic>
                         <ImageView fitHeight="80.0" pickOnBounds="true" preserveRatio="true">
                             <image>

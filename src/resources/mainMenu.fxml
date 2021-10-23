@@ -45,7 +45,7 @@
             </Label>
             <HBox alignment="CENTER" spacing="50.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#loadGamesModule" style="-fx-background-color: transparent;">
+                  <Button mnemonicParsing="false" onAction="#loadGamesModule" onMouseEntered="#buttonHovered" onMouseExited="#buttonExited" style="-fx-background-color: transparent;">
                      <graphic>
 		 		        <ImageView fitHeight="70.0" pickOnBounds="true" preserveRatio="true">
 		 		           <image>
@@ -64,7 +64,7 @@
                          </Tooltip>
                      </tooltip>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#loadPractiseModule" style="-fx-background-color: transparent;">
+                  <Button mnemonicParsing="false" onAction="#loadPractiseModule" onMouseEntered="#buttonHovered" onMouseExited="#buttonExited" style="-fx-background-color: transparent;">
                      <graphic>
 		 		        <ImageView fitHeight="70.0" pickOnBounds="true" preserveRatio="true">
 		 		           <image>
@@ -87,7 +87,7 @@
             </HBox>
          </children>
       </VBox>
-      <Button layoutX="1192.0" layoutY="588.0" mnemonicParsing="false" onAction="#quit" style="-fx-background-color: transparent;">
+      <Button layoutX="1192.0" layoutY="588.0" mnemonicParsing="false" onAction="#quit" onMouseEntered="#buttonHovered" onMouseExited="#buttonExited" style="-fx-background-color: transparent;">
          <graphic>
             <ImageView fitHeight="50.0" pickOnBounds="true" preserveRatio="true">
                <image>
