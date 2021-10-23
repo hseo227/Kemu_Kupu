@@ -75,13 +75,15 @@ abstract public class ModuleBaseController extends CommonControllers implements 
 
             // if there are no running festival, then false
             boolean isSpeaking = ((int) newValue != 0);
+            // if the input components are already disable, then don't need to change the opacity, so false
+            boolean opacityChange = !inputVBox.isDisable();
 
-            disableItems(isSpeaking, playbackBtn, checkBtn, skipBtn);
+            disableItems(isSpeaking, opacityChange, playbackBtn, checkBtn, skipBtn);
             inhibitSubmitAction = isSpeaking;
 
             // only disable 'skip' if the user got the word wrong (Failed and Skipped) in Practise module
             if (isWrongInPractiseModule()) {
-                disableItems(true, skipBtn);
+                disableItems(true, opacityChange, skipBtn);
             }
 
             // if it started a new question after the festival is finished, then starts the timer

@@ -9,7 +9,7 @@ import javafx.scene.input.MouseEvent;
  * This class contains all the common functionalities across all the controllers
  */
 abstract public class CommonControllers {
-    protected final double opacityLower = 0.5;
+    protected final double opacityLower = 0.4;
     protected final double opacityHigher = 1;
 
     /**
@@ -35,11 +35,12 @@ abstract public class CommonControllers {
 
     /**
      * Disable/un-disable all the items in the array depends on the boolean disable,
-     * at the same time, change the item opacity
+     * at the same time, change the item opacity if opacity needs to change
      * @param disable Disable/un-disable the items depends on this boolean
+     * @param opacityChange Whether or not to change the items opacity depends on this boolean
      * @param items Items that they are are going to disable/un-disable
      */
-    protected void disableItems(boolean disable, Node... items) {
+    protected void disableItems(boolean disable, boolean opacityChange, Node... items) {
         double opacity = opacityHigher;
         if (disable) {
             opacity = opacityLower;
@@ -47,7 +48,19 @@ abstract public class CommonControllers {
 
         for (Node item : items) {
             item.setDisable(disable);
-            item.setOpacity(opacity);
+            if (opacityChange) {
+                item.setOpacity(opacity);
+            }
         }
+    }
+
+    /**
+     * Disable/un-disable all the items in the array depends on the boolean disable,
+     * at the same time, change the item opacity, opacity will definitely change
+     * @param disable Disable/un-disable the items depends on this boolean
+     * @param items Items that they are are going to disable/un-disable
+     */
+    protected void disableItems(boolean disable, Node... items) {
+        disableItems(disable, true, items);
     }
 }
