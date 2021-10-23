@@ -16,6 +16,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.util.Duration;
 import javafx.util.StringConverter;
+import controllers.commonControllers.CommonControllers;
 import spellingQuiz.Module;
 import spellingQuizUtil.*;
 
@@ -24,7 +25,7 @@ import static spellingQuizUtil.FestivalSpeech.numOfRunningFestival;
 /**
  * This class contains all the common display (GUI) functionalities of both Games and Practise Module
  */
-abstract public class ModuleBaseController implements Initializable {
+abstract public class ModuleBaseController extends CommonControllers implements Initializable {
     protected final static String WHITE = "#FFF";
     protected final static String GREEN = "#00A804";
     protected final static String RED = "#FF2715";
@@ -74,15 +75,15 @@ abstract public class ModuleBaseController implements Initializable {
 
             // if there are no running festival, then false
             boolean isSpeaking = ((int) newValue != 0);
+            // if the input components are already disable, then don't need to change the opacity, so false
+            boolean opacityChange = !inputVBox.isDisable();
 
-            playbackBtn.setDisable(isSpeaking);
-            checkBtn.setDisable(isSpeaking);
-            skipBtn.setDisable(isSpeaking);
+            disableItems(isSpeaking, opacityChange, playbackBtn, checkBtn, skipBtn);
             inhibitSubmitAction = isSpeaking;
 
             // only disable 'skip' if the user got the word wrong (Failed and Skipped) in Practise module
             if (isWrongInPractiseModule()) {
-                skipBtn.setDisable(true);
+                disableItems(true, opacityChange, skipBtn);
             }
 
             // if it started a new question after the festival is finished, then starts the timer
@@ -215,10 +216,10 @@ abstract public class ModuleBaseController implements Initializable {
      * after the pause, it automatically goes to the next question
      */
     protected void pauseBetweenEachQ() {
-        inputVBox.setDisable(true);
+        disableItems(true, inputVBox);
 
         pause.setOnFinished(e -> {
-            inputVBox.setDisable(false);
+            disableItems(false, inputVBox);
 
             newQuestion();
         });
