@@ -12,6 +12,7 @@ public class ModulePractise extends Module {
     /**
      * Constructor
      * Start the quiz with the number of questions that user chose
+     *
      * @param numOfQuestions Number of questions for the quiz
      */
     public ModulePractise(int numOfQuestions) {

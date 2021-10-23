@@ -30,7 +30,7 @@ public class FileManager {
             file = new File(LEADERBOARD_FILE);
             file.createNewFile();
 
-        } catch(IOException e) {
+        } catch (IOException e) {
             System.err.println("Unable to create scheme file \"" + FESTIVAL_CMD_FILE + "\" or the file that stores the leaderboard \"" + LEADERBOARD_FILE + "\"");
         }
     }

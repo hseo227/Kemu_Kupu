@@ -10,6 +10,7 @@ public class FileControl {
 
     /**
      * Read and get the contents the file
+     *
      * @param fileName The file that it is going to read
      * @return ArrayList of contents
      */
@@ -35,7 +36,8 @@ public class FileControl {
 
     /**
      * Overwrite the contents of the file
-     * @param fileName The file that it is going to write
+     *
+     * @param fileName    The file that it is going to write
      * @param listOfItems The contents that it is to store
      */
     public static void writeFile(String fileName, ArrayList<String> listOfItems) {
@@ -54,6 +56,7 @@ public class FileControl {
 
     /**
      * Clear the file by overwriting the contents with ""
+     *
      * @param fileName The file that it is going to clear
      */
     public static void clearFile(String fileName) {

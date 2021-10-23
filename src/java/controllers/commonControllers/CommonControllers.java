@@ -14,6 +14,7 @@ abstract public class CommonControllers {
 
     /**
      * When the mouse cursor hovers on the button, decrease its opacity
+     *
      * @param event It is used to change the opacity
      */
     @FXML
@@ -24,11 +25,12 @@ abstract public class CommonControllers {
     /**
      * When the mouse cursor leaves on the button, increase its opacity
      * But if the button is disable, then don't do anything (don't increase its opacity)
+     *
      * @param event It is used to change the opacity
      */
     @FXML
     protected void buttonExited(MouseEvent event) {
-        if (!((Button) event.getSource()).isDisable()){
+        if (!((Button) event.getSource()).isDisable()) {
             ((Button) event.getSource()).setOpacity(opacityHigher);
         }
     }
@@ -36,9 +38,10 @@ abstract public class CommonControllers {
     /**
      * Disable/un-disable all the items in the array depends on the boolean disable,
      * at the same time, change the item opacity if opacity needs to change
-     * @param disable Disable/un-disable the items depends on this boolean
+     *
+     * @param disable       Disable/un-disable the items depends on this boolean
      * @param opacityChange Whether or not to change the items opacity depends on this boolean
-     * @param items Items that they are are going to disable/un-disable
+     * @param items         Items that they are are going to disable/un-disable
      */
     protected void disableItems(boolean disable, boolean opacityChange, Node... items) {
         double opacity = opacityHigher;
@@ -57,8 +60,9 @@ abstract public class CommonControllers {
     /**
      * Disable/un-disable all the items in the array depends on the boolean disable,
      * at the same time, change the item opacity, opacity will definitely change
+     *
      * @param disable Disable/un-disable the items depends on this boolean
-     * @param items Items that they are are going to disable/un-disable
+     * @param items   Items that they are are going to disable/un-disable
      */
     protected void disableItems(boolean disable, Node... items) {
         disableItems(disable, true, items);
