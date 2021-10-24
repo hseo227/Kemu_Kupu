@@ -179,7 +179,7 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button fx:id="clearBtn" layoutX="1000.0" layoutY="250.0" mnemonicParsing="false" onAction="#clearLeaderboard" onMouseEntered="#buttonHovered" onMouseExited="#buttonExited" style="-fx-background-color: transparent;" visible="false">
+      <Button fx:id="clearBtn" layoutX="1000.0" layoutY="243.0" mnemonicParsing="false" onAction="#clearLeaderboard" onMouseEntered="#buttonHovered" onMouseExited="#buttonExited" style="-fx-background-color: transparent;" visible="false">
          <graphic>
             <ImageView fitHeight="35.0" pickOnBounds="true" preserveRatio="true">
                <image>
