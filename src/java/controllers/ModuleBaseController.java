@@ -27,7 +27,7 @@ import static spellingQuizUtil.FestivalSpeech.numOfRunningFestival;
 abstract public class ModuleBaseController extends CommonControllers implements Initializable {
     protected final static String WHITE = "#FFF";
     protected final static String GREEN = "#00A804";
-    protected final static String RED = "#FF2715";
+    protected final static String RED = "#C8220D";
 
     // 2 seconds pause
     private final PauseTransition pause = new PauseTransition(Duration.seconds(2));
