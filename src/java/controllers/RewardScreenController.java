@@ -24,11 +24,12 @@ import java.util.ResourceBundle;
 import static fileManager.FileManager.LEADERBOARD_FILE;
 
 public class RewardScreenController extends CommonControllers implements Initializable {
-    private final String GREEN = "#7CFC00";
-    private final String YELLOW = "#EEDC82";
-    private final String RED = "#FA8072";
-    private final String BLUE = "#89CFF0";
+    private final String GREEN = "#B3D783";
+    private final String YELLOW = "#F7D477";
+    private final String RED = "#DE6F76";
+    private final String BLUE = "#7CC5E6";
 
+    
     private final ArrayList<StatsTable> statisticsList = new ArrayList<>();
     private final ArrayList<Leaderboard> leaderboardList = new ArrayList<>();
     private final ArrayList<String> leaderboardListToSave = new ArrayList<>();
