@@ -19,12 +19,13 @@ public class Words {
      * Constructor
      * Initialisation
      * Get the word list that will be tested on
+     *
      * @param numOfQuestions Number of questions
      */
     public Words(int numOfQuestions) {
         currentIndex = 0;
         currentWord = "";
-        
+
         // get specific number of random words in the file
         String wordListLocation = "words/" + selectedTopic;
         wordsList = getRandomWordsInFile(wordListLocation, numOfQuestions);
@@ -61,6 +62,7 @@ public class Words {
 
     /**
      * Setting up for the next word to be tested on, and then return that word
+     *
      * @return currentWord, the word that is going to be tested on
      */
     public String nextWord() {
@@ -71,6 +73,7 @@ public class Words {
     /**
      * Compares both string with ignore cases and spaces outside the words
      * Compare current word with user spelling
+     *
      * @param userSpelling User spelling/input
      * @return Return true if they are equal, otherwise false
      */
@@ -89,6 +92,7 @@ public class Words {
 
     /**
      * Calculate the number of letters of the current word, excluding space and comma
+     *
      * @return Number of letters
      */
     public int getNumOfLettersOfWord() {
@@ -104,6 +108,7 @@ public class Words {
 
     /**
      * Calculate the number of words (lines) in the files
+     *
      * @return Number of words
      */
     public static int getNumOfWordsInWordsList() {
@@ -119,6 +124,7 @@ public class Words {
      *      - Practise module hint:   same as No hint, but add some letters to the word
      *                                  larger the word, the more letters are going to add, same as smaller
      *      - Games module hint:      same as No hint, but only add the second letter to the word
+     *
      * @param hintType Specify which type of hint the user is going to get
      * @return Hint for specific hint type
      */

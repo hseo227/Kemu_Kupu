@@ -14,6 +14,7 @@ public class EncouragingMessage {
 
     /**
      * Setting up the encouraging message list
+     *
      * @param result Encouraging messages for that specific result
      */
     public EncouragingMessage(String result) {
@@ -24,6 +25,7 @@ public class EncouragingMessage {
 
     /**
      * Get a random message in the message list
+     *
      * @return A random encouraging message
      */
     public String getEncourageMsg() {

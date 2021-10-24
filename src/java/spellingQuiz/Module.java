@@ -9,22 +9,22 @@ import static spellingQuizUtil.FestivalSpeech.speak;
  * This class contains all the common functionalities of both Games and Practise Module
  */
 public abstract class Module {
-    private final int NUMBER_OF_QUESTIONS;
-
-    private int currentIndex;
+    private static ModuleType moduleType;
     private QuizState currentQuizState;
     private Result currentResult;
-    private static ModuleType moduleType;
-    protected String currentWord, mainLabelText, promptLabelText, userInput;
-    protected EncouragingMessage correctMessage, incorrectMessage, tryAgainMessage;
     protected final Words words;
     protected final Score score;
     protected final Statistics statistics;
+    protected EncouragingMessage correctMessage, incorrectMessage, tryAgainMessage;
+    protected String currentWord, mainLabelText, promptLabelText, userInput;
+    private final int NUMBER_OF_QUESTIONS;
+    private int currentIndex;
 
 
     /**
      * Constructor
      * Initialising the variables
+     *
      * @param numOfQuestions Number of questions for the quiz
      */
     public Module(int numOfQuestions) {
@@ -49,6 +49,7 @@ public abstract class Module {
 
     /**
      * This function generate a new word / next question and then ask the user
+     *
      * @return Return true if successfully generate next question, i.e. the quiz is not finished
      *         Return false if unable to generate next question, i.e. the quiz is finished
      */
@@ -198,6 +199,7 @@ public abstract class Module {
 
     /**
      * Check is the quiz finished, that is current index is equal to number of questions
+     *
      * @return Return true if it is finished, otherwise return false
      */
     protected boolean isQuizFinished() {

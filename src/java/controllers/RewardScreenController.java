@@ -65,7 +65,7 @@ public class RewardScreenController extends CommonControllers implements Initial
         // only set up the leaderboard if it is in games module
         if (Module.moduleTypeEqualsTo(ModuleType.GAMES)) {
             practiseMod.setVisible(false);
-        	gamesMod.setVisible(true);
+            gamesMod.setVisible(true);
             settingUpLeaderboardTable();
         }
     }
@@ -132,7 +132,7 @@ public class RewardScreenController extends CommonControllers implements Initial
         ArrayList<Integer> times = Statistics.getWordTime();
 
         // getting all the statistics
-        for (int i = 0 ; i < words.size(); i++) {
+        for (int i = 0; i < words.size(); i++) {
             statisticsList.add(new StatsTable(i + 1, words.get(i), results.get(i), scores.get(i), times.get(i)));
         }
 
@@ -223,6 +223,7 @@ public class RewardScreenController extends CommonControllers implements Initial
     /**
      * This method prepares the leaderboard list by sorting the previous leaderboard and current user stats.
      * While sorting it, get the rank of the current user
+     *
      * @param userName Current name's name
      * @return The rank of the current user
      */
@@ -276,8 +277,9 @@ public class RewardScreenController extends CommonControllers implements Initial
     /**
      * This helper method add the current user stats into the leaderboard list
      * and also the list that will save into the file later
+     *
      * @param rankIndex The rank of current user
-     * @param userName The name of current user
+     * @param userName  The name of current user
      */
     private void addCurrentUser(int rankIndex, String userName) {
         leaderboardList.add(new Leaderboard(rankIndex, userName, String.valueOf(Score.getScore()), String.valueOf(Statistics.getTotalTime())));

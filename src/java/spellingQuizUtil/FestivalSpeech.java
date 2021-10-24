@@ -12,9 +12,8 @@ import static fileManager.FileManager.FESTIVAL_CMD_FILE;
  * This class contains all the methods that are related to festival tts
  */
 public class FestivalSpeech {
-    private static double speechSpeed;
     public static IntegerProperty numOfRunningFestival;
-
+    private static double speechSpeed;
 
     /**
      * Calculate the speech speed that festival will understand and set it
@@ -35,7 +34,7 @@ public class FestivalSpeech {
      * To SayText, first write the commands into .scm file and then run the scheme file
      *
      * @param englishMessage Message in English only
-     * @param maoriMessage Message in Maori only
+     * @param maoriMessage   Message in Maori only
      */
     public static void speak(String englishMessage, String maoriMessage) {
         try {

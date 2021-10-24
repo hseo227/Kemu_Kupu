@@ -43,13 +43,14 @@ public class SceneManager {
     public static void goToGamesModule() {
         changeScene(GAMES_FXML);
     }
-    
+
     public static void goToRewardScreen() {
         changeScene(REWARD_SCREEN_FXML);
     }
 
     /**
      * Change the scene to the provided FXML file
+     *
      * @param fxml The FXML file that is going to change to
      */
     private static void changeScene(String fxml) {

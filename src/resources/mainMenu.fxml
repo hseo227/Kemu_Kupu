@@ -11,7 +11,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #000;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="controllers.MainMenuController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #000;"
+            xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="controllers.MainMenuController">
    <children>
       <ImageView fitHeight="500.0" fitWidth="1280.0" preserveRatio="true">
          <image>
@@ -26,68 +27,71 @@
       <VBox alignment="CENTER" layoutX="180.0" layoutY="141.0">
          <children>
             <Label alignment="CENTER">
-                <graphic>
-		            <ImageView fitHeight="100.0" pickOnBounds="true" preserveRatio="true">
-		               <image>
-		                  <Image url="@media/nau-mai-haere-mai.png" />
-		               </image>
-		            </ImageView>
-		        </graphic>
+               <graphic>
+                  <ImageView fitHeight="100.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@media/nau-mai-haere-mai.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Label>
             <Label alignment="CENTER">
                <graphic>
- 		            <ImageView fitHeight="260.0" pickOnBounds="true" preserveRatio="true">
- 		               <image>
- 		                  <Image url="@media/kemu-kupu.png" />
- 		               </image>
- 		            </ImageView>
- 		       </graphic>
+                  <ImageView fitHeight="260.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@media/kemu-kupu.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Label>
             <HBox alignment="CENTER" spacing="50.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#loadGamesModule" onMouseEntered="#buttonHovered" onMouseExited="#buttonExited" style="-fx-background-color: transparent;">
+                  <Button mnemonicParsing="false" onAction="#loadGamesModule" onMouseEntered="#buttonHovered"
+                          onMouseExited="#buttonExited" style="-fx-background-color: transparent;">
                      <graphic>
-		 		        <ImageView fitHeight="70.0" pickOnBounds="true" preserveRatio="true">
-		 		           <image>
-		 		              <Image url="@media/play-game.png" />
+                        <ImageView fitHeight="70.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@media/play-game.png" />
                            </image>
                         </ImageView>
-		 		     </graphic>
-                     <cursor>
-                         <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <tooltip>
-                         <Tooltip text="Click to play Games Module">
-                             <font>
-                                 <Font size="18.0" />
-                             </font>
-                         </Tooltip>
-                     </tooltip>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#loadPractiseModule" onMouseEntered="#buttonHovered" onMouseExited="#buttonExited" style="-fx-background-color: transparent;">
-                     <graphic>
-		 		        <ImageView fitHeight="70.0" pickOnBounds="true" preserveRatio="true">
-		 		           <image>
-		 		              <Image url="@media/practice.png" />
-		 		           </image>
-		 		        </ImageView>
-		 		     </graphic>
+                     </graphic>
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                      <tooltip>
-                         <Tooltip text="Click to play Practise Module">
-                             <font>
-                                 <Font size="18.0" />
-                             </font>
-                         </Tooltip>
+                        <Tooltip text="Click to play Games Module">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Tooltip>
+                     </tooltip>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#loadPractiseModule" onMouseEntered="#buttonHovered"
+                          onMouseExited="#buttonExited" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <ImageView fitHeight="70.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@media/practice.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <tooltip>
+                        <Tooltip text="Click to play Practise Module">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Tooltip>
                      </tooltip>
                   </Button>
                </children>
             </HBox>
          </children>
       </VBox>
-      <Button layoutX="1192.0" layoutY="588.0" mnemonicParsing="false" onAction="#quit" onMouseEntered="#buttonHovered" onMouseExited="#buttonExited" style="-fx-background-color: transparent;">
+      <Button layoutX="1192.0" layoutY="588.0" mnemonicParsing="false" onAction="#quit" onMouseEntered="#buttonHovered"
+              onMouseExited="#buttonExited" style="-fx-background-color: transparent;">
          <graphic>
             <ImageView fitHeight="50.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -101,7 +105,7 @@
          <tooltip>
             <Tooltip text="Click to quit the game">
                <font>
-                   <Font size="18.0" />
+                  <Font size="18.0" />
                </font>
             </Tooltip>
          </tooltip>

@@ -62,7 +62,7 @@ abstract public class ModuleBaseController extends CommonControllers implements 
         timeline = new Timeline(new KeyFrame(Duration.millis(100), event -> {
             timeLabel.setText("Time taken:  " + Timer.getTime());
         }));
-        timeline.setCycleCount( Timeline.INDEFINITE );  // no time limit, so run forever
+        timeline.setCycleCount(Timeline.INDEFINITE);  // no time limit, so run forever
         timeline.play();
 
         // Set listener for numOfRunningFestival
@@ -192,6 +192,7 @@ abstract public class ModuleBaseController extends CommonControllers implements 
 
     /**
      * Helper method that tells whether the user gets it wrong in Practise module
+     *
      * @return True if wrong in Practise module, otherwise false
      */
     private boolean isWrongInPractiseModule() {
@@ -226,6 +227,7 @@ abstract public class ModuleBaseController extends CommonControllers implements 
     /**
      * Update the labels with given colour
      * Also change the size of the text so the label fits the text perfectly
+     *
      * @param colour Colour of the label text
      */
     protected void updateLabels(String colour) {
@@ -276,6 +278,7 @@ abstract public class ModuleBaseController extends CommonControllers implements 
      * Go to Reward Screen when the quiz is finished
      */
     protected void rewardScreen() {
+        timeline.stop();
         SceneManager.goToRewardScreen();
     }
 
@@ -286,6 +289,7 @@ abstract public class ModuleBaseController extends CommonControllers implements 
      */
     @FXML
     protected void backToMainMenu() {
+        timeline.stop();
         FestivalSpeech.shutDownAllFestival();
         SceneManager.goToMainMenu();
     }
@@ -334,6 +338,7 @@ abstract public class ModuleBaseController extends CommonControllers implements 
 
     /**
      * Allow the user to click the buttons to add macron character instead of short cut
+     *
      * @param event This parameter is used to get the macron character that the user want to add in
      */
     @FXML
