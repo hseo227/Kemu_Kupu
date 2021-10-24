@@ -21,6 +21,4 @@ You may also hear the word as many times as you want by clicking the replay butt
 
 ## Images References
 - koru1 & 2	https://i.pinimg.com/originals/ba/f5/60/baf56008c41a8d691e1d08a4ed8a7103.jpg
-- playback	http://cdn.onlinewebfonts.com/svg/img_333598.png
-- quit		https://www.flaticon.com/premium-icon/power-button_3699754
 - firework	https://www.prntr.com/images/fireworks-clipart-7.gif
