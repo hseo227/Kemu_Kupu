@@ -278,6 +278,7 @@ abstract public class ModuleBaseController extends CommonControllers implements 
      * Go to Reward Screen when the quiz is finished
      */
     protected void rewardScreen() {
+        timeline.stop();
         SceneManager.goToRewardScreen();
     }
 
@@ -288,6 +289,7 @@ abstract public class ModuleBaseController extends CommonControllers implements 
      */
     @FXML
     protected void backToMainMenu() {
+        timeline.stop();
         FestivalSpeech.shutDownAllFestival();
         SceneManager.goToMainMenu();
     }
