@@ -8,7 +8,7 @@ import spellingQuizUtil.Result;
  * This class stores only the functionalities of Games Module
  */
 public class ModuleGames extends Module {
-    private static final int NUMBER_OF_QUESTIONS = 1;
+    private static final int NUMBER_OF_QUESTIONS = 5;
 
     /**
      * Constructor

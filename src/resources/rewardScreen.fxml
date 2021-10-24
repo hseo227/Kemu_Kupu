@@ -55,7 +55,7 @@
                   <Insets bottom="20.0" />
                </padding>
             </Label>
-            <TableView fx:id="statisticsTable" prefHeight="193.0" prefWidth="700.0" style="-fx-font-size: 18.0px;">
+            <TableView fx:id="statisticsTable" prefHeight="183.0" prefWidth="700.0" style="-fx-font-size: 18.0px;">
                <columns>
                   <TableColumn fx:id="roundCol" editable="false" resizable="false" sortable="false" text="Round" />
                   <TableColumn fx:id="wordCol" editable="false" prefWidth="230.0" resizable="false" sortable="false" text="Word" />
@@ -168,7 +168,7 @@
             </Button>
          </children>
       </HBox>
-      <TableView fx:id="leaderboardTable" layoutX="290.0" layoutY="254.0" prefHeight="193.0" prefWidth="700.0" style="-fx-font-size: 18.0px;" visible="false">
+      <TableView fx:id="leaderboardTable" layoutX="290.0" layoutY="254.0" prefHeight="183.0" prefWidth="700.0" style="-fx-font-size: 18.0px;" visible="false">
          <columns>
             <TableColumn fx:id="rankCol" editable="false" prefWidth="100.0" resizable="false" sortable="false" text="Rank" />
             <TableColumn fx:id="nameCol" editable="false" prefWidth="235.0" resizable="false" sortable="false" text="Name" />
