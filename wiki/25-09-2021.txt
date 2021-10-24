@@ -1,4 +1,4 @@
-Group Meeting 1
+Group Meeting
 Checkout everyone's work and progress.
 All required functionalities are implemented.
 Now make it look nicer.

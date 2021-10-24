@@ -1,0 +1,12 @@
+24/10/2021
+
+Nick:
+Timer reset bug fixed.
+Lower max speech speed.
+
+Minsun:
+Table size and display changed to fit better.
+Colours edited.
+
+Hayoon:
+Time taken display changed.

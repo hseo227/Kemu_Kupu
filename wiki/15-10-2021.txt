@@ -1,0 +1,5 @@
+15/10/2021
+
+Hayoon:
+Reward Screen and Main Menu buttons changes to icons and the labels changed with png files with the pixel font.
+Start screen centre issue fixed.

@@ -1,0 +1,8 @@
+22/10/2021
+
+Nick:
+Timer added.
+Hover test changed.
+
+Hayoon:
+Some buttons and labels fixed.

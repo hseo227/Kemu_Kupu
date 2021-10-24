@@ -1,0 +1,8 @@
+19/10/2021
+
+Nick:
+Implemented Statistics table and Leaderboard for Reward Screen.
+Fixed bugs on macron shortcut.
+
+Hayoon:
+Tooglebuttons changed to buttons in Reward Screen.

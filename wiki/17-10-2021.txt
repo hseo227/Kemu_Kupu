@@ -1,0 +1,8 @@
+17/10/2021
+
+Nick:
+Refactor code.
+Bug fixed regarding wrong score being displayed in reward screen.
+
+Hayoon:
+Changed a message image.

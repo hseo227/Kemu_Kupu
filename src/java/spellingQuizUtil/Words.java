@@ -67,6 +67,7 @@ public class Words {
      */
     public String nextWord() {
         currentWord = wordsList[currentIndex++];
+        System.out.println(currentWord);
         return currentWord;
     }
 
