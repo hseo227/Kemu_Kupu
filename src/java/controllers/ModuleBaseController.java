@@ -95,7 +95,7 @@ abstract public class ModuleBaseController extends CommonControllers implements 
             public String toString(Double n) {
                 if (n == speechSpeed.getMin()) {  // slowest speed
                     return "Slow";
-                } else if (n == (speechSpeed.getMin() + speechSpeed.getMax()) / 2) {  // normal speed, in the middle
+                } else if (n == 100) {  // normal speed
                     return "Default";
                 } else if (n == speechSpeed.getMax()) {  // fastest speed
                     return "Fast";
