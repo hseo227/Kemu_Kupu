@@ -18,8 +18,8 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class TopicListController extends CommonControllers implements Initializable {
-    private final String YELLOW1 = "#EBEBEB";
-    private final String YELLOW2 = "#DFDFDF";
+    private final String GREY1 = "#EBEBEB";
+    private final String GREY2 = "#DFDFDF";
     private final String BLACK = "#000000";
     
     private final ArrayList<Topic> topicList = new ArrayList<>();
@@ -43,10 +43,14 @@ public class TopicListController extends CommonControllers implements Initializa
             for (String fileName : files) {
                 topicList.add(new Topic(fileName));
             }
-
+            
             // setting up the table and the column
             topicListColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
             table.getItems().setAll(topicList);
+            
+            for (int i = 0; i < topicList.size(); i++) {
+                System.out.println(topicList.get(i));            	
+            }
 
             // colour the table, alternate row colour and the selected row has a different colour
             table.setRowFactory(tr -> new TableRow<>() {
@@ -59,9 +63,9 @@ public class TopicListController extends CommonControllers implements Initializa
                     } else if (item.equals(table.getSelectionModel().getSelectedItem())) {
                         setStyle("-fx-background-color: " + BLACK);
                     } else if (topicList.indexOf(item) % 2 == 0) {
-                        setStyle("-fx-background-color: " + YELLOW1);
+                        setStyle("-fx-background-color: " + GREY1);
                     } else {
-                        setStyle("-fx-background-color: " + YELLOW2);
+                        setStyle("-fx-background-color: " + GREY2);
                     }
                 }
             });
