@@ -9,8 +9,8 @@ import javafx.scene.input.MouseEvent;
  * This class contains all the common functionalities across all the controllers
  */
 abstract public class CommonControllers {
-    protected final double opacityLower = 0.4;
-    protected final double opacityHigher = 1;
+    protected final double OPACITY_LOWER = 0.4;
+    protected final double OPACITY_HIGHER = 1;
 
     /**
      * When the mouse cursor hovers on the button, decrease its opacity
@@ -19,7 +19,7 @@ abstract public class CommonControllers {
      */
     @FXML
     protected void buttonHovered(MouseEvent event) {
-        ((Button) event.getSource()).setOpacity(opacityLower);
+        ((Button) event.getSource()).setOpacity(OPACITY_LOWER);
     }
 
     /**
@@ -31,7 +31,7 @@ abstract public class CommonControllers {
     @FXML
     protected void buttonExited(MouseEvent event) {
         if (!((Button) event.getSource()).isDisable()) {
-            ((Button) event.getSource()).setOpacity(opacityHigher);
+            ((Button) event.getSource()).setOpacity(OPACITY_HIGHER);
         }
     }
 
@@ -44,9 +44,9 @@ abstract public class CommonControllers {
      * @param items         Items that they are are going to disable/un-disable
      */
     protected void disableItems(boolean disable, boolean opacityChange, Node... items) {
-        double opacity = opacityHigher;
+        double opacity = OPACITY_HIGHER;
         if (disable) {
-            opacity = opacityLower;
+            opacity = OPACITY_LOWER;
         }
 
         for (Node item : items) {

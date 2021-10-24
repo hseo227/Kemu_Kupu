@@ -18,10 +18,10 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class TopicListController extends CommonControllers implements Initializable {
-    private final String YELLOW1 = "#EBEBEB";
-    private final String YELLOW2 = "#DFDFDF";
+    private final String GREY1 = "#EBEBEB";
+    private final String GREY2 = "#DFDFDF";
     private final String BLACK = "#000000";
-    
+
     private final ArrayList<Topic> topicList = new ArrayList<>();
 
     @FXML
@@ -59,9 +59,9 @@ public class TopicListController extends CommonControllers implements Initializa
                     } else if (item.equals(table.getSelectionModel().getSelectedItem())) {
                         setStyle("-fx-background-color: " + BLACK);
                     } else if (topicList.indexOf(item) % 2 == 0) {
-                        setStyle("-fx-background-color: " + YELLOW1);
+                        setStyle("-fx-background-color: " + GREY1);
                     } else {
-                        setStyle("-fx-background-color: " + YELLOW2);
+                        setStyle("-fx-background-color: " + GREY2);
                     }
                 }
             });

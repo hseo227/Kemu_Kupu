@@ -29,7 +29,7 @@ public class RewardScreenController extends CommonControllers implements Initial
     private final String RED = "#DE6F76";
     private final String BLUE = "#7CC5E6";
 
-    
+
     private final ArrayList<StatsTable> statisticsList = new ArrayList<>();
     private final ArrayList<Leaderboard> leaderboardList = new ArrayList<>();
     private final ArrayList<String> leaderboardListToSave = new ArrayList<>();
@@ -103,13 +103,13 @@ public class RewardScreenController extends CommonControllers implements Initial
             leaderboardBtn.setDisable(false);
             statsBtn.setDisable(true);
             leaderboardBtn.setOpacity(0.73);
-            statsBtn.setOpacity(opacityHigher);
+            statsBtn.setOpacity(OPACITY_HIGHER);
         } else {
             leaderboardTable.setVisible(true);
             clearBtn.setVisible(true);
             leaderboardBtn.setDisable(true);
             statsBtn.setDisable(false);
-            leaderboardBtn.setOpacity(opacityHigher);
+            leaderboardBtn.setOpacity(OPACITY_HIGHER);
             statsBtn.setOpacity(0.73);
         }
     }
