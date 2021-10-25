@@ -10,6 +10,7 @@ To play this game: <br/>
       `> ./run.sh`
 
 ## Instructions
+`Check 'User Manual' for more detailed information.`
 
 You are able to choose either to **PLAY** or **PRACTICE**. <br/>
 Both options will ask you to choose a topic you would like to be tested on. <br/>
@@ -24,7 +25,7 @@ also the *Leaderboard*. <br/>
 
 ### PRACTICE
 You are able to choose how many words you would like to be tested on. <br/>
-Practice rounds will not be timed, nor ranked. <br/>
+Practice rounds will be timed, but not ranked. <br/>
 Similarly to PLAY mode, you will be shown the words you have been tested on, but <br/>
 no leaderboard exists for practice rounds.
 
