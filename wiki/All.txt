@@ -1,0 +1,216 @@
+05-10-2021.txt
+-------------------------------------------------------
+05/10/2021
+
+Group meeting
+
+- Chose Target user: young adult
+- Discuss what should be in practice module
+	- Decided everything keeps the same as game module except:
+		- User can choose number of words to practice
+		- When failed (incorrect twice), don't pause 2s, wait for the user to input
+========================================================
+
+
+09-10-2021.txt
+-------------------------------------------------------
+09/10/2021
+
+Group meeting
+
+- Discuss the general look for young adult
+	- Simple
+	- More colour, but not too much
+	- More images
+========================================================
+
+
+10-10-2021.txt
+-------------------------------------------------------
+10/10/2021
+
+Nick:
+Refactored some of the code
+
+Hayoon:
+Pixel icons trialed
+========================================================
+
+
+14-10-2021.txt
+-------------------------------------------------------
+14/10/2021
+
+Nick:
+Implemented functionality to disable playback button.
+Organised java files into different folders.
+========================================================
+
+
+15-10-2021.txt
+-------------------------------------------------------
+15/10/2021
+
+Hayoon:
+Reward Screen and Main Menu buttons changes to icons and the labels changed with png files with the pixel font.
+Start screen centre issue fixed.
+========================================================
+
+
+16-10-2021.txt
+-------------------------------------------------------
+16/10/2021
+
+Hayoon:
+All windows updated and designed to fit the pixel theme.
+========================================================
+
+
+17-09-2021.txt
+-------------------------------------------------------
+[17/09/2021]
+
+Group Meeting 1
+
+Decided to use Nick's A2 code and expand on it.
+
+- Add topic list
+- Adjustable audio settings
+========================================================
+
+
+17-10-2021.txt
+-------------------------------------------------------
+17/10/2021
+
+Nick:
+Refactor code.
+Bug fixed regarding wrong score being displayed in reward screen.
+
+Hayoon:
+Changed a message image.
+========================================================
+
+
+18-09-2021.txt
+-------------------------------------------------------
+[18/09/2021]
+
+Nick:
+Finished topic list.
+========================================================
+
+
+19-09-2021.txt
+-------------------------------------------------------
+[19/09/2021]
+
+Nick:
+Finished playback button.
+========================================================
+
+
+19-10-2021.txt
+-------------------------------------------------------
+19/10/2021
+
+Nick:
+Implemented Statistics table and Leaderboard for Reward Screen.
+Fixed bugs on macron shortcut.
+
+Hayoon:
+Tooglebuttons changed to buttons in Reward Screen.
+========================================================
+
+
+20-09-2021.txt
+-------------------------------------------------------
+[20/09/2021]
+
+Group Meeting 2
+
+Clarified some functionalities.
+
+Hayoon and Minsun will work on:
+- back button
+- user score
+- hint
+
+Hayoon and Minsun:
+Added back button
+Added hint
+Added play again button
+========================================================
+
+
+22-10-2021.txt
+-------------------------------------------------------
+22/10/2021
+
+Nick:
+Timer added.
+Hover test changed.
+
+Hayoon:
+Some buttons and labels fixed.
+========================================================
+
+
+23-09-2021.txt
+-------------------------------------------------------
+Nick:
+Work on festival speech speed and finished
+Added buttons for macrons characters
+
+Hayoon and Minsun:
+Added skip (IDK) button
+Added check/submit button
+Added a feature that after the question is done, it will automatically speak out the next question without pressing any key.
+========================================================
+
+
+24-09-2021.txt
+-------------------------------------------------------
+Nick:
+Change to the more user-friendly pane (items inside the pane change position if the window is resized)
+
+Hayoon and Minsun:
+Add score system
+Add encouraging message
+Add reward screen
+Improve the looks for all the displays (all .fxml)
+========================================================
+
+
+24-10-2021.txt
+-------------------------------------------------------
+24/10/2021
+
+Nick:
+Timer reset bug fixed.
+Lower max speech speed.
+
+Minsun:
+Table size and display changed to fit better.
+Colours edited.
+
+Hayoon:
+Time taken display changed.
+========================================================
+
+
+25-09-2021.txt
+-------------------------------------------------------
+Group Meeting
+Checkout everyone's work and progress.
+All required functionalities are implemented.
+Now make it look nicer.
+
+Minsun:
+Added koru design and changed other colours accordingly.
+
+Hayoon:
+Updated the README.
+========================================================
+
+
